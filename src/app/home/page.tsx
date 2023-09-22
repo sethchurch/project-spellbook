@@ -1,40 +1,49 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
+'use client';
 
-import { Main } from '@/templates/Main';
+import { AppShell, Burger, Group, Skeleton } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 
-export const metadata: Metadata = {
-  title: 'Portfolio',
-  description: 'Welcome to my portfolio page!',
+const Home = () => {
+  const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
+  const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
+
+  return (
+    <AppShell
+      header={{ height: 60 }}
+      navbar={{
+        width: 300,
+        breakpoint: 'sm',
+        collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
+      }}
+      padding="md"
+    >
+      <AppShell.Header>
+        <Group h="100%" px="md">
+          <Burger
+            opened={mobileOpened}
+            onClick={toggleMobile}
+            hiddenFrom="sm"
+            size="sm"
+          />
+          <Burger
+            opened={desktopOpened}
+            onClick={toggleDesktop}
+            visibleFrom="sm"
+            size="sm"
+          />
+        </Group>
+      </AppShell.Header>
+      <AppShell.Navbar p="md">
+        Navbar
+        {Array(15)
+          .fill(0)
+          .map((_, index) => {
+            return <Skeleton key={index} h={28} mt="sm" animate={false} />;
+          })}
+      </AppShell.Navbar>
+      <AppShell.Main>Main</AppShell.Main>
+    </AppShell>
+  );
 };
 
-const Portfolio = () => (
-  <Main>
-    <p>
-      Welcome to my portfolio page! Here you will find a carefully curated
-      collection of my work and accomplishments. Through this portfolio,
-      I&apos;m to showcase my expertise, creativity, and the value I can bring
-      to your projects.
-    </p>
-
-    <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
-      {Array.from(Array(6).keys()).map((elt) => (
-        <Link className="border-none" key={elt} href={`/portfolio/${elt}`}>
-          <div className="overflow-hidden rounded-lg">
-            <img
-              className="h-full w-full object-cover object-center"
-              src="/assets/images/nextjs-starter-banner.png"
-              alt="Portfolio project"
-            />
-
-            <div className="bg-blue-200 p-3 text-xl font-bold">
-              Portfolio {elt}
-            </div>
-          </div>
-        </Link>
-      ))}
-    </div>
-  </Main>
-);
-
-export default Portfolio;
+export default Home;

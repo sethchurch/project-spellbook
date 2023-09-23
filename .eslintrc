@@ -52,7 +52,8 @@
         "simple-import-sort/exports": "error", // Export configuration for `eslint-plugin-simple-import-sort`
         "@typescript-eslint/no-unused-vars": "off",
         "unused-imports/no-unused-imports": "error",
-        "unused-imports/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
+        "unused-imports/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+        "import/no-extraneous-dependencies": "off" // Conflicts with pnpm links
       }
     },
     // Configuration for testing
@@ -80,13 +81,14 @@
       "files": ["*.stories.*"],
       "extends": ["plugin:storybook/recommended"],
       "rules": {
-        "import/no-extraneous-dependencies": [
-          "error",
-          {
-            "devDependencies": true
-          }
-        ]
+        "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
       }
-    }
+    },
+		// Configuration for js / mjs files -- disable extraneous dependencies
+		{
+			"files": ["*.js", "*.mjs"],
+			"rules": {
+				"import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
+			}
   ]
 }

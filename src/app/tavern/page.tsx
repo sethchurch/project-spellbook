@@ -1,5 +1,5 @@
 const AppHome = () => {
-  return <h1>Hi There!</h1>;
+  return <span>main</span>;
 };
 
 export default AppHome;

@@ -23,6 +23,9 @@ dependencies:
   '@t3-oss/env-nextjs':
     specifier: ^0.6.1
     version: 0.6.1(typescript@5.2.2)(zod@3.22.2)
+  '@tabler/icons-react':
+    specifier: ^2.35.0
+    version: 2.35.0(react@18.2.0)
   '@types/node':
     specifier: 20.6.2
     version: 20.6.2
@@ -39,7 +42,7 @@ dependencies:
     specifier: ^0.28.6
     version: 0.28.6(@libsql/client@0.3.4)
   next:
-    specifier: 13.4.19
+    specifier: ^13.4.19
     version: 13.4.19(@babel/core@7.22.20)(react-dom@18.2.0)(react@18.2.0)
   react:
     specifier: 18.2.0
@@ -1364,6 +1367,20 @@ packages:
       '@t3-oss/env-core': 0.6.1(typescript@5.2.2)(zod@3.22.2)
       typescript: 5.2.2
       zod: 3.22.2
+    dev: false
+
+  /@tabler/icons-react@2.35.0(react@18.2.0):
+    resolution: {integrity: sha512-jK2zgtMF2+LSjtbjYsfer+ryz72TwyJqv3MsmCfEpQwP37u01xvmTlVhJ+ox3bV+trsgjojsldVDuB05JuXLaw==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@tabler/icons': 2.35.0
+      prop-types: 15.8.1
+      react: 18.2.0
+    dev: false
+
+  /@tabler/icons@2.35.0:
+    resolution: {integrity: sha512-qW/itKdmFvfGw6mAQ+cZy+2MYTXb0XdGAVhO3obYLJEfsSPMwQRO0S9ckFk1xMQX/Tj7REC3TEmWUBWNi3/o3g==}
     dev: false
 
   /@testing-library/cypress@10.0.1(cypress@13.2.0):

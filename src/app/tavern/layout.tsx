@@ -12,12 +12,13 @@ import {
   Stack,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
+import { IconPlus } from '@tabler/icons-react';
 
-interface HomeProps {
+interface AppLayoutProps {
   children: React.ReactNode;
 }
 
-const Home = ({ children }: HomeProps) => {
+const AppLayout = ({ children }: AppLayoutProps) => {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
 
@@ -58,7 +59,9 @@ const Home = ({ children }: HomeProps) => {
       <AppShell.Navbar p="md">
         <Stack>
           <Input />
-          <Button>+</Button>
+          <Button>
+            <IconPlus stroke={3} />
+          </Button>
           {Array(15)
             .fill(0)
             .map((_, index) => {
@@ -86,4 +89,4 @@ const Home = ({ children }: HomeProps) => {
   );
 };
 
-export default Home;
+export default AppLayout;

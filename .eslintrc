@@ -84,11 +84,12 @@
         "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
       }
     },
-		// Configuration for js / mjs files -- disable extraneous dependencies
-		{
-			"files": ["*.js", "*.mjs"],
-			"rules": {
-				"import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
-			}
+    // Configuration for js / mjs files -- disable extraneous dependencies
+    {
+      "files": ["*.js", "*.mjs"],
+      "rules": {
+        "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
+      }
+    }
   ]
 }

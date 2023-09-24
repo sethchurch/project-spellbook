@@ -1,9 +1,20 @@
 'use client';
 
-import { createTheme, MantineProvider } from '@mantine/core';
+import { createTheme, MantineProvider, Mark } from '@mantine/core';
+
+const componentDefaults = {
+  Mark: Mark.extend({
+    defaultProps: {
+      color: 'grape',
+      c: 'white',
+      p: 'xs',
+    },
+  }),
+};
 
 const theme = createTheme({
   primaryColor: 'green',
+  components: componentDefaults,
 });
 
 interface ThemeProviderProps {
@@ -12,7 +23,7 @@ interface ThemeProviderProps {
 
 const ThemeProvider = ({ children }: ThemeProviderProps) => {
   return (
-    <MantineProvider theme={theme} defaultColorScheme="dark">
+    <MantineProvider defaultColorScheme="dark" theme={theme}>
       {children}
     </MantineProvider>
   );

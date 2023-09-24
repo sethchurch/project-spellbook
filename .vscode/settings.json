@@ -22,6 +22,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "prettier.ignorePath": ".gitignore",
+  "prettier.singleQuote": true,
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
@@ -37,6 +38,9 @@
     "**/node_modules": true
   },
   "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   } // Don't run prettier for files listed in .gitignore
 }

@@ -1,16 +1,6 @@
 'use client';
 
-import {
-  AppShell,
-  Burger,
-  Button,
-  Container,
-  Grid,
-  Group,
-  Input,
-  Skeleton,
-  Stack,
-} from '@mantine/core';
+import { AppShell, Burger, Button, Container, Grid, Group, Input, Skeleton, Stack } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconPlus } from '@tabler/icons-react';
 
@@ -24,8 +14,8 @@ const AppLayout = ({ children }: AppLayoutProps) => {
 
   return (
     <AppShell
-      layout="alt"
       header={{ height: 60 }}
+      layout="alt"
       navbar={{
         width: 300,
         breakpoint: 'sm',
@@ -37,18 +27,8 @@ const AppLayout = ({ children }: AppLayoutProps) => {
         <Group h="100%" px="md">
           <Grid w="100%">
             <Grid.Col span={3}>
-              <Burger
-                opened={mobileOpened}
-                onClick={toggleMobile}
-                hiddenFrom="sm"
-                size="sm"
-              />
-              <Burger
-                opened={desktopOpened}
-                onClick={toggleDesktop}
-                visibleFrom="sm"
-                size="sm"
-              />
+              <Burger hiddenFrom="sm" opened={mobileOpened} size="sm" onClick={toggleMobile} />
+              <Burger opened={desktopOpened} size="sm" visibleFrom="sm" onClick={toggleDesktop} />
             </Grid.Col>
             <Grid.Col span={6}>
               <Input />
@@ -62,26 +42,18 @@ const AppLayout = ({ children }: AppLayoutProps) => {
           <Button>
             <IconPlus stroke={3} />
           </Button>
-          {Array(15)
+          {Array(21)
             .fill(0)
-            .map((_, index) => {
-              return (
-                <Container
-                  className="flex w-full flex-row flex-nowrap items-center justify-between gap-3"
-                  p={0}
-                  key={index}
-                >
-                  <Skeleton
-                    className="shrink-0"
-                    circle
-                    w={28}
-                    h={28}
-                    animate={false}
-                  />
-                  <Skeleton h={28} animate={false} />
-                </Container>
-              );
-            })}
+            .map((_, index) => (
+              <Container
+                key={index}
+                className="flex w-full flex-row flex-nowrap items-center justify-between gap-3"
+                p={0}
+              >
+                <Skeleton circle animate={false} className="shrink-0" h={28} w={28} />
+                <Skeleton animate={false} h={28} />
+              </Container>
+            ))}
         </Stack>
       </AppShell.Navbar>
       <AppShell.Main>{children}</AppShell.Main>

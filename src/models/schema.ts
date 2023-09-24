@@ -1,0 +1,37 @@
+/**
+ * Character DB Schema for Sqlite -- Drizzle ORM
+ * =============================================
+ * Characters Have:
+ * - Name (string)
+ * - Race (string)
+ * - Level (int) (per class)
+ * - Class (string) (can be multiple)
+ * - Hit Points (int)
+ * - Armor Class (int)
+ * - Speed (int)
+ * - Initiative (int)
+ * - Proficiency Bonus (int)
+ * - Inspiration (int)
+ * - Alignment (string)
+ * - Deity (string)
+ * - Portrait (string) (base64 encoded image)
+ * - Background (string)
+ * - Stats (object) (str, dex, con, int, wis, cha)
+ * - Skills (object)
+ * 	 - enum (acrobatics, animalHandling, arcana, athletics, deception, history, insight, intimidation, investigation, medicine, nature, perception, performance, persuasion, religion, sleightOfHand, stealth, survival)
+ * - Proficiencies (object) (armor, weapons, tools, savingThrows, skills)
+ * - Equipment (object) (weapons, armor, tools, items)
+ * - Spells (object) (cantrips, level1, level2, level3, level4, level5, level6, level7, level8, level9)
+ * - Spell Save DC (int)
+ * - Resources (object) (name, max, current)
+ * - Features (object) (race, class, background, feats)
+ * - Personality (object) (traits, ideals, bonds, flaws)
+ * - Appearance (object) (age, height, weight, eyes, skin, hair)
+ * - Backstory (long string)
+ * - Allies (long string)
+ * - Additional Features (long string)
+ * - Treasure (long string)
+ * - Character Notes (long string)
+ * - Campaign Notes (long string)
+ * =============================================
+ */

@@ -4,6 +4,9 @@ import { AppShell, Burger, Button, Container, Grid, Group, Input, Skeleton, Stac
 import { useDisclosure } from '@mantine/hooks';
 import { IconPlus } from '@tabler/icons-react';
 
+import { BasicCreatorModal } from '@/components/BasicCreatorModal';
+import { ColorSchemeToggle } from '@/components/ColorSchemeToggle';
+
 interface AppLayoutProps {
   children: React.ReactNode;
 }
@@ -11,6 +14,8 @@ interface AppLayoutProps {
 const AppLayout = ({ children }: AppLayoutProps) => {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
+
+  const [modalOpened, { open: openModal, close: closeModal }] = useDisclosure(false);
 
   return (
     <AppShell
@@ -33,13 +38,16 @@ const AppLayout = ({ children }: AppLayoutProps) => {
             <Grid.Col span={6}>
               <Input />
             </Grid.Col>
+            <Grid.Col className="flex items-center" span={1}>
+              <ColorSchemeToggle />
+            </Grid.Col>
           </Grid>
         </Group>
       </AppShell.Header>
       <AppShell.Navbar p="md">
         <Stack>
           <Input />
-          <Button>
+          <Button onClick={openModal}>
             <IconPlus stroke={3} />
           </Button>
           {Array(21)
@@ -57,6 +65,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
         </Stack>
       </AppShell.Navbar>
       <AppShell.Main>{children}</AppShell.Main>
+      <BasicCreatorModal close={closeModal} opened={modalOpened} />
     </AppShell>
   );
 };

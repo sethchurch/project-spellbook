@@ -1,18 +1,63 @@
 'use client';
 
-import { Button } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
+import { Divider, Grid, GridCol, Paper, Space, Stack } from '@mantine/core';
 
-import { BasicCreatorModal } from '@/components/BasicCreatorModal';
+import { CharacterSheetPod } from '@/components/CharacterSheetPod';
 
 const Tavern = () => {
-  const [opened, { open, close }] = useDisclosure(false);
-
   return (
-    <>
-      <BasicCreatorModal close={close} opened={opened} />
-      <Button onClick={open}>Open modal</Button>
-    </>
+    <Paper withBorder p={16} shadow="xs">
+      <Grid grow>
+        <GridCol span={8}>
+          <CharacterSheetPod>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, facilis voluptate. Nemo culpa,
+            aperiam quaerat maxime omnis tempore praesentium nihil consequatur modi quia hic reprehenderit magni
+            dolorem! Tenetur, obcaecati nam.
+          </CharacterSheetPod>
+        </GridCol>
+        <GridCol span={2}>
+          <CharacterSheetPod>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</CharacterSheetPod>
+        </GridCol>
+      </Grid>
+
+      <Space h={16} />
+      <Divider />
+      <Space h={16} />
+
+      <Grid grow>
+        <GridCol span={3}>
+          <CharacterSheetPod>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, facilis voluptate. Nemo culpa,
+            aperiam quaerat maxime omnis tempore praesentium nihil consequatur modi quia hic reprehenderit magni
+            dolorem! Tenetur, obcaecati nam. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos,
+            facilis voluptate. Nemo culpa, aperiam quaerat maxime omnis tempore praesentium nihil consequatur modi quia
+            hic reprehenderit magni dolorem! Tenetur, obcaecati nam.
+          </CharacterSheetPod>
+        </GridCol>
+        <GridCol span={6}>
+          <Stack>
+            <CharacterSheetPod>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</CharacterSheetPod>
+            <CharacterSheetPod>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</CharacterSheetPod>
+            <CharacterSheetPod>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</CharacterSheetPod>
+            <CharacterSheetPod>
+              LoremLorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, facilis voluptate. Nemo culpa,
+              aperiam quaerat maxime omnis., ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, facilis
+              voluptate. Nemo culpa, aperiam quaerat maxime omnis.
+            </CharacterSheetPod>
+          </Stack>
+        </GridCol>
+        <GridCol span={3}>
+          <Stack>
+            <CharacterSheetPod>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</CharacterSheetPod>
+            <CharacterSheetPod>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</CharacterSheetPod>
+            <CharacterSheetPod>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</CharacterSheetPod>
+            <CharacterSheetPod>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</CharacterSheetPod>
+            <CharacterSheetPod>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</CharacterSheetPod>
+            <CharacterSheetPod>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</CharacterSheetPod>
+          </Stack>
+        </GridCol>
+      </Grid>
+    </Paper>
   );
 };
 

@@ -1,21 +1,9 @@
 'use client';
 
-import { createTheme, MantineProvider, Mark } from '@mantine/core';
+import { MantineProvider } from '@mantine/core';
 
-const componentDefaults = {
-  Mark: Mark.extend({
-    defaultProps: {
-      color: 'grape',
-      c: 'white',
-      p: 'xs',
-    },
-  }),
-};
-
-const theme = createTheme({
-  primaryColor: 'green',
-  components: componentDefaults,
-});
+import { AppConfig } from '@/config/AppConfig';
+import { resolver, themeOverride } from '@/config/ThemeConfig';
 
 interface ThemeProviderProps {
   children: React.ReactNode;
@@ -23,7 +11,11 @@ interface ThemeProviderProps {
 
 const ThemeProvider = ({ children }: ThemeProviderProps) => {
   return (
-    <MantineProvider defaultColorScheme="dark" theme={theme}>
+    <MantineProvider
+      cssVariablesResolver={resolver}
+      defaultColorScheme={AppConfig.defaultColorScheme}
+      theme={themeOverride}
+    >
       {children}
     </MantineProvider>
   );

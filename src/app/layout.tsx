@@ -24,7 +24,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang="en">
       <head>
-        <ColorSchemeScript />
+        <ColorSchemeScript defaultColorScheme={AppConfig.defaultColorScheme} />
       </head>
       <body className={inter.className}>
         <ThemeProvider>{children}</ThemeProvider>

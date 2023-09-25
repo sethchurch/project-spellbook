@@ -31,7 +31,7 @@ const savingThrows = ['strength', 'dexterity', 'constitution', 'intelligence', '
 
 const CharacterSheet = () => {
   return (
-    <div className="h-full p-10 bg-zinc-900 m-10 rounded">
+    <div className="h-full p-5 bg-zinc-900 m-16 rounded">
       <div className="grid grid-cols-[3fr_6fr_3fr] gap-3 grid-rows-[1fr_max-content]">
         <CharacterSheetPod className="grid grid-cols-3 gap-3 col-span-2">
           <Input label="Name" />
@@ -62,14 +62,20 @@ const CharacterSheet = () => {
                 <CharacterSheetPod className="flex-[2]" variant="alt">
                   <Stack>
                     {savingThrows.map((save, index) => (
-                      <Chip key={index}>{save} save</Chip>
+                      <Chip startContent={<div className="bg-zinc-500 ml-2 mr-1 rounded-full w-2 h-2" />} key={index}>
+                        {save} save
+                      </Chip>
                     ))}
                   </Stack>
                 </CharacterSheetPod>
                 <CharacterSheetPod className="flex-[6]" variant="alt">
                   <Stack>
                     {characterSkills.map((skill, index) => (
-                      <Chip key={index} className="w-full">
+                      <Chip
+                        startContent={<div className="bg-zinc-500 ml-2 mr-1 rounded-full w-2 h-2" />}
+                        key={index}
+                        className="w-full"
+                      >
                         {skill}
                       </Chip>
                     ))}
@@ -83,9 +89,9 @@ const CharacterSheet = () => {
         <div>
           <div className="flex h-full flex-col  gap-3">
             <div className="flex-[1] grid grid-cols-3 gap-3">
-              <CharacterSheetPod className="aspect-square text-center">AC</CharacterSheetPod>
-              <CharacterSheetPod className="aspect-square text-center">Initiative</CharacterSheetPod>
-              <CharacterSheetPod className="aspect-square text-center">Speed</CharacterSheetPod>
+              <CharacterSheetPod>AC</CharacterSheetPod>
+              <CharacterSheetPod>Initiative</CharacterSheetPod>
+              <CharacterSheetPod>Speed</CharacterSheetPod>
             </div>
             <CharacterSheetPod className="flex-[1]">Conditions</CharacterSheetPod>
             <CharacterSheetPod className="flex-[1]">HP / THP</CharacterSheetPod>

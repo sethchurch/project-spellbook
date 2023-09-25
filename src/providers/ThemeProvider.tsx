@@ -1,9 +1,6 @@
 'use client';
 
-import { MantineProvider } from '@mantine/core';
-
-import { AppConfig } from '@/config/AppConfig';
-import { resolver, themeOverride } from '@/config/ThemeConfig';
+import { NextUIProvider } from '@nextui-org/react';
 
 interface ThemeProviderProps {
   children: React.ReactNode;
@@ -11,14 +8,9 @@ interface ThemeProviderProps {
 
 const ThemeProvider = ({ children }: ThemeProviderProps) => {
   return (
-    <MantineProvider
-		
-      cssVariablesResolver={resolver}
-      defaultColorScheme={AppConfig.defaultColorScheme}
-      theme={themeOverride}
-    >
-      {children}
-    </MantineProvider>
+    <NextUIProvider>
+        {children}
+    </NextUIProvider>
   );
 };
 

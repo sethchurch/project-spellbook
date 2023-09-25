@@ -1,8 +1,10 @@
-import { Badge, Grid, GridCol, Paper, Radio, Space, Stack, TextInput } from '@mantine/core';
-
 import { CharacterSheetPod } from '@/components/CharacterSheetPod';
+import { RadioGroup, Radio } from '@nextui-org/radio';
 
 import { StatDisplay } from './StatDisplay';
+import { Input } from '@nextui-org/input';
+import { Chip } from '@nextui-org/chip';
+import { Stack } from '@/components/layout/Stack';
 
 const characterStats = [12, 16, 14, 8, 15, 11];
 const characterSkills = [
@@ -29,65 +31,58 @@ const savingThrows = ['strength', 'dexterity', 'constitution', 'intelligence', '
 
 const CharacterSheet = () => {
   return (
-    <Paper bg="dark.8" className="h-full" p="xl">
-      <div className="grid grid-cols-[6fr_2fr] gap-5">
-        <CharacterSheetPod className="grid grid-cols-3 gap-6">
-          <TextInput label="Name" />
-          <TextInput label="Race" />
-          <TextInput label="Experience" />
-          <TextInput label="Class" />
-          <TextInput label="Background" />
-          <TextInput label="Alignment" />
+    <div className="h-full p-10 bg-zinc-900 m-10 rounded">
+      <div className="grid grid-cols-[3fr_6fr_3fr] gap-3 grid-rows-[1fr_max-content]">
+        <CharacterSheetPod className="grid grid-cols-3 gap-3 col-span-2">
+          <Input label="Name" />
+          <Input label="Race" />
+          <Input label="Experience" />
+          <Input label="Class" />
+          <Input label="Background" />
+          <Input label="Alignment" />
         </CharacterSheetPod>
-        <CharacterSheetPod className="flex flex-col justify-center gap-6">
-          <Radio label="Inspiration" />
-          <Radio label="Proficiency Bonus" />
+        <CharacterSheetPod className="flex flex-col justify-center gap-3">
+          <RadioGroup>
+            <Radio value="inspo">Inspiration</Radio>
+            <Radio value="profs">Proficiency Bonus</Radio>
+          </RadioGroup>
         </CharacterSheetPod>
-      </div>
 
-      <Space h="xl" />
-
-      <Grid grow>
-        <GridCol span={3}>
+        <div>
           <CharacterSheetPod>
-            <div className="flex w-full flex-nowrap gap-4">
-              <CharacterSheetPod className="flex-[2]" variant="transparent">
+            <div className="flex w-full flex-nowrap gap-3">
+              <div className="flex-[2]">
                 <Stack>
                   {characterStats.map((stat, index) => (
                     <StatDisplay key={index} stat={stat} />
                   ))}
                 </Stack>
-              </CharacterSheetPod>
-
-              <CharacterSheetPod className="flex-[4]" variant="transparent">
-                <div className="flex h-full flex-col gap-4">
-                  <CharacterSheetPod className="flex-[2]" variant="alt">
-                    <div className="flex h-full flex-col justify-between">
-                      {savingThrows.map((save, index) => (
-                        <Badge key={index} color="gray" variant="dot">
-                          {save} Save
-                        </Badge>
-                      ))}
-                    </div>
-                  </CharacterSheetPod>
-                  <CharacterSheetPod className="flex-[6]" variant="alt">
-                    <div className="flex h-full flex-col justify-between">
-                      {characterSkills.map((skill, index) => (
-                        <Badge key={index} className="w-full" color="gray" variant="dot">
-                          {skill}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CharacterSheetPod>
-                </div>
-              </CharacterSheetPod>
+              </div>
+              <div className="flex h-full flex-col gap-3 flex-[4]">
+                <CharacterSheetPod className="flex-[2]" variant="alt">
+                  <Stack>
+                    {savingThrows.map((save, index) => (
+                      <Chip key={index}>{save} save</Chip>
+                    ))}
+                  </Stack>
+                </CharacterSheetPod>
+                <CharacterSheetPod className="flex-[6]" variant="alt">
+                  <Stack>
+                    {characterSkills.map((skill, index) => (
+                      <Chip key={index} className="w-full">
+                        {skill}
+                      </Chip>
+                    ))}
+                  </Stack>
+                </CharacterSheetPod>
+              </div>
             </div>
           </CharacterSheetPod>
-        </GridCol>
+        </div>
 
-        <GridCol span={6}>
-          <div className="flex h-full flex-col  gap-5 ">
-            <div className="flex w-full flex-[1] justify-between gap-6">
+        <div>
+          <div className="flex h-full flex-col  gap-3">
+            <div className="flex-[1] grid grid-cols-3 gap-3">
               <CharacterSheetPod className="aspect-square text-center">AC</CharacterSheetPod>
               <CharacterSheetPod className="aspect-square text-center">Initiative</CharacterSheetPod>
               <CharacterSheetPod className="aspect-square text-center">Speed</CharacterSheetPod>
@@ -96,9 +91,10 @@ const CharacterSheet = () => {
             <CharacterSheetPod className="flex-[1]">HP / THP</CharacterSheetPod>
             <CharacterSheetPod className="flex-[4]">Actions / Resources / Features / Notes</CharacterSheetPod>
           </div>
-        </GridCol>
-        <GridCol span={3}>
-          <div className="flex h-full flex-col gap-5">
+        </div>
+
+        <div>
+          <div className="flex h-full flex-col gap-3">
             <CharacterSheetPod>Traits</CharacterSheetPod>
             <CharacterSheetPod>Ideals</CharacterSheetPod>
             <CharacterSheetPod>Bonds</CharacterSheetPod>
@@ -106,9 +102,9 @@ const CharacterSheet = () => {
             <CharacterSheetPod className="flex-[2]">Senses</CharacterSheetPod>
             <CharacterSheetPod className="flex-[2]">Proficencies & Languages</CharacterSheetPod>
           </div>
-        </GridCol>
-      </Grid>
-    </Paper>
+        </div>
+      </div>
+    </div>
   );
 };
 

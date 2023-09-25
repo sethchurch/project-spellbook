@@ -1,5 +1,3 @@
-import { Box } from '@mantine/core';
-
 interface CharacterSheetPodProps {
   children: React.ReactNode;
   variant?: 'alt' | 'default' | 'transparent';
@@ -9,19 +7,17 @@ interface CharacterSheetPodProps {
 
 const variants = {
   bg: {
-    alt: 'dark.7',
-    default: 'black.8',
+    alt: 'bg-zinc-800',
+    default: 'bg-zinc-950',
     transparent: 'transparent',
   },
 };
 
 const CharacterSheetPod = ({ children, variant, className, square }: CharacterSheetPodProps) => {
-  const classes = `${className || ''} rounded-lg ${square ? 'aspect-square' : ''}`;
-  return (
-    <Box bg={variants.bg[variant ?? 'default']} className={classes} p="md">
-      {children}
-    </Box>
-  );
+  const classes = `${className || ''} ${variants.bg[variant ?? 'default']} rounded-lg p-10 ${
+    square ? 'aspect-square' : ''
+  }`;
+  return <div className={classes}>{children}</div>;
 };
 
 export { CharacterSheetPod };

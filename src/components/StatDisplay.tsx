@@ -1,14 +1,12 @@
-import { Paper } from '@mantine/core';
-
 interface StatDisplayProps {
   stat: number;
 }
 
 const StatDisplay = ({ stat }: StatDisplayProps) => {
   return (
-    <Paper bg="dark.7" className="flex aspect-square items-center rounded-lg text-center" p="lg">
-      <p className="text-3xl">{stat}</p>
-    </Paper>
+    <div className="flex aspect-square items-center rounded-lg text-center bg-zinc-800 p-8">
+      <p className="text-3xl m-auto">{stat}</p>
+    </div>
   );
 };
 

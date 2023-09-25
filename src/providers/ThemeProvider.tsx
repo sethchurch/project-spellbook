@@ -12,6 +12,7 @@ interface ThemeProviderProps {
 const ThemeProvider = ({ children }: ThemeProviderProps) => {
   return (
     <MantineProvider
+		
       cssVariablesResolver={resolver}
       defaultColorScheme={AppConfig.defaultColorScheme}
       theme={themeOverride}

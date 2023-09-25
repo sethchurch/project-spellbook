@@ -1,14 +1,15 @@
-import { AppShell, AppShellHeader, AppShellMain, Button, Container, Stack, Text, Title } from '@mantine/core';
+import { AppShell, AppShellMain, Button, Container, Stack, Text, Title } from '@mantine/core';
 import { IconWand } from '@tabler/icons-react';
 
 import { Link } from '@/components/Link';
+import { NavHeader } from '@/components/NavHeader';
 import { AppConfig } from '@/config/AppConfig';
 
 const LandingPage = () => {
   return (
     <AppShell>
-      <AppShellHeader>
-        <Container className="flex items-center justify-between" p={20} size="xl">
+      <NavHeader>
+        <Container className="flex  w-full items-center justify-between" p="lg" size="xl">
           <div className="flex gap-3 align-middle">
             <IconWand />
             <Text>{AppConfig.site_name}</Text>
@@ -21,10 +22,10 @@ const LandingPage = () => {
             </Link>
           </div>
         </Container>
-      </AppShellHeader>
+      </NavHeader>
       <AppShellMain>
-        <Container p={20} size="xl">
-          <Stack align="flex-start" gap={24} h={350} justify="center">
+        <Container p="lg" size="xl">
+          <Stack align="flex-start" gap="xl" h={350} justify="center">
             <Title order={1} size="3.5em">
               Welcome to {AppConfig.site_name}
             </Title>

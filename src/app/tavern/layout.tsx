@@ -1,19 +1,22 @@
 'use client';
 
-import { AppShell, Burger, Button, Container, Grid, Group, Input, Skeleton, Stack } from '@mantine/core';
+import { AppShell, Box, Burger, Button, Grid, Input } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconPlus } from '@tabler/icons-react';
 
 import { BasicCreatorModal } from '@/components/BasicCreatorModal';
+import { CharacterNavSkeleton } from '@/components/CharacterNavSkeleton';
 import { ColorSchemeToggle } from '@/components/ColorSchemeToggle';
+import { NavHeader } from '@/components/NavHeader';
+import { SideNav } from '@/components/SideNav';
 
 interface AppLayoutProps {
   children: React.ReactNode;
 }
 
 const AppLayout = ({ children }: AppLayoutProps) => {
-  const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
-  const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
+  const [sidenavOpened, { toggle: toggleSidenav }] = useDisclosure(true);
+  const collapsed = { mobile: !sidenavOpened, desktop: !sidenavOpened };
 
   const [modalOpened, { open: openModal, close: closeModal }] = useDisclosure(false);
 
@@ -21,50 +24,36 @@ const AppLayout = ({ children }: AppLayoutProps) => {
     <AppShell
       header={{ height: 60 }}
       layout="alt"
-      navbar={{
-        width: 300,
-        breakpoint: 'sm',
-        collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
-      }}
+      navbar={{ width: 300, breakpoint: 'sm', collapsed }}
       padding="md"
+      withBorder={false}
     >
-      <AppShell.Header>
-        <Group h="100%" px="md">
-          <Grid w="100%">
-            <Grid.Col span={3}>
-              <Burger hiddenFrom="sm" opened={mobileOpened} size="sm" onClick={toggleMobile} />
-              <Burger opened={desktopOpened} size="sm" visibleFrom="sm" onClick={toggleDesktop} />
-            </Grid.Col>
-            <Grid.Col span={6}>
-              <Input />
-            </Grid.Col>
-            <Grid.Col className="flex items-center" span={1}>
-              <ColorSchemeToggle />
-            </Grid.Col>
-          </Grid>
-        </Group>
-      </AppShell.Header>
-      <AppShell.Navbar p="md">
-        <Stack>
-          <Input />
-          <Button onClick={openModal}>
-            <IconPlus stroke={3} />
-          </Button>
-          {Array(21)
-            .fill(0)
-            .map((_, index) => (
-              <Container
-                key={index}
-                className="flex w-full flex-row flex-nowrap items-center justify-between gap-3"
-                p={0}
-              >
-                <Skeleton circle animate={false} className="shrink-0" h={28} w={28} />
-                <Skeleton animate={false} h={28} />
-              </Container>
-            ))}
-        </Stack>
-      </AppShell.Navbar>
-      <AppShell.Main>{children}</AppShell.Main>
+      <NavHeader>
+        <Grid w="100%">
+          <Grid.Col span={4}>
+            <Burger opened={sidenavOpened} size="sm" onClick={toggleSidenav} />
+          </Grid.Col>
+          <Grid.Col span={4}>
+            <Input />
+          </Grid.Col>
+          <Grid.Col className="flex items-center" span={1}>
+            <ColorSchemeToggle />
+          </Grid.Col>
+        </Grid>
+      </NavHeader>
+
+      <SideNav>
+        <Input />
+        <Button onClick={openModal}>
+          <IconPlus stroke={3} />
+        </Button>
+        <CharacterNavSkeleton />
+      </SideNav>
+
+      <AppShell.Main>
+        <Box p="lg">{children}</Box>
+      </AppShell.Main>
+
       <BasicCreatorModal close={closeModal} opened={modalOpened} />
     </AppShell>
   );

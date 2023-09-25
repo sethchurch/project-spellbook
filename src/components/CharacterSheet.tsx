@@ -31,7 +31,7 @@ const savingThrows = ['strength', 'dexterity', 'constitution', 'intelligence', '
 
 const CharacterSheet = () => {
   return (
-    <div className="h-full p-5 bg-zinc-900 m-16 rounded">
+    <div className="h-full p-5 bg-zinc-900 m-3 rounded">
       <div className="grid grid-cols-[3fr_6fr_3fr] gap-3 grid-rows-[1fr_max-content]">
         <CharacterSheetPod className="grid grid-cols-3 gap-3 col-span-2">
           <Input label="Name" />
@@ -71,11 +71,7 @@ const CharacterSheet = () => {
                 <CharacterSheetPod className="flex-[6]" variant="alt">
                   <Stack>
                     {characterSkills.map((skill, index) => (
-                      <Chip
-                        startContent={<div className="bg-zinc-500 ml-2 mr-1 rounded-full w-2 h-2" />}
-                        key={index}
-                        className="w-full"
-                      >
+                      <Chip startContent={<div className="bg-zinc-500 ml-2 mr-1 rounded-full w-2 h-2" />} key={index}>
                         {skill}
                       </Chip>
                     ))}

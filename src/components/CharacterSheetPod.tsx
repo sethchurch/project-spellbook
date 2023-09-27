@@ -14,7 +14,7 @@ const variants = {
 };
 
 const CharacterSheetPod = ({ children, variant, className, square }: CharacterSheetPodProps) => {
-  const classes = `${className || ''} ${variants.bg[variant ?? 'default']} rounded-lg p-6 text-center ${
+  const classes = `${className || ''} ${variants.bg[variant ?? 'default']} rounded-lg p-3 text-center ${
     square ? 'aspect-square' : ''
   }`;
   return <div className={classes}>{children}</div>;

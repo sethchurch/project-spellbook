@@ -1,10 +1,11 @@
+import { Chip } from '@nextui-org/chip';
+import { Input } from '@nextui-org/input';
+import { Checkbox } from '@nextui-org/react';
+
 import { CharacterSheetPod } from '@/components/CharacterSheetPod';
-import { RadioGroup, Radio } from '@nextui-org/radio';
+import { Stack } from '@/components/Layout/Stack';
 
 import { StatDisplay } from './StatDisplay';
-import { Input } from '@nextui-org/input';
-import { Chip } from '@nextui-org/chip';
-import { Stack } from '@/components/layout/Stack';
 
 const characterStats = [12, 16, 14, 8, 15, 11];
 const characterSkills = [
@@ -31,9 +32,9 @@ const savingThrows = ['strength', 'dexterity', 'constitution', 'intelligence', '
 
 const CharacterSheet = () => {
   return (
-    <div className="h-full p-5 bg-zinc-900 m-3 rounded">
-      <div className="grid grid-cols-[3fr_6fr_3fr] gap-3 grid-rows-[1fr_max-content]">
-        <CharacterSheetPod className="grid grid-cols-3 gap-3 col-span-2">
+    <div className="m-3 rounded bg-zinc-900 p-5">
+      <div className="grid grid-cols-[3fr_6fr_3fr] grid-rows-[1fr_max-content] gap-3">
+        <CharacterSheetPod className="col-span-2 grid grid-cols-3 gap-3">
           <Input label="Name" />
           <Input label="Race" />
           <Input label="Experience" />
@@ -42,12 +43,8 @@ const CharacterSheet = () => {
           <Input label="Alignment" />
         </CharacterSheetPod>
         <CharacterSheetPod className="flex flex-col justify-center gap-3">
-          <RadioGroup>
-            <Radio value="inspo">Inspiration</Radio>
-            <Radio value="profs">Proficiency Bonus</Radio>
-          </RadioGroup>
+          Inspiration & Proficiency Bonus
         </CharacterSheetPod>
-
         <div>
           <CharacterSheetPod>
             <div className="flex w-full flex-nowrap gap-3">
@@ -58,11 +55,11 @@ const CharacterSheet = () => {
                   ))}
                 </Stack>
               </div>
-              <div className="flex h-full flex-col gap-3 flex-[4]">
+              <div className="flex h-full flex-[4] flex-col gap-3">
                 <CharacterSheetPod className="flex-[2]" variant="alt">
                   <Stack>
                     {savingThrows.map((save, index) => (
-                      <Chip startContent={<div className="bg-zinc-500 ml-2 mr-1 rounded-full w-2 h-2" />} key={index}>
+                      <Chip key={index} startContent={<Checkbox className="-mr-4" radius="full" size="sm" />}>
                         {save} save
                       </Chip>
                     ))}
@@ -71,7 +68,7 @@ const CharacterSheet = () => {
                 <CharacterSheetPod className="flex-[6]" variant="alt">
                   <Stack>
                     {characterSkills.map((skill, index) => (
-                      <Chip startContent={<div className="bg-zinc-500 ml-2 mr-1 rounded-full w-2 h-2" />} key={index}>
+                      <Chip key={index} startContent={<Checkbox className="-mr-4" radius="full" size="sm" />}>
                         {skill}
                       </Chip>
                     ))}
@@ -84,7 +81,7 @@ const CharacterSheet = () => {
 
         <div>
           <div className="flex h-full flex-col  gap-3">
-            <div className="flex-[1] grid grid-cols-3 gap-3">
+            <div className="grid flex-[1] grid-cols-3 gap-3">
               <CharacterSheetPod>AC</CharacterSheetPod>
               <CharacterSheetPod>Initiative</CharacterSheetPod>
               <CharacterSheetPod>Speed</CharacterSheetPod>

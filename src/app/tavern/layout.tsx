@@ -1,46 +1,33 @@
 'use client';
 
+import { Button, Input } from '@nextui-org/react';
+import { IconPlus } from '@tabler/icons-react';
+
+import { CharacterNavSkeleton } from '@/components/CharacterNavSkeleton';
+import { AppShell } from '@/components/Layout/AppShell';
+import { Navbar } from '@/components/Layout/Navbar';
+import { Sidenav } from '@/components/Layout/Sidenav';
+import { Stack } from '@/components/Layout/Stack';
+
 interface AppLayoutProps {
   children: React.ReactNode;
 }
 
 const AppLayout = ({ children }: AppLayoutProps) => {
   return (
-    // <AppShell
-    //   header={{ height: 60 }}
-    //   layout="alt"
-    //   navbar={{ width: 300, breakpoint: 'sm', collapsed }}
-    //   padding="md"
-    //   withBorder={false}
-    // >
-    //   <NavHeader>
-    //     <Grid w="100%">
-    //       <Grid.Col span={4}>
-    //         <Burger opened={sidenavOpened} size="sm" onClick={toggleSidenav} />
-    //       </Grid.Col>
-    //       <Grid.Col span={4}>
-    //         <Input />
-    //       </Grid.Col>
-    //       <Grid.Col className="flex items-center" span={1}>
-    //         <ColorSchemeToggle />
-    //       </Grid.Col>
-    //     </Grid>
-    //   </NavHeader>
-
-    //   <SideNav>
-    //     <Input />
-    //     <Button onClick={openModal}>
-    //       <IconPlus stroke={3} />
-    //     </Button>
-    //     <CharacterNavSkeleton />
-    //   </SideNav>
-
-    //   <AppShell.Main>
-    children
-    //   </AppShell.Main>
-
-    //   <BasicCreatorModal close={closeModal} opened={modalOpened} />
-    // </AppShell>
+    <AppShell>
+      <Navbar />
+      <Sidenav>
+        <Stack>
+          <Input />
+          <Button color="primary">
+            <IconPlus />
+          </Button>
+          <CharacterNavSkeleton />
+        </Stack>
+      </Sidenav>
+      <main>{children}</main>
+    </AppShell>
   );
 };
 

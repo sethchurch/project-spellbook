@@ -20,8 +20,8 @@ interface RootLayoutProps {
 
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
-    <html lang="en" className="dark">
-      <head></head>
+    <html className="dark" lang="en">
+      <head />
       <body className={inter.className}>
         <ThemeProvider>{children}</ThemeProvider>
       </body>

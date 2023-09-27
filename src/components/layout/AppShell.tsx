@@ -26,7 +26,7 @@ const useAppShell = () => {
 };
 
 const AppShell = ({ children }: AppShellProps) => {
-  const [sideNavOpen, setSideNavOpen] = useState(false);
+  const [sideNavOpen, setSideNavOpen] = useState(true);
   const value = useMemo<NavContextType>(() => ({ sideNavOpen, setSideNavOpen }), [sideNavOpen]);
   NavContext.displayName = 'AppShellContext';
 

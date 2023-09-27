@@ -3,7 +3,6 @@ import { Input } from '@nextui-org/input';
 import { Checkbox } from '@nextui-org/react';
 
 import { CharacterSheetPod } from '@/components/CharacterSheetPod';
-import { Stack } from '@/components/Layout/Stack';
 
 import { StatDisplay } from './StatDisplay';
 
@@ -29,18 +28,16 @@ const characterSkills = [
   'persuasion',
 ];
 const savingThrows = ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'];
+const characterSheetTitleFields = ['Name', 'Race', 'Experience', 'Class', 'Background', 'Alignment'];
 
 const CharacterSheet = () => {
   return (
-    <div className="m-3 rounded bg-zinc-900 p-5">
+    <div className="bg-pod-alt m-6 rounded p-5">
       <div className="grid grid-cols-[3fr_6fr_3fr] grid-rows-[1fr_max-content] gap-3">
         <CharacterSheetPod className="col-span-2 grid grid-cols-3 gap-3">
-          <Input label="Name" />
-          <Input label="Race" />
-          <Input label="Experience" />
-          <Input label="Class" />
-          <Input label="Background" />
-          <Input label="Alignment" />
+          {characterSheetTitleFields.map((field) => (
+            <Input key={field} label={field} />
+          ))}
         </CharacterSheetPod>
         <CharacterSheetPod className="flex flex-col justify-center gap-3">
           Inspiration & Proficiency Bonus
@@ -49,30 +46,30 @@ const CharacterSheet = () => {
           <CharacterSheetPod>
             <div className="flex w-full flex-nowrap gap-3">
               <div className="flex-[2]">
-                <Stack>
+                <div className="flex-stack">
                   {characterStats.map((stat, index) => (
                     <StatDisplay key={index} stat={stat} />
                   ))}
-                </Stack>
+                </div>
               </div>
               <div className="flex h-full flex-[4] flex-col gap-3">
                 <CharacterSheetPod className="flex-[2]" variant="alt">
-                  <Stack>
+                  <div className="flex-stack">
                     {savingThrows.map((save, index) => (
                       <Chip key={index} startContent={<Checkbox className="-mr-4" radius="full" size="sm" />}>
                         {save} save
                       </Chip>
                     ))}
-                  </Stack>
+                  </div>
                 </CharacterSheetPod>
                 <CharacterSheetPod className="flex-[6]" variant="alt">
-                  <Stack>
+                  <div className="flex-stack">
                     {characterSkills.map((skill, index) => (
                       <Chip key={index} startContent={<Checkbox className="-mr-4" radius="full" size="sm" />}>
                         {skill}
                       </Chip>
                     ))}
-                  </Stack>
+                  </div>
                 </CharacterSheetPod>
               </div>
             </div>

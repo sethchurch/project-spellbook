@@ -7,7 +7,6 @@ import { CharacterNavSkeleton } from '@/components/CharacterNavSkeleton';
 import { AppShell } from '@/components/Layout/AppShell';
 import { Navbar } from '@/components/Layout/Navbar';
 import { Sidenav } from '@/components/Layout/Sidenav';
-import { Stack } from '@/components/Layout/Stack';
 
 interface AppLayoutProps {
   children: React.ReactNode;
@@ -18,13 +17,25 @@ const AppLayout = ({ children }: AppLayoutProps) => {
     <AppShell>
       <Navbar />
       <Sidenav>
-        <Stack>
-          <Input />
+        <div className="flex-stack">
+          <Input
+            classNames={{
+              inputWrapper: [
+                'bg-zinc-100',
+                'dark:bg-zinc-700',
+                'hover:bg-default-100/70',
+                'dark:hover:bg-default/70',
+                'group-data-[focus=true]:bg-zinc-100/100',
+                'dark:group-data-[focus=true]:bg-zinc-900/70',
+                '!cursor-text',
+              ],
+            }}
+          />
           <Button color="primary">
             <IconPlus />
           </Button>
           <CharacterNavSkeleton />
-        </Stack>
+        </div>
       </Sidenav>
       <main>{children}</main>
     </AppShell>

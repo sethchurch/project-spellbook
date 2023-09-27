@@ -1,23 +1,23 @@
+import { cn } from '@nextui-org/react';
+
 interface CharacterSheetPodProps {
   children: React.ReactNode;
   variant?: 'alt' | 'default' | 'transparent';
-  square?: boolean;
   className?: string;
 }
 
 const variants = {
   bg: {
-    alt: 'bg-zinc-900',
-    default: 'bg-zinc-950',
+    alt: 'bg-pod-alt',
+    default: 'bg-pod',
     transparent: 'transparent',
   },
 };
 
-const CharacterSheetPod = ({ children, variant, className, square }: CharacterSheetPodProps) => {
-  const classes = `${className || ''} ${variants.bg[variant ?? 'default']} rounded-lg p-3 text-center ${
-    square ? 'aspect-square' : ''
-  }`;
-  return <div className={classes}>{children}</div>;
+const CharacterSheetPod = ({ children, variant, className }: CharacterSheetPodProps) => {
+  return (
+    <div className={cn(`rounded-lg p-3 text-center ${variants.bg[variant ?? 'default']}`, className)}>{children}</div>
+  );
 };
 
 export { CharacterSheetPod };

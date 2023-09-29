@@ -3,33 +3,14 @@ import { Input } from '@nextui-org/input';
 import { Checkbox } from '@nextui-org/react';
 
 import { CharacterSheetPod } from '@/components/CharacterSheetPod';
-
-import { StatDisplay } from './StatDisplay';
-
-const statNames = ['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha'];
-const characterStats = [17, 16, 14, 8, 15, 11];
-const characterSkills = [
-  'athletics',
-  'acrobatics',
-  'sleight of hand',
-  'stealth',
-  'arcana',
-  'history',
-  'investigation',
-  'nature',
-  'religion',
-  'animal handling',
-  'insight',
-  'medicine',
-  'perception',
-  'survival',
-  'deception',
-  'intimidation',
-  'performance',
-  'persuasion',
-];
-const savingThrows = ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'];
-const characterSheetTitleFields = ['Name', 'Race', 'Experience', 'Class', 'Background', 'Alignment'];
+import { StatDisplay } from '@/components/StatDisplay';
+import {
+  characterSheetTitleFields,
+  characterSkills,
+  characterStats,
+  savingThrows,
+  statNames,
+} from '@/config/dummyData';
 
 const CharacterSheet = () => {
   return (
@@ -63,12 +44,12 @@ const CharacterSheet = () => {
                       startContent={<Checkbox className="-ml-1 -mr-3" radius="sm" size="sm" />}
                       variant="faded"
                     >
-                      {save} save
+                      {`${save?.[0]?.toUpperCase()}${save.slice(1)}`} Save
                     </Chip>
                   ))}
                 </div>
               </CharacterSheetPod>
-              <CharacterSheetPod labelTop className="flex-[6]" label="Skills & Proficencies" variant="alt">
+              <CharacterSheetPod labelTop className="flex-[6]" label="Skills" variant="alt">
                 <div className="flex-stack">
                   {characterSkills.map((skill, index) => (
                     <Chip
@@ -78,7 +59,7 @@ const CharacterSheet = () => {
                       startContent={<Checkbox className="-ml-1 -mr-3" radius="sm" size="sm" />}
                       variant="faded"
                     >
-                      {skill}
+                      {`${skill?.[0]?.toUpperCase()}${skill.slice(1)}`}
                     </Chip>
                   ))}
                 </div>

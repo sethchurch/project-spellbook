@@ -21,13 +21,13 @@ const CharacterSheetPod = ({ children, variant, className, label, labelTop }: Ch
   return (
     <div className={cn(`rounded-lg flex flex-col justify-between ${variantClass}`, className)}>
       {label && labelTop && (
-        <div className="w-full rounded-t-lg bg-zinc-600/40 p-1 text-center text-sm text-white dark:bg-zinc-600/50">
+        <div className="w-full text-ellipsis whitespace-nowrap rounded-t-lg bg-zinc-600/40 p-1 text-center text-sm text-white dark:bg-zinc-600/50">
           {label}
         </div>
       )}
       <div className="h-full w-full p-4">{children}</div>
       {label && !labelTop && (
-        <div className="w-full rounded-b-lg bg-zinc-600/40 p-1 text-center text-sm text-white dark:bg-zinc-600/50">
+        <div className="w-full text-ellipsis whitespace-nowrap rounded-b-lg bg-zinc-600/40 p-1 text-center text-sm text-white dark:bg-zinc-600/50">
           {label}
         </div>
       )}

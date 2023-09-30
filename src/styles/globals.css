@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import './extend.css';
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -15,4 +14,16 @@
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
+}
+
+.flex-stack {
+  @apply flex flex-col justify-between gap-3;
+}
+
+.bg-pod {
+  @apply dark:bg-zinc-950 bg-default-300;
+}
+
+.bg-pod-alt {
+  @apply dark:bg-zinc-900 bg-default-100;
 }

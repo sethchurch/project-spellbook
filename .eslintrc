@@ -10,7 +10,8 @@
       "error",
       {
         "singleQuote": true,
-        "endOfLine": "auto"
+        "endOfLine": "auto",
+        "trailingComma": "all"
       }
     ]
   },
@@ -67,7 +68,8 @@
         "@typescript-eslint/no-unused-vars": "off",
         "unused-imports/no-unused-imports": "error",
         "unused-imports/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
-        "import/no-extraneous-dependencies": "off" // Conflicts with pnpm links
+        "import/no-extraneous-dependencies": "off",
+        "comma-dangle": 0
       }
     },
     // Configuration for testing

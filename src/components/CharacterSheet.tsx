@@ -1,5 +1,5 @@
 import { Chip } from '@nextui-org/chip';
-import { Input } from '@nextui-org/input';
+import { Input, Textarea } from '@nextui-org/input';
 import { Checkbox } from '@nextui-org/react';
 
 import { CharacterSheetPod } from '@/components/CharacterSheetPod';
@@ -8,6 +8,7 @@ import {
   characterSheetTitleFields,
   characterSkills,
   characterStats,
+  loremIpsum,
   savingThrows,
   statNames,
 } from '@/config/dummyData';
@@ -81,20 +82,32 @@ const CharacterSheet = () => {
 
         <div className="flex h-full flex-col gap-3">
           <CharacterSheetPod label="Traits">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum orci quis tincidunt fermentum.
-            Nullam at quam in dolor vestibulum porttitor at in sem. Etiam lectus quam, placerat ut neque.
+            <Textarea
+              classNames={{ label: 'h-0 p-0', input: 'm-0 p-0', inputWrapper: 'border-none after:h-0 p-0' }}
+              placeholder={loremIpsum.repeat(3)}
+              variant="underlined"
+            />
           </CharacterSheetPod>
           <CharacterSheetPod label="Ideals">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum orci quis tincidunt fermentum.
-            Nullam at quam in dolor vestibulum porttitor at in sem. Etiam lectus quam, placerat ut neque.
+            <Textarea
+              classNames={{ label: 'h-0 p-0', input: 'm-0 p-0', inputWrapper: 'border-none after:h-0 p-0' }}
+              placeholder={loremIpsum.repeat(3)}
+              variant="underlined"
+            />
           </CharacterSheetPod>
           <CharacterSheetPod label="Bonds">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum orci quis tincidunt fermentum.
-            Nullam at quam in dolor vestibulum porttitor at in sem. Etiam lectus quam, placerat ut neque.
+            <Textarea
+              classNames={{ label: 'h-0 p-0', input: 'm-0 p-0', inputWrapper: 'border-none after:h-0 p-0' }}
+              placeholder={loremIpsum.repeat(3)}
+              variant="underlined"
+            />
           </CharacterSheetPod>
           <CharacterSheetPod label="Flaws">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum orci quis tincidunt fermentum.
-            Nullam at quam in dolor vestibulum porttitor at in sem. Etiam lectus quam, placerat ut neque.
+            <Textarea
+              classNames={{ label: 'h-0 p-0', input: 'm-0 p-0', inputWrapper: 'border-none after:h-0 p-0' }}
+              placeholder={loremIpsum.repeat(3)}
+              variant="underlined"
+            />
           </CharacterSheetPod>
           <CharacterSheetPod className="flex-[2]" label="Senses" />
           <CharacterSheetPod className="flex-[2]" label="Proficencies & Languages" />

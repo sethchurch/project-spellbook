@@ -22,4 +22,10 @@ describe('StatDisplay (component)', () => {
     render(<StatDisplay stat={10} />);
     expect(screen.getByText('+0')).toBeInTheDocument();
   });
+
+  it('Renders both stat and bonus', async () => {
+    render(<StatDisplay stat={7} />);
+    expect(screen.getByText('7')).toBeInTheDocument();
+    expect(screen.getByText('-2')).toBeInTheDocument();
+  });
 });

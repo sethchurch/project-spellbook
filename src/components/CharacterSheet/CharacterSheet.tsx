@@ -1,12 +1,11 @@
 import { Checkbox, Chip } from '@nextui-org/react';
 
-import { characterSheetTitleFields, loremIpsum, savingThrows, statNames } from '@/config/dummyData';
-import { capitalize } from '@/utils/capitalize';
+import { characterSheetTitleFields, characterSkills, loremIpsum, savingThrows, statNames } from '@/config/dummyData';
 
 import { CheckArrayProvider } from '../Form/CheckArrayProvider';
 import { CharacterSheetProvider } from './CharacterSheetProvider';
 import { Pod } from './Pod/Pod';
-import { SkillList } from './SkillList';
+import { ProficencyList } from './ProficencyList';
 import { StatDisplay } from './StatDisplay';
 
 const CharacterSheet = () => {
@@ -15,16 +14,20 @@ const CharacterSheet = () => {
       <div className="bg-pod-alt m-6 rounded-lg">
         <div className="h-64 w-full rounded-t-lg bg-gradient-to-r from-violet-700 to-violet-950" />
         <div className="p-5">
-          <div className="grid grid-cols-[3fr_6fr_3fr] grid-rows-[1fr_max-content] gap-3">
-            <Pod labelTop className="col-span-2" label="Character Details">
-              <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-rows-[1fr_max-content] gap-3 md:grid-cols-[6fr_3fr] lg:grid-cols-[3fr_6fr_3fr]">
+            <Pod labelTop className="lg:col-span-2" label="Character Details">
+              <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
                 {characterSheetTitleFields.map((field) => (
                   <Pod.Input key={field} inputVariant="unstyled" label={field} name={field.toLowerCase()} />
                 ))}
               </div>
             </Pod>
-            <Pod className="flex flex-col justify-center gap-3" label="Inspiration & Proficiency Bonus">
-              <div className="flex h-full flex-col justify-around">
+            <Pod
+              labelTop
+              className="row-start-1 flex shrink-0 flex-col justify-center gap-3 md:row-start-auto"
+              label="Inspiration & Proficiency Bonus"
+            >
+              <div className="flex h-full flex-col justify-around gap-3 pb-3">
                 <Pod.Chip
                   startContent={
                     <Chip className="-ml-1 mr-1 min-w-unit-12 text-center" radius="md">
@@ -37,7 +40,7 @@ const CharacterSheet = () => {
                 <Pod.Chip startContent={<Checkbox className="-ml-1 -mr-2" size="md" />}>Inspiration</Pod.Chip>
               </div>
             </Pod>
-            <Pod>
+            <Pod labelTop label="Skills & Saves">
               <div className="flex w-full flex-nowrap gap-3">
                 <div className="flex-stack flex-[2] justify-start">
                   {Array.from(new Array(6)).map((_, index) => (
@@ -46,27 +49,13 @@ const CharacterSheet = () => {
                 </div>
                 <div className="flex h-full flex-[4] flex-col gap-3">
                   <Pod labelTop className="flex-[2]" label="Saving Throws" variant="alt">
-                    <div className="flex-stack">
-                      {savingThrows.map((save, index) => (
-                        <Pod.Chip
-                          key={index}
-                          startContent={
-                            <>
-                              <Chip className="-ml-1 mr-1 min-w-unit-12 text-center" radius="md">
-                                {`+${index}`}
-                              </Chip>
-                              <Checkbox className="-ml-1 -mr-2" size="md" />
-                            </>
-                          }
-                        >
-                          {capitalize(save)} Save
-                        </Pod.Chip>
-                      ))}
-                    </div>
+                    <CheckArrayProvider name="savingThrows">
+                      <ProficencyList proficencyNames={savingThrows.map((x) => `${x} Save`)} />
+                    </CheckArrayProvider>
                   </Pod>
                   <Pod labelTop className="flex-[6]" label="Skills" variant="alt">
                     <CheckArrayProvider name="skills.proficent">
-                      <SkillList />
+                      <ProficencyList proficencyNames={characterSkills} />
                     </CheckArrayProvider>
                   </Pod>
                 </div>

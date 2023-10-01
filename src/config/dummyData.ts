@@ -24,7 +24,7 @@ const character = {
   background: 'Acolyte',
   alignment: 'Chaotic Good',
   stats: [17, 12, 16, 8, 13, 18],
-  savingThrows: ['strength', 'charisma'],
+  savingThrows: ['strength save', 'charisma save'],
   skills: {
     proficent: ['athletics', 'religion', 'insight', 'performance', 'persuasion'],
     expert: ['athletics', 'intimidation'],

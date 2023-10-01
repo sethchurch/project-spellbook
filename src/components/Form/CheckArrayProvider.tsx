@@ -1,4 +1,4 @@
-import type { Dispatch, Reducer } from 'react';
+import type { ChangeEvent, Dispatch, Reducer } from 'react';
 import { Children, createContext, useContext, useMemo, useReducer } from 'react';
 import { useFormContext } from 'react-hook-form';
 
@@ -14,7 +14,18 @@ const useCheckArray = () => {
   if (context === undefined) {
     throw new Error('useCheckArray must be used within a CheckArrayProvider');
   }
-  return context;
+
+  const [value, dispatch] = context;
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = e.target;
+    if (checked) {
+      dispatch({ type: 'checked', payload: name });
+    } else {
+      dispatch({ type: 'unchecked', payload: name });
+    }
+  };
+
+  return { value, onChange };
 };
 
 interface CheckArrayAction {

@@ -1,5 +1,6 @@
 import type { Dispatch } from 'react';
 import { createContext, useMemo, useReducer } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
 
 import type { character } from '@/config/dummyData';
 import { character as defaultCharacter } from '@/config/dummyData';
@@ -44,9 +45,12 @@ const characterReducer = (state: typeof defaultCharacter, action: CharacterSheet
 const CharacterSheetProvider = ({ children, character, onSubmit }: CharacterSheetProviderProps) => {
   const [characterValue, dispatch] = useReducer(characterReducer, character || defaultCharacter);
   const value = useMemo(() => ({ character: characterValue, dispatch }), [characterValue]);
+  const methods = useForm({ defaultValues: characterValue });
   return (
     <CharacterSheetContext.Provider value={value}>
-      <form onSubmit={onSubmit}>{children}</form>
+      <FormProvider {...methods}>
+        <form onSubmit={onSubmit}>{children}</form>
+      </FormProvider>
     </CharacterSheetContext.Provider>
   );
 };

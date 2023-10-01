@@ -1,5 +1,8 @@
 import { cn } from '@/utils/cn';
 
+import { PodInput } from './PodInput';
+import { PodTextarea } from './PodTextarea';
+
 interface PodProps {
   children?: React.ReactNode;
   variant?: 'alt' | 'default' | 'transparent';
@@ -37,6 +40,9 @@ const Pod = ({ children, variant, className, label, labelTop }: PodProps) => {
     </div>
   );
 };
+
+Pod.Textarea = PodTextarea;
+Pod.Input = PodInput;
 
 export { Pod };
 export type { PodProps };

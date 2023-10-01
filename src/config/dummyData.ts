@@ -16,10 +16,11 @@ const character = {
   name: 'Tyren',
   race: 'Half-Elf',
   experience: 1000,
-  class: [
-    { name: 'Paladin', level: 2 },
-    { name: 'Bard', level: 3 },
-  ],
+  class: 'Paladin 2 / Bard 3 (College of Swords)',
+  // class: [
+  //   { name: 'Paladin', level: 2 },
+  //   { name: 'Bard', level: 3 },
+  // ],
   background: 'Acolyte',
   alignment: 'Chaotic Good',
   stats: [16, 12, 16, 8, 13, 18],
@@ -32,47 +33,32 @@ const character = {
   speed: 30,
   initiative: 1,
   inspired: true,
-  conditions: [
-    {
-      name: 'Blessed',
-      description: 'You have been blessed by a god',
-      duration: '1 hour',
-    },
-  ],
+  conditions: [{ name: 'Blessed', description: 'You have been blessed by a god', duration: '1 hour' }],
   hitPoints: { current: 28, max: 28, temporary: 0 },
   hitDice: { current: 5, max: 5 },
   deathSaves: { successes: 2, failures: 1 },
   attacks: [
-    {
-      name: 'Longsword',
-      bonus: 5,
-      damage: '1d8+3',
-      type: 'slashing',
-      description: 'A longsword',
-    },
-    {
-      name: 'Dagger',
-      bonus: 5,
-      damage: '1d4+3',
-      type: 'piercing',
-      description: 'A dagger',
-    },
+    { name: 'Longsword', bonus: 5, damage: '1d8+3', type: 'slashing', description: 'long sword' },
+    { name: 'Dagger', bonus: 5, damage: '1d4+3', type: 'piercing', description: 'small sword' },
+    { name: 'Shortbow', bonus: 5, damage: '1d6+3', type: 'piercing', description: 'shoots sword' },
   ],
   senses: [
     { name: 'Passive Perception - 13', description: '13', source: 'wisdom' },
     { name: 'Darkvision - 60ft', description: '60ft', source: 'Half-elf' },
     { name: 'Truesight - 60ft', description: '60ft', source: 'Blessed' },
   ],
-  languages: ['Common', 'Dwarvish', 'Elvish'],
-  proficiencies: [
-    'Light Armor',
-    'Medium Armor',
-    'Heavy Armor',
-    'Shields',
-    'Simple Weapons',
-    'Martial Weapons',
-    'Herbalism Kit',
-  ],
+  proficiencies: {
+    languages: ['Common', 'Dwarvish', 'Elvish'],
+    weapons: ['simple weapons', 'martial weapons'],
+    armor: ['light armor', 'medium armor', 'heavy armor', 'shields'],
+    others: ["brewer's supplies", 'vehicles (land)'],
+  },
+  bio: {
+    traits: "I will always listen to the opinions of my friends, even if I don't agree with them.",
+    ideals: 'I will do anything to protect my friends.',
+    bonds: "I'm loyal to my friends and will do anything in my power to help them.",
+    flaws: 'I have a weakness for the vices of the city, especially hard drink.',
+  },
 };
 
 export { character, characterSheetTitleFields, characterSkills, characterStats, loremIpsum, savingThrows, statNames };

@@ -26,7 +26,7 @@ const character = {
   stats: [17, 12, 16, 8, 13, 18],
   savingThrows: ['strength', 'charisma'],
   skills: {
-    proficent: ['athletics', 'acrobatics', 'insight', 'intimidation', 'performance', 'persuasion'],
+    proficent: ['athletics', 'religion', 'insight', 'performance', 'persuasion'],
     expert: ['athletics', 'intimidation'],
   },
   armorClass: 16,

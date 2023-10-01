@@ -27,7 +27,7 @@ const PodInput = ({ name, inputVariant, ...props }: PodInputProps) => {
       name={name || 'name'}
       render={({ field }) => (
         <Input
-          classNames={classNameInputVariants[inputVariant ?? 'default'] || {}}
+          classNames={classNameInputVariants[inputVariant ?? 'default']}
           {...props}
           {...field}
           value={watch(name || 'name')}

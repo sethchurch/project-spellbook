@@ -1,10 +1,12 @@
 import { Checkbox, Chip } from '@nextui-org/react';
 
-import { characterSheetTitleFields, characterSkills, loremIpsum, savingThrows, statNames } from '@/config/dummyData';
+import { characterSheetTitleFields, loremIpsum, savingThrows, statNames } from '@/config/dummyData';
 import { capitalize } from '@/utils/capitalize';
 
+import { CheckArrayProvider } from '../Form/CheckArrayProvider';
 import { CharacterSheetProvider } from './CharacterSheetProvider';
 import { Pod } from './Pod/Pod';
+import { SkillList } from './SkillList';
 import { StatDisplay } from './StatDisplay';
 
 const CharacterSheet = () => {
@@ -32,7 +34,7 @@ const CharacterSheet = () => {
                 >
                   Proficiency Bonus
                 </Pod.Chip>
-                <Pod.Chip startContent={<Checkbox className="-ml-1 -mr-2" size="sm" />}>Inspiration</Pod.Chip>
+                <Pod.Chip startContent={<Checkbox className="-ml-1 -mr-2" size="md" />}>Inspiration</Pod.Chip>
               </div>
             </Pod>
             <Pod>
@@ -53,7 +55,7 @@ const CharacterSheet = () => {
                               <Chip className="-ml-1 mr-1 min-w-unit-12 text-center" radius="md">
                                 {`+${index}`}
                               </Chip>
-                              <Checkbox className="-ml-1 -mr-2" size="sm" />
+                              <Checkbox className="-ml-1 -mr-2" size="md" />
                             </>
                           }
                         >
@@ -63,23 +65,9 @@ const CharacterSheet = () => {
                     </div>
                   </Pod>
                   <Pod labelTop className="flex-[6]" label="Skills" variant="alt">
-                    <div className="flex-stack">
-                      {characterSkills.map((skill, index) => (
-                        <Pod.Chip
-                          key={index}
-                          startContent={
-                            <>
-                              <Chip className="-ml-1 mr-1 min-w-unit-12 text-center" radius="md">
-                                {`+${index}`}
-                              </Chip>
-                              <Checkbox className="-ml-1 -mr-2" size="sm" />
-                            </>
-                          }
-                        >
-                          {capitalize(skill)}
-                        </Pod.Chip>
-                      ))}
-                    </div>
+                    <CheckArrayProvider name="skills.proficent">
+                      <SkillList />
+                    </CheckArrayProvider>
                   </Pod>
                 </div>
               </div>

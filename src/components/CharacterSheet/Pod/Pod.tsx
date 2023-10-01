@@ -1,6 +1,6 @@
 import { cn } from '@/utils/cn';
 
-interface CharacterSheetPodProps {
+interface PodProps {
   children?: React.ReactNode;
   variant?: 'alt' | 'default' | 'transparent';
   className?: string;
@@ -16,15 +16,10 @@ const variants = {
   },
 };
 
-const CharacterSheetPod = ({ children, variant, className, label, labelTop }: CharacterSheetPodProps) => {
+const Pod = ({ children, variant, className, label, labelTop }: PodProps) => {
   const variantClass = variants.bg[variant ?? 'default'];
   return (
-    <div
-      className={cn(
-        `rounded-lg flex flex-col justify-between shadow-sm hover:shadow-2xl transition-all ${variantClass}`,
-        className,
-      )}
-    >
+    <div className={cn(`rounded-lg flex flex-col justify-between  transition-all ${variantClass}`, className)}>
       {label && labelTop && (
         <div className="w-full text-ellipsis whitespace-nowrap rounded-t-lg bg-zinc-600/40 p-1 text-center text-sm text-white dark:bg-zinc-600/50">
           {label}
@@ -40,5 +35,5 @@ const CharacterSheetPod = ({ children, variant, className, label, labelTop }: Ch
   );
 };
 
-export { CharacterSheetPod };
-export type { CharacterSheetPodProps };
+export { Pod };
+export type { PodProps };

@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import { StatDisplay } from '@/components/StatDisplay';
+import { StatDisplay } from './StatDisplay';
 
 describe('StatDisplay (component)', () => {
   it('Displays a given stat', async () => {

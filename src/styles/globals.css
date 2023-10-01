@@ -16,6 +16,16 @@
   }
 }
 
+body {
+  position: absolute;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .flex-stack {
   @apply flex flex-col justify-between gap-3;
 }

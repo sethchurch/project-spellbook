@@ -21,7 +21,9 @@ interface RootLayoutProps {
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html suppressHydrationWarning lang="en">
-      <head />
+      <head>
+        <meta content="initial-scale=1.0, width=device-width" name="viewport" />
+      </head>
       <body className={`${inter.className} min-h-screen bg-neutral-400 dark:bg-neutral-950`}>
         <Providers>{children}</Providers>
       </body>

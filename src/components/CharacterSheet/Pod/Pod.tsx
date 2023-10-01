@@ -41,7 +41,7 @@ const Pod = ({ children, variant, className, label, labelTop }: PodProps) => {
   return (
     <div className={cn(`rounded-lg flex flex-col justify-between ${variantClass}`, className)}>
       {label && labelTop && <PodLabel className="rounded-t-lg" label={label} />}
-      <div className="h-full w-full p-4">{children}</div>
+      <div className="h-full w-full p-3 md:p-4">{children}</div>
       {label && !labelTop && <PodLabel className="rounded-b-lg" label={label} />}
     </div>
   );

@@ -1,5 +1,11 @@
+import type { TextAreaProps } from '@nextui-org/input';
+import React from 'react';
+
 import { cn } from '@/utils/cn';
 
+import type { PodChipProps } from './PodChip';
+import { PodChip } from './PodChip';
+import type { PodInputProps } from './PodInput';
 import { PodInput } from './PodInput';
 import { PodTextarea } from './PodTextarea';
 
@@ -41,8 +47,9 @@ const Pod = ({ children, variant, className, label, labelTop }: PodProps) => {
   );
 };
 
-Pod.Textarea = PodTextarea;
-Pod.Input = PodInput;
+Pod.Textarea = PodTextarea as React.FC<TextAreaProps>;
+Pod.Input = PodInput as React.FC<PodInputProps>;
+Pod.Chip = PodChip as React.FC<PodChipProps>;
 
 export { Pod };
 export type { PodProps };

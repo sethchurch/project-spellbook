@@ -13,7 +13,7 @@ const Navbar = () => {
           <Icon icon="menu" />
         </Button>
       </SideNavTrigger>
-      <Input />
+      <Input isClearable />
       <ToggleThemeButton />
     </nav>
   );

@@ -19,6 +19,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
       <Sidenav>
         <div className="flex-stack">
           <Input
+            isClearable
             classNames={{
               inputWrapper: [
                 'bg-zinc-100',

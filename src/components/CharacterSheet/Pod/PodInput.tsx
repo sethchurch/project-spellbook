@@ -10,7 +10,7 @@ const classNameInputVariants = {
   default: {
     base: 'h-full',
     label: 'h-0 p-0',
-    inputWrapper: 'border-none after:h-0 p-0 shadow-none h-full',
+    inputWrapper: 'border-none after:h-0 p-0 shadow-none h-full bg-transparent gap-0',
     input: `m-0 p-0 text-center h-full text-[2.5rem]`,
   },
   unstyled: {
@@ -28,7 +28,6 @@ const PodInput = ({ name, inputVariant, ...props }: PodInputProps) => {
       render={({ field }) => (
         <Input
           classNames={classNameInputVariants[inputVariant ?? 'default'] || {}}
-          variant={inputVariant === 'unstyled' ? undefined : 'underlined'}
           {...props}
           {...field}
           value={watch(name || 'name')}
@@ -39,3 +38,4 @@ const PodInput = ({ name, inputVariant, ...props }: PodInputProps) => {
 };
 
 export { PodInput };
+export type { PodInputProps };

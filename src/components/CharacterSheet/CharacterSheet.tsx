@@ -1,8 +1,9 @@
+import { Checkbox, Chip } from '@nextui-org/react';
+
 import { characterSheetTitleFields, characterSkills, loremIpsum, savingThrows, statNames } from '@/config/dummyData';
 import { capitalize } from '@/utils/capitalize';
 
 import { CharacterSheetProvider } from './CharacterSheetProvider';
-import { CheckboxChip } from './Pod/CheckboxChip';
 import { Pod } from './Pod/Pod';
 import { StatDisplay } from './StatDisplay';
 
@@ -10,7 +11,7 @@ const CharacterSheet = () => {
   return (
     <CharacterSheetProvider>
       <div className="bg-pod-alt m-6 rounded-lg">
-        <div className="h-64 w-full rounded-t-lg bg-gradient-to-r from-purple-700 to-purple-950" />
+        <div className="h-64 w-full rounded-t-lg bg-gradient-to-r from-violet-700 to-violet-950" />
         <div className="p-5">
           <div className="grid grid-cols-[3fr_6fr_3fr] grid-rows-[1fr_max-content] gap-3">
             <Pod labelTop className="col-span-2" label="Character Details">
@@ -22,8 +23,16 @@ const CharacterSheet = () => {
             </Pod>
             <Pod className="flex flex-col justify-center gap-3" label="Inspiration & Proficiency Bonus">
               <div className="flex h-full flex-col justify-around">
-                <CheckboxChip>Inspiration</CheckboxChip>
-                <CheckboxChip>Proficiency Bonus</CheckboxChip>
+                <Pod.Chip
+                  startContent={
+                    <Chip className="-ml-1 mr-1 min-w-unit-12 text-center" radius="md">
+                      +2
+                    </Chip>
+                  }
+                >
+                  Proficiency Bonus
+                </Pod.Chip>
+                <Pod.Chip startContent={<Checkbox className="-ml-1 -mr-2" size="sm" />}>Inspiration</Pod.Chip>
               </div>
             </Pod>
             <Pod>
@@ -37,14 +46,38 @@ const CharacterSheet = () => {
                   <Pod labelTop className="flex-[2]" label="Saving Throws" variant="alt">
                     <div className="flex-stack">
                       {savingThrows.map((save, index) => (
-                        <CheckboxChip key={index}>{capitalize(save)} Save</CheckboxChip>
+                        <Pod.Chip
+                          key={index}
+                          startContent={
+                            <>
+                              <Chip className="-ml-1 mr-1 min-w-unit-12 text-center" radius="md">
+                                {`+${index}`}
+                              </Chip>
+                              <Checkbox className="-ml-1 -mr-2" size="sm" />
+                            </>
+                          }
+                        >
+                          {capitalize(save)} Save
+                        </Pod.Chip>
                       ))}
                     </div>
                   </Pod>
                   <Pod labelTop className="flex-[6]" label="Skills" variant="alt">
                     <div className="flex-stack">
                       {characterSkills.map((skill, index) => (
-                        <CheckboxChip key={index}>{capitalize(skill)}</CheckboxChip>
+                        <Pod.Chip
+                          key={index}
+                          startContent={
+                            <>
+                              <Chip className="-ml-1 mr-1 min-w-unit-12 text-center" radius="md">
+                                {`+${index}`}
+                              </Chip>
+                              <Checkbox className="-ml-1 -mr-2" size="sm" />
+                            </>
+                          }
+                        >
+                          {capitalize(skill)}
+                        </Pod.Chip>
                       ))}
                     </div>
                   </Pod>

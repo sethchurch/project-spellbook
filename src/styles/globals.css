@@ -21,9 +21,9 @@
 }
 
 .bg-pod {
-  @apply dark:bg-zinc-950 bg-default-300;
+  @apply dark:bg-zinc-950 bg-default-200 shadow-sm;
 }
 
 .bg-pod-alt {
-  @apply dark:bg-zinc-900 bg-default-100;
+  @apply dark:bg-zinc-900 bg-default-100 shadow-sm;
 }

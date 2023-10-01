@@ -7,7 +7,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "init-db": "supabase init",
+    "start-db": "supabase start"
   },
   "dependencies": {
     "@libsql/client": "^0.3.4",
@@ -16,7 +18,8 @@
     "@nextui-org/input": "^2.1.9",
     "@nextui-org/radio": "^2.0.22",
     "@nextui-org/react": "^2.1.13",
-    "@t3-oss/env-nextjs": "^0.6.1",
+    "@supabase/auth-helpers-nextjs": "latest",
+    "@supabase/supabase-js": "latest",
     "@tabler/icons-react": "^2.35.0",
     "@tanstack/react-query": "^4.35.3",
     "@trpc/client": "^10.38.5",
@@ -73,6 +76,7 @@
     "postcss": "8.4.30",
     "postcss-preset-mantine": "^1.7.0",
     "postcss-simple-vars": "^7.0.1",
+    "supabase": "^1.99.5",
     "typescript": "5.2.2"
   }
 }

@@ -1,4 +1,4 @@
-import { cn } from '@nextui-org/react';
+import { cn } from '@/utils/cn';
 
 interface CharacterSheetPodProps {
   children?: React.ReactNode;
@@ -22,7 +22,7 @@ const CharacterSheetPod = ({ children, variant, className, label, labelTop }: Ch
     <div
       className={cn(
         `rounded-lg flex flex-col justify-between shadow-sm hover:shadow-2xl transition-all ${variantClass}`,
-        className
+        className,
       )}
     >
       {label && labelTop && (

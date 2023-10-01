@@ -1,9 +1,9 @@
 'use client';
 
 import { Button, Input } from '@nextui-org/react';
-import { IconPlus } from '@tabler/icons-react';
 
 import { CharacterNavSkeleton } from '@/components/CharacterNavSkeleton';
+import { Icon } from '@/components/Elements/Icon';
 import { AppShell } from '@/components/Layout/AppShell';
 import { Navbar } from '@/components/Layout/Navbar';
 import { Sidenav } from '@/components/Layout/Sidenav';
@@ -32,7 +32,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
             }}
           />
           <Button color="primary">
-            <IconPlus />
+            <Icon icon="plus" />
           </Button>
           <CharacterNavSkeleton />
         </div>

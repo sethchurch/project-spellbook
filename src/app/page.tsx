@@ -1,9 +1,9 @@
 'use client';
 
 import { Button } from '@nextui-org/react';
-import { IconWand } from '@tabler/icons-react';
 import Link from 'next/link';
 
+import { Icon } from '@/components/Elements/Icon';
 import { ToggleThemeButton } from '@/components/Elements/ToggleThemeButton';
 import { MaxWidthWrapper } from '@/components/Layout/MaxWidthWrapper';
 import { AppConfig } from '@/config/AppConfig';
@@ -14,7 +14,7 @@ const LandingPage = () => {
       <div className=" w-full bg-zinc-300 p-3 shadow-sm dark:bg-zinc-800 ">
         <MaxWidthWrapper className="flex items-center justify-between">
           <div className="flex gap-4 align-middle">
-            <IconWand />
+            <Icon icon="wand" />
             <p>{AppConfig.site_name}</p>
           </div>
           <div className="flex items-center gap-4">

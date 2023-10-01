@@ -20,7 +20,7 @@ interface RootLayoutProps {
 
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
-    <html lang="en">
+    <html suppressHydrationWarning lang="en">
       <head />
       <body className={`${inter.className} min-h-screen bg-neutral-400 dark:bg-neutral-950`}>
         <Providers>{children}</Providers>

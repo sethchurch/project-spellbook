@@ -10,7 +10,7 @@ import { AppConfig } from '@/config/AppConfig';
 
 const LandingPage = () => {
   return (
-    <div className="flex h-screen flex-col items-center whitespace-nowrap bg-zinc-100/80 dark:bg-transparent">
+    <div className="flex h-screen w-full flex-col items-center whitespace-nowrap bg-zinc-100/80 dark:bg-transparent">
       <div className=" w-full bg-zinc-300 p-3 shadow-sm dark:bg-zinc-800 ">
         <MaxWidthWrapper className="flex items-center justify-between">
           <div className="flex gap-4 align-middle">

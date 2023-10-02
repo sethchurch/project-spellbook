@@ -34,8 +34,8 @@ const character = {
   initiative: 1,
   inspired: true,
   conditions: [{ name: 'Blessed', description: 'You have been blessed by a god', duration: '1 hour' }],
-  hitPoints: { current: 28, max: 28, temporary: 0 },
-  hitDice: { current: 5, max: 5 },
+  hitPoints: { current: 15, max: 28, temporary: 3 },
+  hitDice: { current: '3d8', max: '5d8' },
   deathSaves: { successes: 2, failures: 1 },
   attacks: [
     { name: 'Longsword', bonus: 5, damage: '1d8+3', type: 'slashing', description: 'long sword' },

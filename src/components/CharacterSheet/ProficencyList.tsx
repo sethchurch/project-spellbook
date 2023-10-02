@@ -4,7 +4,7 @@ import { Checkbox } from '@nextui-org/react';
 import { capitalize } from '@/utils/capitalize';
 
 import { useCheckArray } from '../Form/CheckArrayProvider';
-import { Pod } from './Pod/Pod';
+import { PodChip } from './Pod/PodChip';
 
 interface ProficencyListProps {
   proficencyNames: string[];
@@ -20,7 +20,7 @@ const ProficencyList = ({ proficencyNames }: ProficencyListProps) => {
       {proficencyNames.map((skill, index) => {
         const skillName = skill.toLowerCase();
         return (
-          <Pod.Chip
+          <PodChip
             key={index}
             startContent={
               <>
@@ -38,7 +38,7 @@ const ProficencyList = ({ proficencyNames }: ProficencyListProps) => {
             }
           >
             {capitalize(skill)}
-          </Pod.Chip>
+          </PodChip>
         );
       })}
     </div>

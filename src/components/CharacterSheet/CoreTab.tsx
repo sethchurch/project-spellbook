@@ -1,7 +1,8 @@
 import { CheckArrayProvider } from '@/components/Form/CheckArrayProvider';
+import { ControlledCheck } from '@/components/Form/ControlledCheck';
+import { Input } from '@/components/Form/Input';
 import { characterSheetTitleFields, characterSkills, loremIpsum, savingThrows, statNames } from '@/config/dummyData';
 
-import { ControlledCheck } from '../Form/ControlledCheck';
 import { Pod } from './Pod/Pod';
 import { PodChip } from './Pod/PodChip';
 import { PodInput } from './Pod/PodInput';
@@ -133,7 +134,14 @@ const CoreTab = () => {
             <Pod label="Flaws">
               <PodTextarea name="bio.flaws" placeholder={loremIpsum.repeat(2)} />
             </Pod>
-            <Pod className="flex-[2]" label="Proficencies & Languages" />
+            <Pod className="flex-[2]" label="Proficiencies & Languages">
+              <div className="flex-stack">
+                <Input label="Languages" name="proficiencies.languages" />
+                <Input label="Weapons" name="proficiencies.weapons" />
+                <Input label="Armor" name="proficiencies.armor" />
+                <Input label="Other" name="proficiencies.other" />
+              </div>
+            </Pod>
           </div>
         </div>
       </div>

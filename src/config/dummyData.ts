@@ -48,10 +48,10 @@ const character = {
     { name: 'Truesight - 60ft', description: '60ft', source: 'Blessed' },
   ],
   proficiencies: {
-    languages: ['Common', 'Dwarvish', 'Elvish'],
-    weapons: ['simple weapons', 'martial weapons'],
-    armor: ['light armor', 'medium armor', 'heavy armor', 'shields'],
-    others: ["brewer's supplies", 'vehicles (land)'],
+    languages: 'Common, Elvish, Dwarvish',
+    weapons: 'Simple Weapons, Martial Weapons, Longswords, Rapiers, Shortswords, Shortbows, Longbows',
+    armor: 'Light Armor, Medium Armor, Shields',
+    other: 'Lute, Vechicles (Land), Disguise Kit, Forgery Kit, Thieves Tools',
   },
   bio: {
     traits: "I will always listen to the opinions of my friends, even if I don't agree with them.",

@@ -1,8 +1,11 @@
+import { Checkbox } from '@nextui-org/react';
+
 import { CheckArrayProvider } from '@/components/Form/CheckArrayProvider';
 import { ControlledCheck } from '@/components/Form/ControlledCheck';
 import { Input } from '@/components/Form/Input';
 import { characterSheetTitleFields, characterSkills, loremIpsum, savingThrows, statNames } from '@/config/dummyData';
 
+import { CheckCounter } from '../Form/CheckCounter';
 import { Pod } from './Pod/Pod';
 import { PodChip } from './Pod/PodChip';
 import { PodInput } from './Pod/PodInput';
@@ -88,34 +91,22 @@ const CoreTab = () => {
               <div className="flex h-full flex-col justify-around gap-x-2 gap-y-3 pb-3 md:gap-3">
                 <PodChip
                   startContent={
-                    <>
-                      {Array.from(new Array(3)).map((_, index) => (
-                        <ControlledCheck
-                          key={index}
-                          className="-ml-1 -mr-2"
-                          color="success"
-                          name="deathSaves"
-                          size="md"
-                        />
-                      ))}
-                    </>
+                    <CheckCounter
+                      CheckComponent={<Checkbox className="-ml-1 -mr-2" color="success" size="md" />}
+                      max={3}
+                      name="deathSaves.successes"
+                    />
                   }
                 >
                   Successes
                 </PodChip>
                 <PodChip
                   startContent={
-                    <>
-                      {Array.from(new Array(3)).map((_, index) => (
-                        <ControlledCheck
-                          key={index}
-                          className="-ml-1 -mr-2"
-                          color="danger"
-                          name="deathSaves"
-                          size="md"
-                        />
-                      ))}
-                    </>
+                    <CheckCounter
+                      CheckComponent={<Checkbox className="-ml-1 -mr-2" color="danger" size="md" />}
+                      max={3}
+                      name="deathSaves.failures"
+                    />
                   }
                 >
                   Failures

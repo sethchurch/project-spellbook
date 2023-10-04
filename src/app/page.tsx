@@ -1,6 +1,7 @@
 'use client';
 
 import { Button } from '@nextui-org/react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { Icon } from '@/components/Elements/Icon';
@@ -10,7 +11,7 @@ import { AppConfig } from '@/config/AppConfig';
 
 const LandingPage = () => {
   return (
-    <div className="flex h-screen w-full flex-col items-center whitespace-nowrap bg-zinc-100/80 dark:bg-transparent">
+    <div className="flex min-h-screen w-full flex-col items-center whitespace-nowrap bg-zinc-100/80 dark:bg-transparent">
       <div className=" w-full bg-zinc-300 p-3 shadow-sm dark:bg-zinc-800 ">
         <MaxWidthWrapper className="flex items-center justify-between">
           <div className="flex gap-4 align-middle">
@@ -39,6 +40,25 @@ const LandingPage = () => {
             </Link>
           </div>
         </div>
+
+        <div className="flex w-full flex-col gap-16">
+          <Image
+            alt="Character Sheet"
+            className="self-end"
+            height={1000}
+            src="/images/CharacterSheetWithTabs.png"
+            width={500}
+          />
+          <Image
+            alt="Character Sheet"
+            className="self-start"
+            height={1000}
+            src="/images/AdvancedCreator.png"
+            width={500}
+          />
+          <Image alt="Character Sheet" className="self-end" height={1000} src="/images/BioSheet.png" width={500} />
+        </div>
+        <footer className="mt-64 h-32 w-full bg-zinc-900" />
       </MaxWidthWrapper>
     </div>
   );

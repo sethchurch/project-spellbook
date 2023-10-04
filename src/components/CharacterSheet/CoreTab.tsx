@@ -3,7 +3,7 @@ import { Checkbox } from '@nextui-org/react';
 import { CheckArrayProvider } from '@/components/Form/CheckArrayProvider';
 import { ControlledCheck } from '@/components/Form/ControlledCheck';
 import { Input } from '@/components/Form/Input';
-import { characterSheetTitleFields, characterSkills, loremIpsum, savingThrows, statNames } from '@/config/dummyData';
+import { characterSheetTitleFields, characterSkills, loremIpsum, savingThrows } from '@/config/dummyData';
 
 import { CheckCounter } from '../Form/CheckCounter';
 import { Pod } from './Pod/Pod';
@@ -13,6 +13,7 @@ import { PodResource } from './Pod/PodResource';
 import { PodTextarea } from './Pod/PodTextarea';
 import { ProficencyList } from './ProficencyList';
 import { StatDisplay } from './StatDisplay';
+import { StatDisplayProvider } from './StatDisplayProvider';
 
 const CoreTab = () => {
   return (
@@ -41,9 +42,7 @@ const CoreTab = () => {
           <Pod label="Skills & Saves">
             <div className="flex w-full flex-nowrap gap-x-2 gap-y-3 md:gap-3">
               <div className="flex-stack flex-[2] justify-start">
-                {Array.from(new Array(6)).map((_, index) => (
-                  <StatDisplay key={index} label={statNames[index]?.toUpperCase()} statIndex={index} />
-                ))}
+                <StatDisplayProvider render={(stat: number) => <StatDisplay stat={stat} />} />
               </div>
               <div className="flex h-full flex-[4] flex-col gap-x-2 gap-y-3 md:gap-3">
                 <Pod className="flex-[2]" label="Saving Throws" variant="alt">

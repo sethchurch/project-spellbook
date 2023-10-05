@@ -1,19 +1,12 @@
-import { Checkbox } from '@nextui-org/react';
-
+import { DeathSavesPod, Pod, PodChip, PodInput, PodResource, PodTextarea } from '@/components/CharacterSheet/Pod';
 import { CheckArrayProvider } from '@/components/Form/CheckArrayProvider';
 import { ControlledCheck } from '@/components/Form/ControlledCheck';
 import { Input } from '@/components/Form/Input';
-import { characterSheetTitleFields, characterSkills, loremIpsum, savingThrows } from '@/config/dummyData';
+import { characterSheetTitleFields, characterSkills, loremIpsum, savingThrows, statNames } from '@/config/dummyData';
+import { camelCase } from '@/utils/camelCase';
 
-import { CheckCounter } from '../Form/CheckCounter';
-import { Pod } from './Pod/Pod';
-import { PodChip } from './Pod/PodChip';
-import { PodInput } from './Pod/PodInput';
-import { PodResource } from './Pod/PodResource';
-import { PodTextarea } from './Pod/PodTextarea';
 import { ProficencyList } from './ProficencyList';
 import { StatDisplay } from './StatDisplay';
-import { StatDisplayProvider } from './StatDisplayProvider';
 
 const CoreTab = () => {
   return (
@@ -42,7 +35,9 @@ const CoreTab = () => {
           <Pod label="Skills & Saves">
             <div className="flex w-full flex-nowrap gap-x-2 gap-y-3 md:gap-3">
               <div className="flex-stack flex-[2] justify-start">
-                <StatDisplayProvider render={(stat: number) => <StatDisplay stat={stat} />} />
+                {Array.from(new Array(6)).map((_, index) => (
+                  <StatDisplay key={index} label={statNames[index]?.toUpperCase()} statIndex={index} />
+                ))}
               </div>
               <div className="flex h-full flex-[4] flex-col gap-x-2 gap-y-3 md:gap-3">
                 <Pod className="flex-[2]" label="Saving Throws" variant="alt">
@@ -86,50 +81,17 @@ const CoreTab = () => {
             <Pod className="flex-[8]" label="Actions / Resources / Features / Notes" />
           </div>
           <div className="flex h-full flex-col gap-x-2 gap-y-3 md:gap-3">
-            <Pod className="flex-[1]" label="Death Saves">
-              <div className="flex h-full flex-col justify-around gap-x-2 gap-y-3 pb-3 md:gap-3">
-                <PodChip
-                  startContent={
-                    <CheckCounter
-                      CheckComponent={<Checkbox className="-ml-1 -mr-2" color="success" size="md" />}
-                      max={3}
-                      name="deathSaves.successes"
-                    />
-                  }
-                >
-                  Successes
-                </PodChip>
-                <PodChip
-                  startContent={
-                    <CheckCounter
-                      CheckComponent={<Checkbox className="-ml-1 -mr-2" color="danger" size="md" />}
-                      max={3}
-                      name="deathSaves.failures"
-                    />
-                  }
-                >
-                  Failures
-                </PodChip>
-              </div>
-            </Pod>
-            <Pod label="Traits">
-              <PodTextarea name="bio.traits" placeholder={loremIpsum.repeat(2)} />
-            </Pod>
-            <Pod label="Ideals">
-              <PodTextarea name="bio.ideals" placeholder={loremIpsum.repeat(2)} />
-            </Pod>
-            <Pod label="Bonds">
-              <PodTextarea name="bio.bonds" placeholder={loremIpsum.repeat(2)} />
-            </Pod>
-            <Pod label="Flaws">
-              <PodTextarea name="bio.flaws" placeholder={loremIpsum.repeat(2)} />
-            </Pod>
+            <DeathSavesPod className="flex-[1]" />
+            {['Personality Traits', 'Ideals', 'Bonds', 'Flaws'].map((x) => (
+              <Pod key={x} label={x}>
+                <PodTextarea name={`bio.${camelCase(x)}`} placeholder={loremIpsum.repeat(2)} />
+              </Pod>
+            ))}
             <Pod className="flex-[2]" label="Proficiencies & Languages">
               <div className="flex-stack">
-                <Input label="Languages" name="proficiencies.languages" />
-                <Input label="Weapons" name="proficiencies.weapons" />
-                <Input label="Armor" name="proficiencies.armor" />
-                <Input label="Other" name="proficiencies.other" />
+                {['Languages', 'Weapons', 'Armor', 'Other'].map((x) => (
+                  <Input key={x} label={x} name={`proficiencies.${camelCase(x)}`} />
+                ))}
               </div>
             </Pod>
           </div>

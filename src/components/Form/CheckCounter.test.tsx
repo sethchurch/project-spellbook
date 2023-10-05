@@ -1,3 +1,4 @@
+import { Input } from '@nextui-org/input';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { FormProvider, useForm } from 'react-hook-form';
 
@@ -8,7 +9,7 @@ const Test = ({ max }: { max: number }) => {
   return (
     <FormProvider {...methods}>
       <form>
-        <CheckCounter CheckComponent={<input type="checkbox" />} max={max} name="testNumeric" />
+        <CheckCounter CheckComponent={<Input type="checkbox" />} max={max} name="testNumeric" />
       </form>
     </FormProvider>
   );

@@ -3,8 +3,8 @@ import { Checkbox } from '@nextui-org/react';
 
 import { capitalize } from '@/utils/capitalize';
 
-import { useCheckArray } from '../Form/CheckArrayProvider';
-import { PodChip } from './Pod/PodChip';
+import { useCheckArray } from '../../Form/CheckArrayProvider';
+import { PodChip } from '../Pod/PodChip';
 
 interface ProficencyListProps {
   proficencyNames: string[];

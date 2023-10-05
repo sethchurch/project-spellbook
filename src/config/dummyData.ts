@@ -54,7 +54,7 @@ const character = {
     other: 'Lute, Vechicles (Land), Disguise Kit, Forgery Kit, Thieves Tools',
   },
   bio: {
-    traits: "I will always listen to the opinions of my friends, even if I don't agree with them.",
+    personalityTraits: "I will always listen to the opinions of my friends, even if I don't agree with them.",
     ideals: 'I will do anything to protect my friends.',
     bonds: "I'm loyal to my friends and will do anything in my power to help them.",
     flaws: 'I have a weakness for the vices of the city, especially hard drink.',

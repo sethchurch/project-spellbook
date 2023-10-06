@@ -3,6 +3,7 @@ import React from 'react';
 import { cn } from '@/utils/cn';
 
 interface PodProps {
+  compact?: boolean;
   children?: React.ReactNode;
   variant?: 'alt' | 'default' | 'transparent';
   className?: string;
@@ -10,11 +11,9 @@ interface PodProps {
 }
 
 const variants = {
-  bg: {
-    alt: 'bg-pod-alt',
-    default: 'bg-pod',
-    transparent: 'transparent',
-  },
+  alt: 'bg-pod-alt',
+  default: 'bg-pod',
+  transparent: 'transparent',
 };
 
 const PodLabel = ({ label, className }: { label: string; className?: string }) => (
@@ -28,12 +27,14 @@ const PodLabel = ({ label, className }: { label: string; className?: string }) =
   </div>
 );
 
-const Pod = ({ children, variant, className, label }: PodProps) => {
-  const variantClass = variants.bg[variant ?? 'default'];
+const Pod = ({ compact, children, variant, className, label }: PodProps) => {
+  const variantClass = variants[variant ?? 'default'];
+  const compactClass = compact ? 'p-2 md:p-3' : 'p-3 md:p-4';
+
   return (
-    <div className={cn(`rounded-lg flex flex-col justify-between ${variantClass}`, className)}>
+    <div className={cn('rounded-lg flex flex-col justify-between', variantClass, className)}>
       {label && <PodLabel className="rounded-t-lg" label={label} />}
-      <div className="h-full w-full p-3 md:p-4">{children}</div>
+      <div className={cn('h-full w-full', compactClass)}>{children}</div>
     </div>
   );
 };

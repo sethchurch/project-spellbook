@@ -38,9 +38,12 @@ const character = {
   hitDice: { current: '3d8', max: '5d8' },
   deathSaves: { successes: 2, failures: 1 },
   attacks: [
-    { name: 'Longsword', bonus: 5, damage: '1d8+3', type: 'slashing', description: 'long sword' },
-    { name: 'Dagger', bonus: 5, damage: '1d4+3', type: 'piercing', description: 'small sword' },
-    { name: 'Shortbow', bonus: 5, damage: '1d6+3', type: 'piercing', description: 'shoots sword' },
+    { name: 'Longsword', bonus: 5, damage: '1d8+3', damageType: 'slashing', description: 'long sword' },
+    { name: 'Dagger', bonus: 5, damage: '1d4+3', damageType: 'piercing', description: 'small sword' },
+    { name: 'Shortbow', bonus: 17, damage: '1d6+3', damageType: 'piercing', description: 'shoots sword' },
+    { name: 'Vicious Mockery', bonus: 5, damage: '1d4+3', damageType: 'psychic', description: 'mocks you' },
+    { name: 'Thunderwave', bonus: 5, damage: '1d8+3', damageType: 'thunder', description: 'thunder' },
+    { name: 'Healing Word', bonus: 1, damage: '1d4+3', damageType: 'healing', description: 'heals you' },
   ],
   senses: [
     { name: 'Passive Perception - 13', description: '13', source: 'wisdom' },

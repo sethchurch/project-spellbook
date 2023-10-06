@@ -1,5 +1,3 @@
-import { Tab, Tabs } from '@nextui-org/react';
-
 import { DeathSavesPod, Pod, PodChip, PodInput, PodResource, PodTextarea } from '@/components/CharacterSheet/Pod';
 import { CheckArrayProvider } from '@/components/Form/CheckArrayProvider';
 import { ControlledCheck } from '@/components/Form/ControlledCheck';
@@ -9,6 +7,7 @@ import { camelCase } from '@/utils/camelCase';
 
 import { ProficencyList } from './ProficencyList';
 import { StatDisplay } from './StatDisplay';
+import { TabList } from './TabList';
 
 const CoreTab = () => {
   return (
@@ -82,32 +81,7 @@ const CoreTab = () => {
             </Pod>
 
             <div className="flex w-full flex-[8] flex-col">
-              <Pod className="h-full pb-8">
-                <Tabs
-                  aria-label="Options"
-                  classNames={{
-                    tabList: 'gap-6 w-full relative rounded-none p-0 border-b border-none bg-transparent',
-                    cursor: 'w-full',
-                    tab: 'max-w-fit  h-12',
-                    tabContent: '',
-                  }}
-                >
-                  <Tab key="actions" className="h-full" title="Actions">
-                    <Pod className="h-full" label="Actions" variant="alt" />
-                  </Tab>
-                  <Tab key="resources" className="h-full" title="Resources">
-                    <Pod className="h-full" label="Resources" variant="alt" />
-                  </Tab>
-                  <Tab key="features" className="h-full" title="Features">
-                    <Pod className="h-full" label="Features" variant="alt" />
-                  </Tab>
-                  <Tab key="notes" className="h-full" title="Notes">
-                    <Pod className="h-full" label="Notes" variant="alt">
-                      <PodTextarea maxRows={32} name="notes" placeholder={loremIpsum.repeat(10)} />
-                    </Pod>
-                  </Tab>
-                </Tabs>
-              </Pod>
+              <TabList />
             </div>
           </div>
           <div className="flex h-full flex-col gap-x-2 gap-y-3 md:gap-3">

@@ -17,10 +17,6 @@ const character = {
   race: 'Half-Elf',
   experience: 1000,
   class: 'Paladin 2 / Bard 3 (College of Swords)',
-  // class: [
-  //   { name: 'Paladin', level: 2 },
-  //   { name: 'Bard', level: 3 },
-  // ],
   background: 'Acolyte',
   alignment: 'Chaotic Good',
   stats: [17, 12, 16, 8, 13, 18],
@@ -44,6 +40,31 @@ const character = {
     { name: 'Vicious Mockery', bonus: 5, damage: '1d4+3', damageType: 'psychic', description: 'mocks you' },
     { name: 'Thunderwave', bonus: 5, damage: '1d8+3', damageType: 'thunder', description: 'thunder' },
     { name: 'Healing Word', bonus: 1, damage: '1d4+3', damageType: 'healing', description: 'heals you' },
+    { name: 'Fireball', savingThrow: 'str', damage: '8d6', damageType: 'fire', description: 'fire' },
+  ],
+  resources: [
+    { name: 'Lay on Hands', current: 15, max: 15, source: 'Paladin' },
+    { name: 'Bardic Inspiration', current: 3, max: 3, source: 'Bard' },
+    { name: 'Wand of Fireball Charges', current: 3, max: 3, source: 'Wand of Fireball' },
+  ],
+  features: [
+    {
+      name: 'Divine Sense',
+      description:
+        'As an action, you can open your awareness to detect such forces. Until the end of your next turn, you know the location of any celestial, fiend, or undead within 60 feet of you that is not behind total cover. You know the type (celestial, fiend, or undead) of any being whose presence you sense, but not its identity (the vampire Count Strahd von Zarovich, for instance). Within the same radius, you also detect the presence of any place or object that has been consecrated or desecrated, as with the hallow spell.',
+      source: 'Paladin',
+    },
+    {
+      name: 'Lay on Hands',
+      description:
+        'Your blessed touch can heal wounds. You have a pool of healing power that replenishes when you take a long rest. With that pool, you can restore a total number of hit points equal to your paladin level x 5.',
+      source: 'Paladin',
+    },
+    {
+      name: 'Fighting Style (',
+      description: 'You adopt a particular style of fighting as your specialty. Choose one of the following options. You can’t take a Fighting Style option more than once, even if you later get to choose again.',
+      source: 'Paladin',
+    }
   ],
   senses: [
     { name: 'Passive Perception - 13', description: '13', source: 'wisdom' },

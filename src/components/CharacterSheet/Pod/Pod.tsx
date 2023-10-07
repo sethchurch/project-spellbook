@@ -3,7 +3,7 @@ import React from 'react';
 import { cn } from '@/utils/cn';
 
 interface PodProps {
-  compact?: boolean;
+  isCompact?: boolean;
   children?: React.ReactNode;
   variant?: 'alt' | 'default' | 'transparent';
   className?: string;
@@ -27,14 +27,14 @@ const PodLabel = ({ label, className }: { label: string; className?: string }) =
   </div>
 );
 
-const Pod = ({ compact, children, variant, className, label }: PodProps) => {
+const Pod = ({ isCompact, children, variant, className, label }: PodProps) => {
   const variantClass = variants[variant ?? 'default'];
-  const compactClass = compact ? 'p-2 md:p-3' : 'p-3 md:p-4';
+  const isCompactClass = isCompact ? 'p-2 md:p-3' : 'p-3 md:p-4';
 
   return (
     <div className={cn('rounded-lg flex flex-col justify-between', variantClass, className)}>
       {label && <PodLabel className="rounded-t-lg" label={label} />}
-      <div className={cn('h-full w-full', compactClass)}>{children}</div>
+      <div className={cn('h-full w-full', isCompactClass)}>{children}</div>
     </div>
   );
 };

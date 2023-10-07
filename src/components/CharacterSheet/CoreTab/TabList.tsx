@@ -1,10 +1,10 @@
-import { Button, Tab, Tabs } from '@nextui-org/react';
-import { IconChevronDown, IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
+import { Accordion, AccordionItem, Button, Tab, Tabs, Textarea } from '@nextui-org/react';
 import { type Key, useState } from 'react';
 
 import { character, loremIpsum } from '@/config/dummyData';
 
 import { Pod, PodTextarea } from '../Pod';
+import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 
 const { attacks } = character;
 
@@ -37,33 +37,120 @@ const TabList = () => {
     >
       <Tab key="actions" title={<TabTitle>Actions</TabTitle>}>
         <Pod className="h-full">
-          <ul className="flex-stack">
+          <Accordion
+            isCompact
+            className="flex-stack"
+            itemClasses={{
+              title: 'py-0',
+              content: '-mt-2',
+              base: 'group-[.is-splitted]:shadow-none',
+              titleWrapper: 'py-1',
+              indicator: 'block',
+            }}
+            variant="splitted"
+          >
             {attacks.map((attack) => (
-              <li key={attack.name}>
-                <Pod compact variant="alt">
-                  <div className="grid w-full grid-cols-[5fr_2fr_5fr_1fr] gap-3">
-                    <Pod compact>{attack.name}</Pod>
-                    <Pod compact className="text-center">
-                      +{attack.bonus}
-                    </Pod>
-                    <Pod compact>
-                      {attack.damage} {attack.damageType}
-                    </Pod>
-                    <Button className="h-full p-0 text-center" variant="solid">
-                      <IconChevronLeft className="m-auto" />
-                    </Button>
+              <AccordionItem
+                key={attack.name}
+                indicator={
+                  <Button className="h-full rounded p-3 m-auto" variant="faded">
+                    <IconChevronLeft />
+                  </Button>
+                }
+                textValue={attack.name}
+                title={
+                  <div>
+                    <div className="grid w-full grid-cols-[5fr_2fr_5fr] gap-3">
+                      <Pod isCompact>{attack.name}</Pod>
+                      <Pod isCompact className="text-center">
+                        +{attack.bonus}
+                      </Pod>
+                      <Pod isCompact>
+                        {attack.damage} {attack.damageType}
+                      </Pod>
+                    </div>
                   </div>
-                </Pod>
-              </li>
+                }
+              >
+                <Textarea value={attack.description} />
+              </AccordionItem>
             ))}
-          </ul>
+          </Accordion>
         </Pod>
       </Tab>
       <Tab key="resources" title={<TabTitle>Resources</TabTitle>}>
-        <Pod className="h-full" />
+        <Pod className="h-full">
+          <Accordion
+            isCompact
+            className="flex-stack"
+            itemClasses={{
+              title: 'py-0',
+              content: '-mt-2',
+              base: 'group-[.is-splitted]:shadow-none',
+              titleWrapper: 'py-1',
+            }}
+            variant="splitted"
+          >
+            {attacks.map((attack) => (
+              <AccordionItem
+                key={attack.name}
+                textValue={attack.name}
+                title={
+                  <div>
+                    <div className="grid w-full grid-cols-[5fr_2fr_5fr] gap-3">
+                      <Pod isCompact>{attack.name}</Pod>
+                      <Pod isCompact className="text-center">
+                        +{attack.bonus}
+                      </Pod>
+                      <Pod isCompact>
+                        {attack.damage} {attack.damageType}
+                      </Pod>
+                    </div>
+                  </div>
+                }
+              >
+                <Textarea value={attack.description} />
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </Pod>
       </Tab>
       <Tab key="features" title={<TabTitle>Features</TabTitle>}>
-        <Pod className="h-full" />
+        <Pod className="h-full">
+          <Accordion
+            isCompact
+            className="flex-stack"
+            itemClasses={{
+              title: 'py-0',
+              content: '-mt-2',
+              base: 'group-[.is-splitted]:shadow-none',
+              titleWrapper: 'py-1',
+            }}
+            variant="splitted"
+          >
+            {attacks.map((attack) => (
+              <AccordionItem
+                key={attack.name}
+                textValue={attack.name}
+                title={
+                  <div>
+                    <div className="grid w-full grid-cols-[5fr_2fr_5fr] gap-3">
+                      <Pod isCompact>{attack.name}</Pod>
+                      <Pod isCompact className="text-center">
+                        +{attack.bonus}
+                      </Pod>
+                      <Pod isCompact>
+                        {attack.damage} {attack.damageType}
+                      </Pod>
+                    </div>
+                  </div>
+                }
+              >
+                <Textarea value={attack.description} />
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </Pod>
       </Tab>
       <Tab key="notes" title={<TabTitle>Notes</TabTitle>}>
         <Pod className="h-full">

@@ -8,11 +8,11 @@ import { Input } from '@/components/Form/Input';
 import { characterSheetTitleFields, characterSkills, savingThrows, statNames } from '@/config/dummyData';
 import { camelCase } from '@/utils/camelCase';
 
-import { ActionsTab } from './ActionsTab';
-import { FeaturesTab } from './FeaturesTab';
 import { ProficencyList } from './ProficencyList';
-import { ResourcesTab } from './ResourcesTab';
 import { StatDisplay } from './StatDisplay';
+import { ActionsTab } from './Tabs/ActionsTab';
+import { FeaturesTab } from './Tabs/FeaturesTab';
+import { ResourcesTab } from './Tabs/ResourcesTab';
 
 const CoreTab = () => {
   return (
@@ -84,23 +84,26 @@ const CoreTab = () => {
                 </Pod>
               </div>
             </Pod>
-
             <div className="flex w-full flex-[8] flex-col">
               <TabList defaultTab="actions">
                 <Tab key="actions" title={<TabTitle>Actions</TabTitle>}>
-                  <ActionsTab />
+                  <Pod>
+                    <ActionsTab />
+                  </Pod>
                 </Tab>
                 <Tab key="resources" title={<TabTitle>Resources</TabTitle>}>
-                  <ResourcesTab />
+                  <Pod>
+                    <ResourcesTab />
+                  </Pod>
                 </Tab>
                 <Tab key="features" title={<TabTitle>Features</TabTitle>}>
-                  <FeaturesTab />
+                  <Pod>
+                    <FeaturesTab />
+                  </Pod>
                 </Tab>
                 <Tab key="notes" title={<TabTitle>Notes</TabTitle>}>
-                  <Pod className="h-full">
-                    <Pod variant="alt">
-                      <PodTextarea className="h-full" maxRows={64} minRows={24} name="notes" variant="underlined" />
-                    </Pod>
+                  <Pod>
+                    <PodTextarea className="h-full" maxRows={64} minRows={24} name="notes" styleVariant="inset" />
                   </Pod>
                 </Tab>
               </TabList>

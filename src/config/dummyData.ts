@@ -46,6 +46,8 @@ const character = {
     { name: 'Lay on Hands', current: 15, max: 15, source: 'Paladin' },
     { name: 'Bardic Inspiration', current: 3, max: 3, source: 'Bard' },
     { name: 'Wand of Fireball Charges', current: 3, max: 3, source: 'Wand of Fireball' },
+    { name: 'Wild Shape', current: 2, max: 2, source: 'Druid' },
+    { name: 'Rage', current: 2, max: 2, source: 'Barbarian' },
   ],
   features: [
     {
@@ -61,10 +63,11 @@ const character = {
       source: 'Paladin',
     },
     {
-      name: 'Fighting Style (',
-      description: 'You adopt a particular style of fighting as your specialty. Choose one of the following options. You can’t take a Fighting Style option more than once, even if you later get to choose again.',
+      name: 'Fighting Style (Defense)',
+      description:
+        'You adopt a particular style of fighting as your specialty. Choose one of the following options. You can’t take a Fighting Style option more than once, even if you later get to choose again.',
       source: 'Paladin',
-    }
+    },
   ],
   senses: [
     { name: 'Passive Perception - 13', description: '13', source: 'wisdom' },
@@ -83,6 +86,8 @@ const character = {
     bonds: "I'm loyal to my friends and will do anything in my power to help them.",
     flaws: 'I have a weakness for the vices of the city, especially hard drink.',
   },
+  notes:
+    "Session 1:\r\rwe ran into a group of goblins and killed them all. I got a new sword. It's pretty cool. I also got a new shield. It's pretty cool too.\r\rSession 2:\r\rApprently theres a druid in the forest we should find him goes by the name of Oakleaf. We also found a hidden cave with some treasure in it.\r\rSession 3:\r\rWe finally found Oakleaf and he gave us a quest to retrieve a magical artifact from a nearby dungeon. We fought some skeletons on the way there.\r\rSession 4:\r\rWe made it to the dungeon and fought our way through some traps and monsters. We found the artifact and brought it back to Oakleaf. He rewarded us with some gold and a magic item each.\r\rSession 5:\r\rWe heard rumors of a dragon terrorizing a nearby town. We decided to investigate and found out that it was being controlled by an evil wizard. We defeated the wizard and freed the dragon, who flew away peacefully.",
 };
 
 export { character, characterSheetTitleFields, characterSkills, characterStats, loremIpsum, savingThrows, statNames };

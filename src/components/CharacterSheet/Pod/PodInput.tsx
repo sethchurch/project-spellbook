@@ -2,14 +2,10 @@ import type { InputProps } from '@nextui-org/input';
 import { Input } from '@nextui-org/input';
 import { Controller, useFormContext } from 'react-hook-form';
 
-interface PodInputProps extends InputProps {
-  inputVariant?: 'default' | 'unstyled' | 'jumbo';
-}
-
-const classNameInputVariants = {
+const styleVariants = {
   default: {
     base: 'h-full',
-    label: 'h-0 p-0',
+    label: 'text-center w-full m-auto',
     inputWrapper: 'border-none after:h-0 p-0 shadow-none h-full bg-transparent gap-0',
     input: `m-0 p-0 text-center h-full text-[2.5rem]`,
   },
@@ -24,7 +20,11 @@ const classNameInputVariants = {
   },
 };
 
-const PodInput = ({ name, inputVariant, ...props }: PodInputProps) => {
+interface PodInputProps extends InputProps {
+  styleVariant?: keyof typeof styleVariants;
+}
+
+const PodInput = ({ name, styleVariant, ...props }: PodInputProps) => {
   const { control, watch } = useFormContext();
 
   return (
@@ -33,7 +33,7 @@ const PodInput = ({ name, inputVariant, ...props }: PodInputProps) => {
       name={name || 'name'}
       render={({ field }) => (
         <Input
-          classNames={classNameInputVariants[inputVariant ?? 'default']}
+          classNames={styleVariants[styleVariant ?? 'default']}
           {...props}
           {...field}
           value={watch(name || 'name')}

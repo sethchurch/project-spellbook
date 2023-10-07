@@ -34,7 +34,7 @@ const Pod = ({ isCompact, children, variant, className, label }: PodProps) => {
   return (
     <div className={cn('rounded-lg flex flex-col justify-between', variantClass, className)}>
       {label && <PodLabel className="rounded-t-lg" label={label} />}
-      <div className={cn('h-full w-full', isCompactClass)}>{children}</div>
+      {children && <div className={cn('h-full w-full', isCompactClass)}>{children}</div>}
     </div>
   );
 };

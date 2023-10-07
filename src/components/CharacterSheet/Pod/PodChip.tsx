@@ -1,15 +1,18 @@
 import { Chip } from '@nextui-org/chip';
 
+import { cn } from '@/utils/cn';
+
 interface PodChipProps {
+  className?: string;
   children: React.ReactNode;
-  startContent?: React.ReactNode;
   left?: string;
+  startContent?: React.ReactNode;
 }
 
-const PodChip = ({ children, startContent, left }: PodChipProps) => {
+const PodChip = ({ children, className, left, startContent }: PodChipProps) => {
   return (
     <Chip
-      className="w-full max-w-full"
+      className={cn('relative w-full max-w-full', className)}
       radius="md"
       startContent={
         <>

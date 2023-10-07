@@ -1,13 +1,18 @@
+import { Tab } from '@nextui-org/react';
+
 import { DeathSavesPod, Pod, PodChip, PodInput, PodResource, PodTextarea } from '@/components/CharacterSheet/Pod';
+import { TabList, TabTitle } from '@/components/Elements/TabList';
 import { CheckArrayProvider } from '@/components/Form/CheckArrayProvider';
 import { ControlledCheck } from '@/components/Form/ControlledCheck';
 import { Input } from '@/components/Form/Input';
-import { characterSheetTitleFields, characterSkills, loremIpsum, savingThrows, statNames } from '@/config/dummyData';
+import { characterSheetTitleFields, characterSkills, savingThrows, statNames } from '@/config/dummyData';
 import { camelCase } from '@/utils/camelCase';
 
+import { ActionsTab } from './ActionsTab';
+import { FeaturesTab } from './FeaturesTab';
 import { ProficencyList } from './ProficencyList';
+import { ResourcesTab } from './ResourcesTab';
 import { StatDisplay } from './StatDisplay';
-import { TabList } from './TabList';
 
 const CoreTab = () => {
   return (
@@ -18,7 +23,7 @@ const CoreTab = () => {
           <Pod className="lg:col-span-2" label="Character Details">
             <div className="grid grid-cols-2 gap-x-2 gap-y-3 md:grid-cols-3 md:gap-3">
               {characterSheetTitleFields.map((field) => (
-                <PodInput key={field} inputVariant="unstyled" label={field} name={field.toLowerCase()} />
+                <PodInput key={field} label={field} name={field.toLowerCase()} styleVariant="unstyled" />
               ))}
             </div>
           </Pod>
@@ -81,14 +86,31 @@ const CoreTab = () => {
             </Pod>
 
             <div className="flex w-full flex-[8] flex-col">
-              <TabList />
+              <TabList defaultTab="actions">
+                <Tab key="actions" title={<TabTitle>Actions</TabTitle>}>
+                  <ActionsTab />
+                </Tab>
+                <Tab key="resources" title={<TabTitle>Resources</TabTitle>}>
+                  <ResourcesTab />
+                </Tab>
+                <Tab key="features" title={<TabTitle>Features</TabTitle>}>
+                  <FeaturesTab />
+                </Tab>
+                <Tab key="notes" title={<TabTitle>Notes</TabTitle>}>
+                  <Pod className="h-full">
+                    <Pod variant="alt">
+                      <PodTextarea className="h-full" maxRows={64} minRows={24} name="notes" variant="underlined" />
+                    </Pod>
+                  </Pod>
+                </Tab>
+              </TabList>
             </div>
           </div>
           <div className="flex h-full flex-col gap-x-2 gap-y-3 md:gap-3">
             <DeathSavesPod className="flex-[1]" />
             {['Personality Traits', 'Ideals', 'Bonds', 'Flaws'].map((x) => (
               <Pod key={x} label={x}>
-                <PodTextarea name={`bio.${camelCase(x)}`} placeholder={loremIpsum.repeat(2)} />
+                <PodTextarea name={`bio.${camelCase(x)}`} />
               </Pod>
             ))}
             <Pod className="flex-[2]" label="Proficiencies & Languages">

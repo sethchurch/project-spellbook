@@ -12,6 +12,9 @@ const styleVariants = {
   unstyled: {
     base: 'h-full',
   },
+  centered: {
+    input: 'text-center text-[1.5rem] m-0 p-0',
+  },
   jumbo: {
     base: 'h-full',
     label: 'text-center w-full m-auto pb-3 lg:pb-5',
@@ -31,14 +34,17 @@ const PodInput = ({ name, styleVariant, ...props }: PodInputProps) => {
     <Controller
       control={control}
       name={name || 'name'}
-      render={({ field }) => (
-        <Input
-          classNames={styleVariants[styleVariant ?? 'default']}
-          {...props}
-          {...field}
-          value={watch(name || 'name')}
-        />
-      )}
+      render={({ field }) => {
+        return (
+          <Input
+            classNames={styleVariants[styleVariant ?? 'default']}
+            {...props}
+            {...field}
+            ref={null}
+            value={watch(name || 'name')}
+          />
+        );
+      }}
     />
   );
 };

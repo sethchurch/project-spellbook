@@ -17,7 +17,7 @@ const PodResource = ({ name }: PodResourceProps) => {
         name={`${name}.current`}
         render={({ field }) => (
           <Pod label="Current">
-            <PodInput styleVariant="jumbo" {...field} name={`${name}.current`} />
+            <PodInput styleVariant="jumbo" {...field} ref={null} name={`${name}.current`} />
           </Pod>
         )}
       />
@@ -26,7 +26,7 @@ const PodResource = ({ name }: PodResourceProps) => {
         name={`${name}.max`}
         render={({ field }) => (
           <Pod label="Max">
-            <PodInput styleVariant="jumbo" {...field} name={`${name}.max`} />
+            <PodInput styleVariant="jumbo" {...field} ref={null} name={`${name}.max`} />
           </Pod>
         )}
       />

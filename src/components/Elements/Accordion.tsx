@@ -20,6 +20,7 @@ const Accordion = ({ styleVariant, children, ...props }: AccordionProps) => {
       isCompact
       className="flex-stack px-0"
       itemClasses={styleVariant ? styleVariants[styleVariant] : {}}
+      selectionMode="multiple"
       variant="splitted"
       {...props}
     >

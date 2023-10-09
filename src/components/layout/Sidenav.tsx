@@ -8,7 +8,7 @@ const Sidenav = ({ children }: SidenavProps) => {
   const { sideNavOpen } = useAppShell();
   return (
     <aside className={`${sideNavOpen ? 'ml-0' : '-ml-72'} w-72 transition-all`}>
-      <div className="fixed top-16  z-50 h-screen w-72 bg-default-300 p-3 dark:bg-zinc-800">{children}</div>
+      <div className="fixed top-16  z-50 h-full w-72 bg-default-300 p-3 dark:bg-zinc-800">{children}</div>
     </aside>
   );
 };

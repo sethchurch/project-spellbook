@@ -2,9 +2,8 @@ import { AccordionItem, Button } from '@nextui-org/react';
 import { IconChevronLeft, IconMinus, IconPlus } from '@tabler/icons-react';
 import { useFormContext } from 'react-hook-form';
 
+import { PodChip, PodInput } from '@/components/CharacterSheet/Pod';
 import { Accordion } from '@/components/Elements/Accordion';
-
-import { PodChip, PodInput } from '../../Pod';
 
 interface Resource {
   name: string;
@@ -37,13 +36,13 @@ const ResourcesTab = () => {
           indicator={<IconChevronLeft />}
           textValue={resource.name}
           title={
-            <div className="flex justify-between">
-              <p className="col-span-2">{resource.name}</p>
-              <PodChip className="w-min">{resource.source}</PodChip>
+            <div className="grid grid-cols-1 grid-rows-2 truncate md:grid-cols-[2fr_1fr] md:grid-rows-1">
+              <p className="truncate px-1">{resource.name}</p>
+              <PodChip className="md:w-min md:justify-self-end">{resource.source}</PodChip>
             </div>
           }
         >
-          <div className="grid w-full grid-cols-2 gap-3">
+          <div className="grid w-full grid-cols-1 gap-3 md:grid-cols-2">
             <PodInput label="Name" name={`${fieldName}[${index}].name`} styleVariant="unstyled" />
             <PodInput label="Source" name={`${fieldName}[${index}].source`} styleVariant="unstyled" />
             <PodInput label="Current" name={`${fieldName}[${index}].current`} styleVariant="centered" type="number" />

@@ -1,58 +1,43 @@
-import type { Dispatch } from 'react';
-import { createContext, useMemo, useReducer } from 'react';
+import { useEffect, useRef } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import type { Character } from '@/config/CharacterConfig';
 import { character as defaultCharacter } from '@/config/dummyData';
+import { debounce } from '@/utils/debounce';
 
 interface CharacterSheetProviderProps {
   children?: React.ReactNode;
   character?: Character;
   onSubmit?: () => void;
 }
-interface CharacterSheetAction {
-  type: 'UPDATE_CHARACTER';
-  payload: any;
-}
 
-const CharacterSheetContext = createContext<{
-  character: typeof defaultCharacter;
-  dispatch: Dispatch<CharacterSheetAction>;
-}>({
-  character: defaultCharacter,
-  dispatch: () => null,
-});
+const characterKey = 'characterData';
 
-const useCharacterSheet = () => {
-  const context = createContext(CharacterSheetContext);
-
-  if (context === undefined) {
-    throw new Error('useCharacterSheet must be used within a CharacterSheetProvider');
-  }
-
-  return context;
-};
-
-const characterReducer = (state: typeof defaultCharacter, action: CharacterSheetAction) => {
-  switch (action.type) {
-    case 'UPDATE_CHARACTER':
-      return { ...state, ...action.payload };
-    default:
-      return state;
-  }
+const getCharacter = (defaultValue: Character) => {
+  const character = localStorage.getItem(characterKey);
+  return character ? JSON.parse(character) : defaultValue;
 };
 
 const CharacterSheetProvider = ({ children, character, onSubmit }: CharacterSheetProviderProps) => {
-  const [characterValue, dispatch] = useReducer(characterReducer, character || defaultCharacter);
-  const value = useMemo(() => ({ character: characterValue, dispatch }), [characterValue]);
-  const methods = useForm({ defaultValues: characterValue });
+  const methods = useForm({ defaultValues: getCharacter(character || defaultCharacter) });
+  const { getValues, watch } = methods;
+  const charcterData = watch();
+
+  const saveToLocalStorage = useRef(
+    debounce((data: Character) => {
+      localStorage.setItem(characterKey, JSON.stringify(data));
+    }, 100),
+  ).current;
+
+  useEffect(() => {
+    saveToLocalStorage(charcterData);
+  }, [charcterData, getValues, saveToLocalStorage, watch]);
+
   return (
-    <CharacterSheetContext.Provider value={value}>
-      <FormProvider {...methods}>
-        <form onSubmit={onSubmit}>{children}</form>
-      </FormProvider>
-    </CharacterSheetContext.Provider>
+    <FormProvider {...methods}>
+      <form onSubmit={onSubmit}>{children}</form>
+    </FormProvider>
   );
 };
 
-export { CharacterSheetProvider, useCharacterSheet };
+export { CharacterSheetProvider };

@@ -29,7 +29,7 @@ const PodLabel = ({ label, className }: { label: string; className?: string }) =
 
 const Pod = ({ isCompact, children, variant, className, label }: PodProps) => {
   const variantClass = variants[variant ?? 'default'];
-  const isCompactClass = isCompact ? 'p-2 md:p-3' : 'p-3 md:p-4';
+  const isCompactClass = isCompact ? 'p-2 md:p-3 truncate' : 'p-3 md:p-4';
 
   return (
     <div className={cn('rounded-lg flex flex-col justify-between', variantClass, className)}>

@@ -26,13 +26,13 @@ const useAppShell = () => {
 };
 
 const AppShell = ({ children }: AppShellProps) => {
-  const [sideNavOpen, setSideNavOpen] = useState(true);
+  const [sideNavOpen, setSideNavOpen] = useState(false);
   const value = useMemo<NavContextType>(() => ({ sideNavOpen, setSideNavOpen }), [sideNavOpen]);
   NavContext.displayName = 'AppShellContext';
 
   return (
     <NavContext.Provider value={value}>
-      <div className="grid grid-cols-[max-content_1fr] grid-rows-[max-content_1fr]">{children}</div>
+      <div className="flex flex-col">{children}</div>
     </NavContext.Provider>
   );
 };

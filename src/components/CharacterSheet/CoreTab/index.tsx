@@ -5,7 +5,9 @@ import { TabList, TabTitle } from '@/components/Elements/TabList';
 import { CheckArrayProvider } from '@/components/Form/CheckArrayProvider';
 import { ControlledCheck } from '@/components/Form/ControlledCheck';
 import { Input } from '@/components/Form/Input';
-import { characterSheetTitleFields, characterSkills, savingThrows, statNames } from '@/config/dummyData';
+import type { Proficiency } from '@/config/CharacterConfig';
+import { characterSkills, savingThrows } from '@/config/CharacterConfig';
+import { characterSheetTitleFields, statNames } from '@/config/dummyData';
 import { camelCase } from '@/utils/camelCase';
 
 import { ProficencyList } from './ProficencyList';
@@ -48,12 +50,12 @@ const CoreTab = () => {
               <div className="flex h-full flex-[4] flex-col gap-x-2 gap-y-3 md:gap-3">
                 <Pod className="flex-[2]" label="Saving Throws" variant="alt">
                   <CheckArrayProvider name="savingThrows">
-                    <ProficencyList proficencyNames={savingThrows.map((x) => `${x} Save`)} />
+                    <ProficencyList proficencyData={savingThrows as Proficiency[]} />
                   </CheckArrayProvider>
                 </Pod>
                 <Pod className="flex-[6]" label="Skills" variant="alt">
                   <CheckArrayProvider name="skills.proficent">
-                    <ProficencyList proficencyNames={characterSkills} />
+                    <ProficencyList proficencyData={characterSkills as Proficiency[]} />
                   </CheckArrayProvider>
                 </Pod>
               </div>

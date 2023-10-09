@@ -1,4 +1,3 @@
-
 export const AppConfig = {
   site_name: 'Project Spellbook',
   title: 'Project Spellbook',

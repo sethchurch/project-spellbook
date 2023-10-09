@@ -2,12 +2,12 @@ import type { Dispatch } from 'react';
 import { createContext, useMemo, useReducer } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import type { character } from '@/config/dummyData';
+import type { Character } from '@/config/CharacterConfig';
 import { character as defaultCharacter } from '@/config/dummyData';
 
 interface CharacterSheetProviderProps {
   children?: React.ReactNode;
-  character?: typeof character;
+  character?: Character;
   onSubmit?: () => void;
 }
 interface CharacterSheetAction {

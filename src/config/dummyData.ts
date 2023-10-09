@@ -1,8 +1,6 @@
 import { characterSkills, savingThrows } from './CharacterConfig';
 
-const characterStats = [17, 16, 14, 8, 15, 11];
 const statNames = ['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha'];
-
 const characterSheetTitleFields = ['Name', 'Race', 'Experience', 'Class', 'Background', 'Alignment'];
 const loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum orci quis tincidunt ferm. ';
 
@@ -84,4 +82,4 @@ const character = {
     "Session 1:\r\rwe ran into a group of goblins and killed them all. I got a new sword. It's pretty cool. I also got a new shield. It's pretty cool too.\r\rSession 2:\r\rApprently theres a druid in the forest we should find him goes by the name of Oakleaf. We also found a hidden cave with some treasure in it.\r\rSession 3:\r\rWe finally found Oakleaf and he gave us a quest to retrieve a magical artifact from a nearby dungeon. We fought some skeletons on the way there.\r\rSession 4:\r\rWe made it to the dungeon and fought our way through some traps and monsters. We found the artifact and brought it back to Oakleaf. He rewarded us with some gold and a magic item each.\r\rSession 5:\r\rWe heard rumors of a dragon terrorizing a nearby town. We decided to investigate and found out that it was being controlled by an evil wizard. We defeated the wizard and freed the dragon, who flew away peacefully.",
 };
 
-export { character, characterSheetTitleFields, characterSkills, characterStats, loremIpsum, savingThrows, statNames };
+export { character, characterSheetTitleFields, characterSkills, loremIpsum, savingThrows, statNames };

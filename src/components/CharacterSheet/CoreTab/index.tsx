@@ -13,7 +13,7 @@ import { StatDisplay } from './StatDisplay';
 const CoreTab = () => {
   return (
     <>
-      <div className="h-64 w-full rounded-t-lg bg-gradient-to-r from-violet-700 to-violet-950" />
+      <div className="h-32 w-full rounded-t-lg bg-gradient-to-r from-violet-700 to-violet-950 md:h-64" />
       <div className="grid grid-cols-1 grid-rows-[1fr_max-content] gap-x-2 gap-y-3 p-2 md:gap-3 md:p-5 lg:grid-cols-[6fr_3fr] xl:grid-cols-[3fr_6fr_3fr]">
         <Pod className="xl:col-span-2" label="Character Details">
           <div className="grid grid-cols-1 gap-x-2 gap-y-3 sm:grid-cols-2 md:grid-cols-3 md:gap-3">
@@ -56,13 +56,15 @@ const CoreTab = () => {
           </div>
         </Pod>
         <div className="flex h-full flex-col gap-x-2 gap-y-3 md:gap-3">
-          <div className="grid flex-[1] grid-cols-3 gap-x-2 gap-y-3 md:gap-3">
-            {['Armor Class', 'Initiative', 'Speed'].map((x) => (
-              <Pod key={x} label={x}>
-                <PodInput name={camelCase(x)} />
-              </Pod>
-            ))}
-          </div>
+          <Pod>
+            <div className="grid flex-[1] gap-x-2 gap-y-3 sm:grid-cols-3 md:gap-3">
+              {['Armor Class', 'Initiative', 'Speed'].map((x) => (
+                <Pod key={x} label={x} variant="alt">
+                  <PodInput name={camelCase(x)} />
+                </Pod>
+              ))}
+            </div>
+          </Pod>
           <Pod className="flex-[2]">
             <div className="flex h-full flex-col gap-x-2 gap-y-3 md:flex-row md:gap-3">
               <Pod className="flex-[2]" label="HP" variant="alt">

@@ -25,10 +25,10 @@ dependencies:
     version: 2.1.13(@types/react@18.2.22)(framer-motion@10.16.4)(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.3.3)
   '@supabase/auth-helpers-nextjs':
     specifier: latest
-    version: 0.8.1(@supabase/supabase-js@2.37.0)
+    version: 0.8.1(@supabase/supabase-js@2.38.0)
   '@supabase/supabase-js':
     specifier: latest
-    version: 2.37.0
+    version: 2.38.0
   '@tabler/icons-react':
     specifier: ^2.35.0
     version: 2.35.0(react@18.2.0)
@@ -77,12 +77,18 @@ dependencies:
   framer-motion:
     specifier: ^10.16.4
     version: 10.16.4(react-dom@18.2.0)(react@18.2.0)
+  lodash:
+    specifier: ^4.17.21
+    version: 4.17.21
   next:
     specifier: ^13.5.3
     version: 13.5.3(@babel/core@7.22.20)(react-dom@18.2.0)(react@18.2.0)
   next-themes:
     specifier: ^0.2.1
     version: 0.2.1(next@13.5.3)(react-dom@18.2.0)(react@18.2.0)
+  persist-and-sync:
+    specifier: ^0.1.1
+    version: 0.1.1(zustand@4.4.3)
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -101,6 +107,9 @@ dependencies:
   zod:
     specifier: ^3.22.2
     version: 3.22.2
+  zustand:
+    specifier: ^4.4.3
+    version: 4.4.3(@types/react@18.2.22)(react@18.2.0)
 
 devDependencies:
   '@testing-library/cypress':
@@ -3224,22 +3233,22 @@ packages:
       lodash: 4.17.21
     dev: true
 
-  /@supabase/auth-helpers-nextjs@0.8.1(@supabase/supabase-js@2.37.0):
+  /@supabase/auth-helpers-nextjs@0.8.1(@supabase/supabase-js@2.38.0):
     resolution: {integrity: sha512-ZO/UGDE9oaVXwPL4gpzGu2NpPwfKOgxTUnuK6no51So8Ah9BUuUUsTj+BdZlx7jJoZEIAkHWdRIx65WuQgWAiQ==}
     peerDependencies:
       '@supabase/supabase-js': ^2.19.0
     dependencies:
-      '@supabase/auth-helpers-shared': 0.5.0(@supabase/supabase-js@2.37.0)
-      '@supabase/supabase-js': 2.37.0
+      '@supabase/auth-helpers-shared': 0.5.0(@supabase/supabase-js@2.38.0)
+      '@supabase/supabase-js': 2.38.0
       set-cookie-parser: 2.6.0
     dev: false
 
-  /@supabase/auth-helpers-shared@0.5.0(@supabase/supabase-js@2.37.0):
+  /@supabase/auth-helpers-shared@0.5.0(@supabase/supabase-js@2.38.0):
     resolution: {integrity: sha512-kioUeYDBZ89cfqOTZFOLEFIO7kGczL0XJYZdVv/bKt5efXqhiY14NbzgGWiMvvD9o9Iluo0+YEV2tG3ZZ5W06A==}
     peerDependencies:
       '@supabase/supabase-js': ^2.19.0
     dependencies:
-      '@supabase/supabase-js': 2.37.0
+      '@supabase/supabase-js': 2.38.0
       jose: 4.14.6
     dev: false
 
@@ -3249,8 +3258,8 @@ packages:
       '@supabase/node-fetch': 2.6.14
     dev: false
 
-  /@supabase/gotrue-js@2.54.0:
-    resolution: {integrity: sha512-JjtbchtPbpgK0O8NIMIvKLk7HHv0kd23L3UO5a398nczCcBkI0IvmbPtbS4Xs5AUIuJ+JHtV6siOZR1ha5EzQw==}
+  /@supabase/gotrue-js@2.55.0:
+    resolution: {integrity: sha512-wZAP66Lo68iROKo33m8seY30rCeGiR34leMEZ80j9fPm+/ar6h3y43Hb7f9F2STVMwT3Sv+aM+w0yCon5bih4g==}
     dependencies:
       '@supabase/node-fetch': 2.6.14
     dev: false
@@ -3285,11 +3294,11 @@ packages:
       '@supabase/node-fetch': 2.6.14
     dev: false
 
-  /@supabase/supabase-js@2.37.0:
-    resolution: {integrity: sha512-kWXVvGWAkThQodHh3yaSQoNHNDm5bwp+H6f1BfC4tr0k096zzTb3ACMnZLQBS0qOXEEbuAnGxIWUv+RE8GaIhg==}
+  /@supabase/supabase-js@2.38.0:
+    resolution: {integrity: sha512-FSkIcz+/+TTBqNqhR8AdtblxEqCF72//CCkmZFIRCa3Xh/aiI0F4cBdL7AB3aIQn2DhE4aGxZ4mGiGR593096Q==}
     dependencies:
       '@supabase/functions-js': 2.1.5
-      '@supabase/gotrue-js': 2.54.0
+      '@supabase/gotrue-js': 2.55.0
       '@supabase/node-fetch': 2.6.14
       '@supabase/postgrest-js': 1.8.4
       '@supabase/realtime-js': 2.8.0
@@ -8270,6 +8279,14 @@ packages:
     resolution: {integrity: sha512-7EAHlyLHI56VEIdK57uwHdHKIaAGbnXPiw0yWbarQZOKaKpvUIgW0jWRVLiatnM+XXlSwsanIBH/hzGMJulMow==}
     dev: true
 
+  /persist-and-sync@0.1.1(zustand@4.4.3):
+    resolution: {integrity: sha512-58DkYZaN8iIQBEqvH4oe/KrHSTTQWFJqBmIRDG52F5xMn/b+AGsXEaH8YW+JGHpmpo7wFJg0ypbLWemeYw7Rug==}
+    peerDependencies:
+      zustand: ^3 || ^4
+    dependencies:
+      zustand: 4.4.3(@types/react@18.2.22)(react@18.2.0)
+    dev: false
+
   /picocolors@1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
 
@@ -10034,3 +10051,23 @@ packages:
 
   /zod@3.22.2:
     resolution: {integrity: sha512-wvWkphh5WQsJbVk1tbx1l1Ly4yg+XecD+Mq280uBGt9wa5BKSWf4Mhp6GmrkPixhMxmabYY7RbzlwVP32pbGCg==}
+
+  /zustand@4.4.3(@types/react@18.2.22)(react@18.2.0):
+    resolution: {integrity: sha512-oRy+X3ZazZvLfmv6viIaQmtLOMeij1noakIsK/Y47PWYhT8glfXzQ4j0YcP5i0P0qI1A4rIB//SGROGyZhx91A==}
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      '@types/react': '>=16.8'
+      immer: '>=9.0'
+      react: '>=16.8'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      immer:
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      '@types/react': 18.2.22
+      react: 18.2.0
+      use-sync-external-store: 1.2.0(react@18.2.0)
+    dev: false

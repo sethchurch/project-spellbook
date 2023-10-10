@@ -16,7 +16,7 @@ const StatDisplay = ({ statIndex, ...props }: StatDisplayProps) => {
   const statBonus = Math.floor(getValues(fieldName) / 2) - 5;
 
   return (
-    <Pod className="aspect-square max-w-xl" variant="alt" {...props}>
+    <Pod className="aspect-square max-w-fit" variant="alt" {...props}>
       <div className="flex h-full flex-col items-center justify-between gap-3 px-6">
         <div className="flex h-full w-full items-center justify-center">
           <PodInput max={30} min={0} name={fieldName} />

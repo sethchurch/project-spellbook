@@ -1,34 +1,74 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Project Spellbook
+
+Welcome to Project Spellbook, a Next.js and OpenAI-powered Dungeons & Dragons 5th Edition (D&D 5e) character creator! Create unique and powerful characters for your D&D adventures with the help of advanced AI.
+
+## Features
+
+- **AI Character Generation:** Utilize OpenAI's powerful language model to assist you in creating rich and engaging D&D 5e characters.
+
+- **Interactive Interface:** A user-friendly web interface built with Next.js for seamless character creation and customization.
+
+- **Character Templates:** Choose from a variety of pre-made character templates or create entirely custom characters from scratch.
+
+- **Stats and Abilities:** Automatically generate character statistics, abilities, and backstory elements based on your input and preferences.
+
+- **Export and Share:** Export your character sheets in various formats (PDF, JSON) for easy sharing and reference during your D&D sessions.
 
 ## Getting Started
 
-First, run the development server:
+Follow these steps to get started with Project Spellbook:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+1. Clone the repository:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   ```bash
+   git clone https://github.com/sethchurch/project-spellbook.git
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. Install the dependencies:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```bash
+   cd project-spellbook
+   npm install
+   ```
 
-## Learn More
+3. Set up your OpenAI API credentials. You can obtain these credentials by signing up for OpenAI's API.
 
-To learn more about Next.js, take a look at the following resources:
+4. Configure your API credentials in a `.env.local` file:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```env
+   OPENAI_API_KEY=your-api-key-here
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+5. Start the development server:
 
-## Deploy on Vercel
+   ```bash
+   npm run dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+6. Open your web browser and navigate to `http://localhost:3000` to access Project Spellbook.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Contributing
+
+We welcome contributions from the community! Whether it's bug fixes, new features, or improvements to the documentation, we appreciate your help.
+
+- Fork the repository.
+- Create a new branch for your changes: `git checkout -b feature/my-feature`.
+- Make your changes and commit them: `git commit -m 'Add new feature'`.
+- Push your changes to your fork: `git push origin feature/my-feature`.
+- Create a pull request.
+
+Please make sure to follow our [Code of Conduct](CODE_OF_CONDUCT.md) and [Contribution Guidelines](CONTRIBUTING.md).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- We would like to express our gratitude to the creators of Next.js and OpenAI for providing the tools and technologies that make this project possible.
+
+---
+
+Have fun exploring the magical world of D&D with Project Spellbook! If you have any questions or encounter issues, please don't hesitate to open an issue or reach out to us.
+
+Happy character creation and adventuring! 🎲📜🧙‍♂️

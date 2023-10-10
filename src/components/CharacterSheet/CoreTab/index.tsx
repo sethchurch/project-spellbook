@@ -1,29 +1,23 @@
-import { Tab } from '@nextui-org/react';
-
 import { DeathSavesPod, Pod, PodChip, PodInput, PodResource, PodTextarea } from '@/components/CharacterSheet/Pod';
-import { TabList, TabTitle } from '@/components/Elements/TabList';
 import { CheckArrayProvider } from '@/components/Form/CheckArrayProvider';
 import { ControlledCheck } from '@/components/Form/ControlledCheck';
 import { Input } from '@/components/Form/Input';
 import type { Proficiency } from '@/config/CharacterConfig';
 import { characterSkills, savingThrows } from '@/config/CharacterConfig';
-import { characterSheetTitleFields, statNames } from '@/config/dummyData';
 import { camelCase } from '@/utils/camelCase';
 
+import { CoreTabs } from './CoreTabs';
 import { ProficencyList } from './ProficencyList';
 import { StatDisplay } from './StatDisplay';
-import { ActionsTab } from './Tabs/ActionsTab';
-import { FeaturesTab } from './Tabs/FeaturesTab';
-import { ResourcesTab } from './Tabs/ResourcesTab';
 
 const CoreTab = () => {
   return (
     <>
       <div className="h-64 w-full rounded-t-lg bg-gradient-to-r from-violet-700 to-violet-950" />
       <div className="grid grid-cols-1 grid-rows-[1fr_max-content] gap-x-2 gap-y-3 p-2 md:gap-3 md:p-5 lg:grid-cols-[6fr_3fr] xl:grid-cols-[3fr_6fr_3fr]">
-        <Pod className="lg:col-span-2" label="Character Details">
-          <div className="grid grid-cols-2 gap-x-2 gap-y-3 md:grid-cols-3 md:gap-3">
-            {characterSheetTitleFields.map((field) => (
+        <Pod className="xl:col-span-2" label="Character Details">
+          <div className="grid grid-cols-1 gap-x-2 gap-y-3 sm:grid-cols-2 md:grid-cols-3 md:gap-3">
+            {['Name', 'Race', 'Experience', 'Class', 'Background', 'Alignment'].map((field) => (
               <PodInput key={field} label={field} name={field.toLowerCase()} styleVariant="unstyled" />
             ))}
           </div>
@@ -40,10 +34,10 @@ const CoreTab = () => {
           </div>
         </Pod>
         <Pod label="Skills & Saves">
-          <div className="flex w-full flex-col flex-nowrap gap-x-2 gap-y-3 md:gap-3">
+          <div className="flex w-full flex-col flex-nowrap gap-x-2 gap-y-3 sm:flex-row lg:gap-3">
             <div className="flex-stack flex-[2] justify-start">
-              {Array.from(new Array(6)).map((_, index) => (
-                <StatDisplay key={index} label={statNames[index]?.toUpperCase()} statIndex={index} />
+              {['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha'].map((statName, index) => (
+                <StatDisplay key={index} label={statName} statIndex={index} />
               ))}
             </div>
             <div className="flex h-full flex-[4] flex-col gap-x-2 gap-y-3 md:gap-3">
@@ -54,6 +48,7 @@ const CoreTab = () => {
               </Pod>
               <Pod className="flex-[6]" label="Skills" variant="alt">
                 <CheckArrayProvider name="skills.proficent">
+                  {/* TODO: Handle expertise */}
                   <ProficencyList proficencyData={characterSkills as Proficiency[]} />
                 </CheckArrayProvider>
               </Pod>
@@ -62,18 +57,14 @@ const CoreTab = () => {
         </Pod>
         <div className="flex h-full flex-col gap-x-2 gap-y-3 md:gap-3">
           <div className="grid flex-[1] grid-cols-3 gap-x-2 gap-y-3 md:gap-3">
-            <Pod label="AC">
-              <PodInput name="armorClass" />
-            </Pod>
-            <Pod label="Initiative">
-              <PodInput name="initiative" />
-            </Pod>
-            <Pod label="Speed">
-              <PodInput name="speed" />
-            </Pod>
+            {['Armor Class', 'Initiative', 'Speed'].map((x) => (
+              <Pod key={x} label={x}>
+                <PodInput name={camelCase(x)} />
+              </Pod>
+            ))}
           </div>
           <Pod className="flex-[2]">
-            <div className="flex h-full flex-col gap-x-2 gap-y-3 md:gap-3 xl:flex-row">
+            <div className="flex h-full flex-col gap-x-2 gap-y-3 md:flex-row md:gap-3">
               <Pod className="flex-[2]" label="HP" variant="alt">
                 <PodResource name="hitPoints" />
               </Pod>
@@ -86,31 +77,10 @@ const CoreTab = () => {
             </div>
           </Pod>
           <div className="flex w-full flex-[8] flex-col">
-            <TabList defaultTab="resources">
-              <Tab key="actions" title={<TabTitle>Actions</TabTitle>}>
-                <Pod>
-                  <ActionsTab />
-                </Pod>
-              </Tab>
-              <Tab key="resources" title={<TabTitle>Resources</TabTitle>}>
-                <Pod>
-                  <ResourcesTab />
-                </Pod>
-              </Tab>
-              <Tab key="features" title={<TabTitle>Features</TabTitle>}>
-                <Pod>
-                  <FeaturesTab />
-                </Pod>
-              </Tab>
-              <Tab key="notes" title={<TabTitle>Notes</TabTitle>}>
-                <Pod>
-                  <PodTextarea className="h-full" maxRows={64} minRows={24} name="notes" styleVariant="inset" />
-                </Pod>
-              </Tab>
-            </TabList>
+            <CoreTabs />
           </div>
         </div>
-        <div className="flex h-full flex-col gap-x-2 gap-y-3 md:gap-3">
+        <div className="col-span-1 flex h-full flex-col gap-x-2 gap-y-3 md:gap-3 lg:col-span-2 xl:col-span-1">
           <DeathSavesPod className="flex-[1]" />
           {['Personality Traits', 'Ideals', 'Bonds', 'Flaws'].map((x) => (
             <Pod key={x} label={x}>

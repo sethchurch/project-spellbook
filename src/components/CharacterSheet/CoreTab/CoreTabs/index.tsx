@@ -1,4 +1,6 @@
-import { Tab } from '@nextui-org/react';
+'use client';
+
+import { Tab } from '@nextui-org/tabs';
 
 import { TabList, TabTitle } from '@/components/Elements/TabList';
 

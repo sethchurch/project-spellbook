@@ -1,3 +1,5 @@
+'use client';
+
 import type { ChangeEvent, Dispatch, Reducer } from 'react';
 import { Children, createContext, useContext, useMemo, useReducer } from 'react';
 import { useFormContext } from 'react-hook-form';

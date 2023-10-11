@@ -1,5 +1,5 @@
-import type { AccordionProps as NextAccordionProps } from '@nextui-org/react';
-import { Accordion as NextAccordion } from '@nextui-org/react';
+import type { AccordionProps as NextAccordionProps } from '@nextui-org/accordion';
+import { Accordion as NextAccordion } from '@nextui-org/accordion';
 
 const styleVariants = {
   podSplit: {

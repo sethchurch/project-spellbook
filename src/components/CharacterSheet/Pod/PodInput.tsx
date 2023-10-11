@@ -1,3 +1,5 @@
+'use client';
+
 import type { InputProps } from '@nextui-org/input';
 import { Input } from '@nextui-org/input';
 import { Controller, useFormContext } from 'react-hook-form';

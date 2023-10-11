@@ -1,4 +1,6 @@
-import { Chip } from '@nextui-org/react';
+'use client';
+
+import { Chip } from '@nextui-org/chip';
 import { useFormContext } from 'react-hook-form';
 
 import type { PodProps } from '../Pod/Pod';

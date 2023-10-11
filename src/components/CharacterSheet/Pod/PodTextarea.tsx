@@ -1,3 +1,5 @@
+'use client';
+
 import type { TextAreaProps } from '@nextui-org/input';
 import { Textarea } from '@nextui-org/input';
 import { Controller, useFormContext } from 'react-hook-form';

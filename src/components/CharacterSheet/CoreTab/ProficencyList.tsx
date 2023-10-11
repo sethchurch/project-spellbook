@@ -1,5 +1,7 @@
+'use client';
+
+import { Checkbox } from '@nextui-org/checkbox';
 import { Chip } from '@nextui-org/chip';
-import { Checkbox } from '@nextui-org/react';
 import { useFormContext } from 'react-hook-form';
 
 import { useCheckArray } from '@/components/Form/CheckArrayProvider';

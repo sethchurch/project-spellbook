@@ -1,3 +1,5 @@
+'use client';
+
 import type { ChangeEvent, ReactElement } from 'react';
 import { cloneElement } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';

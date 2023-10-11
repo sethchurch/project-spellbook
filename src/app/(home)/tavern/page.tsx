@@ -1,5 +1,3 @@
-'use client';
-
 import { CharacterSheet } from '@/components/CharacterSheet/CharacterSheet';
 
 const Tavern = () => {

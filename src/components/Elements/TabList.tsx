@@ -1,4 +1,6 @@
-import { Tabs } from '@nextui-org/react';
+'use client';
+
+import { Tabs } from '@nextui-org/tabs';
 import { type Key, useState } from 'react';
 
 const TabTitle = ({ children }: { children: React.ReactNode }) => {

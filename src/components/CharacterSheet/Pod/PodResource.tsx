@@ -1,3 +1,5 @@
+'use client';
+
 import { Controller, useFormContext } from 'react-hook-form';
 
 import { Pod } from './Pod';

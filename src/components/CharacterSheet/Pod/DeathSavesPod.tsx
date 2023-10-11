@@ -1,4 +1,6 @@
-import { Checkbox } from '@nextui-org/react';
+'use client';
+
+import { Checkbox } from '@nextui-org/checkbox';
 
 import { Pod } from '@/components/CharacterSheet/Pod/Pod';
 import { PodChip } from '@/components/CharacterSheet/Pod/PodChip';

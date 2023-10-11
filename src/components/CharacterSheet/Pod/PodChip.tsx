@@ -1,3 +1,5 @@
+'use client';
+
 import { Chip } from '@nextui-org/chip';
 
 import { cn } from '@/utils/cn';

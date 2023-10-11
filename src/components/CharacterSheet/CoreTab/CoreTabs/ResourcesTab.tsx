@@ -1,4 +1,7 @@
-import { AccordionItem, Button } from '@nextui-org/react';
+'use client';
+
+import { AccordionItem } from '@nextui-org/accordion';
+import { Button } from '@nextui-org/button';
 import { IconChevronLeft, IconMinus, IconPlus } from '@tabler/icons-react';
 import { useFormContext } from 'react-hook-form';
 

@@ -1,4 +1,6 @@
-import { Checkbox, type CheckboxProps } from '@nextui-org/react';
+'use client';
+
+import { Checkbox, type CheckboxProps } from '@nextui-org/checkbox';
 import { Controller, useFormContext } from 'react-hook-form';
 
 interface ControlledCheckProps extends CheckboxProps {

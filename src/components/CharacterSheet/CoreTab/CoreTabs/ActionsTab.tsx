@@ -1,5 +1,5 @@
+import { AccordionItem } from '@nextui-org/accordion';
 import { Textarea } from '@nextui-org/input';
-import { AccordionItem } from '@nextui-org/react';
 import { IconChevronLeft } from '@tabler/icons-react';
 
 import { Pod } from '@/components/CharacterSheet/Pod';

@@ -11,6 +11,15 @@ dependencies:
   '@next/bundle-analyzer':
     specifier: ^13.5.2
     version: 13.5.2
+  '@nextui-org/accordion':
+    specifier: ^2.0.23
+    version: 2.0.23(framer-motion@10.16.4)(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.3.3)
+  '@nextui-org/button':
+    specifier: ^2.0.21
+    version: 2.0.21(framer-motion@10.16.4)(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.3.3)
+  '@nextui-org/checkbox':
+    specifier: ^2.0.22
+    version: 2.0.22(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.3.3)
   '@nextui-org/chip':
     specifier: ^2.0.21
     version: 2.0.21(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.3.3)
@@ -23,6 +32,9 @@ dependencies:
   '@nextui-org/react':
     specifier: ^2.1.13
     version: 2.1.13(@types/react@18.2.22)(framer-motion@10.16.4)(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.3.3)
+  '@nextui-org/tabs':
+    specifier: ^2.0.21
+    version: 2.0.21(framer-motion@10.16.4)(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.3.3)
   '@supabase/auth-helpers-nextjs':
     specifier: latest
     version: 0.8.1(@supabase/supabase-js@2.38.0)
@@ -86,9 +98,6 @@ dependencies:
   next-themes:
     specifier: ^0.2.1
     version: 0.2.1(next@13.5.3)(react-dom@18.2.0)(react@18.2.0)
-  persist-and-sync:
-    specifier: ^0.1.1
-    version: 0.1.1(zustand@4.4.3)
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -8278,14 +8287,6 @@ packages:
   /performance-now@2.1.0:
     resolution: {integrity: sha512-7EAHlyLHI56VEIdK57uwHdHKIaAGbnXPiw0yWbarQZOKaKpvUIgW0jWRVLiatnM+XXlSwsanIBH/hzGMJulMow==}
     dev: true
-
-  /persist-and-sync@0.1.1(zustand@4.4.3):
-    resolution: {integrity: sha512-58DkYZaN8iIQBEqvH4oe/KrHSTTQWFJqBmIRDG52F5xMn/b+AGsXEaH8YW+JGHpmpo7wFJg0ypbLWemeYw7Rug==}
-    peerDependencies:
-      zustand: ^3 || ^4
-    dependencies:
-      zustand: 4.4.3(@types/react@18.2.22)(react@18.2.0)
-    dev: false
 
   /picocolors@1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}

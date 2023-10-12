@@ -16,9 +16,9 @@ interface Resource {
 }
 
 type ResourceAction = 'increment' | 'decrement';
+const fieldName = 'resources' as const;
 
 const ResourcesTab = () => {
-  const fieldName = 'resources' as const;
   const { getValues, setValue } = useFormContext();
   const resources = getValues(fieldName);
 
@@ -27,7 +27,6 @@ const ResourcesTab = () => {
     const { current, max } = resource;
     const increment = action === 'increment' ? 1 : -1;
     const newValue = Math.min(Math.max(+current + increment, 0), max);
-
     setValue(`${fieldName}[${index}].current`, newValue.toString());
   };
 

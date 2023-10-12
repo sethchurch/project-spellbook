@@ -1,3 +1,5 @@
+'use client';
+
 import { useAppShell } from '@/components/Layout/AppShell';
 
 interface SidenavProps {

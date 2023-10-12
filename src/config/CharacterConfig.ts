@@ -41,6 +41,14 @@ const savingThrows = [
   { name: 'charisma', stat: 'cha' },
 ];
 
+type Attack = {
+  name: string;
+  bonus: number;
+  damage: string;
+  damageType: string;
+  description: string;
+};
+
 type Character = {
   name: string;
   race: string;
@@ -58,7 +66,7 @@ type Character = {
   hitPoints: { current: number; max: number; temporary: number };
   hitDice: { current: string; max: string };
   deathSaves: { successes: number; failures: number };
-  attacks: { name: string; bonus: number; damage: string; damageType: string; description: string }[];
+  attacks: Attack[];
   resources: { name: string; current: number; max: number; source: string }[];
   features: { name: string; description: string; source: string }[];
   senses: { name: string; description: string; source: string }[];
@@ -68,4 +76,4 @@ type Character = {
 };
 
 export { characterSkills, savingThrows, skillLookup, statLongNameLookup };
-export type { Character, Proficiency, SkillLookup, Stat };
+export type { Attack, Character, Proficiency, SkillLookup, Stat };

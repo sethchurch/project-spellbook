@@ -1,7 +1,5 @@
-import { CharacterSheet } from '@/components/CharacterSheet/CharacterSheet';
-
 const Tavern = () => {
-  return <CharacterSheet />;
+  return <div>Tavern</div>;
 };
 
 export default Tavern;

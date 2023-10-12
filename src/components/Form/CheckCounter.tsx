@@ -29,7 +29,6 @@ const CheckCounter = ({ CheckComponent, max, name }: CheckCounterProps) => {
         render={({ field: { value, ...field } }) =>
           cloneElement(CheckComponent, {
             ...field,
-            key: index,
             isSelected: index < value,
             checked: index < value,
             onChange,

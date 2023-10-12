@@ -13,8 +13,9 @@ interface Feature {
   source: string;
 }
 
+const fieldName = 'features' as const;
+
 const FeaturesTab = () => {
-  const fieldName = 'features' as const;
   const { getValues } = useFormContext();
   const features = getValues(fieldName);
 

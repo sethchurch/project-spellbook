@@ -6,7 +6,7 @@ import type { Character } from '@/config/CharacterConfig';
 interface CharacterState {
   characters: Character[];
   addCharacter: (character: Character) => void;
-  updateCharacter: (character: Character) => void;
+  updateCharacter: (character: Character, characterId: number) => void;
 }
 
 const useCharacterStore = create<CharacterState>()(
@@ -14,9 +14,9 @@ const useCharacterStore = create<CharacterState>()(
     (set) => ({
       characters: [],
       addCharacter: (character: Character) => set((state) => ({ characters: [...state.characters, character] })),
-      updateCharacter: (character: Character) => {
+      updateCharacter: (character: Character, characterId: number) => {
         return set((state) => ({
-          characters: [...state.characters.filter((char) => char.name !== character.name), character],
+          characters: state.characters.map((x, i) => (i === characterId ? character : x)),
         }));
       },
     }),

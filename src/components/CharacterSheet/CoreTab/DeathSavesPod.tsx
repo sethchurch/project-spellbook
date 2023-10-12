@@ -1,5 +1,3 @@
-'use client';
-
 import { Checkbox } from '@nextui-org/checkbox';
 
 import { Pod } from '@/components/CharacterSheet/Pod/Pod';

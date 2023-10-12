@@ -1,14 +1,20 @@
+'use client';
+
 import { AccordionItem } from '@nextui-org/accordion';
 import { Textarea } from '@nextui-org/input';
 import { IconChevronLeft } from '@tabler/icons-react';
+import { useFormContext } from 'react-hook-form';
 
 import { Pod } from '@/components/CharacterSheet/Pod';
 import { Accordion } from '@/components/Elements/Accordion';
-import { character } from '@/config/dummyData';
+import type { Attack } from '@/config/CharacterConfig';
 
-const { attacks } = character;
+const fieldName = 'attacks' as const;
 
 const ActionsTab = () => {
+  const { getValues } = useFormContext();
+  const attacks = getValues(fieldName) as Attack[];
+
   return (
     <Accordion styleVariant="podSplit">
       {attacks.map(({ name, bonus = 0, damage, damageType, description }) => (

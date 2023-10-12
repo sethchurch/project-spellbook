@@ -23,7 +23,9 @@ const StatDisplay = ({ statIndex, ...props }: StatDisplayProps) => {
         <div className="flex h-full w-full items-center justify-center">
           <PodInput max={30} min={0} name={fieldName} />
         </div>
-        <Chip className="px-4" variant="faded">{`${statBonus >= 0 ? '+' : ''}${statBonus}`}</Chip>
+        <Chip className="px-4" variant="faded">
+          <p>{`${statBonus >= 0 ? '+' : ''}${statBonus}`}</p>
+        </Chip>
       </div>
     </Pod>
   );

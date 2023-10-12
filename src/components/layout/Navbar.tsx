@@ -1,5 +1,6 @@
 import { Button } from '@nextui-org/button';
 import { Input } from '@nextui-org/input';
+import Link from 'next/link';
 
 import { ToggleThemeButton } from '@/components/Elements/ToggleThemeButton';
 
@@ -9,11 +10,18 @@ import { SideNavTrigger } from './SideNavTrigger';
 const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 col-span-2 m-0 grid h-16 w-full grid-cols-[1fr_3fr_1fr] items-center border border-none bg-default-200 px-3 shadow-sm dark:bg-zinc-900">
-      <SideNavTrigger>
-        <Button isIconOnly>
-          <Icon icon="menu" />
-        </Button>
-      </SideNavTrigger>
+      <div className="flex gap-3">
+        <SideNavTrigger>
+          <Button isIconOnly>
+            <Icon icon="menu" />
+          </Button>
+        </SideNavTrigger>
+        <Link href="/tavern">
+          <Button isIconOnly>
+            <Icon icon="home" />
+          </Button>
+        </Link>
+      </div>
       <Input isClearable />
       <ToggleThemeButton />
     </nav>

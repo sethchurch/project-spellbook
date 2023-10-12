@@ -41,7 +41,7 @@ const Pod = ({ isCompact, children, variant, className, label }: PodProps) => {
       {label && <PodLabel className="rounded-t-lg" label={label} />}
       {children && (
         <div className={cn('h-full w-full', isCompactClass)}>
-          {mounted ? children : <Skeleton className="h-full w-full p-12" />}
+          {mounted ? children : <Skeleton className="h-full w-full p-8" />}
         </div>
       )}
     </div>

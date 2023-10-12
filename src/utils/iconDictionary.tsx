@@ -1,4 +1,4 @@
-import { IconChevronLeft, IconMenu2, IconMoon, IconPlus, IconSun, IconWand } from '@tabler/icons-react';
+import { IconChevronLeft, IconHome, IconMenu2, IconMoon, IconPlus, IconSun, IconWand } from '@tabler/icons-react';
 
 interface IconDictionary {
   [key: string]: React.FC;
@@ -11,6 +11,7 @@ const iconDictionary: IconDictionary = {
   moon: IconMoon,
   menu: IconMenu2,
   wand: IconWand,
+  home: IconHome,
 };
 
 export { iconDictionary };

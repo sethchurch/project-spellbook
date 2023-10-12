@@ -9,26 +9,25 @@ import { useCharacterStore } from '@/hooks/useCharacterStore';
 
 interface CharacterSheetProviderProps {
   children?: React.ReactNode;
-  characterIndex: number;
+  characterId: number;
 }
 
-const CharacterSheetProvider = ({ children, characterIndex }: CharacterSheetProviderProps) => {
-  const [character, updateCharacter] = useCharacterStore((state) => [
-    state.characters[characterIndex],
-    state.updateCharacter,
-  ]);
-  const formMethods = useForm({ defaultValues: character });
+const CharacterSheetProvider = ({ children, characterId }: CharacterSheetProviderProps) => {
+  const { character, updateCharacter } = useCharacterStore((state) => {
+    return { character: state.characters[characterId], updateCharacter: state.updateCharacter };
+  });
 
+  const formMethods = useForm({ defaultValues: character });
   const previousCharacterRef = useRef<Character | null>(character ?? null);
   const currentCharacterData = formMethods.watch();
 
   useEffect(() => {
     if (!character) return;
     if (!isEqual(previousCharacterRef.current, currentCharacterData)) {
-      updateCharacter(currentCharacterData, characterIndex);
+      updateCharacter(currentCharacterData, characterId);
       previousCharacterRef.current = cloneDeep(currentCharacterData);
     }
-  }, [character, characterIndex, currentCharacterData, updateCharacter]);
+  }, [character, characterId, currentCharacterData, updateCharacter]);
 
   return <FormProvider {...formMethods}>{children}</FormProvider>;
 };

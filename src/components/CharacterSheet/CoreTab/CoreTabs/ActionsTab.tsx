@@ -21,7 +21,7 @@ const ActionsTab = () => {
         <AccordionItem
           key={name}
           classNames={{
-            base: 'p-0 group-[.is-splitted]:px-2',
+            base: 'p-0 group-[.is-splitted]:px-2 group-[.is-splitted]:shadow-none',
           }}
           indicator={<IconChevronLeft />}
           textValue={name}

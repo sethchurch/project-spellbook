@@ -17,16 +17,16 @@ const ActionsTab = () => {
 
   return (
     <Accordion styleVariant="podSplit">
-      {attacks.map(({ name, bonus = 0, damage, damageType }, index) => (
-        <AccordionItem
-          key={index}
-          classNames={{
-            base: 'p-0 group-[.is-splitted]:px-2 group-[.is-splitted]:shadow-none',
-          }}
-          indicator={<IconChevronLeft />}
-          textValue={name}
-          title={
-            <div>
+      {attacks.map(({ name, bonus = 0, damage, damageType }, index) => {
+        const parentName = `${fieldName}[${index}]`;
+
+        return (
+          <AccordionItem
+            key={index}
+            classNames={{ base: 'p-0 group-[.is-splitted]:px-2 group-[.is-splitted]:shadow-none' }}
+            indicator={<IconChevronLeft />}
+            textValue={name}
+            title={
               <div className="grid w-full grid-cols-[5fr_2fr_5fr] gap-2">
                 <Pod isCompact className="truncate">
                   {name}
@@ -38,21 +38,20 @@ const ActionsTab = () => {
                   {damage} {damageType}
                 </Pod>
               </div>
+            }
+          >
+            <div className="flex-stack">
+              <PodInput label="Name" name={`${parentName}.name`} styleVariant="unstyled" />
+              <PodInput label="Bonus" name={`${parentName}.bonus`} styleVariant="unstyled" />
+              <div className="flex gap-3">
+                <PodInput label="Damage" name={`${parentName}.damage`} styleVariant="unstyled" />
+                <PodInput label="Damage Type" name={`${parentName}.damageType`} styleVariant="unstyled" />
+              </div>
+              <PodTextarea label="Description" name={`${parentName}.description`} styleVariant="unstyled" />
             </div>
-          }
-        >
-          <div className="flex-stack">
-            <PodInput label="Name" name={`${fieldName}[${index}].name`} styleVariant="unstyled" />
-            <PodInput label="Bonus" name={`${fieldName}[${index}].bonus`} styleVariant="unstyled" />
-            <div className="flex gap-3">
-              <PodInput label="Damage" name={`${fieldName}[${index}].damage`} styleVariant="unstyled" />
-              <PodInput label="Damage Type" name={`${fieldName}[${index}].damageType`} styleVariant="unstyled" />
-            </div>
-
-            <PodTextarea label="Description" name={`${fieldName}[${index}].description`} styleVariant="unstyled" />
-          </div>
-        </AccordionItem>
-      ))}
+          </AccordionItem>
+        );
+      })}
     </Accordion>
   );
 };

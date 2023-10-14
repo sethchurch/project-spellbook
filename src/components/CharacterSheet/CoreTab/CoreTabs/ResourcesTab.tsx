@@ -30,44 +30,44 @@ const ResourcesTab = () => {
     setValue(`${fieldName}[${index}].current`, newValue.toString());
   };
 
+  const getDangerColor = (current: number, target: number) => {
+    return current === target ? 'danger' : 'default';
+  };
+
   return (
     <Accordion styleVariant="podSplit">
-      {resources.map(({ name, source, current, max }, index: number) => (
-        <AccordionItem
-          key={index}
-          indicator={<IconChevronLeft />}
-          textValue={name}
-          title={
-            <div className="grid grid-cols-1 grid-rows-2 truncate md:grid-cols-[2fr_1fr] md:grid-rows-1">
-              <p className="truncate px-1">{name}</p>
-              <PodChip className="md:w-min md:justify-self-end">{source}</PodChip>
+      {resources.map(({ name, source, current, max }, index: number) => {
+        const parentName = `${fieldName}[${index}]`;
+        const decrement = () => handleResourceButtonClick(index, 'decrement');
+        const increment = () => handleResourceButtonClick(index, 'increment');
+
+        return (
+          <AccordionItem
+            key={index}
+            indicator={<IconChevronLeft />}
+            textValue={name}
+            title={
+              <div className="grid grid-cols-1 grid-rows-2 truncate md:grid-cols-[2fr_1fr] md:grid-rows-1">
+                <p className="truncate px-1">{name}</p>
+                <PodChip className="md:w-min md:justify-self-end">{source}</PodChip>
+              </div>
+            }
+          >
+            <div className="grid w-full grid-cols-1 gap-3 md:grid-cols-2">
+              <PodInput label="Name" name={`${parentName}.name`} styleVariant="unstyled" />
+              <PodInput label="Source" name={`${parentName}.source`} styleVariant="unstyled" />
+              <PodInput label="Current" name={`${parentName}.current`} styleVariant="centered" type="number" />
+              <PodInput label="Max" name={`${parentName}.max`} styleVariant="centered" type="number" />
+              <Button className="h-full p-3" color={getDangerColor(+current, 0)} variant="flat" onClick={decrement}>
+                <IconMinus size={24} />
+              </Button>
+              <Button className="h-full p-3" color={getDangerColor(+current, +max)} variant="flat" onClick={increment}>
+                <IconPlus size={24} />
+              </Button>
             </div>
-          }
-        >
-          <div className="grid w-full grid-cols-1 gap-3 md:grid-cols-2">
-            <PodInput label="Name" name={`${fieldName}[${index}].name`} styleVariant="unstyled" />
-            <PodInput label="Source" name={`${fieldName}[${index}].source`} styleVariant="unstyled" />
-            <PodInput label="Current" name={`${fieldName}[${index}].current`} styleVariant="centered" type="number" />
-            <PodInput label="Max" name={`${fieldName}[${index}].max`} styleVariant="centered" type="number" />
-            <Button
-              className="h-full p-3"
-              color={+current === 0 ? 'danger' : 'default'}
-              variant="flat"
-              onClick={() => handleResourceButtonClick(index, 'decrement')}
-            >
-              <IconMinus size={24} />
-            </Button>
-            <Button
-              className="h-full p-3"
-              color={+current === +max ? 'danger' : 'default'}
-              variant="flat"
-              onClick={() => handleResourceButtonClick(index, 'increment')}
-            >
-              <IconPlus size={24} />
-            </Button>
-          </div>
-        </AccordionItem>
-      ))}
+          </AccordionItem>
+        );
+      })}
     </Accordion>
   );
 };

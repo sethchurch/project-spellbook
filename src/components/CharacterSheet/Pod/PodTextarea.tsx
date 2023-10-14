@@ -33,7 +33,7 @@ const PodTextarea = ({ name, placeholder, styleVariant, ...props }: PodTextareaP
         <Textarea
           classNames={styleVariants[styleVariant ?? 'default']}
           placeholder={placeholder || loremIpsum.repeat(5)}
-          radius="lg"
+          radius="md"
           {...props}
           {...field}
         />

@@ -1,11 +1,10 @@
 'use client';
 
 import { AccordionItem } from '@nextui-org/accordion';
-import { Textarea } from '@nextui-org/input';
 import { IconChevronLeft } from '@tabler/icons-react';
 import { useFormContext } from 'react-hook-form';
 
-import { Pod } from '@/components/CharacterSheet/Pod';
+import { Pod, PodTextarea } from '@/components/CharacterSheet/Pod';
 import { Accordion } from '@/components/Elements/Accordion';
 import type { Attack } from '@/config/CharacterConfig';
 
@@ -17,7 +16,7 @@ const ActionsTab = () => {
 
   return (
     <Accordion styleVariant="podSplit">
-      {attacks.map(({ name, bonus = 0, damage, damageType, description }) => (
+      {attacks.map(({ name, bonus = 0, damage, damageType }, index) => (
         <AccordionItem
           key={name}
           classNames={{
@@ -41,7 +40,7 @@ const ActionsTab = () => {
             </div>
           }
         >
-          <Textarea value={description} />
+          <PodTextarea name={`${fieldName}[${index}].description`} styleVariant="unstyled" />
         </AccordionItem>
       ))}
     </Accordion>

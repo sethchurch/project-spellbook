@@ -11,7 +11,7 @@ interface DeathSavesPodProps {
 const DeathSavesPod = ({ className }: DeathSavesPodProps) => {
   return (
     <Pod className={className} label="Death Saves">
-      <div className="flex h-full flex-col justify-around gap-x-2 gap-y-3 pb-3 md:gap-3">
+      <div className="flex h-full flex-col justify-around gap-x-2 gap-y-3 py-3 md:gap-3">
         <PodChip
           startContent={
             <CheckCounter

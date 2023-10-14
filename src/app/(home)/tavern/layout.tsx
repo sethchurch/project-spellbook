@@ -5,7 +5,7 @@ interface TavernLayoutProps {
 }
 
 const TavernLayout = ({ children }: TavernLayoutProps) => {
-  return <div>{children}</div>;
+  return children;
 };
 
 export default TavernLayout;

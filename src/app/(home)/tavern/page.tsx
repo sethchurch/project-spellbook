@@ -1,12 +1,7 @@
 import { CharacterList } from './CharacterList';
 
 const Tavern = () => {
-  return (
-    <div>
-      <br />
-      <CharacterList />
-    </div>
-  );
+  return <CharacterList />;
 };
 
 export default Tavern;

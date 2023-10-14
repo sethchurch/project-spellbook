@@ -6,7 +6,7 @@ const styleVariants = {
     title: 'py-0',
     base: 'group-[.is-splitted]:shadow-none',
     titleWrapper: 'p-0',
-    content: 'py-3',
+    content: 'pb-2 pt-0',
   },
 };
 

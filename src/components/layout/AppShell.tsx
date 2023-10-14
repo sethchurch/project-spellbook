@@ -34,7 +34,7 @@ const AppShell = ({ children }: AppShellProps) => {
 
   return (
     <NavContext.Provider value={value}>
-      <div className="flex flex-col">{children}</div>
+      <div className="flex h-full flex-col">{children}</div>
     </NavContext.Provider>
   );
 };

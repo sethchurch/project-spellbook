@@ -1,6 +1,6 @@
 'use client';
 
-import { cloneDeep, isEqual } from 'lodash';
+import { cloneDeep, debounce, isEqual } from 'lodash';
 import { useEffect, useRef } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
@@ -20,14 +20,15 @@ const CharacterSheetProvider = ({ children, characterId }: CharacterSheetProvide
   const formMethods = useForm({ defaultValues: character });
   const previousCharacterRef = useRef<Character | null>(character ?? null);
   const currentCharacterData = formMethods.watch();
+  const debouncedUpdateCharacter = useRef(debounce(updateCharacter, 1000)).current;
 
   useEffect(() => {
     if (!character) return;
     if (!isEqual(previousCharacterRef.current, currentCharacterData)) {
-      updateCharacter(currentCharacterData, characterId);
+      debouncedUpdateCharacter(currentCharacterData, characterId);
       previousCharacterRef.current = cloneDeep(currentCharacterData);
     }
-  }, [character, characterId, currentCharacterData, updateCharacter]);
+  }, [character, characterId, currentCharacterData, debouncedUpdateCharacter]);
 
   return <FormProvider {...formMethods}>{children}</FormProvider>;
 };

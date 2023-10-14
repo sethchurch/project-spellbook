@@ -33,15 +33,15 @@ const PodLabel = ({ label, className }: { label: string; className?: string }) =
 
 const Pod = ({ isCompact, children, variant, className, label }: PodProps) => {
   const variantClass = variants[variant ?? 'default'];
-  const isCompactClass = isCompact ? 'p-2 md:p-3 truncate' : 'p-3 md:p-4';
+  const isCompactClass = isCompact ? 'p-2 truncate' : 'p-3';
   const mounted = useMounted();
 
   return (
-    <div className={cn('rounded-lg flex flex-col justify-between', variantClass, className)}>
+    <div className={cn('rounded-lg flex flex-col justify-between shadow-sm', variantClass, className)}>
       {label && <PodLabel className="rounded-t-lg" label={label} />}
       {children && (
         <div className={cn('h-full w-full', isCompactClass)}>
-          {mounted ? children : <Skeleton className="h-full w-full p-8" />}
+          {mounted ? children : <Skeleton className="h-full w-full p-16" />}
         </div>
       )}
     </div>

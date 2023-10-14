@@ -15,7 +15,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
   return (
     <AppShell>
       <Navbar />
-      <main>
+      <main className="flex">
         <Sidenav>
           <div className="flex-stack">
             <Input
@@ -38,7 +38,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
             <CharacterNavSkeleton />
           </div>
         </Sidenav>
-        {children}
+        <div className="grow">{children}</div>
       </main>
     </AppShell>
   );

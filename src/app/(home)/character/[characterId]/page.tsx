@@ -7,9 +7,9 @@ interface CharacterPageProps {
   };
 }
 
-const CharacterPage = ({ params }: CharacterPageProps) => {
+const CharacterPage = ({ params: { characterId } }: CharacterPageProps) => {
   return (
-    <CharacterSheetProvider characterId={Number(params.characterId)}>
+    <CharacterSheetProvider characterId={Number(characterId)}>
       <CharacterSheet />
     </CharacterSheetProvider>
   );

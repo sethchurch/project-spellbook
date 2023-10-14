@@ -40,6 +40,7 @@ const PodInput = ({ name, styleVariant, ...props }: PodInputProps) => {
         return (
           <Input
             classNames={styleVariants[styleVariant ?? 'default']}
+            radius="sm"
             {...props}
             {...field}
             ref={null}

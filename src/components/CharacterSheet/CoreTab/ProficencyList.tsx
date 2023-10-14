@@ -6,6 +6,7 @@ import { useFormContext } from 'react-hook-form';
 
 import { useCheckArray } from '@/components/Form/CheckArrayProvider';
 import type { Proficiency } from '@/config/CharacterConfig';
+import { bonusify } from '@/utils/bonusify';
 import { capitalize } from '@/utils/capitalize';
 
 import { PodChip } from '../Pod/PodChip';
@@ -38,7 +39,7 @@ const ProficencyList = ({ proficencyData }: ProficencyListProps) => {
               startContent={
                 <>
                   <Chip className="-ml-1 mr-1 min-w-unit-12 text-center" radius="md">
-                    {bonus >= 0 ? `+${bonus}` : bonus}
+                    {bonusify(bonus)}
                   </Chip>
                   <Checkbox
                     className="-ml-1 -mr-2"

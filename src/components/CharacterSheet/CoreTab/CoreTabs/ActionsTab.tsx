@@ -4,21 +4,22 @@ import { AccordionItem } from '@nextui-org/accordion';
 import { IconChevronLeft } from '@tabler/icons-react';
 import { useFormContext } from 'react-hook-form';
 
-import { Pod, PodTextarea } from '@/components/CharacterSheet/Pod';
+import { Pod, PodInput, PodTextarea } from '@/components/CharacterSheet/Pod';
 import { Accordion } from '@/components/Elements/Accordion';
 import type { Attack } from '@/config/CharacterConfig';
+import { bonusify } from '@/utils/bonusify';
 
 const fieldName = 'attacks' as const;
 
 const ActionsTab = () => {
   const { getValues } = useFormContext();
-  const attacks = getValues(fieldName) as Attack[];
+  const attacks: Attack[] = getValues(fieldName);
 
   return (
     <Accordion styleVariant="podSplit">
       {attacks.map(({ name, bonus = 0, damage, damageType }, index) => (
         <AccordionItem
-          key={name}
+          key={index}
           classNames={{
             base: 'p-0 group-[.is-splitted]:px-2 group-[.is-splitted]:shadow-none',
           }}
@@ -31,7 +32,7 @@ const ActionsTab = () => {
                   {name}
                 </Pod>
                 <Pod isCompact className="text-center">
-                  {bonus > 0 ? `+${bonus}` : bonus.toString()}
+                  {bonusify(bonus)}
                 </Pod>
                 <Pod isCompact className="truncate">
                   {damage} {damageType}
@@ -40,7 +41,16 @@ const ActionsTab = () => {
             </div>
           }
         >
-          <PodTextarea name={`${fieldName}[${index}].description`} styleVariant="unstyled" />
+          <div className="flex-stack">
+            <PodInput label="Name" name={`${fieldName}[${index}].name`} styleVariant="unstyled" />
+            <PodInput label="Bonus" name={`${fieldName}[${index}].bonus`} styleVariant="unstyled" />
+            <div className="flex gap-3">
+              <PodInput label="Damage" name={`${fieldName}[${index}].damage`} styleVariant="unstyled" />
+              <PodInput label="Damage Type" name={`${fieldName}[${index}].damageType`} styleVariant="unstyled" />
+            </div>
+
+            <PodTextarea label="Description" name={`${fieldName}[${index}].description`} styleVariant="unstyled" />
+          </div>
         </AccordionItem>
       ))}
     </Accordion>

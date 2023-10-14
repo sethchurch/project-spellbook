@@ -34,7 +34,7 @@ const Tabs: ComponentTab[] = [
   {
     key: 'notes',
     title: <TabTitle>Notes</TabTitle>,
-    content: <PodTextarea className="h-full" maxRows={64} minRows={24} name="notes" styleVariant="inset" />,
+    content: <PodTextarea maxRows={64} minRows={24} name="notes" radius="sm" />,
   },
 ];
 

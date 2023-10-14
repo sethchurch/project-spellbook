@@ -1,10 +1,8 @@
 'use client';
 
 import type { ChangeEvent, Dispatch, Reducer } from 'react';
-import { Children, createContext, useContext, useEffect, useMemo, useReducer } from 'react';
+import { Children, createContext, useCallback, useContext, useMemo, useReducer } from 'react';
 import { useFormContext } from 'react-hook-form';
-
-import { usePrevious } from '@/hooks/usePrevious';
 
 interface CheckArrayProviderProps {
   children?: React.ReactNode;
@@ -52,14 +50,20 @@ const CheckArrayProvider = ({ children, name }: CheckArrayProviderProps) => {
   const { getValues, setValue } = useFormContext();
   const formValue: any[] = getValues(name);
   const [value, dispatch] = useReducer(checkArrayReducer, formValue);
-  const providerValue: [any[], Dispatch<CheckArrayAction>] = useMemo(() => [value, dispatch], [value]);
 
-  const previousFormValue = usePrevious(formValue);
-  useEffect(() => {
-    if (previousFormValue !== formValue) {
-      setValue(name, value);
-    }
-  }, [formValue, name, previousFormValue, setValue, value]);
+  const updateFormBeforeDispatch = useCallback(
+    (action: CheckArrayAction) => {
+      const newValue = checkArrayReducer(value, action);
+      setValue(name, newValue);
+      return dispatch(action);
+    },
+    [name, setValue, value],
+  );
+
+  const providerValue: [any[], Dispatch<CheckArrayAction>] = useMemo(
+    () => [value, updateFormBeforeDispatch],
+    [updateFormBeforeDispatch, value],
+  );
 
   return (
     <CheckArrayContext.Provider value={providerValue}>

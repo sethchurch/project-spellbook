@@ -3,9 +3,11 @@
 import { Chip } from '@nextui-org/chip';
 import { useFormContext } from 'react-hook-form';
 
-import type { PodProps } from '../Pod/Pod';
-import { Pod } from '../Pod/Pod';
-import { PodInput } from '../Pod/PodInput';
+import { bonusify } from '@/utils/bonusify';
+
+import type { PodProps } from './Pod/Pod';
+import { Pod } from './Pod/Pod';
+import { PodInput } from './Pod/PodInput';
 
 interface StatDisplayProps extends PodProps {
   statIndex: number;
@@ -24,7 +26,7 @@ const StatDisplay = ({ statIndex, ...props }: StatDisplayProps) => {
           <PodInput max={30} min={0} name={fieldName} />
         </div>
         <Chip className="px-4" variant="faded">
-          <p>{`${statBonus >= 0 ? '+' : ''}${statBonus}`}</p>
+          <p>{bonusify(statBonus)}</p>
         </Chip>
       </div>
     </Pod>

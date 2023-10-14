@@ -4,7 +4,7 @@ import type { Proficiency } from '@/config/CharacterConfig';
 import { characterSkills, savingThrows } from '@/config/CharacterConfig';
 
 import { ProficencyList } from './ProficencyList';
-import { StatDisplay } from './StatDisplay';
+import { StatDisplay } from '../StatDisplay';
 
 const ProficienciesPod = () => {
   return (

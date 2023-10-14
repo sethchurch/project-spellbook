@@ -20,10 +20,10 @@ const fieldName = 'resources' as const;
 
 const ResourcesTab = () => {
   const { getValues, setValue } = useFormContext();
-  const resources = getValues(fieldName);
+  const resources: Resource[] = getValues(fieldName);
 
   const handleResourceButtonClick = (index: number, action: ResourceAction) => {
-    const resource = resources[index];
+    const resource = resources[index] as Resource;
     const { current, max } = resource;
     const increment = action === 'increment' ? 1 : -1;
     const newValue = Math.min(Math.max(+current + increment, 0), max);
@@ -32,15 +32,15 @@ const ResourcesTab = () => {
 
   return (
     <Accordion styleVariant="podSplit">
-      {resources.map((resource: Resource, index: number) => (
+      {resources.map(({ name, source, current, max }, index: number) => (
         <AccordionItem
           key={index}
           indicator={<IconChevronLeft />}
-          textValue={resource.name}
+          textValue={name}
           title={
             <div className="grid grid-cols-1 grid-rows-2 truncate md:grid-cols-[2fr_1fr] md:grid-rows-1">
-              <p className="truncate px-1">{resource.name}</p>
-              <PodChip className="md:w-min md:justify-self-end">{resource.source}</PodChip>
+              <p className="truncate px-1">{name}</p>
+              <PodChip className="md:w-min md:justify-self-end">{source}</PodChip>
             </div>
           }
         >
@@ -51,7 +51,7 @@ const ResourcesTab = () => {
             <PodInput label="Max" name={`${fieldName}[${index}].max`} styleVariant="centered" type="number" />
             <Button
               className="h-full p-3"
-              color={+resource.current === 0 ? 'danger' : 'default'}
+              color={+current === 0 ? 'danger' : 'default'}
               variant="flat"
               onClick={() => handleResourceButtonClick(index, 'decrement')}
             >
@@ -59,7 +59,7 @@ const ResourcesTab = () => {
             </Button>
             <Button
               className="h-full p-3"
-              color={+resource.current === +resource.max ? 'danger' : 'default'}
+              color={+current === +max ? 'danger' : 'default'}
               variant="flat"
               onClick={() => handleResourceButtonClick(index, 'increment')}
             >

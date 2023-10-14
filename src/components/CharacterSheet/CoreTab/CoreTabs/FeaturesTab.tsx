@@ -17,19 +17,19 @@ const fieldName = 'features' as const;
 
 const FeaturesTab = () => {
   const { getValues } = useFormContext();
-  const features = getValues(fieldName);
+  const features: Feature[] = getValues(fieldName);
 
   return (
     <Accordion styleVariant="podSplit">
-      {features.map((feature: Feature, index: number) => (
+      {features.map(({ name, source }, index: number) => (
         <AccordionItem
           key={index}
           indicator={<IconChevronLeft />}
-          textValue={feature.name}
+          textValue={name}
           title={
             <div className="grid grid-cols-1 grid-rows-2 truncate md:grid-cols-[2fr_1fr] md:grid-rows-1">
-              <p className="truncate px-1">{feature.name}</p>
-              <PodChip className="md:w-min md:justify-self-end">{feature.source}</PodChip>
+              <p className="truncate px-1">{name}</p>
+              <PodChip className="md:w-min md:justify-self-end">{source}</PodChip>
             </div>
           }
         >

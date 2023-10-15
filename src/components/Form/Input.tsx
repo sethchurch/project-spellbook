@@ -1,6 +1,7 @@
 'use client';
 
 import type { InputProps as NextInputProps } from '@nextui-org/input';
+import { Input as NextInput } from '@nextui-org/input';
 import { Controller, useFormContext } from 'react-hook-form';
 
 const styleVariants = {
@@ -10,7 +11,7 @@ const styleVariants = {
     inputWrapper: 'border-none after:h-0 p-0 shadow-none h-full bg-transparent gap-0',
     input: `m-0 p-0 text-center h-full text-[2.5rem]`,
   },
-  unstyled: {
+  basic: {
     base: 'h-full',
   },
   centered: {
@@ -37,7 +38,16 @@ const Input = ({ name, styleVariant, watchFlag, ...props }: InputProps) => {
       control={control}
       name={name || 'name'}
       render={({ field }) => {
-        return <Input classNames={styleVariants[styleVariant ?? 'default']} radius="sm" {...props} {...field} />;
+        return (
+          <NextInput
+            classNames={styleVariants[styleVariant ?? 'default']}
+            radius="sm"
+            {...props}
+            {...field}
+            ref={null}
+            value={watchFlag ? watch(name || 'name') : field.value}
+          />
+        );
       }}
     />
   );

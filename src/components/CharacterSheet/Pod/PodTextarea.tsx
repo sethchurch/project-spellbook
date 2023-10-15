@@ -15,7 +15,7 @@ const styleVariants = {
   inset: {
     input: 'px-3 py-5 rounded-lg',
   },
-  unstyled: {},
+  basic: {},
 };
 
 interface PodTextareaProps extends TextAreaProps {

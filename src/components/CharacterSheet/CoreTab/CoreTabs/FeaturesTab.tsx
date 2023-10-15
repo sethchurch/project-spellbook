@@ -1,10 +1,10 @@
 'use client';
 
 import { AccordionItem } from '@nextui-org/accordion';
-import { IconChevronLeft } from '@tabler/icons-react';
 import { useFormContext } from 'react-hook-form';
 
-import { PodChip, PodInput, PodTextarea } from '@/components/CharacterSheet/Pod';
+import { PodChip, PodTextarea } from '@/components/CharacterSheet/Pod';
+import { Input } from '@/components/Form/Input';
 import { Accordion } from '@/components/Elements/Accordion';
 
 interface Feature {
@@ -26,7 +26,6 @@ const FeaturesTab = () => {
         return (
           <AccordionItem
             key={index}
-            indicator={<IconChevronLeft />}
             textValue={name}
             title={
               <div className="grid grid-cols-1 grid-rows-2 truncate md:grid-cols-[2fr_1fr] md:grid-rows-1">
@@ -36,13 +35,13 @@ const FeaturesTab = () => {
             }
           >
             <div className="grid w-full grid-cols-1 gap-3 md:grid-cols-2">
-              <PodInput label="Name" name={`${parentName}.name]`} styleVariant="unstyled" />
-              <PodInput label="Source" name={`${parentName}.source]`} styleVariant="unstyled" />
+              <Input label="Name" name={`${parentName}.name]`} styleVariant="basic" />
+              <Input label="Source" name={`${parentName}.source]`} styleVariant="basic" />
               <PodTextarea
                 className="col-span-2"
                 label="Description"
                 name={`${parentName}.description`}
-                styleVariant="unstyled"
+                styleVariant="basic"
               />
             </div>
           </AccordionItem>

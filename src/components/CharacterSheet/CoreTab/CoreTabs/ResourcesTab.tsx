@@ -2,11 +2,12 @@
 
 import { AccordionItem } from '@nextui-org/accordion';
 import { Button } from '@nextui-org/button';
-import { IconChevronLeft, IconMinus, IconPlus } from '@tabler/icons-react';
+import { IconMinus, IconPlus } from '@tabler/icons-react';
 import { useFormContext } from 'react-hook-form';
 
-import { PodChip, PodInput } from '@/components/CharacterSheet/Pod';
+import { PodChip } from '@/components/CharacterSheet/Pod';
 import { Accordion } from '@/components/Elements/Accordion';
+import { Input } from '@/components/Form/Input';
 
 interface Resource {
   name: string;
@@ -44,7 +45,6 @@ const ResourcesTab = () => {
         return (
           <AccordionItem
             key={index}
-            indicator={<IconChevronLeft />}
             textValue={name}
             title={
               <div className="grid grid-cols-1 grid-rows-2 truncate md:grid-cols-[2fr_1fr] md:grid-rows-1">
@@ -54,10 +54,10 @@ const ResourcesTab = () => {
             }
           >
             <div className="grid w-full grid-cols-1 gap-3 md:grid-cols-2">
-              <PodInput label="Name" name={`${parentName}.name`} styleVariant="unstyled" />
-              <PodInput label="Source" name={`${parentName}.source`} styleVariant="unstyled" />
-              <PodInput label="Current" name={`${parentName}.current`} styleVariant="centered" type="number" />
-              <PodInput label="Max" name={`${parentName}.max`} styleVariant="centered" type="number" />
+              <Input label="Name" name={`${parentName}.name`} styleVariant="basic" />
+              <Input label="Source" name={`${parentName}.source`} styleVariant="basic" />
+              <Input label="Current" name={`${parentName}.current`} styleVariant="centered" type="number" />
+              <Input label="Max" name={`${parentName}.max`} styleVariant="centered" type="number" />
               <Button className="h-full p-3" color={getDangerColor(+current, 0)} variant="flat" onClick={decrement}>
                 <IconMinus size={24} />
               </Button>

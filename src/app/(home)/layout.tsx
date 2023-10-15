@@ -1,11 +1,12 @@
 import { Button } from '@nextui-org/button';
 import { Input } from '@nextui-org/input';
 
-import { CharacterNavSkeleton } from '@/components/CharacterNavSkeleton';
 import { Icon } from '@/components/Elements/Icon';
 import { AppShell } from '@/components/Layout/AppShell';
 import { Navbar } from '@/components/Layout/Navbar';
 import { Sidenav } from '@/components/Layout/Sidenav';
+
+import { CharacterNav } from './CharacterNav';
 
 interface AppLayoutProps {
   children: React.ReactNode;
@@ -31,11 +32,12 @@ const AppLayout = ({ children }: AppLayoutProps) => {
                   '!cursor-text',
                 ],
               }}
+              variant="faded"
             />
             <Button color="primary">
               <Icon icon="plus" />
             </Button>
-            <CharacterNavSkeleton />
+            <CharacterNav />
           </div>
         </Sidenav>
         <div className="grow">{children}</div>

@@ -1,4 +1,4 @@
-import { Pod, PodChip, PodInput, PodResource, PodTextarea } from '@/components/CharacterSheet/Pod';
+import { Pod, PodChip, PodResource, PodTextarea } from '@/components/CharacterSheet/Pod';
 import { ControlledCheck } from '@/components/Form/ControlledCheck';
 import { Input } from '@/components/Form/Input';
 import { camelCase } from '@/utils/camelCase';
@@ -13,7 +13,7 @@ const CoreTab = () => {
       <Pod className="xl:col-span-2" label="Character Details">
         <div className="grid grid-cols-1 gap-x-2 gap-y-3 sm:grid-cols-2 md:grid-cols-3 md:gap-3">
           {['Name', 'Race', 'Experience', 'Class', 'Background', 'Alignment'].map((field) => (
-            <PodInput key={field} label={field} name={field.toLowerCase()} styleVariant="unstyled" />
+            <Input key={field} label={field} name={field.toLowerCase()} styleVariant="basic" />
           ))}
         </div>
       </Pod>
@@ -31,7 +31,7 @@ const CoreTab = () => {
           <div className="grid flex-[1] gap-x-2 gap-y-3 sm:grid-cols-3 md:gap-3">
             {['Armor Class', 'Initiative', 'Speed'].map((x) => (
               <Pod key={x} label={x} variant="alt">
-                <PodInput name={camelCase(x)} />
+                <Input name={camelCase(x)} />
               </Pod>
             ))}
           </div>
@@ -42,7 +42,7 @@ const CoreTab = () => {
               <PodResource name="hitPoints" />
             </Pod>
             <Pod className="flex-[1]" label="Temporary HP" variant="alt">
-              <PodInput name="hitPoints.temporary" />
+              <Input name="hitPoints.temporary" />
             </Pod>
             <Pod className="flex-[2]" label="Hit Dice" variant="alt">
               <PodResource name="hitDice" />
@@ -63,7 +63,7 @@ const CoreTab = () => {
         <Pod className="flex-[2]" label="Proficiencies & Languages">
           <div className="flex-stack">
             {['Languages', 'Weapons', 'Armor', 'Other'].map((x) => (
-              <Input key={x} label={x} name={`proficiencies.${camelCase(x)}`} />
+              <Input key={x} label={x} name={`proficiencies.${camelCase(x)}`} styleVariant="basic" />
             ))}
           </div>
         </Pod>

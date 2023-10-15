@@ -5,11 +5,12 @@ import { Button } from '@nextui-org/button';
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { Pod, PodTextarea } from '@/components/CharacterSheet/Pod';
+import { Pod } from '@/components/CharacterSheet/Pod';
 import { Accordion } from '@/components/Elements/Accordion';
+import { Input } from '@/components/Form/Input';
+import { Textarea } from '@/components/Form/Textarea';
 import type { Attack } from '@/config/CharacterConfig';
 import { bonusify } from '@/utils/bonusify';
-import { Input } from '@/components/Form/Input';
 
 const fieldName = 'attacks' as const;
 
@@ -72,7 +73,7 @@ const ActionsTab = () => {
                   <Input label="Damage" name={`${parentName}.damage`} styleVariant="basic" />
                   <Input label="Damage Type" name={`${parentName}.damageType`} styleVariant="basic" />
                 </div>
-                <PodTextarea label="Description" name={`${parentName}.description`} styleVariant="basic" />
+                <Textarea label="Description" name={`${parentName}.description`} styleVariant="basic" />
               </div>
             </AccordionItem>
           );

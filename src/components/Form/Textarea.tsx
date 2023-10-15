@@ -1,7 +1,7 @@
 'use client';
 
-import type { TextAreaProps } from '@nextui-org/input';
-import { Textarea } from '@nextui-org/input';
+import type { TextAreaProps as NextTextAreaProps } from '@nextui-org/input';
+import { Textarea as NextTextarea } from '@nextui-org/input';
 import { Controller, useFormContext } from 'react-hook-form';
 
 import { loremIpsum } from '@/config/dummyData';
@@ -18,11 +18,11 @@ const styleVariants = {
   basic: {},
 };
 
-interface PodTextareaProps extends TextAreaProps {
+interface TextareaProps extends NextTextAreaProps {
   styleVariant?: keyof typeof styleVariants;
 }
 
-const PodTextarea = ({ name, placeholder, styleVariant, ...props }: PodTextareaProps) => {
+const Textarea = ({ name, placeholder, styleVariant, ...props }: TextareaProps) => {
   const { control } = useFormContext();
 
   return (
@@ -30,7 +30,7 @@ const PodTextarea = ({ name, placeholder, styleVariant, ...props }: PodTextareaP
       control={control}
       name={name || 'name'}
       render={({ field }) => (
-        <Textarea
+        <NextTextarea
           classNames={{ ...styleVariants[styleVariant ?? 'default'], label: props.label ? '' : 'hidden' }}
           placeholder={placeholder || loremIpsum.repeat(5)}
           radius="md"
@@ -42,4 +42,4 @@ const PodTextarea = ({ name, placeholder, styleVariant, ...props }: PodTextareaP
   );
 };
 
-export { PodTextarea };
+export { Textarea };

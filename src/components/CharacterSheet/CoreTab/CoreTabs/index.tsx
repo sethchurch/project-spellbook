@@ -2,9 +2,10 @@
 
 import { Tab } from '@nextui-org/tabs';
 
+import { Pod } from '@/components/CharacterSheet/Pod';
 import { TabList, TabTitle } from '@/components/Elements/TabList';
+import { Textarea } from '@/components/Form/Textarea';
 
-import { Pod, PodTextarea } from '../../Pod';
 import { ActionsTab } from './ActionsTab';
 import { FeaturesTab } from './FeaturesTab';
 import { ResourcesTab } from './ResourcesTab';
@@ -34,7 +35,7 @@ const Tabs: ComponentTab[] = [
   {
     key: 'notes',
     title: <TabTitle>Notes</TabTitle>,
-    content: <PodTextarea maxRows={64} minRows={24} name="notes" radius="sm" />,
+    content: <Textarea maxRows={64} minRows={24} name="notes" radius="sm" />,
   },
 ];
 

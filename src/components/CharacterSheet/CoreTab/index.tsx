@@ -1,6 +1,7 @@
-import { Pod, PodChip, PodResource, PodTextarea } from '@/components/CharacterSheet/Pod';
+import { Pod, PodChip, PodResource } from '@/components/CharacterSheet/Pod';
 import { ControlledCheck } from '@/components/Form/ControlledCheck';
 import { Input } from '@/components/Form/Input';
+import { Textarea } from '@/components/Form/Textarea';
 import { camelCase } from '@/utils/camelCase';
 
 import { CoreTabs } from './CoreTabs';
@@ -57,7 +58,7 @@ const CoreTab = () => {
         <DeathSavesPod className="flex-[1]" />
         {['Personality Traits', 'Ideals', 'Bonds', 'Flaws'].map((x) => (
           <Pod key={x} label={x}>
-            <PodTextarea name={`bio.${camelCase(x)}`} />
+            <Textarea name={`bio.${camelCase(x)}`} />
           </Pod>
         ))}
         <Pod className="flex-[2]" label="Proficiencies & Languages">

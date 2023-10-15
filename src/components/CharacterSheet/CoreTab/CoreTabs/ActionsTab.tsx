@@ -7,7 +7,7 @@ import { useFormContext } from 'react-hook-form';
 
 import { Pod } from '@/components/CharacterSheet/Pod';
 import { Accordion } from '@/components/Elements/Accordion';
-import { Input } from '@/components/Form/Input';
+import { FormInput } from '@/components/Form/FormInput';
 import { Textarea } from '@/components/Form/Textarea';
 import type { Attack } from '@/config/CharacterConfig';
 import { bonusify } from '@/utils/bonusify';
@@ -67,11 +67,11 @@ const ActionsTab = () => {
               }
             >
               <div className="flex-stack">
-                <Input label="Name" name={`${parentName}.name`} styleVariant="basic" />
-                <Input label="Bonus" name={`${parentName}.bonus`} styleVariant="basic" />
+                <FormInput label="Name" name={`${parentName}.name`} styleVariant="basic" />
+                <FormInput label="Bonus" name={`${parentName}.bonus`} styleVariant="basic" />
                 <div className="flex gap-3">
-                  <Input label="Damage" name={`${parentName}.damage`} styleVariant="basic" />
-                  <Input label="Damage Type" name={`${parentName}.damageType`} styleVariant="basic" />
+                  <FormInput label="Damage" name={`${parentName}.damage`} styleVariant="basic" />
+                  <FormInput label="Damage Type" name={`${parentName}.damageType`} styleVariant="basic" />
                 </div>
                 <Textarea label="Description" name={`${parentName}.description`} styleVariant="basic" />
               </div>

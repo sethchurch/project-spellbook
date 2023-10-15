@@ -7,7 +7,7 @@ import { useFormContext } from 'react-hook-form';
 
 import { PodChip } from '@/components/CharacterSheet/Pod';
 import { Accordion } from '@/components/Elements/Accordion';
-import { Input } from '@/components/Form/Input';
+import { FormInput } from '@/components/Form/FormInput';
 
 interface Resource {
   name: string;
@@ -54,10 +54,10 @@ const ResourcesTab = () => {
             }
           >
             <div className="grid w-full grid-cols-1 gap-3 md:grid-cols-2">
-              <Input label="Name" name={`${parentName}.name`} styleVariant="basic" />
-              <Input label="Source" name={`${parentName}.source`} styleVariant="basic" />
-              <Input label="Current" name={`${parentName}.current`} styleVariant="centered" type="number" />
-              <Input label="Max" name={`${parentName}.max`} styleVariant="centered" type="number" />
+              <FormInput label="Name" name={`${parentName}.name`} styleVariant="basic" />
+              <FormInput label="Source" name={`${parentName}.source`} styleVariant="basic" />
+              <FormInput label="Current" name={`${parentName}.current`} styleVariant="centered" type="number" />
+              <FormInput label="Max" name={`${parentName}.max`} styleVariant="centered" type="number" />
               <Button className="h-full p-3" color={getDangerColor(+current, 0)} variant="flat" onClick={decrement}>
                 <IconMinus size={24} />
               </Button>

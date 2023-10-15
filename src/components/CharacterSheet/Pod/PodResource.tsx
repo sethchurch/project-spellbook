@@ -2,7 +2,7 @@
 
 import { Controller, useFormContext } from 'react-hook-form';
 
-import { Input } from '@/components/Form/Input';
+import { FormInput } from '@/components/Form/FormInput';
 
 import { Pod } from './Pod';
 
@@ -20,7 +20,7 @@ const PodResource = ({ name }: PodResourceProps) => {
         name={`${name}.current`}
         render={({ field }) => (
           <Pod label="Current">
-            <Input styleVariant="jumbo" {...field} ref={null} name={`${name}.current`} />
+            <FormInput styleVariant="jumbo" {...field} ref={null} name={`${name}.current`} />
           </Pod>
         )}
       />
@@ -29,7 +29,7 @@ const PodResource = ({ name }: PodResourceProps) => {
         name={`${name}.max`}
         render={({ field }) => (
           <Pod label="Max">
-            <Input styleVariant="jumbo" {...field} ref={null} name={`${name}.max`} />
+            <FormInput styleVariant="jumbo" {...field} ref={null} name={`${name}.max`} />
           </Pod>
         )}
       />

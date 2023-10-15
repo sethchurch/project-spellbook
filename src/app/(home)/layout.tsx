@@ -1,7 +1,7 @@
 import { Button } from '@nextui-org/button';
-import { Input } from '@nextui-org/input';
 
 import { Icon } from '@/components/Elements/Icon';
+import { Input } from '@/components/Elements/Input';
 import { AppShell } from '@/components/Layout/AppShell';
 import { Navbar } from '@/components/Layout/Navbar';
 import { Sidenav } from '@/components/Layout/Sidenav';
@@ -19,21 +19,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
       <main className="flex">
         <Sidenav>
           <div className="flex-stack">
-            <Input
-              isClearable
-              classNames={{
-                inputWrapper: [
-                  'bg-zinc-100',
-                  'dark:bg-zinc-700',
-                  'hover:bg-default-100/70',
-                  'dark:hover:bg-default/70',
-                  'group-data-[focus=true]:bg-zinc-100/100',
-                  'dark:group-data-[focus=true]:bg-zinc-900/70',
-                  '!cursor-text',
-                ],
-              }}
-              variant="faded"
-            />
+            <Input isClearable styleVariant="inset" variant="faded" />
             <Button color="primary">
               <Icon icon="plus" />
             </Button>

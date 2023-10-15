@@ -1,7 +1,7 @@
 import { Button } from '@nextui-org/button';
-import { Input } from '@nextui-org/input';
 import Link from 'next/link';
 
+import { Input } from '@/components/Elements/Input';
 import { ToggleThemeButton } from '@/components/Elements/ToggleThemeButton';
 
 import { Icon } from '../Elements/Icon';

@@ -1,6 +1,6 @@
 import { Pod, PodChip, PodResource } from '@/components/CharacterSheet/Pod';
 import { ControlledCheck } from '@/components/Form/ControlledCheck';
-import { Input } from '@/components/Form/Input';
+import { FormInput } from '@/components/Form/FormInput';
 import { Textarea } from '@/components/Form/Textarea';
 import { camelCase } from '@/utils/camelCase';
 
@@ -14,7 +14,7 @@ const CoreTab = () => {
       <Pod className="xl:col-span-2" label="Character Details">
         <div className="grid grid-cols-1 gap-x-2 gap-y-3 sm:grid-cols-2 md:grid-cols-3 md:gap-3">
           {['Name', 'Race', 'Experience', 'Class', 'Background', 'Alignment'].map((field) => (
-            <Input key={field} label={field} name={field.toLowerCase()} styleVariant="basic" />
+            <FormInput key={field} label={field} name={field.toLowerCase()} styleVariant="basic" />
           ))}
         </div>
       </Pod>
@@ -32,7 +32,7 @@ const CoreTab = () => {
           <div className="grid flex-[1] gap-x-2 gap-y-3 sm:grid-cols-3 md:gap-3">
             {['Armor Class', 'Initiative', 'Speed'].map((x) => (
               <Pod key={x} label={x} variant="alt">
-                <Input name={camelCase(x)} />
+                <FormInput name={camelCase(x)} />
               </Pod>
             ))}
           </div>
@@ -43,7 +43,7 @@ const CoreTab = () => {
               <PodResource name="hitPoints" />
             </Pod>
             <Pod className="flex-[1]" label="Temporary HP" variant="alt">
-              <Input name="hitPoints.temporary" />
+              <FormInput name="hitPoints.temporary" />
             </Pod>
             <Pod className="flex-[2]" label="Hit Dice" variant="alt">
               <PodResource name="hitDice" />
@@ -55,16 +55,16 @@ const CoreTab = () => {
         </div>
       </div>
       <div className="col-span-1 flex h-full flex-col gap-x-2 gap-y-3 md:gap-3 lg:col-span-2 xl:col-span-1">
-        <DeathSavesPod className="flex-[1]" />
+        <DeathSavesPod />
         {['Personality Traits', 'Ideals', 'Bonds', 'Flaws'].map((x) => (
           <Pod key={x} label={x}>
             <Textarea name={`bio.${camelCase(x)}`} />
           </Pod>
         ))}
-        <Pod className="flex-[2]" label="Proficiencies & Languages">
+        <Pod label="Proficiencies & Languages">
           <div className="flex-stack">
             {['Languages', 'Weapons', 'Armor', 'Other'].map((x) => (
-              <Input key={x} label={x} name={`proficiencies.${camelCase(x)}`} styleVariant="basic" />
+              <FormInput key={x} label={x} name={`proficiencies.${camelCase(x)}`} styleVariant="basic" />
             ))}
           </div>
         </Pod>

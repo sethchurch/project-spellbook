@@ -1,8 +1,5 @@
-'use client';
-
 import type { InputProps as NextInputProps } from '@nextui-org/input';
-import { Input as NextInput } from '@nextui-org/input';
-import { Controller, useFormContext } from 'react-hook-form';
+import { Input as NextFormInput } from '@nextui-org/input';
 
 const styleVariants = {
   default: {
@@ -23,34 +20,26 @@ const styleVariants = {
     inputWrapper: 'border-none after:h-0 p-0 shadow-none h-full bg-transparent gap-0',
     input: `m-0 p-0 text-center h-full text-[2rem] lg:text-[2.5rem]`,
   },
+  inset: {
+    inputWrapper: [
+      'bg-zinc-100',
+      'dark:bg-zinc-700',
+      'hover:bg-default-100/70',
+      'dark:hover:bg-default/70',
+      'group-data-[focus=true]:bg-zinc-100/100',
+      'dark:group-data-[focus=true]:bg-zinc-900/70',
+      '!cursor-text',
+    ],
+  },
 };
 
 interface InputProps extends NextInputProps {
   styleVariant?: keyof typeof styleVariants;
-  watchFlag?: boolean;
 }
 
-const Input = ({ name, styleVariant, watchFlag, ...props }: InputProps) => {
-  const { control, watch } = useFormContext();
-
-  return (
-    <Controller
-      control={control}
-      name={name || 'name'}
-      render={({ field }) => {
-        return (
-          <NextInput
-            classNames={styleVariants[styleVariant ?? 'default']}
-            radius="sm"
-            {...props}
-            {...field}
-            ref={null}
-            value={watchFlag ? watch(name || 'name') : field.value}
-          />
-        );
-      }}
-    />
-  );
+const Input = ({ styleVariant, ...props }: InputProps) => {
+  return <NextFormInput classNames={styleVariants[styleVariant ?? 'default']} radius="sm" {...props} />;
 };
 
 export { Input };
+export type { InputProps };

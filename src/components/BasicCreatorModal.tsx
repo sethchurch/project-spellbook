@@ -1,4 +1,4 @@
-import { Button, Modal, Stack, Textarea, TextInput } from '@mantine/core';
+import { Button, Modal, Stack, Textarea, TextFormInput } from '@mantine/core';
 
 interface BasicCreatorModalProps {
   opened: boolean;
@@ -15,7 +15,7 @@ const BasicCreatorModal = ({ opened, close }: BasicCreatorModalProps) => {
       onClose={close}
     >
       <Stack>
-        <TextInput withAsterisk description="What's is the name of this character?" label="Character Name" />
+        <TextFormInput withAsterisk description="What's is the name of this character?" label="Character Name" />
         <Textarea
           withAsterisk
           description="Who are they and what is their story?"

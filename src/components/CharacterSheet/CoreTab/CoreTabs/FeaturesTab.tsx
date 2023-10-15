@@ -5,7 +5,7 @@ import { useFormContext } from 'react-hook-form';
 
 import { PodChip } from '@/components/CharacterSheet/Pod';
 import { Accordion } from '@/components/Elements/Accordion';
-import { Input } from '@/components/Form/Input';
+import { FormInput } from '@/components/Form/FormInput';
 import { Textarea } from '@/components/Form/Textarea';
 
 interface Feature {
@@ -36,8 +36,8 @@ const FeaturesTab = () => {
             }
           >
             <div className="grid w-full grid-cols-1 gap-3 md:grid-cols-2">
-              <Input label="Name" name={`${parentName}.name]`} styleVariant="basic" />
-              <Input label="Source" name={`${parentName}.source]`} styleVariant="basic" />
+              <FormInput label="Name" name={`${parentName}.name]`} styleVariant="basic" />
+              <FormInput label="Source" name={`${parentName}.source]`} styleVariant="basic" />
               <Textarea
                 className="col-span-2"
                 label="Description"

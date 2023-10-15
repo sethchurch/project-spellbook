@@ -22,11 +22,11 @@ const styleVariants = {
   },
   inset: {
     inputWrapper: [
-      'bg-zinc-100',
+      'bg-stone-50',
       'dark:bg-zinc-700',
       'hover:bg-default-100/70',
       'dark:hover:bg-default/70',
-      'group-data-[focus=true]:bg-zinc-100/100',
+      'group-data-[focus=true]:bg-stone-100/100',
       'dark:group-data-[focus=true]:bg-zinc-900/70',
       '!cursor-text',
     ],

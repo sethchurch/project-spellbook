@@ -28,7 +28,7 @@ const CharacterList = () => {
     <CharacterListWrapper>
       {Object.entries(characters).map(([id, character]) => {
         return (
-          <Link key={id} href={`/character/${id}`}>
+          <Link key={id} className="hover:opacity-75" href={`/character/${id}`}>
             <CharacterListItem character={character} />
           </Link>
         );

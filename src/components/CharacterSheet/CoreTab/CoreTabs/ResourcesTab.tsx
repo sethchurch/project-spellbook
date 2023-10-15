@@ -21,7 +21,7 @@ const fieldName = 'resources' as const;
 
 const ResourcesTab = () => {
   const { getValues, setValue } = useFormContext();
-  const resources: Resource[] = getValues(fieldName);
+  const resources: Resource[] = getValues(fieldName) ?? [];
 
   const handleResourceButtonClick = (index: number, action: ResourceAction) => {
     const resource = resources[index] as Resource;

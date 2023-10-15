@@ -32,7 +32,7 @@ const Textarea = ({ name, placeholder, styleVariant, ...props }: TextareaProps) 
       render={({ field }) => (
         <NextTextarea
           classNames={{ ...styleVariants[styleVariant ?? 'default'], label: props.label ? '' : 'hidden' }}
-          placeholder={placeholder || loremIpsum.repeat(5)}
+          placeholder={placeholder || loremIpsum.repeat(1)}
           radius="md"
           {...props}
           {...field}

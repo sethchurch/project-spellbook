@@ -17,7 +17,7 @@ const fieldName = 'attacks' as const;
 const ActionsTab = () => {
   const [editMode, setEditMode] = useState(false);
   const { getValues, setValue } = useFormContext();
-  const attacks: Attack[] = getValues(fieldName);
+  const attacks: Attack[] = getValues(fieldName) ?? [];
 
   const addAction = () => {
     const newAttack: Attack = {

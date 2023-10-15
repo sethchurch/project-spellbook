@@ -4,13 +4,14 @@ import { FormInput } from '@/components/Form/FormInput';
 import { Textarea } from '@/components/Form/Textarea';
 import { camelCase } from '@/utils/camelCase';
 
+import { StatDisplay } from '../StatDisplay';
 import { CoreTabs } from './CoreTabs';
 import { DeathSavesPod } from './DeathSavesPod';
 import { ProficienciesPod } from './ProficienciesPod';
 
 const CoreTab = () => {
   return (
-    <div className="grid grid-cols-1 grid-rows-[1fr_max-content] gap-x-2 gap-y-3 p-2 md:gap-3 md:p-5 lg:grid-cols-[6fr_3fr] xl:grid-cols-[3fr_6fr_3fr]">
+    <div className="grid grid-cols-1 grid-rows-[1fr_max-content] gap-x-2 gap-y-3 p-2 md:gap-3 md:p-5 lg:grid-cols-[6fr_3fr] xl:grid-cols-[2fr_6fr_2fr]">
       <Pod className="xl:col-span-2" label="Character Details">
         <div className="grid grid-cols-1 gap-x-2 gap-y-3 sm:grid-cols-2 md:grid-cols-3 md:gap-3">
           {['Name', 'Race', 'Experience', 'Class', 'Background', 'Alignment'].map((field) => (
@@ -28,7 +29,7 @@ const CoreTab = () => {
       </Pod>
       <ProficienciesPod />
       <div className="flex h-full flex-col gap-x-2 gap-y-3 md:gap-3">
-        <Pod>
+        <Pod className="flex-[1]">
           <div className="grid flex-[1] gap-x-2 gap-y-3 sm:grid-cols-3 md:gap-3">
             {['Armor Class', 'Initiative', 'Speed'].map((x) => (
               <Pod key={x} label={x} variant="alt">
@@ -48,6 +49,13 @@ const CoreTab = () => {
             <Pod className="flex-[2]" label="Hit Dice" variant="alt">
               <PodResource name="hitDice" />
             </Pod>
+          </div>
+        </Pod>
+        <Pod className="flex-[1]">
+          <div className="grid flex-[1] grid-cols-1 justify-start gap-3 lg:grid-cols-3 xl:grid-cols-6">
+            {['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha'].map((statName, index) => (
+              <StatDisplay key={index} label={statName} statIndex={index} />
+            ))}
           </div>
         </Pod>
         <div className="flex w-full flex-[8] flex-col">

@@ -18,7 +18,7 @@ const fieldName = 'features' as const;
 
 const FeaturesTab = () => {
   const { getValues } = useFormContext();
-  const features: Feature[] = getValues(fieldName);
+  const features: Feature[] = getValues(fieldName) ?? [];
 
   return (
     <Accordion styleVariant="podSplit">

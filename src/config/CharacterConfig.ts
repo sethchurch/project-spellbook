@@ -49,6 +49,31 @@ type Attack = {
   description: string;
 };
 
+type Condition = {
+  name: string;
+  description: string;
+  duration: string;
+};
+
+type Sense = {
+  name: string;
+  description: string;
+  source: string;
+};
+
+type HitPoints = {
+  current: number;
+  max: number;
+  temporary: number;
+};
+
+type Resource = {
+  name: string;
+  current: number;
+  max: number;
+  source: string;
+};
+
 type Character = {
   name: string;
   race: string;
@@ -61,19 +86,36 @@ type Character = {
   skills: { proficent: string[]; expert: string[] };
   armorClass: number;
   speed: number;
+  initiative: number;
   inspired: boolean;
-  conditions: { name: string; description: string; duration: string }[];
-  hitPoints: { current: number; max: number; temporary: number };
-  hitDice: { current: string; max: string };
-  deathSaves: { successes: number; failures: number };
-  attacks: Attack[];
-  resources: { name: string; current: number; max: number; source: string }[];
-  features: { name: string; description: string; source: string }[];
-  senses: { name: string; description: string; source: string }[];
-  proficiencies: { languages: string; weapons: string; armor: string; other: string };
-  bio: { personalityTraits: string; ideals: string; bonds: string; flaws: string };
-  notes: string;
+  conditions?: Condition[];
+  hitPoints?: HitPoints;
+  hitDice?: { current: string; max: string };
+  deathSaves?: { successes: number; failures: number };
+  attacks?: Attack[];
+  resources?: Resource[];
+  features?: { name: string; description: string; source: string }[];
+  senses?: { name: string; description: string; source: string }[];
+  proficiencies?: { languages: string; weapons: string; armor: string; other: string };
+  bio?: { personalityTraits: string; ideals: string; bonds: string; flaws: string };
+  notes?: string;
 };
 
-export { characterSkills, savingThrows, skillLookup, statLongNameLookup };
+const characterDefaults: Character = {
+  name: 'New Character',
+  race: 'Human',
+  experience: 0,
+  class: 'Fighter',
+  background: 'Acolyte',
+  initiative: 0,
+  alignment: 'Neutral',
+  stats: [10, 10, 10, 10, 10, 10],
+  savingThrows: [],
+  skills: { proficent: [], expert: [] },
+  armorClass: 10,
+  speed: 30,
+  inspired: false,
+};
+
+export { characterDefaults, characterSkills, savingThrows, skillLookup, statLongNameLookup };
 export type { Attack, Character, Proficiency, SkillLookup, Stat };

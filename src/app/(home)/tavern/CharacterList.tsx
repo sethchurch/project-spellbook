@@ -1,7 +1,5 @@
 'use client';
 
-import { Link } from '@nextui-org/react';
-
 import { useCharacterStore } from '@/hooks/useCharacterStore';
 import { useStore } from '@/hooks/useStore';
 
@@ -27,11 +25,7 @@ const CharacterList = () => {
   return (
     <CharacterListWrapper>
       {Object.entries(characters).map(([id, character]) => {
-        return (
-          <Link key={id} className="hover:opacity-75" href={`/character/${id}`}>
-            <CharacterListItem character={character} />
-          </Link>
-        );
+        return <CharacterListItem key={id} character={character} characterId={+id} />;
       })}
     </CharacterListWrapper>
   );

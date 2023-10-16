@@ -37,3 +37,10 @@ body {
 .bg-pod-alt {
   @apply dark:bg-zinc-900 bg-stone-100;
 }
+
+.grainy {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url('https://img.freepik.com/premium-photo/black-paper-seamless-texture-background_150889-55.jpg');
+  background-size: 100px 100px;
+  background-repeat: repeat;
+}

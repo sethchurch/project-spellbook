@@ -2,6 +2,7 @@
 
 import { Button } from '@nextui-org/button';
 import { Modal, ModalBody, ModalContent, ModalHeader, useDisclosure } from '@nextui-org/react';
+import { useRouter } from 'next/navigation';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import type { Character } from '@/config/CharacterConfig';
@@ -16,6 +17,7 @@ interface NewCharacterModalProps {
 
 const NewCharacterModal = ({ isOpen, close }: NewCharacterModalProps) => {
   const formMethods = useForm();
+  const router = useRouter();
   const { isOpen: modalAiCreatorIsOpen, onOpen, onClose } = useDisclosure();
   const addCharacter = useCharacterStore((state) => state.addCharacter);
 
@@ -25,19 +27,23 @@ const NewCharacterModal = ({ isOpen, close }: NewCharacterModalProps) => {
 
   const handleCreateBlankCharacter = () => {
     const newCharacter: Partial<Character> = { name: 'New Character' };
-    if (addCharacter) addCharacter(newCharacter);
+    if (addCharacter) {
+      const characterId = addCharacter(newCharacter);
+      router.push(`/characters/${characterId}`);
+    }
     close();
   };
 
   return (
     <>
-      <Modal isOpen={isOpen} placement="center" size="2xl" onClose={close}>
+      <Modal isOpen={isOpen} placement="center" size="sm" onClose={close}>
         <ModalContent>
           <FormProvider {...formMethods}>
-            <ModalHeader className="px-6 pb-3 pt-6">Character Creator</ModalHeader>
+            <ModalHeader className="px-6 pb-3 pt-6">Create a New Character</ModalHeader>
             <ModalBody className="px-6 pb-6">
+              <Button onClick={onOpen}>Create with Basic AI Creator</Button>
+              <Button onClick={onOpen}>Create with Advanced AI Creator</Button>
               <Button onClick={handleCreateBlankCharacter}>Create Blank Character</Button>
-              <Button onClick={onOpen}>Open Ai Creator</Button>
             </ModalBody>
           </FormProvider>
         </ModalContent>

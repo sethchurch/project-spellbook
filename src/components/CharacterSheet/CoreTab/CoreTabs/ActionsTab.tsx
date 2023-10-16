@@ -37,10 +37,10 @@ const ActionsTab = () => {
   return (
     <div className="flex-stack">
       <div className="flex  justify-between">
-        <Button variant="faded" onClick={removeLastAction}>
+        <Button radius="sm" onClick={removeLastAction}>
           Remove Last Action
         </Button>
-        <Button variant="faded" onClick={addAction}>
+        <Button radius="sm" onClick={addAction}>
           Add Action
         </Button>
       </div>

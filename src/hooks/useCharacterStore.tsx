@@ -5,7 +5,8 @@ import { type Character, characterDefaults } from '@/config/CharacterConfig';
 
 interface CharacterState {
   characters: Character[];
-  addCharacter: (character: Character | Partial<Character>) => void;
+  addCharacter: (character: Character | Partial<Character>) => number;
+  removeCharacter: (characterId: number) => void;
   updateCharacter: (character: Character, characterId: number) => void;
 }
 
@@ -15,11 +16,18 @@ const useCharacterStore = create<CharacterState>()(
       characters: [],
       addCharacter: (character: Character | Partial<Character>) => {
         const newCharacter: Character = { ...characterDefaults, ...character };
-        return set((state) => {
-          return {
-            characters: [...state.characters, newCharacter],
-          };
+
+        let newCharacterIndex = -1;
+        set((state) => {
+          newCharacterIndex = state.characters.length;
+          return { characters: [...state.characters, newCharacter] };
         });
+        return newCharacterIndex;
+      },
+      removeCharacter: (characterId: number) => {
+        return set((state) => ({
+          characters: state.characters.filter((_, i) => i !== characterId),
+        }));
       },
       updateCharacter: (character: Character, characterId: number) => {
         return set((state) => ({

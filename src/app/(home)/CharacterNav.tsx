@@ -33,7 +33,7 @@ const CharacterNav = () => {
     <div className="flex-stack">
       {characters.map((character, index) => {
         return (
-          <Link key={index} href={`/character/${index}`}>
+          <Link key={index} href={`/characters/${index}`}>
             <div className="flex w-full max-w-[300px] items-center gap-3">
               <div className="aspect-square h-7 rounded-full bg-gradient-to-br from-violet-700 to-violet-950" />
               <Chip classNames={{ base: 'max-w-full w-full' }} radius="sm">

@@ -33,13 +33,21 @@ const CharacterNav = () => {
     <div className="flex-stack">
       {characters.map((character, index) => {
         return (
-          <Link key={index} href={`/characters/${index}`}>
-            <div className="flex w-full max-w-[300px] items-center gap-3">
-              <div className="aspect-square h-7 rounded-full bg-gradient-to-br from-violet-700 to-violet-950" />
-              <Chip classNames={{ base: 'max-w-full w-full' }} radius="sm">
-                {character.name}
-              </Chip>
-            </div>
+          <Link
+            key={index}
+            className="shadow-md transition-all hover:opacity-50 hover:shadow-sm"
+            href={`/characters/${index}`}
+          >
+            <Chip
+              classNames={{ base: 'max-w-full w-full py-2 px-3 h-auto', content: 'p-0' }}
+              radius="sm"
+              variant="solid"
+            >
+              <div className="flex w-full max-w-[300px] items-center gap-3">
+                <div className="aspect-square h-7 rounded-full border-3 border-zinc-800 bg-gradient-to-br from-violet-700 to-violet-950" />
+                <div>{character.name}</div>
+              </div>
+            </Chip>
           </Link>
         );
       })}

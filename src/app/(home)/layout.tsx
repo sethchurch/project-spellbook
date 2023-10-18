@@ -6,6 +6,7 @@ import { useDisclosure } from '@nextui-org/react';
 import { Icon } from '@/components/Elements/Icon';
 import { Input } from '@/components/Elements/Input';
 import { AppShell } from '@/components/Layout/AppShell';
+import { MaxWidthWrapper } from '@/components/Layout/MaxWidthWrapper';
 import { Navbar } from '@/components/Layout/Navbar';
 import { Sidenav } from '@/components/Layout/Sidenav';
 import { NewCharacterModal } from '@/components/NewCharacterModal';
@@ -31,7 +32,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
             <CharacterNav />
           </div>
         </Sidenav>
-        <div className="grow">{children}</div>
+        <MaxWidthWrapper>{children}</MaxWidthWrapper>
       </main>
       <NewCharacterModal close={onClose} isOpen={isOpen} />
     </AppShell>

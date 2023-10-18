@@ -6,7 +6,9 @@ import { useStore } from '@/hooks/useStore';
 import { CharacterListItem, CharacterListItemSkeleton } from './CharacterListItem';
 
 const CharacterListWrapper = ({ children }: { children: React.ReactNode }) => {
-  return <div className="grid grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">{children}</div>;
+  return (
+    <div className="grid grid-cols-1 gap-6 py-3 sm:grid-cols-2 md:grid-cols-3 md:py-6 lg:grid-cols-4">{children}</div>
+  );
 };
 
 const CharacterList = () => {

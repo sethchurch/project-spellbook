@@ -18,7 +18,7 @@ interface NewCharacterModalProps {
 const NewCharacterModal = ({ isOpen, close }: NewCharacterModalProps) => {
   const formMethods = useForm();
   const router = useRouter();
-  const { isOpen: modalAiCreatorIsOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen: modalAiCreatorIsOpen, onClose } = useDisclosure();
   const addCharacter = useCharacterStore((state) => state.addCharacter);
 
   const handleClose = () => {

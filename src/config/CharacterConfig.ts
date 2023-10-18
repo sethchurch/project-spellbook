@@ -55,12 +55,6 @@ type Condition = {
   duration: string;
 };
 
-type Sense = {
-  name: string;
-  description: string;
-  source: string;
-};
-
 type HitPoints = {
   current: number;
   max: number;

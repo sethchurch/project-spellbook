@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable import/no-extraneous-dependencies, import/extensions */
 import withBundleAnalyzer from '@next/bundle-analyzer';
 import path from 'path';
@@ -12,7 +13,7 @@ export default bundleAnalyzer({
     dirs: ['.'],
   },
   poweredByHeader: false,
-  basePath: '.',
+  basePath: '',
   // The starter code load resources from `public` folder with `router.basePath` in React components.
   // So, the source code is "basePath-ready".
   // You can remove `basePath` if you don't need it.
@@ -25,6 +26,9 @@ export default bundleAnalyzer({
       bufferutil: 'bufferutil',
       'utf-8-validate': 'utf-8-validate',
     });
+
+    config.resolve.alias['@'] = path.resolve('./src');
+    config.resolve.alias['@/public'] = path.resolve('./public');
 
     return config;
   },

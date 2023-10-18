@@ -41,8 +41,8 @@ const NewCharacterModal = ({ isOpen, close }: NewCharacterModalProps) => {
           <FormProvider {...formMethods}>
             <ModalHeader className="px-6 pb-3 pt-6">Create a New Character</ModalHeader>
             <ModalBody className="px-6 pb-6">
-              <Button onClick={onOpen}>Create with Basic AI Creator</Button>
-              <Button onClick={onOpen}>Create with Advanced AI Creator</Button>
+              {/* <Button onClick={onOpen}>Create with Basic AI Creator</Button> */}
+              {/* <Button onClick={onOpen}>Create with Advanced AI Creator</Button> */}
               <Button onClick={handleCreateBlankCharacter}>Create Blank Character</Button>
             </ModalBody>
           </FormProvider>

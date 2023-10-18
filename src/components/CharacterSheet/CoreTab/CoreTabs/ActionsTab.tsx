@@ -2,7 +2,6 @@
 
 import { AccordionItem } from '@nextui-org/accordion';
 import { Button } from '@nextui-org/button';
-import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 
 import { Pod } from '@/components/CharacterSheet/Pod';
@@ -15,7 +14,6 @@ import { bonusify } from '@/utils/bonusify';
 const fieldName = 'attacks' as const;
 
 const ActionsTab = () => {
-  const [editMode, setEditMode] = useState(false);
   const { getValues, setValue } = useFormContext();
   const attacks: Attack[] = getValues(fieldName) ?? [];
 

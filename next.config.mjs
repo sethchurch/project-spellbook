@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies, import/extensions */
 import withBundleAnalyzer from '@next/bundle-analyzer';
+import path from 'path';
 
 const bundleAnalyzer = withBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
@@ -24,6 +25,11 @@ export default bundleAnalyzer({
       bufferutil: 'bufferutil',
       'utf-8-validate': 'utf-8-validate',
     });
+
+    // eslint-disable-next-line no-param-reassign
+    config.resolve.alias['@'] = path.resolve(__dirname, 'src');
+    // eslint-disable-next-line no-param-reassign
+    config.resolve.alias['@/public'] = path.resolve(__dirname, 'public');
 
     return config;
   },

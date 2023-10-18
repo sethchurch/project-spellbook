@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 
-import { character } from '@/config/dummyData';
+import { character as defaultCharacter } from '@/config/dummyData';
 import { useCharacterStore } from '@/hooks/useCharacterStore';
 import { useMounted } from '@/hooks/useMounted';
 import { useStore } from '@/hooks/useStore';
@@ -30,7 +30,7 @@ const CharacterList = () => {
       console.error(error);
     }
     if (!characters || (characters.length === 0 && !alreadyAddedFirstCharacter)) {
-      if (addCharacter) addCharacter(character);
+      if (addCharacter) addCharacter(defaultCharacter);
       try {
         localStorage.setItem('addedFirstCharacter', 'true');
       } catch (error) {

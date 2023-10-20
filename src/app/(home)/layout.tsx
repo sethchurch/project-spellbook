@@ -9,7 +9,7 @@ import { AppShell } from '@/components/Layout/AppShell';
 import { MaxWidthWrapper } from '@/components/Layout/MaxWidthWrapper';
 import { Navbar } from '@/components/Layout/Navbar';
 import { Sidenav } from '@/components/Layout/Sidenav';
-import { NewCharacterModal } from '@/components/NewCharacterModal';
+import { NewCharacterModal } from '@/components/Modal/NewCharacterModal';
 
 import { CharacterNav } from './CharacterNav';
 

@@ -5,7 +5,7 @@ import { Textarea } from '@nextui-org/input';
 import { Modal, ModalBody, ModalContent, ModalHeader } from '@nextui-org/react';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { FormInput } from './Form/FormInput';
+import { FormInput } from '../Form/FormInput';
 
 interface BasicCreatorModalProps {
   isOpen: boolean;

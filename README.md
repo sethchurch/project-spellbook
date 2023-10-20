@@ -8,8 +8,6 @@ Welcome to Project Spellbook, a Next.js and OpenAI-powered Dungeons & Dragons 5t
 
 - **Interactive Interface:** A user-friendly web interface built with Next.js for seamless character creation and customization.
 
-- **Character Templates:** Choose from a variety of pre-made character templates or create entirely custom characters from scratch.
-
 - **Stats and Abilities:** Automatically generate character statistics, abilities, and backstory elements based on your input and preferences.
 
 - **Export and Share:** Export your character sheets in various formats (PDF, JSON) for easy sharing and reference during your D&D sessions.
@@ -47,25 +45,13 @@ Follow these steps to get started with Project Spellbook:
 
 6. Open your web browser and navigate to `http://localhost:3000` to access Project Spellbook.
 
-## Contributing
-
-We welcome contributions from the community! Whether it's bug fixes, new features, or improvements to the documentation, we appreciate your help.
-
-- Fork the repository.
-- Create a new branch for your changes: `git checkout -b feature/my-feature`.
-- Make your changes and commit them: `git commit -m 'Add new feature'`.
-- Push your changes to your fork: `git push origin feature/my-feature`.
-- Create a pull request.
-
-Please make sure to follow our [Code of Conduct](CODE_OF_CONDUCT.md) and [Contribution Guidelines](CONTRIBUTING.md).
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
-- We would like to express our gratitude to the creators of Next.js and OpenAI for providing the tools and technologies that make this project possible.
+- I'd would like to express our gratitude to the creators of Next.js and OpenAI for providing the tools and technologies that make this project possible.
 
 ---
 

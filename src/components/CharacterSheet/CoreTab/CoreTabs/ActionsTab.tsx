@@ -2,43 +2,27 @@
 
 import { AccordionItem } from '@nextui-org/accordion';
 import { Button } from '@nextui-org/button';
-import { useFormContext } from 'react-hook-form';
 
 import { Pod } from '@/components/CharacterSheet/Pod';
 import { Accordion } from '@/components/Elements/Accordion';
 import { FormInput } from '@/components/Form/FormInput';
 import { Textarea } from '@/components/Form/Textarea';
 import type { Attack } from '@/config/CharacterConfig';
+import { useFormList } from '@/hooks/useFormList';
 import { bonusify } from '@/utils/bonusify';
 
 const fieldName = 'attacks' as const;
-
 const ActionsTab = () => {
-  const { getValues, setValue } = useFormContext();
-  const attacks: Attack[] = getValues(fieldName) ?? [];
-
-  const addAction = () => {
-    const newAttack: Attack = {
-      name: '',
-      bonus: 0,
-      damage: '',
-      damageType: '',
-      description: '',
-    };
-    setValue(fieldName, [...attacks, newAttack]);
-  };
-
-  const removeLastAction = () => {
-    setValue(fieldName, attacks.slice(0, -1));
+  const { dataList: attacks, add } = useFormList<Attack>({ fieldName });
+  const addBlank = () => {
+    add({ name: '', bonus: 0, damage: '', damageType: '', description: '' });
   };
 
   return (
     <div className="flex-stack">
-      <div className="flex  justify-between">
-        <Button radius="sm" onClick={removeLastAction}>
-          Remove Last Action
-        </Button>
-        <Button radius="sm" onClick={addAction}>
+      <div className="flex justify-end gap-3">
+        <Button radius="sm">Modify Actions</Button>
+        <Button color="primary" radius="sm" onClick={addBlank}>
           Add Action
         </Button>
       </div>

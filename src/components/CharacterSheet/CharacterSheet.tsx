@@ -11,7 +11,7 @@ import { CoreTab } from './CoreTab';
 
 const ComingSoon = () => (
   <div className="flex h-screen justify-center p-3">
-    <Chip size="lg">Coming soon to a Tavern near you!</Chip>
+    <Chip size="lg">Coming soon to the tavern!</Chip>
   </div>
 );
 

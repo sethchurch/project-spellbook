@@ -12,7 +12,7 @@ const Sidenav = ({ children }: PropsWithChildren) => {
     <aside
       className={cn(
         sideNavClass,
-        'sticky top-0 z-40 -mt-16 h-screen w-72 bg-stone-200 p-3 pt-20 transition-all dark:bg-zinc-800',
+        'fixed xl:sticky xl:top-0 z-40 -mt-16 h-screen w-72 flex-shrink-0 bg-stone-200 p-3 pt-20 transition-all dark:bg-zinc-800',
       )}
     >
       <div className="flex-stack">{children}</div>

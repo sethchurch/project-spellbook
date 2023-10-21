@@ -3,12 +3,19 @@
 import type { PropsWithChildren } from 'react';
 
 import { useAppShell } from '@/components/Layout/AppShell';
+import { cn } from '@/utils/cn';
 
 const Sidenav = ({ children }: PropsWithChildren) => {
   const { sideNavOpen } = useAppShell();
+  const sideNavClass = sideNavOpen ? 'ml-0' : '-ml-72';
   return (
-    <aside className={`${sideNavOpen ? 'ml-0' : '-ml-72'} -mt-16 w-72 transition-all`}>
-      <div className="sticky top-0 z-40 h-screen w-72 bg-stone-200 p-3 pt-20 dark:bg-zinc-800">{children}</div>
+    <aside
+      className={cn(
+        sideNavClass,
+        'sticky top-0 z-40 -mt-16 h-screen w-72 bg-stone-200 p-3 pt-20 transition-all dark:bg-zinc-800',
+      )}
+    >
+      <div className="flex-stack">{children}</div>
     </aside>
   );
 };

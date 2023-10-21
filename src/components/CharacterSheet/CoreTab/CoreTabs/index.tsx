@@ -3,7 +3,8 @@
 import { Tab } from '@nextui-org/tabs';
 
 import { Pod } from '@/components/CharacterSheet/Pod';
-import { TabList, TabTitle } from '@/components/Elements/TabList';
+import { TabList } from '@/components/Elements/TabList';
+import { TabTitle } from '@/components/Elements/TabTitle';
 import { Textarea } from '@/components/Form/Textarea';
 
 import { ActionsTab } from './ActionsTab';

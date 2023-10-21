@@ -29,13 +29,14 @@ const CharacterNav = () => {
   const characters = useStore(useCharacterStore, (state) => state.characters);
 
   if (!characters) return <CharacterNavSkeleton />;
+
   return (
     <div className="flex-stack">
       {characters.map((character, index) => {
         return (
           <Link
             key={index}
-            className="shadow-md transition-all hover:opacity-50 hover:shadow-sm"
+            className="rounded-lg shadow-md transition-all hover:opacity-50 hover:shadow-sm"
             href={`/characters/${index}`}
           >
             <Chip

@@ -21,13 +21,11 @@ const AppLayout = ({ children }: PropsWithChildren) => {
       <Navbar />
       <main className="flex">
         <Sidenav>
-          <div className="flex-stack">
-            <Input isClearable styleVariant="inset" variant="faded" />
-            <Button color="primary" onClick={onOpen}>
-              <Icon icon="plus" />
-            </Button>
-            <CharacterNav />
-          </div>
+          <Input isClearable placeholder="Find characters..." styleVariant="inset" variant="faded" />
+          <Button color="primary" onClick={onOpen}>
+            <Icon icon="plus" />
+          </Button>
+          <CharacterNav />
         </Sidenav>
         <MaxWidthWrapper>{children}</MaxWidthWrapper>
       </main>

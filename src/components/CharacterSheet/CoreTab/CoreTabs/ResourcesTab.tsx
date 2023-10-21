@@ -17,18 +17,14 @@ interface Resource {
   max: number;
 }
 
-const getDangerColor = (current: number, target: number) => {
-  return current === target ? 'danger' : 'default';
-};
+const getColor = (current: number, target: number) => (current === target ? 'danger' : 'default');
 
 type ResourceAction = 'increment' | 'decrement';
 const fieldName = 'resources' as const;
 const ResourcesTab = () => {
   const { setValue } = useFormContext();
   const { dataList: resources, add } = useFormList<Resource>({ fieldName });
-  const addBlank = () => {
-    add({ name: '', source: '', current: 0, max: 0 });
-  };
+  const addBlank = () => add({ name: '', source: '', current: 0, max: 0 });
 
   const handleResourceButtonClick = (index: number, action: ResourceAction) => {
     const resource = resources[index] as Resource;
@@ -41,7 +37,6 @@ const ResourcesTab = () => {
   return (
     <div className="flex-stack">
       <div className="flex justify-end gap-3">
-        <Button radius="sm">Modify Resources</Button>
         <Button color="primary" radius="sm" onClick={addBlank}>
           Add Resource
         </Button>
@@ -68,15 +63,10 @@ const ResourcesTab = () => {
                 <FormInput label="Source" name={`${parentName}.source`} styleVariant="basic" />
                 <FormInput label="Current" name={`${parentName}.current`} styleVariant="centered" type="number" />
                 <FormInput label="Max" name={`${parentName}.max`} styleVariant="centered" type="number" />
-                <Button className="h-full p-3" color={getDangerColor(+current, 0)} variant="flat" onClick={decrement}>
+                <Button className="h-full p-3" color={getColor(+current, 0)} variant="flat" onClick={decrement}>
                   <IconMinus size={24} />
                 </Button>
-                <Button
-                  className="h-full p-3"
-                  color={getDangerColor(+current, +max)}
-                  variant="flat"
-                  onClick={increment}
-                >
+                <Button className="h-full p-3" color={getColor(+current, +max)} variant="flat" onClick={increment}>
                   <IconPlus size={24} />
                 </Button>
               </div>

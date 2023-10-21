@@ -7,9 +7,10 @@ interface DiscardModalProps {
   confirmAction?: (...args: any[]) => any;
   isOpen: boolean;
   title: string;
+  onClose: () => void;
 }
 
-const DiscardModal = ({ body, cancelAction, confirmAction, isOpen, title }: DiscardModalProps) => {
+const DiscardModal = ({ body, cancelAction, confirmAction, isOpen, title, onClose }: DiscardModalProps) => {
   const handleConfirmAction: MouseEventHandler<HTMLButtonElement> = () => {
     if (confirmAction) confirmAction();
   };
@@ -19,12 +20,12 @@ const DiscardModal = ({ body, cancelAction, confirmAction, isOpen, title }: Disc
   };
 
   return (
-    <Modal isOpen={isOpen} placement="center" size="md">
+    <Modal isDismissable isOpen={isOpen} placement="center" size="md" onClose={cancelAction || onClose}>
       <ModalContent>
         <ModalHeader className="px-6">{title}</ModalHeader>
         <ModalBody className="px-6 py-3">{body || 'Are you sure you want to delete this?'}</ModalBody>
         <ModalFooter>
-          <Button onClick={handleCancelAction}>Cancel</Button>
+          <Button onClick={handleCancelAction || onClose}>Cancel</Button>
           <Button color="danger" onClick={handleConfirmAction}>
             Confirm
           </Button>

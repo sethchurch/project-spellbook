@@ -14,14 +14,11 @@ import { bonusify } from '@/utils/bonusify';
 const fieldName = 'attacks' as const;
 const ActionsTab = () => {
   const { dataList: attacks, add } = useFormList<Attack>({ fieldName });
-  const addBlank = () => {
-    add({ name: '', bonus: 0, damage: '', damageType: '', description: '' });
-  };
+  const addBlank = () => add({ name: '', bonus: 0, damage: '', damageType: '', description: '' });
 
   return (
     <div className="flex-stack">
       <div className="flex justify-end gap-3">
-        <Button radius="sm">Modify Actions</Button>
         <Button color="primary" radius="sm" onClick={addBlank}>
           Add Action
         </Button>

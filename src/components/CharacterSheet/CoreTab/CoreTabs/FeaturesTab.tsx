@@ -20,14 +20,11 @@ const fieldName = 'features' as const;
 
 const FeaturesTab = () => {
   const { dataList: features, add } = useFormList<Feature>({ fieldName });
-  const addBlank = () => {
-    add({ name: '', source: '', description: '' });
-  };
+  const addBlank = () => add({ name: '', source: '', description: '' });
 
   return (
     <div className="flex-stack">
       <div className="flex justify-end gap-3">
-        <Button radius="sm">Modify Features</Button>
         <Button color="primary" radius="sm" onClick={addBlank}>
           Add Feature
         </Button>

@@ -71,10 +71,10 @@ const CharacterListItem = ({ character, characterId }: CharacterListItemProps) =
         </Card>
       </Link>
       <DiscardModal
-        cancelAction={onClose}
         confirmAction={removeCharacter}
         isOpen={isOpen}
         title={`Delete ${character.name}`}
+        onClose={onClose}
       />
     </>
   );

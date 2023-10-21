@@ -2,12 +2,9 @@
 
 import { NextUIProvider } from '@nextui-org/react';
 import { ThemeProvider as NextThemeProvider } from 'next-themes';
+import type { PropsWithChildren } from 'react';
 
-interface ThemeProviderProps {
-  children: React.ReactNode;
-}
-
-const ThemeProvider = ({ children }: ThemeProviderProps) => {
+const ThemeProvider = ({ children }: PropsWithChildren) => {
   return (
     <NextUIProvider>
       <NextThemeProvider attribute="class" defaultTheme="dark">

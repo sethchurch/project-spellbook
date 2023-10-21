@@ -1,11 +1,9 @@
+import type { PropsWithChildren } from 'react';
+
 import { QueryProvider } from '@/providers/QueryProvider';
 import { ThemeProvider } from '@/providers/ThemeProvider';
 
-interface ProvidersProps {
-  children?: React.ReactNode;
-}
-
-const Providers = ({ children }: ProvidersProps) => {
+const Providers = ({ children }: PropsWithChildren) => {
   return (
     <ThemeProvider>
       <QueryProvider>{children}</QueryProvider>

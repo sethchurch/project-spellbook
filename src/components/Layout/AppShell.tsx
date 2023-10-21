@@ -1,10 +1,7 @@
 'use client';
 
+import type { PropsWithChildren } from 'react';
 import { createContext, useContext, useMemo, useState } from 'react';
-
-interface AppShellProps {
-  children: React.ReactNode;
-}
 
 interface NavContextType {
   sideNavOpen: Boolean;
@@ -27,7 +24,7 @@ const useAppShell = () => {
   return { ...context, toggleSideNav };
 };
 
-const AppShell = ({ children }: AppShellProps) => {
+const AppShell = ({ children }: PropsWithChildren) => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
   const value = useMemo<NavContextType>(() => ({ sideNavOpen, setSideNavOpen }), [sideNavOpen]);
   NavContext.displayName = 'AppShellContext';

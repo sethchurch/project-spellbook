@@ -1,12 +1,10 @@
 'use client';
 
+import type { PropsWithChildren } from 'react';
+
 import { useAppShell } from '@/components/Layout/AppShell';
 
-interface SidenavProps {
-  children?: React.ReactNode;
-}
-
-const Sidenav = ({ children }: SidenavProps) => {
+const Sidenav = ({ children }: PropsWithChildren) => {
   const { sideNavOpen } = useAppShell();
   return (
     <aside className={`${sideNavOpen ? 'ml-0' : '-ml-72'} -mt-16 w-72 transition-all`}>

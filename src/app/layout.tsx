@@ -2,6 +2,7 @@ import '@/styles/globals.css';
 
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import type { PropsWithChildren } from 'react';
 
 import { Providers } from '@/components/Providers';
 import { AppConfig } from '@/config/AppConfig';
@@ -15,11 +16,7 @@ export const metadata: Metadata = {
   icons: AppConfig.icons,
 };
 
-interface RootLayoutProps {
-  children: React.ReactNode;
-}
-
-const RootLayout = ({ children }: RootLayoutProps) => {
+const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html suppressHydrationWarning lang="en">
       <head>

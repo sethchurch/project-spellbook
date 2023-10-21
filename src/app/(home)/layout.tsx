@@ -2,6 +2,7 @@
 
 import { Button } from '@nextui-org/button';
 import { useDisclosure } from '@nextui-org/react';
+import type { PropsWithChildren } from 'react';
 
 import { Icon } from '@/components/Elements/Icon';
 import { Input } from '@/components/Elements/Input';
@@ -13,11 +14,7 @@ import { NewCharacterModal } from '@/components/Modal/NewCharacterModal';
 
 import { CharacterNav } from './CharacterNav';
 
-interface AppLayoutProps {
-  children: React.ReactNode;
-}
-
-const AppLayout = ({ children }: AppLayoutProps) => {
+const AppLayout = ({ children }: PropsWithChildren) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <AppShell>

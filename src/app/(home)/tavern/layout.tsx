@@ -1,5 +1,7 @@
 'use client';
 
+import { useQuery } from '@tanstack/react-query';
+
 import { TavernContextButton } from './TavernContextButton';
 
 interface TavernLayoutProps {
@@ -7,6 +9,10 @@ interface TavernLayoutProps {
 }
 
 const TavernLayout = ({ children }: TavernLayoutProps) => {
+  const { data, isLoading } = useQuery({
+    queryKey: ['characters'],
+    queryFn: () => fetch('/api/characters').then((res) => res.json()),
+  });
   return (
     <>
       {children}

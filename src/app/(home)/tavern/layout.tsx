@@ -1,7 +1,5 @@
 'use client';
 
-import { trpc } from '@/app/_trpc/client';
-
 import { TavernContextButton } from './TavernContextButton';
 
 interface TavernLayoutProps {
@@ -9,9 +7,6 @@ interface TavernLayoutProps {
 }
 
 const TavernLayout = ({ children }: TavernLayoutProps) => {
-  const { data } = trpc.test.useQuery();
-
-  console.log({ data });
   return (
     <>
       {children}

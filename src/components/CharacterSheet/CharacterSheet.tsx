@@ -1,5 +1,6 @@
 'use client';
 
+import { Chip } from '@nextui-org/chip';
 import { Tab } from '@nextui-org/tabs';
 
 import { TabList } from '@/components/Elements/TabList';
@@ -35,7 +36,11 @@ const Tabs: ComponentTab[] = [
         Inventory
       </TabTitle>
     ),
-    content: <CoreTab />,
+    content: (
+      <div className="flex h-screen justify-center p-3">
+        <Chip size="lg">Coming soon to a Tavern near you!</Chip>
+      </div>
+    ),
   },
   {
     key: 'Bio',
@@ -44,7 +49,11 @@ const Tabs: ComponentTab[] = [
         Bio
       </TabTitle>
     ),
-    content: <CoreTab />,
+    content: (
+      <div className="flex h-screen justify-center p-3">
+        <Chip size="lg">Coming soon to a Tavern near you!</Chip>
+      </div>
+    ),
   },
   {
     key: 'spells',
@@ -53,7 +62,11 @@ const Tabs: ComponentTab[] = [
         Spells
       </TabTitle>
     ),
-    content: <CoreTab />,
+    content: (
+      <div className="flex h-screen justify-center p-3">
+        <Chip size="lg">Coming soon to a Tavern near you!</Chip>
+      </div>
+    ),
   },
 ];
 

@@ -9,14 +9,14 @@ import { FormInput } from '../Form/FormInput';
 
 interface BasicCreatorModalProps {
   isOpen: boolean;
-  close: () => void;
+  onClose: () => void;
 }
 
-const BasicCreatorModal = ({ isOpen, close }: BasicCreatorModalProps) => {
+const BasicCreatorModal = ({ isOpen, onClose }: BasicCreatorModalProps) => {
   const formMethods = useForm();
 
   return (
-    <Modal isOpen={isOpen} placement="center" size="2xl" onClose={close}>
+    <Modal isOpen={isOpen} placement="center" size="2xl" onClose={onClose}>
       <ModalContent>
         <FormProvider {...formMethods}>
           <ModalHeader className="p-6">Character Creator</ModalHeader>
@@ -28,7 +28,9 @@ const BasicCreatorModal = ({ isOpen, close }: BasicCreatorModalProps) => {
                 styleVariant="basic"
               />
               <Textarea description="Who are they and what is their story?" label="Character Backstory" minRows={30} />
-              <Button onClick={close}>Create</Button>
+              <Button color="primary" onClick={onClose}>
+                Create
+              </Button>
             </div>
           </ModalBody>
         </FormProvider>

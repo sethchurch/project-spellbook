@@ -18,7 +18,7 @@ interface NewCharacterModalProps {
 const NewCharacterModal = ({ isOpen, close }: NewCharacterModalProps) => {
   const formMethods = useForm();
   const router = useRouter();
-  const { isOpen: modalAiCreatorIsOpen, onClose } = useDisclosure();
+  const { isOpen: modalAiCreatorIsOpen, onClose, onOpen } = useDisclosure();
   const addCharacter = useCharacterStore((state) => state.addCharacter);
 
   const handleClose = () => {
@@ -41,14 +41,14 @@ const NewCharacterModal = ({ isOpen, close }: NewCharacterModalProps) => {
           <FormProvider {...formMethods}>
             <ModalHeader className="px-6 pb-3 pt-6">Create a New Character</ModalHeader>
             <ModalBody className="px-6 pb-6">
-              <Button isDisabled>Create with Basic AI Creator</Button>
+              <Button onClick={onOpen}>Create with Basic AI Creator</Button>
               <Button isDisabled>Create with Advanced AI Creator</Button>
               <Button onClick={handleCreateBlankCharacter}>Create Blank Character</Button>
             </ModalBody>
           </FormProvider>
         </ModalContent>
       </Modal>
-      <BasicCreatorModal close={handleClose} isOpen={modalAiCreatorIsOpen} />
+      <BasicCreatorModal isOpen={modalAiCreatorIsOpen} onClose={handleClose} />
     </>
   );
 };

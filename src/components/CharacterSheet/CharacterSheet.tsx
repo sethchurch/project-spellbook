@@ -4,15 +4,16 @@ import { Chip } from '@nextui-org/chip';
 import { Tab } from '@nextui-org/tabs';
 
 import { TabList } from '@/components/Elements/TabList';
+import { TabTitle } from '@/components/Elements/TabTitle';
+import type { ComponentTab } from '@/types/tabs';
 
-import { TabTitle } from '../Elements/TabTitle';
 import { CoreTab } from './CoreTab';
 
-type ComponentTab = {
-  key: string;
-  title: JSX.Element;
-  content: JSX.Element;
-};
+const ComingSoon = () => (
+  <div className="flex h-screen justify-center p-3">
+    <Chip size="lg">Coming soon to a Tavern near you!</Chip>
+  </div>
+);
 
 const Tabs: ComponentTab[] = [
   {
@@ -36,24 +37,16 @@ const Tabs: ComponentTab[] = [
         Inventory
       </TabTitle>
     ),
-    content: (
-      <div className="flex h-screen justify-center p-3">
-        <Chip size="lg">Coming soon to a Tavern near you!</Chip>
-      </div>
-    ),
+    content: <ComingSoon />,
   },
   {
-    key: 'Bio',
+    key: 'bio',
     title: (
       <TabTitle size="lg" styleVariant="alt">
         Bio
       </TabTitle>
     ),
-    content: (
-      <div className="flex h-screen justify-center p-3">
-        <Chip size="lg">Coming soon to a Tavern near you!</Chip>
-      </div>
-    ),
+    content: <ComingSoon />,
   },
   {
     key: 'spells',
@@ -62,17 +55,13 @@ const Tabs: ComponentTab[] = [
         Spells
       </TabTitle>
     ),
-    content: (
-      <div className="flex h-screen justify-center p-3">
-        <Chip size="lg">Coming soon to a Tavern near you!</Chip>
-      </div>
-    ),
+    content: <ComingSoon />,
   },
 ];
 
 const CharacterSheet = () => {
   return (
-    <div className="m-2 md:m-6">
+    <div className="m-1 md:m-6">
       <TabList defaultTab="actions">
         {Tabs.map((tab: ComponentTab) => (
           <Tab key={tab.key} title={tab.title}>

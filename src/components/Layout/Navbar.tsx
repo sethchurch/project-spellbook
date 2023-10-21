@@ -22,7 +22,7 @@ const Navbar = () => {
           </Button>
         </Link>
       </div>
-      <Input isClearable styleVariant="inset" variant="faded" />
+      <Input isClearable isDisabled styleVariant="inset" variant="faded" />
       <ToggleThemeButton />
     </nav>
   );

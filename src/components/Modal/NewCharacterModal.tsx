@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '@nextui-org/button';
-import { Modal, ModalBody, ModalContent, ModalHeader, useDisclosure } from '@nextui-org/react';
+import { Modal, ModalBody, ModalContent, ModalHeader, Tooltip, useDisclosure } from '@nextui-org/react';
 import { useRouter } from 'next/navigation';
 import { FormProvider, useForm } from 'react-hook-form';
 
@@ -41,8 +41,10 @@ const NewCharacterModal = ({ isOpen, close }: NewCharacterModalProps) => {
           <FormProvider {...formMethods}>
             <ModalHeader className="px-6 pb-3 pt-6">Create a New Character</ModalHeader>
             <ModalBody className="px-6 pb-6">
+              <Tooltip color="primary" content="Coming Soon!" placement="top">
+                <Button variant="flat">Create with Advanced AI Creator</Button>
+              </Tooltip>
               <Button onClick={onOpen}>Create with Basic AI Creator</Button>
-              <Button isDisabled>Create with Advanced AI Creator</Button>
               <Button onClick={handleCreateBlankCharacter}>Create Blank Character</Button>
             </ModalBody>
           </FormProvider>

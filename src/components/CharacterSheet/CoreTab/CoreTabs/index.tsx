@@ -6,16 +6,11 @@ import { Pod } from '@/components/CharacterSheet/Pod';
 import { TabList } from '@/components/Elements/TabList';
 import { TabTitle } from '@/components/Elements/TabTitle';
 import { Textarea } from '@/components/Form/Textarea';
+import type { ComponentTab } from '@/types/tabs';
 
 import { ActionsTab } from './ActionsTab';
 import { FeaturesTab } from './FeaturesTab';
 import { ResourcesTab } from './ResourcesTab';
-
-type ComponentTab = {
-  key: string;
-  title: JSX.Element;
-  content: JSX.Element;
-};
 
 const Tabs: ComponentTab[] = [
   {

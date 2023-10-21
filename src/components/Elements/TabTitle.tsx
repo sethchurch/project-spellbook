@@ -10,7 +10,7 @@ const styleVariants = {
 
 const sizeVariants = {
   default: 'p-3 px-1.5 sm:px-8',
-  lg: 'p-2.5 sm:p-3.5 px-6 sm:px-12',
+  lg: 'p-2 sm:p-3.5 px-3.5 sm:px-12',
 };
 
 interface TabTitleProps extends PropsWithChildren {

@@ -21,7 +21,7 @@ const AppLayout = ({ children }: PropsWithChildren) => {
       <Navbar />
       <main className="flex">
         <Sidenav>
-          <Input isClearable placeholder="Find characters..." styleVariant="inset" variant="faded" />
+          <Input isClearable isDisabled placeholder="Find characters..." styleVariant="inset" variant="faded" />
           <Button color="primary" onClick={onOpen}>
             <Icon icon="plus" />
           </Button>

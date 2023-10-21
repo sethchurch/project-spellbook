@@ -16,7 +16,11 @@ type ComponentTab = {
 const Tabs: ComponentTab[] = [
   {
     key: 'core',
-    title: <TabTitle styleVariant="alt">Core</TabTitle>,
+    title: (
+      <TabTitle size="lg" styleVariant="alt">
+        Core
+      </TabTitle>
+    ),
     content: (
       <>
         <div className="h-32 w-full rounded-t-lg bg-gradient-to-r from-violet-700 to-violet-950 md:h-64" />
@@ -26,13 +30,30 @@ const Tabs: ComponentTab[] = [
   },
   {
     key: 'inventory',
-    title: <TabTitle styleVariant="alt">Inventory</TabTitle>,
-    content: (
-      <>
-        <div className="h-32 w-full rounded-t-lg bg-gradient-to-r from-violet-700 to-violet-950 md:h-64" />
-        <CoreTab />
-      </>
+    title: (
+      <TabTitle size="lg" styleVariant="alt">
+        Inventory
+      </TabTitle>
     ),
+    content: <CoreTab />,
+  },
+  {
+    key: 'Bio',
+    title: (
+      <TabTitle size="lg" styleVariant="alt">
+        Bio
+      </TabTitle>
+    ),
+    content: <CoreTab />,
+  },
+  {
+    key: 'spells',
+    title: (
+      <TabTitle size="lg" styleVariant="alt">
+        Spells
+      </TabTitle>
+    ),
+    content: <CoreTab />,
   },
 ];
 

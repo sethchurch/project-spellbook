@@ -5,6 +5,7 @@ import { Input } from '@/components/Elements/Input';
 import { ToggleThemeButton } from '@/components/Elements/ToggleThemeButton';
 
 import { Icon } from '../Elements/Icon';
+import { ProfileDropdown } from './ProfileDropdown';
 import { SideNavTrigger } from './SideNavTrigger';
 
 const Navbar = () => {
@@ -23,7 +24,10 @@ const Navbar = () => {
         </Link>
       </div>
       <Input isClearable isDisabled styleVariant="inset" variant="faded" />
-      <ToggleThemeButton />
+      <div className="flex gap-3">
+        <ToggleThemeButton />
+        <ProfileDropdown />
+      </div>
     </nav>
   );
 };

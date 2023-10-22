@@ -6,6 +6,7 @@ import type { InputProps } from '@/components/Elements/Input';
 import { Input } from '@/components/Elements/Input';
 
 interface FormInputProps extends InputProps {
+  name: string;
   watchFlag?: boolean;
 }
 
@@ -17,7 +18,7 @@ const FormInput = ({ name, watchFlag, ...props }: FormInputProps) => {
       control={control}
       name={name || 'name'}
       render={({ field }) => {
-        return <Input {...props} {...field} ref={null} value={watchFlag ? watch(name || 'name') : field.value} />;
+        return <Input {...props} {...field} ref={null} value={(watchFlag ? watch(name) : field.value) || ''} />;
       }}
     />
   );

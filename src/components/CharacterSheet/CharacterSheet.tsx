@@ -23,12 +23,7 @@ const Tabs: ComponentTab[] = [
         Core
       </TabTitle>
     ),
-    content: (
-      <>
-        <div className="h-32 w-full rounded-t-lg bg-gradient-to-r from-violet-700 to-violet-950 md:h-64" />
-        <CoreTab />
-      </>
-    ),
+    content: <CoreTab />,
   },
   {
     key: 'inventory',

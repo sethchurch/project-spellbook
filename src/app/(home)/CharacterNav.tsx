@@ -1,6 +1,7 @@
 'use client';
 
 import { Chip } from '@nextui-org/chip';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { useCharacterStore } from '@/hooks/useCharacterStore';
@@ -45,7 +46,9 @@ const CharacterNav = () => {
               variant="solid"
             >
               <div className="flex w-full max-w-[300px] items-center gap-3">
-                <div className="aspect-square h-7 rounded-full border-3 border-zinc-800 bg-gradient-to-br from-violet-700 to-violet-950" />
+                <div className="relative aspect-square h-7 w-7 overflow-hidden rounded-full border-3 border-zinc-800 bg-gradient-to-br from-violet-700 to-violet-950">
+                  <Image fill alt="image of character" sizes="100vw" src="https://picsum.photos/2048/1024" />
+                </div>
                 <div>{character.name}</div>
               </div>
             </Chip>

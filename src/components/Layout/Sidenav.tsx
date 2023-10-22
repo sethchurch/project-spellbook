@@ -8,6 +8,7 @@ import { cn } from '@/utils/cn';
 const Sidenav = ({ children }: PropsWithChildren) => {
   const { sideNavOpen } = useAppShell();
   const sideNavClass = sideNavOpen ? 'ml-0' : '-ml-72';
+
   return (
     <aside
       className={cn(

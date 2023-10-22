@@ -4,8 +4,6 @@ import type { TextAreaProps as NextTextAreaProps } from '@nextui-org/input';
 import { Textarea as NextTextarea } from '@nextui-org/input';
 import { Controller, useFormContext } from 'react-hook-form';
 
-import { loremIpsum } from '@/config/dummyData';
-
 const styleVariants = {
   default: {
     label: 'h-0 p-0',
@@ -32,10 +30,11 @@ const Textarea = ({ name, placeholder, styleVariant, ...props }: TextareaProps) 
       render={({ field }) => (
         <NextTextarea
           classNames={{ ...styleVariants[styleVariant ?? 'default'], label: props.label ? '' : 'hidden' }}
-          placeholder={placeholder || loremIpsum.repeat(1)}
+          placeholder={placeholder}
           radius="md"
           {...props}
           {...field}
+          value={field.value || ''}
         />
       )}
     />

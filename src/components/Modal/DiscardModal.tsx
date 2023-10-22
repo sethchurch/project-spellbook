@@ -13,19 +13,21 @@ interface DiscardModalProps {
 const DiscardModal = ({ body, cancelAction, confirmAction, isOpen, title, onClose }: DiscardModalProps) => {
   const handleConfirmAction: MouseEventHandler<HTMLButtonElement> = () => {
     if (confirmAction) confirmAction();
+    onClose();
   };
 
-  const handleCancelAction: MouseEventHandler<HTMLButtonElement> = () => {
+  const handleCancelAction = () => {
     if (cancelAction) cancelAction();
+    onClose();
   };
 
   return (
-    <Modal isDismissable isOpen={isOpen} placement="center" size="md" onClose={cancelAction || onClose}>
+    <Modal isDismissable isOpen={isOpen} placement="center" size="md" onClose={handleCancelAction}>
       <ModalContent>
         <ModalHeader className="px-6">{title}</ModalHeader>
         <ModalBody className="px-6 py-3">{body || 'Are you sure you want to delete this?'}</ModalBody>
         <ModalFooter>
-          <Button onClick={handleCancelAction || onClose}>Cancel</Button>
+          <Button onClick={handleCancelAction}>Cancel</Button>
           <Button color="danger" onClick={handleConfirmAction}>
             Confirm
           </Button>

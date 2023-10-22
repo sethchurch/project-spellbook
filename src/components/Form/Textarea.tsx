@@ -8,10 +8,10 @@ const styleVariants = {
   default: {
     label: 'h-0 p-0',
     inputWrapper: 'border-none after:h-0 shadow-none bg-transparent !p-3',
-    input: 'm-0 p-0 rounded-lg',
+    input: 'm-0 p-0',
   },
   inset: {
-    input: 'px-3 py-5 rounded-lg',
+    input: 'px-3 py-5',
   },
   basic: {},
 };

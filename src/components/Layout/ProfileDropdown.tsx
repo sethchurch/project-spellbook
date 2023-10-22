@@ -1,15 +1,18 @@
+'use client';
+
 import { Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@nextui-org/react';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import { useThemeSwitch } from '@/hooks/useThemeSwitch';
 
 const ProfileDropdown = () => {
+  const router = useRouter();
   const { switchTheme } = useThemeSwitch();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const toggleLogin = () => {
-    setIsLoggedIn((state) => !state);
-  };
+  const toggleLogin = () => setIsLoggedIn((state) => !state);
+  const handleLogin = () => router.push('/login');
 
   return (
     <Dropdown>
@@ -25,7 +28,7 @@ const ProfileDropdown = () => {
             Log Out
           </DropdownItem>
         ) : (
-          <DropdownItem key="theme" color="primary" onClick={toggleLogin}>
+          <DropdownItem key="theme" color="primary" onClick={handleLogin}>
             Log In
           </DropdownItem>
         )}

@@ -12,11 +12,12 @@ const NavContext = createContext<NavContextType | null>(null);
 
 const useAppShell = () => {
   const context = useContext(NavContext);
-  if (context === undefined) {
+
+  if (!context) {
     throw new Error('useAppShell must be used within a AppShell');
   }
 
-  const { setSideNavOpen } = context!;
+  const { setSideNavOpen } = context;
   const toggleSideNav = () => {
     setSideNavOpen((prev: boolean) => !prev);
   };

@@ -18,7 +18,7 @@ const CoreTab = () => {
     <>
       <div className="relative h-32 w-full rounded-t-lg bg-gradient-to-r from-violet-700 to-violet-950 md:h-64">
         <Image fill alt="image of character" className="block" sizes="100vw" src="https://picsum.photos/2048/256" />
-        <div className=" absolute left-0 top-0 h-full w-full bg-gradient-to-r from-violet-700 to-violet-950 opacity-10 transition-opacity hover:opacity-30" />
+        <div className=" absolute left-0 top-0 h-full w-full bg-gradient-to-r from-violet-700 to-violet-950 opacity-0 transition-opacity hover:opacity-30" />
       </div>
       <div className="grid grid-cols-1 grid-rows-[1fr_max-content] gap-x-2 gap-y-3 p-2 md:gap-3 md:p-5 lg:grid-cols-[6fr_3fr] xl:grid-cols-[2fr_6fr_2fr]">
         <Pod className="xl:col-span-2" label="Character Details">

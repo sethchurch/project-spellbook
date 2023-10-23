@@ -93,6 +93,7 @@ type Character = {
   proficiencies?: { languages: string; weapons: string; armor: string; other: string };
   bio?: { personalityTraits: string; ideals: string; bonds: string; flaws: string };
   notes?: string;
+  backstory?: string;
 };
 
 const characterDefaults: Character = {

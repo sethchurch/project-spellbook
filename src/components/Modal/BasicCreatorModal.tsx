@@ -2,6 +2,8 @@
 
 import { Button } from '@nextui-org/button';
 import { Modal, ModalBody, ModalContent, ModalHeader } from '@nextui-org/react';
+import { useMutation } from '@tanstack/react-query';
+import { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import { FormInput } from '@/components/Form/FormInput';
@@ -13,12 +15,36 @@ interface BasicCreatorModalProps {
 }
 
 const BasicCreatorModal = ({ isOpen, onClose }: BasicCreatorModalProps) => {
-  const formMethods = useForm();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const formMethods = useForm({ defaultValues: { name: '', backstory: '' } });
   const { getValues } = formMethods;
 
+  const { mutate: generate } = useMutation({
+    mutationFn: async (payload: object) => {
+      const response = await fetch('/api/wizard', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      return response.json();
+    },
+    onMutate: () => {
+      setIsSubmitting(true);
+    },
+    onSuccess: (data) => {
+      console.log(data);
+    },
+    onSettled: () => {
+      setIsSubmitting(false);
+    },
+  });
+
   const getCharacter = () => {
-    getValues();
-    onClose();
+    const formValue = getValues();
+    const newCharacter = generate(formValue);
   };
 
   return (
@@ -42,7 +68,7 @@ const BasicCreatorModal = ({ isOpen, onClose }: BasicCreatorModalProps) => {
                 styleVariant="basic"
               />
               <Button color="primary" onClick={getCharacter}>
-                Create
+                {isSubmitting ? 'Generating...' : 'Generate'}
               </Button>
             </div>
           </ModalBody>

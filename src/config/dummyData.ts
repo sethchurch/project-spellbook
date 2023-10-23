@@ -5,7 +5,7 @@ const statNames = ['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha'];
 const loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum orci quis tincidunt ferm. ';
 
 const character = {
-  name: 'Tyren',
+  name: 'Tyren Torkain',
   race: 'Half-Elf',
   experience: 1000,
   class: 'Paladin 2 / Bard 3 (College of Swords)',

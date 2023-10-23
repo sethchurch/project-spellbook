@@ -15,20 +15,20 @@ const ProfileDropdown = () => {
   const handleLogin = () => router.push('/login');
 
   return (
-    <Dropdown>
+    <Dropdown title="Profile Dropdown">
       <DropdownTrigger>
         <Avatar isBordered radius="md" src="https://i.pravatar.cc/300" />
       </DropdownTrigger>
-      <DropdownMenu>
+      <DropdownMenu aria-label="options dropdown">
         <DropdownItem key="theme" onClick={switchTheme}>
           Toggle Theme
         </DropdownItem>
         {isLoggedIn ? (
-          <DropdownItem key="theme" color="danger" onClick={toggleLogin}>
+          <DropdownItem key="logout" color="danger" onClick={toggleLogin}>
             Log Out
           </DropdownItem>
         ) : (
-          <DropdownItem key="theme" color="primary" onClick={handleLogin}>
+          <DropdownItem key="loxgin" color="primary" onClick={handleLogin}>
             Log In
           </DropdownItem>
         )}

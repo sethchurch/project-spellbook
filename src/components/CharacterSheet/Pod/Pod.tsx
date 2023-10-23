@@ -12,6 +12,7 @@ interface PodProps {
   variant?: 'alt' | 'default' | 'transparent';
   className?: string;
   label?: string;
+  disableLoading?: boolean;
 }
 
 const variants = {
@@ -31,7 +32,7 @@ const PodLabel = ({ label, className }: { label: string; className?: string }) =
   </div>
 );
 
-const Pod = ({ isCompact, children, variant, className, label }: PodProps) => {
+const Pod = ({ isCompact, children, variant, className, label, disableLoading }: PodProps) => {
   const variantClass = variants[variant ?? 'default'];
   const isCompactClass = isCompact ? 'p-2 truncate' : 'p-3';
   const mounted = useMounted();
@@ -41,7 +42,7 @@ const Pod = ({ isCompact, children, variant, className, label }: PodProps) => {
       {label && <PodLabel className="rounded-t-lg" label={label} />}
       {children && (
         <div className={cn('h-full w-full', isCompactClass)}>
-          {mounted ? children : <Skeleton className="h-full w-full p-12" />}
+          {mounted || disableLoading ? children : <Skeleton className="h-full w-full p-12" />}
         </div>
       )}
     </div>

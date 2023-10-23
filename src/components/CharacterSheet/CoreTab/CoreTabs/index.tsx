@@ -40,7 +40,9 @@ const CoreTabs = () => {
     <TabList defaultTab="actions">
       {Tabs.map((tab: ComponentTab) => (
         <Tab key={tab.key} title={tab.title}>
-          <Pod className="h-full">{tab.content}</Pod>
+          <Pod disableLoading className="h-full">
+            {tab.content}
+          </Pod>
         </Tab>
       ))}
     </TabList>

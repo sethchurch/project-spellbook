@@ -17,7 +17,7 @@ export const POST = async (req: NextRequest) => {
   try {
     const response = await createChatCompletion({
       model: 'gpt-3.5-turbo',
-      temperature: 0.8,
+      temperature: 1,
       function_call: { name: 'create_character' },
       functions: [createCharacter],
       messages: [
@@ -26,8 +26,12 @@ export const POST = async (req: NextRequest) => {
       ],
     });
 
-    return NextResponse.json(response);
+    const functionCall = response.choices[0]?.message.function_call?.arguments;
+    if (!functionCall) throw new Error('No function call returned from OpenAI');
+
+    const responseData = JSON.parse(functionCall);
+    return NextResponse.json({ ...responseData, name, backstory });
   } catch (error: any) {
-    return NextResponse.json({ error: 'Unable to fetch response from OpenAI' }, { status: 500 });
+    return NextResponse.json({ error: 'Error generating character' }, { status: 500 });
   }
 };

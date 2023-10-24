@@ -15,6 +15,9 @@ export const createCharacter = {
       background: {
         type: 'string',
       },
+      initiative: {
+        type: 'number',
+      },
       alignment: {
         type: 'string',
         enum: [
@@ -44,29 +47,35 @@ export const createCharacter = {
         },
       },
       skills: {
-        type: 'array',
-        items: {
-          type: 'string',
-          enum: [
-            'acrobatics',
-            'animal handling',
-            'arcana',
-            'athletics',
-            'deception',
-            'history',
-            'insight',
-            'intimidation',
-            'investigation',
-            'medicine',
-            'nature',
-            'perception',
-            'performance',
-            'persuasion',
-            'religion',
-            'sleight of hand',
-            'stealth',
-            'survival',
-          ],
+        type: 'object',
+        properties: {
+          proficent: {
+            type: 'array',
+            description: 'The skills the character has proficency in',
+            items: {
+              type: 'string',
+              enum: [
+                'acrobatics',
+                'animal handling',
+                'arcana',
+                'athletics',
+                'deception',
+                'history',
+                'insight',
+                'intimidation',
+                'investigation',
+                'medicine',
+                'nature',
+                'perception',
+                'performance',
+                'persuasion',
+                'religion',
+                'sleight of hand',
+                'stealth',
+                'survival',
+              ],
+            },
+          },
         },
       },
       armorClass: {
@@ -168,6 +177,32 @@ export const createCharacter = {
             description: 'The flaws of the character',
           },
         },
+      },
+      proficiencies: {
+        type: 'object',
+        description: 'The non-skill proficiencies of the character',
+        properties: {
+          languages: {
+            type: 'string',
+            description: 'The languages the character knows in comma separated format',
+          },
+          weapons: {
+            type: 'string',
+            description: 'The weapons the character is proficent with in comma separated format',
+          },
+          armor: {
+            type: 'string',
+            description: 'The armor the character is proficent with in comma separated format',
+          },
+          other: {
+            type: 'string',
+            description: 'Other proficiencies the character has in comma separated format',
+          },
+        },
+      },
+      notes: {
+        type: 'string',
+        description: 'A general summary of the character and why you made the choices you did',
       },
     },
   },

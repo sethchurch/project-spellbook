@@ -16,7 +16,7 @@ const CheckCounter = ({ CheckComponent, max, name }: CheckCounterProps) => {
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     const counterValue = getValues(name);
     const { checked } = e.target;
-    setValue(name, counterValue + (checked ? 1 : -1));
+    setValue(name, (counterValue ?? 0) + (checked ? 1 : -1));
   };
 
   return Array(max)

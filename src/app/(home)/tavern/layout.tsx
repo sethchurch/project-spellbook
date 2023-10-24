@@ -1,5 +1,3 @@
-'use client';
-
 import { TavernContextButton } from './TavernContextButton';
 
 interface TavernLayoutProps {

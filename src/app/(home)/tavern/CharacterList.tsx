@@ -34,7 +34,7 @@ const CharacterList = () => {
   }, [addCharacter, characters, isMounted]);
 
   return (
-    <div className="grid grid-cols-1 gap-6 py-3 sm:grid-cols-2 md:grid-cols-3 md:py-6 lg:grid-cols-4">
+    <div className="grid grid-cols-1 gap-6 py-3 md:grid-cols-2 md:py-6 lg:grid-cols-3">
       {!characters
         ? Array.from({ length: 4 }).map((_, index) => <CharacterListItemSkeleton key={index} />)
         : Object.entries(characters).map(([id, c]) => <CharacterListItem key={id} character={c} characterId={+id} />)}

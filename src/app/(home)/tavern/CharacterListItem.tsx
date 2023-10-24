@@ -39,6 +39,8 @@ const CharacterListItem = ({ character, characterId }: CharacterListItemProps) =
   const isEditing = useTavernState((state) => state.isEditing);
   const removeCharacter = useCharacterStore((state) => state.removeCharacter.bind(null, characterId));
 
+  const backstory = character.backstory || loremIpsum.repeat(10);
+
   return (
     <>
       <Link
@@ -68,8 +70,7 @@ const CharacterListItem = ({ character, characterId }: CharacterListItemProps) =
               ))}
             </div>
             <Spacer y={3} />
-            {/* TODO: Add backstory info here once its implemented */}
-            <p>{`${loremIpsum.repeat(10).slice(0, 175).trim()}...`}</p>
+            <p>{`${backstory.slice(0, 200).trim()}...`}</p>
           </CardBody>
         </Card>
       </Link>

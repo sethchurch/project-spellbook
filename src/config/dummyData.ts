@@ -61,11 +61,6 @@ const character = {
       source: 'Paladin',
     },
   ],
-  senses: [
-    { name: 'Passive Perception - 13', description: '13', source: 'wisdom' },
-    { name: 'Darkvision - 60ft', description: '60ft', source: 'Half-elf' },
-    { name: 'Truesight - 60ft', description: '60ft', source: 'Blessed' },
-  ],
   proficiencies: {
     languages: 'Common, Elvish, Dwarvish',
     weapons: 'Simple Weapons, Martial Weapons, Longswords, Rapiers, Shortswords, Shortbows, Longbows',

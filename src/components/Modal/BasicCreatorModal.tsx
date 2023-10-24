@@ -1,13 +1,16 @@
 'use client';
 
-import { Button } from '@nextui-org/button';
-import { Modal, ModalBody, ModalContent, ModalHeader } from '@nextui-org/react';
+import { Button, Modal, ModalBody, ModalContent, ModalHeader } from '@nextui-org/react';
 import { useMutation } from '@tanstack/react-query';
-import { useState } from 'react';
+import { useRef } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 
 import { FormInput } from '@/components/Form/FormInput';
 import { Textarea } from '@/components/Form/Textarea';
+import type { Character } from '@/config/CharacterConfig';
+import { useCharacterStore } from '@/hooks/useCharacterStore';
+import { client } from '@/utils/apiClient';
 
 interface BasicCreatorModalProps {
   isOpen: boolean;
@@ -15,36 +18,25 @@ interface BasicCreatorModalProps {
 }
 
 const BasicCreatorModal = ({ isOpen, onClose }: BasicCreatorModalProps) => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const formMethods = useForm({ defaultValues: { name: '', backstory: '' } });
+  const addCharacter = useCharacterStore((state) => state.addCharacter);
+  const formMethods = useForm({ defaultValues: { name: '', backstory: '', level: 1 } });
   const { getValues } = formMethods;
+  const toastId = useRef<string>('');
 
-  const { mutate: generate } = useMutation({
-    mutationFn: async (payload: object) => {
-      const response = await fetch('/api/wizard', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      });
-
-      return response.json();
-    },
+  const { mutate: generateCharacter } = useMutation({
+    mutationFn: async () => client('/api/wizard', { data: getValues() }),
     onMutate: () => {
-      setIsSubmitting(true);
+      toastId.current = toast.loading(`Generating... You may safely navigate away from this page just don't refresh`);
     },
-    onSuccess: (data) => {
-      console.log(data);
-    },
-    onSettled: () => {
-      setIsSubmitting(false);
+    onSuccess: (data: Partial<Character>) => {
+      addCharacter(data);
+      toast.success(`${data.name} has been added to your character list.`, { id: toastId.current });
     },
   });
 
-  const getCharacter = () => {
-    const formValue = getValues();
-    const newCharacter = generate(formValue);
+  const onSubmit = () => {
+    generateCharacter();
+    onClose();
   };
 
   return (
@@ -60,6 +52,15 @@ const BasicCreatorModal = ({ isOpen, onClose }: BasicCreatorModalProps) => {
                 name="name"
                 styleVariant="basic"
               />
+              <FormInput
+                description="What level do you want this character to be?"
+                label="Character Level"
+                max={20}
+                min={1}
+                name="level"
+                styleVariant="basic"
+                type="number"
+              />
               <Textarea
                 description="Who are they and what is their story?"
                 label="Character Backstory"
@@ -67,8 +68,8 @@ const BasicCreatorModal = ({ isOpen, onClose }: BasicCreatorModalProps) => {
                 name="backstory"
                 styleVariant="basic"
               />
-              <Button color="primary" onClick={getCharacter}>
-                {isSubmitting ? 'Generating...' : 'Generate'}
+              <Button color="primary" onClick={onSubmit}>
+                Generate
               </Button>
             </div>
           </ModalBody>

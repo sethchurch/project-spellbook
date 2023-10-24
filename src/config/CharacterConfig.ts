@@ -102,7 +102,6 @@ const characterDefaults: Character = {
   experience: 0,
   class: 'Fighter',
   background: 'Acolyte',
-  initiative: 0,
   alignment: 'Neutral',
   stats: [10, 10, 10, 10, 10, 10],
   savingThrows: [],
@@ -110,6 +109,19 @@ const characterDefaults: Character = {
   armorClass: 10,
   speed: 30,
   inspired: false,
+  initiative: 0,
+  attacks: [],
+  resources: [],
+  features: [],
+  senses: [],
+  proficiencies: { languages: '', weapons: '', armor: '', other: '' },
+  notes: '',
+  backstory: '',
+  bio: { personalityTraits: '', ideals: '', bonds: '', flaws: '' },
+  deathSaves: { successes: 0, failures: 0 },
+  hitDice: { current: '', max: '' },
+  hitPoints: { current: 0, max: 0, temporary: 0 },
+  conditions: [],
 };
 
 export { characterDefaults, characterSkills, savingThrows, skillLookup, statLongNameLookup };

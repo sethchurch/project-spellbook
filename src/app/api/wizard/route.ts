@@ -32,6 +32,9 @@ export const POST = async (req: NextRequest) => {
     const responseData = JSON.parse(functionCall);
     return NextResponse.json({ ...responseData, name, backstory });
   } catch (error: any) {
-    return NextResponse.json({ error: 'Error generating character' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Error generating character. AI features are disabled for the non-local version for now.' },
+      { status: 500 },
+    );
   }
 };

@@ -32,11 +32,15 @@ const BasicCreatorModal = ({ isOpen, onClose }: BasicCreatorModalProps) => {
       addCharacter(data);
       toast.success(`${data.name} has been added to your character list.`, { id: toastId.current });
     },
+    onError: (error: Error) => toast.error(error.message, { id: toastId.current }),
+    onSettled: () => {
+      formMethods.reset();
+      onClose();
+    },
   });
 
   const onSubmit = () => {
     generateCharacter();
-    onClose();
   };
 
   return (

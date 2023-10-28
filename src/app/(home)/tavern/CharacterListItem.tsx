@@ -70,7 +70,7 @@ const CharacterListItem = ({ character, characterId }: CharacterListItemProps) =
               ))}
             </div>
             <Spacer y={3} />
-            <p>{`${backstory.slice(0, 200).trim()}...`}</p>
+            <p className="line-clamp-3">{backstory}</p>
           </CardBody>
         </Card>
       </Link>

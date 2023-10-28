@@ -4,7 +4,10 @@ import { Toaster } from 'react-hot-toast';
 const ToastProvider = ({ children }: PropsWithChildren) => {
   return (
     <>
-      <Toaster toastOptions={{ style: { borderRadius: '10px', background: '#333', color: '#fff' } }} />
+      <Toaster
+        position="top-right"
+        toastOptions={{ style: { borderRadius: '10px', background: '#333', color: '#fff' } }}
+      />
       {children}
     </>
   );

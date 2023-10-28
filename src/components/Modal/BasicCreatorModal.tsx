@@ -27,16 +27,14 @@ const BasicCreatorModal = ({ isOpen, onClose }: BasicCreatorModalProps) => {
     mutationFn: async () => client('/api/wizard', { data: getValues() }),
     onMutate: () => {
       toastId.current = toast.loading(`Generating... You may safely navigate away from this page just don't refresh`);
+      onClose();
     },
     onSuccess: (data: Partial<Character>) => {
       addCharacter(data);
       toast.success(`${data.name} has been added to your character list.`, { id: toastId.current });
     },
     onError: (error: Error) => toast.error(error.message, { id: toastId.current }),
-    onSettled: () => {
-      formMethods.reset();
-      onClose();
-    },
+    onSettled: () => formMethods.reset(),
   });
 
   const onSubmit = () => {

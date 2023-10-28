@@ -119,7 +119,7 @@ const characterDefaults: Character = {
   backstory: '',
   bio: { personalityTraits: '', ideals: '', bonds: '', flaws: '' },
   deathSaves: { successes: 0, failures: 0 },
-  hitDice: { current: '', max: '' },
+  hitDice: { current: '1d8', max: '1d8' },
   hitPoints: { current: 0, max: 0, temporary: 0 },
   conditions: [],
 };

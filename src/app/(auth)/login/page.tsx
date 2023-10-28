@@ -68,6 +68,7 @@ const LoginPage = () => {
                     <h1 className="mb-6 text-2xl font-bold">Sign Up</h1>
                     <Input label="Email" name="email" styleVariant="basic" />
                     <Input label="Password" name="password" styleVariant="basic" />
+                    <Input label="Confirm Password" name="confirmPassword" styleVariant="basic" />
                     <Button className="w-full" color="primary" radius="sm">
                       Sign Up
                     </Button>

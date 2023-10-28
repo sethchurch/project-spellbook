@@ -16,12 +16,13 @@ const sizeVariants = {
 interface TabTitleProps extends PropsWithChildren {
   styleVariant?: keyof typeof styleVariants;
   size?: keyof typeof sizeVariants;
+  label?: string;
 }
 
-const TabTitle = ({ children, styleVariant, size }: TabTitleProps) => {
+const TabTitle = ({ children, styleVariant, size, label }: TabTitleProps) => {
   return (
     <div className={cn('rounded-t-lg', sizeVariants[size ?? 'default'], styleVariants[styleVariant ?? 'default'])}>
-      {children}
+      {label || children}
     </div>
   );
 };

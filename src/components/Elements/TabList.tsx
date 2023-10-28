@@ -18,13 +18,15 @@ interface TabListProps {
   defaultTab: Key;
   children: React.ReactNode;
   styleVariant?: keyof typeof styleVariants;
+  onSelectionChange?: (key: Key) => void;
 }
 
-const TabList = ({ children, className, defaultTab, styleVariant }: TabListProps) => {
+const TabList = ({ children, className, defaultTab, styleVariant, onSelectionChange }: TabListProps) => {
   const [currentTab, setCurrentTab] = useState(defaultTab);
 
   const setKeyOnSelectionChange = (key: Key) => {
     setCurrentTab(key);
+    if (onSelectionChange) onSelectionChange(key);
   };
 
   return (

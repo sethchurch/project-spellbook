@@ -48,7 +48,7 @@ export const createCharacter = {
         properties: {
           proficent: {
             type: 'array',
-            description: 'A list of every skill the character is proficent in (max 6) (min 2)',
+            description: 'A list of every skill the character is proficent in in lowercase',
             items: { type: 'string' },
             enum: [
               'acrobatics',

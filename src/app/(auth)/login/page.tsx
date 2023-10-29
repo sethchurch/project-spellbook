@@ -1,21 +1,16 @@
 'use client';
 
 import { Button } from '@nextui-org/button';
-import { Divider, Tab } from '@nextui-org/react';
-import { IconChevronLeft } from '@tabler/icons-react';
-import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
+import { Divider, Tab, useDisclosure } from '@nextui-org/react';
+import { FormProvider, useForm, useFormContext } from 'react-hook-form';
 
 import { Pod } from '@/components/CharacterSheet/Pod';
 import { TabList } from '@/components/Elements/TabList';
 import { TabTitle } from '@/components/Elements/TabTitle';
-import { ToggleThemeButton } from '@/components/Elements/ToggleThemeButton';
 import { FormInput } from '@/components/Form/FormInput';
-import { PasswordInput } from '@/components/Form/PasswordInput';
-import { MaxWidthWrapper } from '@/components/Layout/MaxWidthWrapper';
+import { useToastMessages } from '@/hooks/useToastMessages';
+
+import { ResetPasswordModal } from './ResetPasswordModal';
 
 type LoginFormValues = {
   email: string;
@@ -23,105 +18,75 @@ type LoginFormValues = {
   confirmPassword?: string;
 };
 
-const LoginPage = () => {
-  const methods = useForm<LoginFormValues>({ mode: 'onChange' });
-  const searchParams = useSearchParams();
-  const error = searchParams.get('error');
-  const message = searchParams.get('message');
+type LoginPageContentProps = {
+  confirm?: boolean;
+  label: string;
+};
 
-  const resetForm = () => {
-    methods.reset();
-  };
-
-  useEffect(() => {
-    if (error) {
-      toast.error(error, { id: 'login-error' });
-    }
-    if (message) {
-      toast.success(message, { id: 'login-message' });
-    }
-  }, [error, message]);
+const LoginPageContent = ({ confirm, label }: LoginPageContentProps) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { formState, watch } = useFormContext<LoginFormValues>();
+  const isFormValid = formState.isValid;
 
   return (
-    <MaxWidthWrapper>
-      <div className="relative grid h-screen w-full grid-cols-[1fr_4fr_1fr] items-center justify-center py-6 lg:grid-cols-3">
-        <Link className="self-start" href="/tavern">
-          <Button isIconOnly>
-            <IconChevronLeft />
-          </Button>
-        </Link>
-        <div className="z-10 col-start-2">
-          <TabList defaultTab="login" onSelectionChange={resetForm}>
-            <Tab key="login" title={<TabTitle label="Login" size="lg" styleVariant="alt" />}>
-              <FormProvider {...methods}>
-                <form action="/api/auth/login" method="post">
-                  <Pod disableLoading className="rounded-t-none" variant="alt">
-                    <div className="flex-stack p-3 text-center lg:px-12 lg:py-6">
-                      <h1 className="mb-6 text-2xl font-bold">Login</h1>
-                      <FormInput isRequired label="Email" name="email" styleVariant="basic" type="email" />
-                      <PasswordInput />
-                      <Button
-                        className="w-full"
-                        color="primary"
-                        isDisabled={!methods.formState.isValid}
-                        radius="sm"
-                        type="submit"
-                      >
-                        Login
-                      </Button>
-                      <Divider />
-                      <Button isDisabled className="w-full" radius="sm">
-                        Continue with Google
-                      </Button>
-                      <Button isDisabled className="w-full" radius="sm">
-                        Continue with Microsoft Account
-                      </Button>
-                      <Button isDisabled className="w-full" radius="sm">
-                        Continue with Apple
-                      </Button>
-                    </div>
-                  </Pod>
-                </form>
-              </FormProvider>
-            </Tab>
-            <Tab key="signup" title={<TabTitle label="Sign Up" size="lg" styleVariant="alt" />}>
-              <FormProvider {...methods}>
-                <form action="/api/auth/signup" method="post">
-                  <Pod disableLoading className="rounded-t-none" variant="alt">
-                    <div className="flex-stack p-3 text-center lg:px-12 lg:py-6">
-                      <h1 className="mb-6 text-2xl font-bold">Sign Up</h1>
-                      <FormInput isRequired label="Email" name="email" styleVariant="basic" type="email" />
-                      <PasswordInput confirm />
-                      <Button
-                        className="w-full"
-                        color="primary"
-                        isDisabled={!methods.formState.isValid}
-                        radius="sm"
-                        type="submit"
-                      >
-                        Sign Up
-                      </Button>
-                      <Divider />
-                      <Button isDisabled className="w-full" radius="sm">
-                        Sign Up with Google
-                      </Button>
-                      <Button isDisabled className="w-full" radius="sm">
-                        Sign Up with Microsoft Account
-                      </Button>
-                      <Button isDisabled className="w-full" radius="sm">
-                        Sign Up with Apple
-                      </Button>
-                    </div>
-                  </Pod>
-                </form>
-              </FormProvider>
-            </Tab>
-          </TabList>
-        </div>
-        <ToggleThemeButton className="self-start" variant="shadow" />
-        <div className="absolute left-[50%] top-[50%] hidden h-32 w-3/5 translate-x-[-50%] translate-y-[-40%] rounded-full bg-stone-200 dark:bg-zinc-800 lg:block" />
+    <Pod disableLoading className="rounded-t-none" variant="alt">
+      <div className="flex-stack p-3 text-center lg:px-12 lg:py-6">
+        <h1 className="mb-6 text-2xl font-bold">{label}</h1>
+        <FormInput isRequired label="Email" name="email" styleVariant="basic" type="email" />
+        <FormInput isRequired label="Password" name="password" styleVariant="basic" type="password" />
+        {confirm && (
+          <FormInput
+            isRequired
+            watchFlag
+            errorMessage={formState.errors.confirmPassword?.message as string}
+            label="Confirm Password"
+            name="confirmPassword"
+            rules={{ validate: (value: string) => watch('password') === value || 'Passwords do not match' }}
+            styleVariant="basic"
+            type="password"
+          />
+        )}
+        <Button className="w-full" color="primary" isDisabled={!isFormValid} radius="sm" type="submit">
+          {label}
+        </Button>
+        <Button className="w-full" radius="sm" onClick={onOpen}>
+          Forgot Password?
+        </Button>
+        <Divider />
+        <Button isDisabled className="w-full" radius="sm">
+          {label} with Google
+        </Button>
+        <Button isDisabled className="w-full" radius="sm">
+          {label} with Microsoft Account
+        </Button>
+        <Button isDisabled className="w-full" radius="sm">
+          {label} with Apple
+        </Button>
       </div>
-    </MaxWidthWrapper>
+      <ResetPasswordModal isOpen={isOpen} onClose={onClose} />
+    </Pod>
+  );
+};
+
+const LoginPage = () => {
+  useToastMessages('auth');
+  const methods = useForm<LoginFormValues>({ mode: 'onChange' });
+
+  return (
+    <FormProvider {...methods}>
+      <TabList defaultTab="login">
+        <Tab key="login" title={<TabTitle label="Login" size="lg" styleVariant="alt" />}>
+          <form action="/api/auth/login" method="post">
+            <LoginPageContent label="Login" />
+          </form>
+        </Tab>
+        <Tab key="signup" title={<TabTitle label="Sign Up" size="lg" styleVariant="alt" />}>
+          <form action="/api/auth/signup" method="post">
+            <LoginPageContent confirm label="Sign Up" />
+          </form>
+        </Tab>
+      </TabList>
+    </FormProvider>
   );
 };
 

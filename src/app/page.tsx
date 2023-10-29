@@ -1,5 +1,3 @@
-'use client';
-
 import { Button } from '@nextui-org/button';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -9,7 +7,14 @@ import { ToggleThemeButton } from '@/components/Elements/ToggleThemeButton';
 import { MaxWidthWrapper } from '@/components/Layout/MaxWidthWrapper';
 import { AppConfig } from '@/config/AppConfig';
 
-const LandingPage = () => {
+const LandingPage = async () => {
+  // const supabase = createServerComponentClient({ cookies });
+  // const { data } = await supabase.auth.getSession();
+
+  // if (data.session) {
+  //   redirect('/tavern');
+  // }
+
   return (
     <div className="flex min-h-screen w-full flex-col items-center whitespace-nowrap bg-zinc-100/80 dark:bg-transparent">
       <div className=" w-full bg-zinc-300 p-3 shadow-sm dark:bg-zinc-800 ">
@@ -21,7 +26,7 @@ const LandingPage = () => {
           <div className="flex items-center gap-4">
             <Link href="/">Home</Link>
             <Link href="/about">About</Link>
-            <Link href="/tavern">Tavern</Link>
+            <Link href="/login">Sign In</Link>
             <ToggleThemeButton />
           </div>
         </MaxWidthWrapper>
@@ -35,7 +40,7 @@ const LandingPage = () => {
             </h1>
             <Link href="/tavern">
               <Button className="px-8" color="primary" size="lg">
-                To The Tavern
+                Login to Get Started
               </Button>
             </Link>
           </div>

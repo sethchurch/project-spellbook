@@ -11,7 +11,8 @@ const ProfileDropdown = () => {
   const { switchTheme } = useThemeSwitch();
 
   const isAuthenticated = useAuth((state) => state.authenticated);
-  const handleLogin = () => router.push('/login');
+  const signOut = useAuth((state) => state.signOut);
+  const routeToLogin = () => router.push('/login');
 
   return (
     <Dropdown title="Profile Dropdown">
@@ -23,11 +24,11 @@ const ProfileDropdown = () => {
           Toggle Theme
         </DropdownItem>
         {isAuthenticated ? (
-          <DropdownItem key="logout" color="danger" onClick={handleLogin}>
+          <DropdownItem key="logout" color="danger" onClick={signOut}>
             Log Out
           </DropdownItem>
         ) : (
-          <DropdownItem key="loxgin" color="primary" onClick={handleLogin}>
+          <DropdownItem key="login" color="primary" onClick={routeToLogin}>
             Log In
           </DropdownItem>
         )}

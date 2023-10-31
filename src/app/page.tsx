@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ToggleThemeButton } from '@/components/Elements/ToggleThemeButton';
 import { MaxWidthWrapper } from '@/components/Layout/MaxWidthWrapper';
 
+import { LandingHeader } from './LandingHeader';
 import { LandingSection } from './LandingSection';
 
 const LandingPage = async () => {
@@ -45,13 +46,13 @@ const LandingPage = async () => {
           with stunning generated character art. Witness your hero take form, ready to conquer whatever challenges lie
           ahead in their story.
         </LandingSection>
-        <div className="flex flex-col gap-6 p-6 text-center">
-          <h2 className="text-3xl font-semibold">Ready to create your character?</h2>
+        <div className="flex flex-col gap-6 text-center">
+          <LandingHeader className="mx-auto">Ready to create your character?</LandingHeader>
           <Button className="mx-auto px-6 font-semibold" color="primary" radius="sm" size="lg">
             <Link href="/login">Get Started</Link>
           </Button>
         </div>
-        <footer className="mb-4 rounded-xl p-24 text-center text-2xl font-semibold dark:bg-zinc-900 lg:mb-8" />
+        <footer className="mb-4 rounded-xl p-24 text-center text-2xl font-semibold shadow-lg dark:bg-zinc-900 lg:mb-8" />
       </MaxWidthWrapper>
     </div>
   );

@@ -5,6 +5,8 @@ import type { PropsWithChildren } from 'react';
 
 import { cn } from '@/utils/cn';
 
+import { LandingHeader } from './LandingHeader';
+
 interface LandingSectionProps extends PropsWithChildren {
   title: string;
   image: string;
@@ -20,7 +22,7 @@ const LandingSection = ({ title, image, alignment, children }: LandingSectionPro
       )}
     >
       <div className="flex w-full flex-col gap-4 self-center md:w-8/12 lg:w-5/12 lg:self-start">
-        <h2 className="text-center text-3xl font-bold lg:text-left">{title}</h2>
+        <LandingHeader className="self-center text-center lg:self-start lg:text-left">{title}</LandingHeader>
         <p className="text-center lg:text-justify">{children}</p>
         <Button className="px-6 font-semibold lg:self-start" color="primary" radius="sm" size="lg">
           <Link href="/login">Get Started</Link>
@@ -28,7 +30,7 @@ const LandingSection = ({ title, image, alignment, children }: LandingSectionPro
       </div>
       <Image
         alt="Character Sheet"
-        className="self-center rounded-md shadow-xl lg:self-end lg:rounded-2xl"
+        className="self-center rounded-md shadow-lg lg:self-end lg:rounded-2xl"
         height={1000}
         src={image}
         width={600}

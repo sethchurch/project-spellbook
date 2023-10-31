@@ -11,7 +11,9 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   useEffect(() => {
     const setAuth = async () => {
       const { data, error } = await supabase.auth.getSession();
-      if (error) throw error;
+      if (error) {
+        return;
+      }
       setAuthentication(data.session);
     };
 

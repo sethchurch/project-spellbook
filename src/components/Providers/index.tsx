@@ -1,16 +1,20 @@
 import type { PropsWithChildren } from 'react';
 
-import { QueryProvider } from '@/components/Providers/QueryProvider';
-import { ThemeProvider } from '@/components/Providers/ThemeProvider';
-
+import { AuthProvider } from './AuthProvider';
+import { QueryProvider } from './QueryProvider';
+import { ThemeProvider } from './ThemeProvider';
 import { ToastProvider } from './ToastProvider';
 
-const Providers = ({ children }: PropsWithChildren) => {
+const Providers = async ({ children }: PropsWithChildren) => {
+  // const supabase = createServerComponentClient({ cookies });
+  // const { data } = await supabase.auth.getSession();
   return (
     <ThemeProvider>
-      <QueryProvider>
-        <ToastProvider>{children}</ToastProvider>
-      </QueryProvider>
+      <AuthProvider>
+        <QueryProvider>
+          <ToastProvider>{children}</ToastProvider>
+        </QueryProvider>
+      </AuthProvider>
     </ThemeProvider>
   );
 };

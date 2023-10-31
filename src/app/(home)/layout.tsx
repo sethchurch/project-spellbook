@@ -6,13 +6,6 @@ import { Navbar } from '@/components/Layout/Navbar';
 import { Sidenav } from '@/components/Layout/Sidenav';
 
 const AppLayout = async ({ children }: PropsWithChildren) => {
-  // const supabase = createServerComponentClient({ cookies });
-  // const { data } = await supabase.auth.getSession();
-
-  // if (!data.session) {
-  //   redirect('/');
-  // }
-
   return (
     <AppShell>
       <Navbar />

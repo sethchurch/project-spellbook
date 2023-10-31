@@ -2,16 +2,15 @@
 
 import { Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@nextui-org/react';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 
+import { useAuth } from '@/hooks/useAuth';
 import { useThemeSwitch } from '@/hooks/useThemeSwitch';
 
 const ProfileDropdown = () => {
   const router = useRouter();
   const { switchTheme } = useThemeSwitch();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const toggleLogin = () => setIsLoggedIn((state) => !state);
+  const isAuthenticated = useAuth((state) => state.authenticated);
   const handleLogin = () => router.push('/login');
 
   return (
@@ -23,8 +22,8 @@ const ProfileDropdown = () => {
         <DropdownItem key="theme" onClick={switchTheme}>
           Toggle Theme
         </DropdownItem>
-        {isLoggedIn ? (
-          <DropdownItem key="logout" color="danger" onClick={toggleLogin}>
+        {isAuthenticated ? (
+          <DropdownItem key="logout" color="danger" onClick={handleLogin}>
             Log Out
           </DropdownItem>
         ) : (

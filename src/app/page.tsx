@@ -1,69 +1,57 @@
 import { Button } from '@nextui-org/button';
-import Image from 'next/image';
+import { IconWand } from '@tabler/icons-react';
 import Link from 'next/link';
 
-import { Icon } from '@/components/Elements/Icon';
 import { ToggleThemeButton } from '@/components/Elements/ToggleThemeButton';
 import { MaxWidthWrapper } from '@/components/Layout/MaxWidthWrapper';
-import { AppConfig } from '@/config/AppConfig';
+
+import { LandingSection } from './LandingSection';
 
 const LandingPage = async () => {
-  // const supabase = createServerComponentClient({ cookies });
-  // const { data } = await supabase.auth.getSession();
-
-  // if (data.session) {
-  //   redirect('/tavern');
-  // }
-
   return (
-    <div className="flex min-h-screen w-full flex-col items-center whitespace-nowrap bg-zinc-100/80 dark:bg-transparent">
-      <div className=" w-full bg-zinc-300 p-3 shadow-sm dark:bg-zinc-800 ">
-        <MaxWidthWrapper className="flex items-center justify-between">
-          <div className="flex gap-4 align-middle">
-            <Icon icon="wand" />
-            <p>{AppConfig.site_name}</p>
-          </div>
-          <div className="flex items-center gap-4">
-            <Link href="/">Home</Link>
-            <Link href="/about">About</Link>
-            <Link href="/login">Sign In</Link>
-            <ToggleThemeButton />
-          </div>
-        </MaxWidthWrapper>
-      </div>
-
-      <MaxWidthWrapper>
-        <div className="w-full py-24">
-          <div className="flex-stack">
-            <h1 className="mb-4 whitespace-normal text-5xl">
-              Welcome to <span className="text-primary">{AppConfig.site_name}</span>
-            </h1>
-            <Link href="/tavern">
-              <Button className="px-8" color="primary" size="lg">
-                Login to Get Started
-              </Button>
-            </Link>
+    <div className="flex min-h-screen w-full flex-col items-center bg-zinc-100/80 dark:bg-transparent">
+      <MaxWidthWrapper className="flex flex-col gap-8 md:gap-16 lg:gap-24">
+        <div className="p-6">
+          <div className="flex w-full items-center justify-between">
+            <div className="flex items-center gap-3">
+              <IconWand />
+              <p className="text-xl">Project Spellbook</p>
+            </div>
+            <div className="flex items-center gap-3">
+              <Link href="/login">
+                <Button className="px-6 font-bold shadow-2xl" color="primary" radius="sm">
+                  Login
+                </Button>
+              </Link>
+              <ToggleThemeButton />
+            </div>
           </div>
         </div>
-
-        <div className="flex w-full flex-col gap-16">
-          <Image
-            alt="Character Sheet"
-            className="self-end"
-            height={1000}
-            src="/images/CharacterSheetWithTabs.png"
-            width={500}
-          />
-          <Image
-            alt="Character Sheet"
-            className="self-start"
-            height={1000}
-            src="/images/AdvancedCreator.png"
-            width={500}
-          />
-          <Image alt="Character Sheet" className="self-end" height={1000} src="/images/BioSheet.png" width={500} />
+        <LandingSection image="/images/CharacterSheetWithTabs.png" title="Welcome to Project Spellbook">
+          Create characters like never before with our AI-powered Dungeons & Dragons character builder. Whether
+          you&apos;re a seasoned player or just starting out, Project Spellbook simplifies the process of crafting and
+          managing your D&D 5e character sheets. Dive into a world of endless possibilities and let your imagination
+          soar.
+        </LandingSection>
+        <LandingSection alignment="right" image="/images/BioSheet.png" title="Unveil Your Character's Essence">
+          Behind every hero is a tale waiting to unfold. The character sheet is not just about statistics and abilities;
+          it&apos;s a canvas for your character&apos;s history, motivations, and personality. Flesh out the details that
+          set your character apart in the realm of D&D. Witness how a well-crafted backstory enriches every decision,
+          interaction, and turn in the game.
+        </LandingSection>
+        <LandingSection image="/images/AdvancedCreator.png" title="Visualize Your Adventurer">
+          From the mysterious depths of enchanted forests to the grand halls of royal castles, imagine your character in
+          vivid detail. Our advanced AI doesn&apos;t just stop at numbers and stats; it brings your adventurer to life
+          with stunning generated character art. Witness your hero take form, ready to conquer whatever challenges lie
+          ahead in their story.
+        </LandingSection>
+        <div className="flex flex-col gap-6 p-6 text-center">
+          <h2 className="text-3xl font-semibold">Ready to create your character?</h2>
+          <Button className="mx-auto px-6 font-semibold" color="primary" radius="sm" size="lg">
+            <Link href="/login">Get Started</Link>
+          </Button>
         </div>
-        <footer className="mt-64 h-32 w-full bg-zinc-900" />
+        <footer className="mb-4 rounded-xl p-24 text-center text-2xl font-semibold dark:bg-zinc-900 lg:mb-8" />
       </MaxWidthWrapper>
     </div>
   );

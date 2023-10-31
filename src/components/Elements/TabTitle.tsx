@@ -21,7 +21,13 @@ interface TabTitleProps extends PropsWithChildren {
 
 const TabTitle = ({ children, styleVariant, size, label }: TabTitleProps) => {
   return (
-    <div className={cn('rounded-t-lg', sizeVariants[size ?? 'default'], styleVariants[styleVariant ?? 'default'])}>
+    <div
+      className={cn(
+        'rounded-t-lg font-medium',
+        sizeVariants[size ?? 'default'],
+        styleVariants[styleVariant ?? 'default'],
+      )}
+    >
       {label || children}
     </div>
   );

@@ -1,6 +1,5 @@
 'use client';
 
-import { Chip } from '@nextui-org/chip';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -37,21 +36,17 @@ const CharacterNav = () => {
         return (
           <Link
             key={index}
-            className="rounded-lg shadow-md transition-all hover:opacity-50 hover:shadow-sm"
+            className="rounded-lg shadow-sm transition-all hover:opacity-50 hover:shadow-none"
             href={`/characters/${index}`}
           >
-            <Chip
-              classNames={{ base: 'max-w-full w-full py-2 px-3 h-auto', content: 'p-0' }}
-              radius="sm"
-              variant="solid"
-            >
+            <div className="rounded-md bg-stone-50/90 p-3 dark:bg-zinc-700/60">
               <div className="flex w-full max-w-[300px] items-center gap-3">
                 <div className="relative aspect-square h-7 w-7 overflow-hidden rounded-full border-3 border-zinc-800 bg-gradient-to-br from-violet-700 to-violet-950">
                   <Image fill alt="image of character" sizes="100vw" src="https://picsum.photos/2048/1024" />
                 </div>
                 <div>{character.name}</div>
               </div>
-            </Chip>
+            </div>
           </Link>
         );
       })}

@@ -25,7 +25,7 @@ const LandingSection = ({ title, image, alignment, children }: LandingSectionPro
         <LandingHeader className="self-center text-center lg:self-start lg:text-left">{title}</LandingHeader>
         <p className="text-center lg:text-justify">{children}</p>
         <Button className="px-6 font-semibold lg:self-start" color="primary" radius="sm" size="lg">
-          <Link href="/login">Get Started</Link>
+          <Link href="/tavern">Get Started</Link>
         </Button>
       </div>
       <Image

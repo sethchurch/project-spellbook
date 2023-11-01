@@ -7,7 +7,7 @@ const loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fus
 const character = {
   name: 'Tyren Torkain',
   race: 'Half-Elf',
-  experience: 1000,
+  level: 5,
   class: 'Paladin 2 / Bard 3 (College of Swords)',
   background: 'Acolyte',
   alignment: 'Chaotic Good',

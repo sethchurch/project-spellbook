@@ -12,6 +12,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     const setAuth = async () => {
       const { data, error } = await supabase.auth.getSession();
       if (error) {
+        //  TODO: Handle error
         return;
       }
       setAuthentication(data.session);

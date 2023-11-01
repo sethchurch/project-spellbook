@@ -7,18 +7,24 @@ import { Pod } from '@/components/CharacterSheet/Pod';
 import { Accordion } from '@/components/Elements/Accordion';
 import { FormInput } from '@/components/Form/FormInput';
 import { Textarea } from '@/components/Form/Textarea';
+import { DiscardModal } from '@/components/Modal/DiscardModal';
 import type { Attack } from '@/config/CharacterConfig';
+import { useEditableAccordion } from '@/hooks/useEditableAccordion';
 import { useFormList } from '@/hooks/useFormList';
 import { bonusify } from '@/utils/bonusify';
 
 const fieldName = 'attacks' as const;
 const ActionsTab = () => {
-  const { dataList: attacks, add } = useFormList<Attack>({ fieldName });
+  const { dataList: attacks, add, remove } = useFormList<Attack>({ fieldName });
   const addBlank = () => add({ name: '', bonus: 0, damage: '', damageType: '', description: '' });
+  const { toggleEditing, getAccordionItemProps, getDiscardModalProps } = useEditableAccordion({ remove });
 
   return (
     <div className="flex-stack">
       <div className="flex justify-end gap-3">
+        <Button radius="sm" onClick={toggleEditing}>
+          Edit Actions
+        </Button>
         <Button color="primary" radius="sm" onClick={addBlank}>
           Add Action
         </Button>
@@ -28,6 +34,7 @@ const ActionsTab = () => {
           const parentName = `${fieldName}[${index}]`;
           return (
             <AccordionItem
+              {...getAccordionItemProps(index)}
               key={index}
               classNames={{ base: 'p-0 group-[.is-splitted]:px-2 group-[.is-splitted]:shadow-none' }}
               textValue={name}
@@ -58,6 +65,7 @@ const ActionsTab = () => {
           );
         })}
       </Accordion>
+      <DiscardModal {...getDiscardModalProps()} title="Delete Action" />
     </div>
   );
 };

@@ -6,6 +6,8 @@ import { Button } from '@nextui-org/button';
 import { Accordion } from '@/components/Elements/Accordion';
 import { FormInput } from '@/components/Form/FormInput';
 import { Textarea } from '@/components/Form/Textarea';
+import { DiscardModal } from '@/components/Modal/DiscardModal';
+import { useEditableAccordion } from '@/hooks/useEditableAccordion';
 import { useFormList } from '@/hooks/useFormList';
 
 import { PodChip } from '../../Pod';
@@ -19,12 +21,16 @@ interface Feature {
 const fieldName = 'features' as const;
 
 const FeaturesTab = () => {
-  const { dataList: features, add } = useFormList<Feature>({ fieldName });
+  const { dataList: features, add, remove } = useFormList<Feature>({ fieldName });
   const addBlank = () => add({ name: '', source: '', description: '' });
+  const { toggleEditing, getAccordionItemProps, getDiscardModalProps } = useEditableAccordion({ remove });
 
   return (
     <div className="flex-stack">
       <div className="flex justify-end gap-3">
+        <Button radius="sm" onClick={toggleEditing}>
+          Edit Features
+        </Button>
         <Button color="primary" radius="sm" onClick={addBlank}>
           Add Feature
         </Button>
@@ -36,6 +42,7 @@ const FeaturesTab = () => {
             <AccordionItem
               key={index}
               textValue={name}
+              {...getAccordionItemProps(index)}
               title={
                 <div className="grid grid-cols-1 grid-rows-2 truncate md:grid-cols-[2fr_1fr] md:grid-rows-1">
                   <p className="truncate px-1">{name}</p>
@@ -57,6 +64,7 @@ const FeaturesTab = () => {
           );
         })}
       </Accordion>
+      <DiscardModal {...getDiscardModalProps()} title="Delete Feature" />
     </div>
   );
 };

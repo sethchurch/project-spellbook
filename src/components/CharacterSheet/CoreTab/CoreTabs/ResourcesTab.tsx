@@ -8,6 +8,8 @@ import { useFormContext } from 'react-hook-form';
 import { PodChip } from '@/components/CharacterSheet/Pod';
 import { Accordion } from '@/components/Elements/Accordion';
 import { FormInput } from '@/components/Form/FormInput';
+import { DiscardModal } from '@/components/Modal/DiscardModal';
+import { useEditableAccordion } from '@/hooks/useEditableAccordion';
 import { useFormList } from '@/hooks/useFormList';
 
 interface Resource {
@@ -23,8 +25,9 @@ type ResourceAction = 'increment' | 'decrement';
 const fieldName = 'resources' as const;
 const ResourcesTab = () => {
   const { setValue } = useFormContext();
-  const { dataList: resources, add } = useFormList<Resource>({ fieldName });
+  const { dataList: resources, add, remove } = useFormList<Resource>({ fieldName });
   const addBlank = () => add({ name: '', source: '', current: 0, max: 0 });
+  const { toggleEditing, getAccordionItemProps, getDiscardModalProps } = useEditableAccordion({ remove });
 
   const handleResourceButtonClick = (index: number, action: ResourceAction) => {
     const resource = resources[index] as Resource;
@@ -37,6 +40,9 @@ const ResourcesTab = () => {
   return (
     <div className="flex-stack">
       <div className="flex justify-end gap-3">
+        <Button radius="sm" onClick={toggleEditing}>
+          Edit Resources
+        </Button>
         <Button color="primary" radius="sm" onClick={addBlank}>
           Add Resource
         </Button>
@@ -49,6 +55,7 @@ const ResourcesTab = () => {
 
           return (
             <AccordionItem
+              {...getAccordionItemProps(index)}
               key={index}
               textValue={name}
               title={
@@ -74,6 +81,7 @@ const ResourcesTab = () => {
           );
         })}
       </Accordion>
+      <DiscardModal {...getDiscardModalProps()} title="Delete Resource" />
     </div>
   );
 };

@@ -71,7 +71,7 @@ type Resource = {
 type Character = {
   name: string;
   race: string;
- level: number;
+  level: number;
   class: string;
   background: string;
   alignment: string;

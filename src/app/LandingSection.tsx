@@ -24,9 +24,11 @@ const LandingSection = ({ title, image, alignment, children }: LandingSectionPro
       <div className="flex w-full flex-col gap-4 self-center md:w-8/12 lg:w-5/12 lg:self-start">
         <LandingHeader className="self-center text-center lg:self-start lg:text-left">{title}</LandingHeader>
         <p className="text-center lg:text-justify">{children}</p>
-        <Button className="px-6 font-semibold lg:self-start" color="primary" radius="sm" size="lg">
-          <Link href="/tavern">Get Started</Link>
-        </Button>
+        <Link href="/tavern">
+          <Button className="px-6 font-semibold lg:self-start" color="primary" radius="sm" size="lg">
+            Get Started
+          </Button>
+        </Link>
       </div>
       <Image
         alt="Character Sheet"

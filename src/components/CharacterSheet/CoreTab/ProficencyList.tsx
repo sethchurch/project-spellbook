@@ -8,6 +8,7 @@ import { useCheckArray } from '@/components/Form/CheckArrayProvider';
 import type { Proficiency } from '@/config/CharacterConfig';
 import { bonusify } from '@/utils/bonusify';
 import { capitalize } from '@/utils/capitalize';
+import { getProficencyBonus } from '@/utils/getProficencyBonus';
 
 import { PodChip } from '../Pod/PodChip';
 
@@ -24,6 +25,7 @@ const ProficencyList = ({ proficencyData }: ProficencyListProps) => {
   const { value: skills, onChange } = useCheckArray();
   const { getValues } = useFormContext();
   const statList = getValues('stats') || [];
+  const proficencyBonus = getProficencyBonus(getValues('level'));
 
   return (
     <div className="flex-stack">
@@ -31,7 +33,7 @@ const ProficencyList = ({ proficencyData }: ProficencyListProps) => {
         proficencyData.map(({ name: skill, stat }, index) => {
           const skillName = skill.toLowerCase();
           const statBonus = calculateStatBonus(statList[statIndexList.indexOf(stat)] ?? 0);
-          const profBonus = skills?.includes(skillName) ? 2 : 0;
+          const profBonus = skills?.includes(skillName) ? proficencyBonus : 0;
           const bonus = statBonus + profBonus;
           return (
             <PodChip

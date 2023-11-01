@@ -71,7 +71,7 @@ type Resource = {
 type Character = {
   name: string;
   race: string;
-  experience: number;
+ level: number;
   class: string;
   background: string;
   alignment: string;
@@ -99,7 +99,7 @@ type Character = {
 const characterDefaults: Character = {
   name: 'New Character',
   race: 'Human',
-  experience: 0,
+  level: 1,
   class: 'Fighter',
   background: 'Acolyte',
   alignment: 'Neutral',

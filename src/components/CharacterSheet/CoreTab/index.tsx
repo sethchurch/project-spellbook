@@ -1,12 +1,14 @@
 'use client';
 
 import Image from 'next/image';
+import { useFormContext } from 'react-hook-form';
 
 import { Pod, PodChip, PodResource } from '@/components/CharacterSheet/Pod';
 import { ControlledCheck } from '@/components/Form/ControlledCheck';
 import { FormInput } from '@/components/Form/FormInput';
 import { Textarea } from '@/components/Form/Textarea';
 import { camelCase } from '@/utils/camelCase';
+import { getProficencyBonus } from '@/utils/getProficencyBonus';
 
 import { StatDisplay } from '../StatDisplay';
 import { CoreTabs } from './CoreTabs';
@@ -14,6 +16,8 @@ import { DeathSavesPod } from './DeathSavesPod';
 import { ProficienciesPod } from './ProficienciesPod';
 
 const CoreTab = () => {
+  const { getValues } = useFormContext();
+  const proficencyBonus = getProficencyBonus(getValues('level'));
   return (
     <>
       <div className="relative h-32 w-full rounded-t-lg bg-gradient-to-r from-violet-700 to-violet-950 md:h-64">
@@ -23,7 +27,7 @@ const CoreTab = () => {
       <div className="grid grid-cols-1 grid-rows-[1fr_max-content] gap-x-2 gap-y-3 p-2 md:gap-3 md:p-5 lg:grid-cols-[6fr_3fr] xl:grid-cols-[2fr_6fr_2fr]">
         <Pod className="xl:col-span-2" label="Character Details">
           <div className="grid grid-cols-1 gap-x-2 gap-y-3 sm:grid-cols-2 md:grid-cols-3 md:gap-3">
-            {['Name', 'Race', 'Experience', 'Class', 'Background', 'Alignment'].map((field) => (
+            {['Name', 'Race', 'Level', 'Class', 'Background', 'Alignment'].map((field) => (
               <FormInput key={field} label={field} name={field.toLowerCase()} styleVariant="basic" />
             ))}
           </div>
@@ -33,7 +37,7 @@ const CoreTab = () => {
             <PodChip startContent={<ControlledCheck className="-ml-1 -mr-2" name="inspired" size="md" />}>
               Inspiration
             </PodChip>
-            <PodChip left="+2">Proficiency Bonus</PodChip>
+            <PodChip left={`+${proficencyBonus}`}>Proficiency Bonus</PodChip>
           </div>
         </Pod>
         <ProficienciesPod />

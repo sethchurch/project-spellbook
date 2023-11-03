@@ -3,12 +3,9 @@ import { Checkbox } from '@nextui-org/checkbox';
 import { Pod } from '@/components/CharacterSheet/Pod/Pod';
 import { PodChip } from '@/components/CharacterSheet/Pod/PodChip';
 import { CheckCounter } from '@/components/Form/CheckCounter';
+import type { PropsWithClassName } from '@/types/propTypes';
 
-interface DeathSavesPodProps {
-  className?: string;
-}
-
-const DeathSavesPod = ({ className }: DeathSavesPodProps) => {
+const DeathSavesPod = ({ className }: PropsWithClassName) => {
   return (
     <Pod className={className} label="Death Saves">
       <div className="flex h-full flex-col justify-around gap-x-2 gap-y-3 py-3 md:gap-3">

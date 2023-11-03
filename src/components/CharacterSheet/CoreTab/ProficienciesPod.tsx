@@ -2,12 +2,14 @@ import { Pod } from '@/components/CharacterSheet/Pod';
 import { CheckArrayProvider } from '@/components/Form/CheckArrayProvider';
 import type { Proficiency } from '@/config/CharacterConfig';
 import { characterSkills, savingThrows } from '@/config/CharacterConfig';
+import type { PropsWithClassName } from '@/types/propTypes';
+import { cn } from '@/utils/cn';
 
 import { ProficencyList } from './ProficencyList';
 
-const ProficienciesPod = () => {
+const ProficienciesPod = ({ className }: PropsWithClassName) => {
   return (
-    <Pod className="self-start" label="Skills & Saves">
+    <Pod className={cn('self-start', className)} label="Skills & Saves">
       <div className="flex w-full flex-col flex-nowrap gap-x-2 gap-y-3 lg:gap-3">
         <Pod className="flex-[2]" label="Saving Throws" variant="alt">
           <CheckArrayProvider name="savingThrows">

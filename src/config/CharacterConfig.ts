@@ -41,6 +41,13 @@ const savingThrows = [
   { name: 'charisma', stat: 'cha' },
 ];
 
+type InventoryItem = {
+  name: string;
+  description: string;
+  qty: number;
+  weight: number;
+};
+
 type Attack = {
   name: string;
   bonus: number;
@@ -93,6 +100,7 @@ type Character = {
   proficiencies?: { languages: string; weapons: string; armor: string; other: string };
   bio?: { personalityTraits: string; ideals: string; bonds: string; flaws: string };
   notes?: string;
+  inventory: InventoryItem[];
   backstory?: string;
 };
 
@@ -121,8 +129,9 @@ const characterDefaults: Character = {
   deathSaves: { successes: 0, failures: 0 },
   hitDice: { current: '1d8', max: '1d8' },
   hitPoints: { current: 0, max: 0, temporary: 0 },
+  inventory: [],
   conditions: [],
 };
 
 export { characterDefaults, characterSkills, savingThrows, skillLookup, statLongNameLookup };
-export type { Attack, Character, Proficiency, SkillLookup, Stat };
+export type { Attack, Character, InventoryItem, Proficiency, SkillLookup, Stat };

@@ -8,6 +8,7 @@ import { TabTitle } from '@/components/Elements/TabTitle';
 import type { ComponentTab } from '@/types/tabs';
 
 import { CoreTab } from './CoreTab';
+import { InventoryTab } from './InventoryTab';
 
 const ComingSoon = () => (
   <div className="flex h-screen justify-center p-3">
@@ -32,7 +33,7 @@ const Tabs: ComponentTab[] = [
         Inventory
       </TabTitle>
     ),
-    content: <ComingSoon />,
+    content: <InventoryTab />,
   },
   {
     key: 'bio',

@@ -1,6 +1,7 @@
 import { AccordionItem } from '@nextui-org/accordion';
 import { Button } from '@nextui-org/button';
 
+import { Pod } from '@/components/CharacterSheet/Pod';
 import { Accordion } from '@/components/Elements/Accordion';
 import { FormInput } from '@/components/Form/FormInput';
 import { Textarea } from '@/components/Form/Textarea';
@@ -8,8 +9,6 @@ import { DiscardModal } from '@/components/Modal/DiscardModal';
 import type { InventoryItem } from '@/config/CharacterConfig';
 import { useEditableAccordion } from '@/hooks/useEditableAccordion';
 import { useFormList } from '@/hooks/useFormList';
-
-import { Pod } from '../Pod';
 
 const fieldName = 'inventory' as const;
 const InventoryTab = () => {
@@ -27,7 +26,7 @@ const InventoryTab = () => {
           Add Item
         </Button>
       </div>
-      <Pod>
+      <Pod className="grow">
         <Accordion styleVariant="podSplit">
           {inventoryItems?.map(({ name, qty, weight }, index) => {
             const parentName = `${fieldName}[${index}]`;
@@ -38,15 +37,15 @@ const InventoryTab = () => {
                 classNames={{ base: 'p-0 group-[.is-splitted]:px-2 group-[.is-splitted]:shadow-none' }}
                 textValue={name}
                 title={
-                  <div className="grid w-full grid-cols-[5fr_1fr_1fr] gap-2">
+                  <div className="grid w-full grid-cols-[2fr_1fr_1fr] gap-2 lg:grid-cols-[8fr_1fr_1fr]">
                     <Pod isCompact className="truncate">
                       {name}
                     </Pod>
-                    <Pod isCompact className="truncate">
-                      {qty.toString()}
+                    <Pod isCompact className="truncate text-right">
+                      {qty?.toString() ?? 1}
                     </Pod>
-                    <Pod isCompact className="truncate">
-                      {`${weight} lbs.`}
+                    <Pod isCompact className="truncate text-right">
+                      {`${weight ?? 0} lbs`}
                     </Pod>
                   </div>
                 }

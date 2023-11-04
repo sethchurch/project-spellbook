@@ -44,8 +44,8 @@ const savingThrows = [
 type InventoryItem = {
   name: string;
   description: string;
-  qty: number;
-  weight: number;
+  qty?: number;
+  weight?: number;
 };
 
 type Attack = {

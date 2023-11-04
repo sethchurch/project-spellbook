@@ -4,6 +4,8 @@ import type { TextAreaProps as NextTextAreaProps } from '@nextui-org/input';
 import { Textarea as NextTextarea } from '@nextui-org/input';
 import { Controller, useFormContext } from 'react-hook-form';
 
+import { cn } from '@/utils/cn';
+
 const styleVariants = {
   default: {
     label: 'h-0 p-0',
@@ -14,13 +16,18 @@ const styleVariants = {
     input: 'px-3 py-5',
   },
   basic: {},
+  grow: {
+    input: 'resize-none h-full',
+    inputWrapper: 'h-full',
+  },
 };
 
 interface TextareaProps extends NextTextAreaProps {
   styleVariant?: keyof typeof styleVariants;
+  className?: string;
 }
 
-const Textarea = ({ name, placeholder, styleVariant, ...props }: TextareaProps) => {
+const Textarea = ({ name, placeholder, styleVariant, className, ...props }: TextareaProps) => {
   const { control } = useFormContext();
 
   return (
@@ -29,6 +36,7 @@ const Textarea = ({ name, placeholder, styleVariant, ...props }: TextareaProps) 
       name={name || 'name'}
       render={({ field }) => (
         <NextTextarea
+          className={cn(className)}
           classNames={{ ...styleVariants[styleVariant ?? 'default'], label: props.label ? '' : 'hidden' }}
           placeholder={placeholder}
           radius="md"

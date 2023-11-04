@@ -7,6 +7,7 @@ import { TabList } from '@/components/Elements/TabList';
 import { TabTitle } from '@/components/Elements/TabTitle';
 import type { ComponentTab } from '@/types/tabs';
 
+import { BioTab } from './BioTab';
 import { CoreTab } from './CoreTab';
 import { InventoryTab } from './InventoryTab';
 
@@ -42,7 +43,7 @@ const Tabs: ComponentTab[] = [
         Bio
       </TabTitle>
     ),
-    content: <ComingSoon />,
+    content: <BioTab />,
   },
   {
     key: 'spells',

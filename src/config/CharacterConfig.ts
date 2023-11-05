@@ -41,19 +41,21 @@ const savingThrows = [
   { name: 'charisma', stat: 'cha' },
 ];
 
-type InventoryItem = {
+interface Detail {
   name: string;
   description: string;
+  source?: string;
+}
+
+type InventoryItem = Detail & {
   qty?: number;
   weight?: number;
 };
 
-type Attack = {
-  name: string;
+type Attack = Detail & {
   bonus: number;
   damage: string;
   damageType: string;
-  description: string;
 };
 
 type Condition = {
@@ -95,10 +97,29 @@ type Character = {
   deathSaves?: { successes: number; failures: number };
   attacks?: Attack[];
   resources?: Resource[];
-  features?: { name: string; description: string; source: string }[];
-  senses?: { name: string; description: string; source: string }[];
-  proficiencies?: { languages: string; weapons: string; armor: string; other: string };
-  bio?: { personalityTraits: string; ideals: string; bonds: string; flaws: string };
+  features?: Detail[];
+  senses?: Detail[];
+  proficiencies?: {
+    languages: string;
+    weapons: string;
+    armor: string;
+    other: string;
+  };
+  bio?: {
+    personalityTraits?: string;
+    ideals?: string;
+    bonds?: string;
+    flaws?: string;
+    age?: string;
+    height?: string;
+    weight?: string;
+    eyesColor?: string;
+    skinColor?: string;
+    hairColor?: string;
+    orginizations?: string;
+    featuresTraits?: string;
+    treasure?: string;
+  };
   notes?: string;
   inventory: InventoryItem[];
   backstory?: string;
@@ -125,7 +146,7 @@ const characterDefaults: Character = {
   proficiencies: { languages: '', weapons: '', armor: '', other: '' },
   notes: '',
   backstory: '',
-  bio: { personalityTraits: '', ideals: '', bonds: '', flaws: '' },
+  bio: {},
   deathSaves: { successes: 0, failures: 0 },
   hitDice: { current: '1d8', max: '1d8' },
   hitPoints: { current: 0, max: 0, temporary: 0 },

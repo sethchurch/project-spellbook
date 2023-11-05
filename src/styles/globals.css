@@ -38,9 +38,14 @@ body {
   @apply dark:bg-zinc-900 bg-stone-100;
 }
 
-.grainy {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url('https://img.freepik.com/premium-photo/black-paper-seamless-texture-background_150889-55.jpg');
-  background-size: 100px 100px;
-  background-repeat: repeat;
+.light .grainy {
+  background-image: linear-gradient(rgba(150, 150, 150, 0.5), rgba(150, 150, 150, 1)), url('/images/bg-zig.png');
+  background-size: auto, 300px;
+  background-repeat: no-repeat, repeat;
+}
+
+.dark .grainy {
+  background-image: linear-gradient(rgba(10, 10, 10, 0.5), rgba(4, 4, 4, 1)), url('/images/bg-zig-dark.png');
+  background-size: auto, 300px;
+  background-repeat: no-repeat, repeat;
 }

@@ -73,6 +73,8 @@ const character = {
     bonds: "I'm loyal to my friends and will do anything in my power to help them.",
     flaws: 'I have a weakness for the vices of the city, especially hard drink.',
   },
+  backstory:
+    'Tyren Torkain is a Paladin from the village of Sunhaven. He was raised by his mother and father who were both clerics in service of the church of Sunhaven a group of clerics who worship the morning lord Lathander. His mentor Elder Oakleaf was a leader of the village and a bard whos skill with the Lute was unmatched.',
   notes:
     "Session 1:\r\rwe ran into a group of goblins and killed them all. I got a new sword. It's pretty cool. I also got a new shield. It's pretty cool too.\r\rSession 2:\r\rApprently theres a druid in the forest we should find him goes by the name of Oakleaf. We also found a hidden cave with some treasure in it.\r\rSession 3:\r\rWe finally found Oakleaf and he gave us a quest to retrieve a magical artifact from a nearby dungeon. We fought some skeletons on the way there.\r\rSession 4:\r\rWe made it to the dungeon and fought our way through some traps and monsters. We found the artifact and brought it back to Oakleaf. He rewarded us with some gold and a magic item each.\r\rSession 5:\r\rWe heard rumors of a dragon terrorizing a nearby town. We decided to investigate and found out that it was being controlled by an evil wizard. We defeated the wizard and freed the dragon, who flew away peacefully.",
 } as Character;

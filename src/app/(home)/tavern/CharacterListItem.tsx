@@ -9,7 +9,6 @@ import Link from 'next/link';
 
 import { DiscardModal } from '@/components/Modal/DiscardModal';
 import type { Character } from '@/config/CharacterConfig';
-import { loremIpsum } from '@/config/dummyData';
 import { useCharacterStore } from '@/hooks/useCharacterStore';
 import { useTavernState } from '@/hooks/useTavernState';
 
@@ -38,8 +37,7 @@ const CharacterListItem = ({ character, characterId }: CharacterListItemProps) =
   const { isOpen, onOpen, onClose } = useDisclosure();
   const isEditing = useTavernState((state) => state.isEditing);
   const removeCharacter = useCharacterStore((state) => state.removeCharacter.bind(null, characterId));
-
-  const backstory = character.backstory || loremIpsum.repeat(10);
+  const { backstory } = character;
 
   return (
     <>
@@ -52,7 +50,7 @@ const CharacterListItem = ({ character, characterId }: CharacterListItemProps) =
             <div className="grid w-full grid-cols-[1fr_max-content_1fr] items-center">
               <h2 className="col-start-2 text-center text-xl font-bold">{character.name}</h2>
               {isEditing && (
-                <Button isIconOnly className="justify-self-end" size="sm" onClick={onOpen}>
+                <Button isIconOnly className="justify-self-end" color="danger" size="sm" onClick={onOpen}>
                   <IconX />
                 </Button>
               )}

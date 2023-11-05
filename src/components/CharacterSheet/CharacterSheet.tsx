@@ -2,6 +2,7 @@
 
 import { Chip } from '@nextui-org/chip';
 import { Tab } from '@nextui-org/tabs';
+import Image from 'next/image';
 
 import { TabList } from '@/components/Elements/TabList';
 import { TabTitle } from '@/components/Elements/TabTitle';
@@ -62,7 +63,19 @@ const CharacterSheet = () => {
       <TabList defaultTab="actions">
         {Tabs.map((tab: ComponentTab) => (
           <Tab key={tab.key} title={tab.title}>
-            <div className="bg-pod-alt rounded-lg">{tab.content}</div>
+            <div className="bg-pod-alt rounded-lg">
+              <div className="relative h-32 w-full rounded-t-lg bg-gradient-to-r from-violet-700 to-violet-950 md:h-64">
+                <Image
+                  fill
+                  alt="image of character"
+                  className="block"
+                  sizes="100vw"
+                  src="https://picsum.photos/2048/256"
+                />
+                <div className=" absolute left-0 top-0 h-full w-full bg-gradient-to-r from-violet-700 to-violet-950 opacity-0 transition-opacity hover:opacity-30" />
+              </div>
+              {tab.content}
+            </div>
           </Tab>
         ))}
       </TabList>

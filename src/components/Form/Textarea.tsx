@@ -18,7 +18,7 @@ const styleVariants = {
   basic: {},
   grow: {
     input: 'resize-none !h-full',
-    inputWrapper: '!h-full items-start rounded-md -mb-1 bg-transparent',
+    inputWrapper: '!h-full items-start rounded-md -mb-1 bg-transparent shadow-none',
     base: '!h-full !max-h-full',
     description: 'hidden',
   },

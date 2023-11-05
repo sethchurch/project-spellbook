@@ -39,13 +39,19 @@ body {
 }
 
 .light .grainy {
-  background-image: linear-gradient(rgba(150, 150, 150, 0.5), rgba(150, 150, 150, 1)), url('/images/bg-zig.png');
+  background-image: linear-gradient(
+      to top,
+      rgba(150, 150, 150, 1) 0%,
+      rgba(150, 150, 150, 1) 65%,
+      rgba(150, 150, 150, 0) 100%
+    ),
+    url('/images/bg-zig.png');
   background-size: auto, 300px;
   background-repeat: no-repeat, repeat;
 }
-
 .dark .grainy {
-  background-image: linear-gradient(rgba(10, 10, 10, 0.5), rgba(4, 4, 4, 1)), url('/images/bg-zig-dark.png');
+  background-image: linear-gradient(to top, rgba(4, 4, 4, 1) 0%, rgba(4, 4, 4, 1) 65%, rgba(10, 10, 10, 0) 100%),
+    url('/images/bg-zig-dark.png');
   background-size: auto, 300px;
   background-repeat: no-repeat, repeat;
 }

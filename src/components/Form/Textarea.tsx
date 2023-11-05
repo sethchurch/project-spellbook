@@ -9,7 +9,7 @@ import { cn } from '@/utils/cn';
 const styleVariants = {
   default: {
     label: 'h-0 p-0',
-    inputWrapper: 'border-none after:h-0 shadow-none bg-transparent !p-3',
+    inputWrapper: 'border-none after:h-0 shadow-none bg-transparent !p-3 -mb-1 rounded-md',
     input: 'm-0 p-0',
   },
   inset: {
@@ -17,8 +17,10 @@ const styleVariants = {
   },
   basic: {},
   grow: {
-    input: 'resize-none h-full',
-    inputWrapper: 'h-full',
+    input: 'resize-none !h-full',
+    inputWrapper: '!h-full items-start rounded-md -mb-1 bg-transparent',
+    base: '!h-full !max-h-full',
+    description: 'hidden',
   },
 };
 

@@ -155,4 +155,4 @@ const characterDefaults: Character = {
 };
 
 export { characterDefaults, characterSkills, savingThrows, skillLookup, statLongNameLookup };
-export type { Attack, Character, InventoryItem, Proficiency, SkillLookup, Stat };
+export type { Attack, Character, Detail, InventoryItem, Proficiency, SkillLookup, Stat };

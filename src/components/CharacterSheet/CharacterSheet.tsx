@@ -64,7 +64,7 @@ const CharacterSheet = () => {
         {Tabs.map((tab: ComponentTab) => (
           <Tab key={tab.key} title={tab.title}>
             <div className="bg-pod-alt rounded-lg">
-              <div className="relative h-32 w-full rounded-t-lg bg-gradient-to-r from-violet-700 to-violet-950 md:h-64">
+              <div className="relative h-32 w-full rounded-t-lg bg-gradient-to-r from-violet-700 to-violet-950 md:h-56">
                 <Image
                   fill
                   alt="image of character"

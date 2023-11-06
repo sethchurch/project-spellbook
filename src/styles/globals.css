@@ -41,16 +41,16 @@ body {
 .light .grainy {
   background-image: linear-gradient(
       to top,
-      rgba(150, 150, 150, 1) 0%,
-      rgba(150, 150, 150, 1) 65%,
-      rgba(150, 150, 150, 0) 100%
+      rgba(205, 205, 200, 1) 0%,
+      rgba(205, 205, 200, 1) 75%,
+      rgba(52, 52, 50, 0.2) 100%
     ),
     url('/images/bg-zig.png');
   background-size: auto, 300px;
   background-repeat: no-repeat, repeat;
 }
 .dark .grainy {
-  background-image: linear-gradient(to top, rgba(4, 4, 4, 1) 0%, rgba(4, 4, 4, 1) 65%, rgba(10, 10, 10, 0) 100%),
+  background-image: linear-gradient(to top, rgba(9, 9, 11, 1) 0%, rgba(9, 9, 11, 0.95) 65%, rgba(9, 9, 11, 0.8) 100%),
     url('/images/bg-zig-dark.png');
   background-size: auto, 300px;
   background-repeat: no-repeat, repeat;

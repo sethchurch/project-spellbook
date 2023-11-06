@@ -1,6 +1,7 @@
 'use client';
 
 import { camelCase } from 'lodash';
+import Image from 'next/image';
 import { useFormContext } from 'react-hook-form';
 
 import { FormInput } from '@/components/Form/FormInput';
@@ -21,7 +22,17 @@ const BioTab = () => {
         </div>
       </Pod>
       <div className="grid grow grid-cols-[1fr_2fr] grid-rows-3 gap-3">
-        <Pod label="Apperance" />
+        <Pod label="Apperance">
+          <div className="relative h-full w-full overflow-hidden rounded-lg bg-gradient-to-r from-violet-700 to-violet-950">
+            <Image
+              fill
+              alt="image of character"
+              className="block"
+              sizes="100px"
+              src="https://picsum.photos/2048/1024"
+            />
+          </div>
+        </Pod>
         <Pod label="Organizations">
           <Textarea maxRows={32} minRows={8} name="bio.organizations" styleVariant="grow" />
         </Pod>

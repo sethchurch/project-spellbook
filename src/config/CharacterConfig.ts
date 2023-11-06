@@ -58,6 +58,26 @@ type Attack = Detail & {
   damageType: string;
 };
 
+type Spell = Attack & {
+  level: number;
+  range: string;
+  components: string;
+  duration: string;
+  castingTime: string;
+  school:
+    | 'abjuration'
+    | 'conjuration'
+    | 'divination'
+    | 'enchantment'
+    | 'evocation'
+    | 'illusion'
+    | 'necromancy'
+    | 'transmutation';
+  ritual: boolean;
+  concentration: boolean;
+  showInActionList: boolean;
+};
+
 type Condition = {
   name: string;
   description: string;
@@ -120,6 +140,7 @@ type Character = {
     featuresTraits?: string;
     treasure?: string;
   };
+  spells?: Spell[];
   notes?: string;
   inventory: InventoryItem[];
   backstory?: string;
@@ -155,4 +176,4 @@ const characterDefaults: Character = {
 };
 
 export { characterDefaults, characterSkills, savingThrows, skillLookup, statLongNameLookup };
-export type { Attack, Character, Detail, InventoryItem, Proficiency, SkillLookup, Stat };
+export type { Attack, Character, Detail, InventoryItem, Proficiency, SkillLookup, Spell, Stat };

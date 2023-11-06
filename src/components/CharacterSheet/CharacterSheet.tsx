@@ -1,6 +1,5 @@
 'use client';
 
-import { Chip } from '@nextui-org/chip';
 import { Tab } from '@nextui-org/tabs';
 import Image from 'next/image';
 
@@ -11,6 +10,7 @@ import type { ComponentTab } from '@/types/tabs';
 import { BioTab } from './BioTab';
 import { CoreTab } from './CoreTab';
 import { InventoryTab } from './InventoryTab';
+import { Chip } from '@nextui-org/chip';
 
 const ComingSoon = () => (
   <div className="flex h-screen justify-center p-3">

@@ -5,7 +5,7 @@ import { cn } from '@/utils/cn';
 const styleVariants = {
   default:
     'group-data-[selected=true]:bg-stone-200 dark:bg-zinc-950/60 bg-stone-200/50 dark:group-data-[selected=true]:bg-zinc-950',
-  alt: 'group-data-[selected=true]:bg-stone-100 dark:bg-zinc-900/40 bg-stone-100/50 dark:group-data-[selected=true]:bg-zinc-700/30',
+  alt: 'group-data-[selected=true]:bg-stone-100 dark:bg-zinc-900/60 bg-stone-100/50 dark:group-data-[selected=true]:bg-zinc-900',
 };
 
 const sizeVariants = {

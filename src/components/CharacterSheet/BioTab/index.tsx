@@ -14,7 +14,7 @@ const BioTab = () => {
   const characterName = getValues('name');
   return (
     <div className="flex min-h-full flex-col justify-start gap-3 p-3">
-      <Pod label={`${characterName}'s Details`}>
+      <Pod disableLoading label={`${characterName}'s Details`}>
         <div className="grid grid-cols-1 gap-x-2 gap-y-3 sm:grid-cols-2 md:grid-cols-3 md:gap-3">
           {['Age', 'Height', ' Weight', 'Eye Color', 'Skin Color', 'Hair Color'].map((field) => (
             <FormInput key={field} label={field} name={`bio.${camelCase(field)}`} styleVariant="basic" />

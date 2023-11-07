@@ -43,14 +43,12 @@ const CoreTab = () => {
 
       {/* Combat & CoreTabs */}
       <div className="flex h-full flex-col gap-x-2 gap-y-3 md:gap-3">
-        <Pod className="flex-[1]">
-          <div className="grid flex-[1] gap-x-2 gap-y-3 sm:grid-cols-3 md:gap-3">
-            {['Armor Class', 'Initiative', 'Speed'].map((x) => (
-              <Pod key={x} label={x} variant="alt">
-                <FormInput name={camelCase(x)} />
-              </Pod>
-            ))}
-          </div>
+        <Pod className="flex-[1]" classNames={{ content: 'grid flex-[1] gap-x-2 gap-y-3 sm:grid-cols-3 md:gap-3' }}>
+          {['Armor Class', 'Initiative', 'Speed'].map((x) => (
+            <Pod key={x} label={x} variant="alt">
+              <FormInput name={camelCase(x)} />
+            </Pod>
+          ))}
         </Pod>
         <Pod className="flex-[2]">
           <div className="flex h-full flex-col gap-x-2 gap-y-3 md:flex-row md:gap-3">

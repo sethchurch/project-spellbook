@@ -20,13 +20,11 @@ const StatDisplay = ({ statIndex, ...props }: StatDisplayProps) => {
   const statBonus = Math.floor(getValues(fieldName) / 2) - 5;
 
   return (
-    <Pod variant="alt" {...props}>
-      <div className="flex h-full flex-col items-center justify-between gap-3">
-        <FormInput className="h-full w-full" max={30} min={0} name={fieldName} />
-        <Chip className="px-4" variant="faded">
-          <p>{bonusify(statBonus)}</p>
-        </Chip>
-      </div>
+    <Pod classNames={{ content: 'flex h-full flex-col items-center justify-between gap-3' }} variant="alt" {...props}>
+      <FormInput className="h-full w-full" max={30} min={0} name={fieldName} />
+      <Chip className="px-4" variant="faded">
+        <p>{bonusify(statBonus)}</p>
+      </Chip>
     </Pod>
   );
 };

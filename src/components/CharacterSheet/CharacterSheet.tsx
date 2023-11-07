@@ -1,6 +1,5 @@
 'use client';
 
-import { Chip } from '@nextui-org/chip';
 import { Tab } from '@nextui-org/tabs';
 import Image from 'next/image';
 
@@ -11,12 +10,7 @@ import type { ComponentTab } from '@/types/tabs';
 import { BioTab } from './BioTab';
 import { CoreTab } from './CoreTab';
 import { InventoryTab } from './InventoryTab';
-
-const ComingSoon = () => (
-  <div className="flex h-screen justify-center p-3">
-    <Chip size="lg">Coming soon to the tavern!</Chip>
-  </div>
-);
+import { SpellsTab } from './SpellsTab';
 
 const Tabs: ComponentTab[] = [
   {
@@ -53,7 +47,7 @@ const Tabs: ComponentTab[] = [
         Spells
       </TabTitle>
     ),
-    content: <ComingSoon />,
+    content: <SpellsTab />,
   },
 ];
 

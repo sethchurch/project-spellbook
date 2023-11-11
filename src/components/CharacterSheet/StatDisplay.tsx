@@ -5,6 +5,7 @@ import { useFormContext } from 'react-hook-form';
 
 import { FormInput } from '@/components/Form/FormInput';
 import { bonusify } from '@/utils/bonusify';
+import { calcStatBonus } from '@/utils/calcStatBonus';
 
 import type { PodProps } from './Pod/Pod';
 import { Pod } from './Pod/Pod';
@@ -17,7 +18,7 @@ const StatDisplay = ({ statIndex, ...props }: StatDisplayProps) => {
   const { getValues } = useFormContext();
 
   const fieldName = `stats[${statIndex}]`;
-  const statBonus = Math.floor(getValues(fieldName) / 2) - 5;
+  const statBonus = calcStatBonus(getValues(fieldName) as number);
 
   return (
     <Pod classNames={{ content: 'flex h-full flex-col items-center justify-between gap-3' }} variant="alt" {...props}>

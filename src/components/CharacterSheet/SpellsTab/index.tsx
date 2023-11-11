@@ -2,17 +2,22 @@
 
 import { AccordionItem } from '@nextui-org/accordion';
 import { SelectItem } from '@nextui-org/select';
+import { useFormContext } from 'react-hook-form';
 
+import { Pod } from '@/components/CharacterSheet/Pod';
 import { Accordion } from '@/components/Elements/Accordion';
 import { AddEditButtons } from '@/components/Elements/AddEditButtons';
-import { Select } from '@/components/Elements/Select';
 import { FormInput } from '@/components/Form/FormInput';
+import { FormSelect } from '@/components/Form/FormSelect';
 import { Textarea } from '@/components/Form/Textarea';
 import type { Attack } from '@/config/CharacterConfig';
 import { useEditableAccordion } from '@/hooks/useEditableAccordion';
 import { useFormList } from '@/hooks/useFormList';
+import { bonusify } from '@/utils/bonusify';
+import { calcStatBonus } from '@/utils/calcStatBonus';
+import { getProficencyBonus } from '@/utils/getProficencyBonus';
 
-import { Pod } from '../Pod';
+import { spellStatOptions, statLookup } from './spellStatOptions';
 
 const fieldName = 'attacks' as const;
 const spellCols = [
@@ -22,37 +27,50 @@ const spellCols = [
 ];
 
 const SpellsTab = () => {
+  const { getValues } = useFormContext();
   const { dataList: attacks, remove } = useFormList<Attack>({ fieldName });
   const { getAccordionItemProps } = useEditableAccordion({ remove });
 
+  const proficencyBonus = getProficencyBonus(getValues('level'));
+  const stats = getValues('stats');
+  const statBonus = calcStatBonus(stats[statLookup[getValues('spellStat') as keyof typeof statLookup]]);
+  const spellSaveDC = 8 + proficencyBonus + statBonus;
+  const spellAttackBonus = proficencyBonus + statBonus;
+
   return (
     <div className="flex-stack p-3">
+      <AddEditButtons itemName="Spell" />
       <Pod classNames={{ content: 'grid grid-cols-3 gap-3' }}>
         <Pod label="Spellcasting Ability" variant="alt">
-          <Select defaultSelectedKeys={['Intelligence']}>
-            {['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma'].map((ability) => (
-              <SelectItem key={ability} value={ability}>
-                {ability}
+          <FormSelect
+            disallowEmptySelection
+            aria-label="Spellcasting Ability Select"
+            defaultSelectedKeys={[spellStatOptions[3]!.key]}
+            name="spellStat"
+          >
+            {spellStatOptions.map((option) => (
+              <SelectItem key={option.key} aria-label={option.key} value={option.value}>
+                {option.key}
               </SelectItem>
             ))}
-          </Select>
+          </FormSelect>
         </Pod>
         <Pod
           classNames={{ content: 'h-full w-full flex items-center justify-center' }}
           label="Spell Save DC"
           variant="alt"
         >
-          <p className="text-2xl">+13</p>
+          <p className="text-2xl">{bonusify(spellSaveDC)}</p>
         </Pod>
         <Pod
           classNames={{ content: 'h-full w-full flex items-center justify-center' }}
           label="Spell Attack Bonus"
           variant="alt"
         >
-          <p className="text-2xl">+13</p>
+          <p className="text-2xl">{bonusify(spellAttackBonus)}</p>
         </Pod>
       </Pod>
-      <AddEditButtons itemName="Spell" />
+
       <div className="grid grid-flow-col grid-cols-3 items-start gap-3">
         {spellCols.map((col, i) => (
           <div key={i} className="flex flex-col gap-3">

@@ -18,3 +18,4 @@ const Select = ({ styleVariant, children, ...props }: SelectProps) => {
 };
 
 export { Select };
+export type { SelectProps };

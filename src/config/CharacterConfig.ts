@@ -141,6 +141,7 @@ type Character = {
     treasure?: string;
   };
   spells?: Spell[];
+  spellStat?: Stat;
   notes?: string;
   inventory: InventoryItem[];
   backstory?: string;

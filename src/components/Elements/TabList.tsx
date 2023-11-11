@@ -35,7 +35,7 @@ const TabList = ({ children, className, defaultTab, styleVariant, onSelectionCha
       aria-label="Options"
       className={className}
       classNames={styleVariants[styleVariant ?? 'default']}
-      selectedKey={currentTab}
+      selectedKey={String(currentTab)}
       onSelectionChange={setKeyOnSelectionChange}
     >
       {children}

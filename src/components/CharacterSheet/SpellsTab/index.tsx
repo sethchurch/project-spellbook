@@ -1,8 +1,11 @@
 'use client';
 
 import { AccordionItem } from '@nextui-org/accordion';
+import { SelectItem } from '@nextui-org/select';
 
 import { Accordion } from '@/components/Elements/Accordion';
+import { AddEditButtons } from '@/components/Elements/AddEditButtons';
+import { Select } from '@/components/Elements/Select';
 import { FormInput } from '@/components/Form/FormInput';
 import { Textarea } from '@/components/Form/Textarea';
 import type { Attack } from '@/config/CharacterConfig';
@@ -25,10 +28,31 @@ const SpellsTab = () => {
   return (
     <div className="flex-stack p-3">
       <Pod classNames={{ content: 'grid grid-cols-3 gap-3' }}>
-        <Pod variant="alt">13</Pod>
-        <Pod variant="alt">13</Pod>
-        <Pod variant="alt">13</Pod>
+        <Pod label="Spellcasting Ability" variant="alt">
+          <Select defaultSelectedKeys={['Intelligence']}>
+            {['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma'].map((ability) => (
+              <SelectItem key={ability} value={ability}>
+                {ability}
+              </SelectItem>
+            ))}
+          </Select>
+        </Pod>
+        <Pod
+          classNames={{ content: 'h-full w-full flex items-center justify-center' }}
+          label="Spell Save DC"
+          variant="alt"
+        >
+          <p className="text-2xl">+13</p>
+        </Pod>
+        <Pod
+          classNames={{ content: 'h-full w-full flex items-center justify-center' }}
+          label="Spell Attack Bonus"
+          variant="alt"
+        >
+          <p className="text-2xl">+13</p>
+        </Pod>
       </Pod>
+      <AddEditButtons itemName="Spell" />
       <div className="grid grid-flow-col grid-cols-3 items-start gap-3">
         {spellCols.map((col, i) => (
           <div key={i} className="flex flex-col gap-3">

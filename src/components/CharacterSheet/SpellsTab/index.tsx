@@ -33,7 +33,9 @@ const SpellsTab = () => {
 
   const proficencyBonus = getProficencyBonus(getValues('level'));
   const stats = getValues('stats');
-  const statBonus = calcStatBonus(stats[statLookup[getValues('spellStat') as keyof typeof statLookup]]);
+  const statBonus = calcStatBonus(
+    stats[statLookup[(getValues('spellStat') ?? 'Intelligence') as keyof typeof statLookup]],
+  );
   const spellSaveDC = 8 + proficencyBonus + statBonus;
   const spellAttackBonus = proficencyBonus + statBonus;
 

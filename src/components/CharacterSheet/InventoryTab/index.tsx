@@ -1,8 +1,8 @@
 import { AccordionItem } from '@nextui-org/accordion';
-import { Button } from '@nextui-org/button';
 
 import { Pod } from '@/components/CharacterSheet/Pod';
 import { Accordion } from '@/components/Elements/Accordion';
+import { AddEditButtons } from '@/components/Elements/AddEditButtons';
 import { FormInput } from '@/components/Form/FormInput';
 import { Textarea } from '@/components/Form/Textarea';
 import { DiscardModal } from '@/components/Modal/DiscardModal';
@@ -18,14 +18,7 @@ const InventoryTab = () => {
 
   return (
     <div className="flex min-h-screen flex-col justify-start gap-3 p-3">
-      <div className="flex gap-3 self-end">
-        <Button radius="sm" onClick={toggleEditing}>
-          Modify Items
-        </Button>
-        <Button color="primary" radius="sm" onClick={addBlank}>
-          Add Item
-        </Button>
-      </div>
+      <AddEditButtons onAdd={addBlank} onEdit={toggleEditing} />
       <Pod className="grow">
         <Accordion styleVariant="podSplit">
           {inventoryItems?.map(({ name, qty, weight }, index) => {

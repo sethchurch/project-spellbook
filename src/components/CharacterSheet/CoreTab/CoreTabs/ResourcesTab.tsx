@@ -7,6 +7,7 @@ import { useFormContext } from 'react-hook-form';
 
 import { PodChip } from '@/components/CharacterSheet/Pod';
 import { Accordion } from '@/components/Elements/Accordion';
+import { AddEditButtons } from '@/components/Elements/AddEditButtons';
 import { FormInput } from '@/components/Form/FormInput';
 import { DiscardModal } from '@/components/Modal/DiscardModal';
 import { useEditableAccordion } from '@/hooks/useEditableAccordion';
@@ -39,14 +40,7 @@ const ResourcesTab = () => {
 
   return (
     <div className="flex-stack">
-      <div className="flex justify-end gap-3">
-        <Button radius="sm" onClick={toggleEditing}>
-          Edit Resources
-        </Button>
-        <Button color="primary" radius="sm" onClick={addBlank}>
-          Add Resource
-        </Button>
-      </div>
+      <AddEditButtons itemName="Resource" onAdd={addBlank} onEdit={toggleEditing} />
       <Accordion styleVariant="podSplit">
         {resources.map(({ name, source, current, max }, index: number) => {
           const parentName = `${fieldName}[${index}]`;

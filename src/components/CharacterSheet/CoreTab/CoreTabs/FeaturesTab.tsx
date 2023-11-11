@@ -1,9 +1,9 @@
 'use client';
 
 import { AccordionItem } from '@nextui-org/accordion';
-import { Button } from '@nextui-org/button';
 
 import { Accordion } from '@/components/Elements/Accordion';
+import { AddEditButtons } from '@/components/Elements/AddEditButtons';
 import { FormInput } from '@/components/Form/FormInput';
 import { Textarea } from '@/components/Form/Textarea';
 import { DiscardModal } from '@/components/Modal/DiscardModal';
@@ -27,14 +27,7 @@ const FeaturesTab = () => {
 
   return (
     <div className="flex-stack">
-      <div className="flex justify-end gap-3">
-        <Button radius="sm" onClick={toggleEditing}>
-          Edit Features
-        </Button>
-        <Button color="primary" radius="sm" onClick={addBlank}>
-          Add Feature
-        </Button>
-      </div>
+      <AddEditButtons itemName="Feature" onAdd={addBlank} onEdit={toggleEditing} />
       <Accordion styleVariant="podSplit">
         {features.map(({ name, source }, index: number) => {
           const parentName = `${fieldName}[${index}]`;

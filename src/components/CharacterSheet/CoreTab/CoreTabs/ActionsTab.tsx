@@ -1,10 +1,10 @@
 'use client';
 
 import { AccordionItem } from '@nextui-org/accordion';
-import { Button } from '@nextui-org/button';
 
 import { Pod } from '@/components/CharacterSheet/Pod';
 import { Accordion } from '@/components/Elements/Accordion';
+import { AddEditButtons } from '@/components/Elements/AddEditButtons';
 import { FormInput } from '@/components/Form/FormInput';
 import { Textarea } from '@/components/Form/Textarea';
 import { DiscardModal } from '@/components/Modal/DiscardModal';
@@ -21,14 +21,7 @@ const ActionsTab = () => {
 
   return (
     <div className="flex-stack">
-      <div className="flex justify-end gap-3">
-        <Button radius="sm" onClick={toggleEditing}>
-          Edit Actions
-        </Button>
-        <Button color="primary" radius="sm" onClick={addBlank}>
-          Add Action
-        </Button>
-      </div>
+      <AddEditButtons itemName="Action" onAdd={addBlank} onEdit={toggleEditing} />
       <Accordion styleVariant="podSplit">
         {attacks?.map(({ name, bonus = 0, damage, damageType }, index) => {
           const parentName = `${fieldName}[${index}]`;

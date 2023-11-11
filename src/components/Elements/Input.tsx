@@ -29,6 +29,7 @@ const styleVariants = {
       'group-data-[focus=true]:bg-stone-100/100',
       'dark:group-data-[focus=true]:bg-zinc-900/70',
       '!cursor-text',
+      'h-full',
     ],
   },
 };

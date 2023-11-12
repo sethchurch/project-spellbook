@@ -3,11 +3,11 @@
 import { Checkbox, type CheckboxProps } from '@nextui-org/checkbox';
 import { Controller, useFormContext } from 'react-hook-form';
 
-interface ControlledCheckProps extends CheckboxProps {
+interface FormCheckProps extends CheckboxProps {
   name: string;
 }
 
-const ControlledCheck = ({ name, ...props }: ControlledCheckProps) => {
+const FormCheck = ({ name, ...props }: FormCheckProps) => {
   const { control } = useFormContext();
   return (
     <Controller
@@ -18,4 +18,4 @@ const ControlledCheck = ({ name, ...props }: ControlledCheckProps) => {
   );
 };
 
-export { ControlledCheck };
+export { FormCheck };

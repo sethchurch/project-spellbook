@@ -1,6 +1,8 @@
 'use client';
 
-import { cloneDeep, debounce, isEqual } from 'lodash';
+import cloneDeep from 'lodash/cloneDeep';
+import debounce from 'lodash/debounce';
+import isEqual from 'lodash/isEqual';
 import { useEffect, useRef } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 

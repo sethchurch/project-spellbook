@@ -3,7 +3,7 @@
 import { useFormContext } from 'react-hook-form';
 
 import { Pod, PodChip, PodResource } from '@/components/CharacterSheet/Pod';
-import { ControlledCheck } from '@/components/Form/ControlledCheck';
+import { FormCheck } from '@/components/Form/FormCheck';
 import { FormInput } from '@/components/Form/FormInput';
 import { Textarea } from '@/components/Form/Textarea';
 import { camelCase } from '@/utils/camelCase';
@@ -31,9 +31,7 @@ const CoreTab = () => {
       {/* Inspiration & Proficiency Bonus */}
       <Pod className="row-start-1 md:row-start-auto" label="Inspiration & Proficiency Bonus">
         <div className="flex h-full flex-col justify-around gap-x-2 gap-y-3 py-3 md:gap-3">
-          <PodChip startContent={<ControlledCheck className="-ml-1 -mr-2" name="inspired" size="md" />}>
-            Inspiration
-          </PodChip>
+          <PodChip startContent={<FormCheck className="-ml-1 -mr-2" name="inspired" size="md" />}>Inspiration</PodChip>
           <PodChip left={`+${proficencyBonus}`}>Proficiency Bonus</PodChip>
         </div>
       </Pod>

@@ -1,5 +1,8 @@
+'use client';
+
 import type { InputProps as NextInputProps } from '@nextui-org/input';
 import { Input as NextFormInput } from '@nextui-org/input';
+import { useCallback, useEffect, useRef } from 'react';
 
 const styleVariants = {
   default: {
@@ -39,7 +42,25 @@ interface InputProps extends NextInputProps {
 }
 
 const Input = ({ styleVariant, ...props }: InputProps) => {
-  return <NextFormInput classNames={styleVariants[styleVariant ?? 'default']} radius="sm" {...props} />;
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (e.key === 'a' && (e.ctrlKey || e.metaKey)) {
+      e.preventDefault();
+      e.stopPropagation();
+      inputRef.current?.select();
+    }
+  }, []);
+
+  useEffect(() => {
+    const input = inputRef.current;
+    if (input) input.addEventListener('keydown', handleKeyDown);
+    return () => {
+      if (input) input.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [handleKeyDown]);
+
+  return <NextFormInput classNames={styleVariants[styleVariant ?? 'default']} radius="sm" {...props} ref={inputRef} />;
 };
 
 export { Input };

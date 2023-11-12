@@ -4,7 +4,6 @@ import { SelectItem } from '@nextui-org/select';
 import { useFormContext } from 'react-hook-form';
 
 import { Pod } from '@/components/CharacterSheet/Pod';
-import { AddEditButtons } from '@/components/Elements/AddEditButtons';
 import { FormSelect } from '@/components/Form/FormSelect';
 import { StatIndex, useFormStat } from '@/hooks/useFormStat';
 import { bonusify } from '@/utils/bonusify';
@@ -33,8 +32,6 @@ const SpellsTab = () => {
 
   return (
     <div className="flex-stack p-3">
-      <AddEditButtons itemName="Spell" />
-
       <Pod classNames={{ content: 'grid grid-cols-3 gap-3' }}>
         <Pod classNames={PodDCClasses} label="Spellcasting Ability" variant="alt">
           <FormSelect aria-label="Spellcasting Ability" name="spellStat">

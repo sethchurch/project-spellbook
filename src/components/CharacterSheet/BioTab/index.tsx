@@ -1,11 +1,11 @@
 'use client';
 
-import { camelCase } from 'lodash';
 import Image from 'next/image';
 import { useFormContext } from 'react-hook-form';
 
 import { FormInput } from '@/components/Form/FormInput';
 import { Textarea } from '@/components/Form/Textarea';
+import { camelCase } from '@/utils/camelCase';
 
 import { Pod } from '../Pod';
 

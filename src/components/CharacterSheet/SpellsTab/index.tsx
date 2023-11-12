@@ -46,10 +46,10 @@ const SpellsTab = () => {
           </FormSelect>
         </Pod>
         <Pod classNames={PodDCClasses} label="Spell Save DC" variant="alt">
-          <p className="text-2xl">{bonusify(spellSaveDC)}</p>
+          <p className="text-2xl">{bonusify(Number.isNaN(spellSaveDC) ? 0 : spellSaveDC)}</p>
         </Pod>
         <Pod classNames={PodDCClasses} label="Spell Attack Bonus" variant="alt">
-          <p className="text-2xl">{bonusify(spellAttackBonus)}</p>
+          <p className="text-2xl">{bonusify(Number.isNaN(spellAttackBonus) ? 0 : spellAttackBonus)}</p>
         </Pod>
       </Pod>
 

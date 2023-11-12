@@ -41,11 +41,7 @@ const useEditableAccordion = ({ remove }: EditableAccordionProps) => {
   };
 
   const getDiscardModalProps = () => {
-    return {
-      confirmAction: handleDelete,
-      isOpen,
-      onClose,
-    };
+    return { confirmAction: handleDelete, isOpen, onClose };
   };
 
   return { isEditing, toggleEditing, getAccordionItemProps, getDiscardModalProps };

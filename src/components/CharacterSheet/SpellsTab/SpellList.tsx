@@ -50,7 +50,7 @@ const SpellList = ({ level }: SpellListProps) => {
                 </div>
               }
             >
-              <div className="flex-stack px-1">
+              <div className="flex-stack p-1">
                 <FormInput label="Name" name={`${parentName}.name`} styleVariant="basic" />
                 <FormSelect label="School" name={`${parentName}.school`}>
                   {spellSchoolOptions.map(({ key, displayName }) => (
@@ -70,13 +70,11 @@ const SpellList = ({ level }: SpellListProps) => {
                   <FormInput label="Damage" name={`${parentName}.damage`} styleVariant="basic" />
                   <FormInput label="Damage Type" name={`${parentName}.damageType`} styleVariant="basic" />
                 </div>
-                <div className="flex gap-3">
-                  <CheckboxGroup label="Components" orientation="horizontal">
-                    <Checkbox value="V">Verbal</Checkbox>
-                    <Checkbox value="S">Somatic</Checkbox>
-                    <Checkbox value="M">Material</Checkbox>
-                  </CheckboxGroup>
-                </div>
+                <CheckboxGroup aria-label="Spell Components" orientation="horizontal">
+                  <Checkbox value="V">Verbal</Checkbox>
+                  <Checkbox value="S">Somatic</Checkbox>
+                  <Checkbox value="M">Material</Checkbox>
+                </CheckboxGroup>
                 <Textarea label="Description" name={`${parentName}.description`} styleVariant="basic" />
               </div>
             </AccordionItem>

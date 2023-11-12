@@ -43,7 +43,7 @@ const FeaturesTab = () => {
                 </div>
               }
             >
-              <div className="grid w-full grid-cols-1 gap-3 md:grid-cols-2">
+              <div className="grid w-full grid-cols-1 gap-3 p-1 md:grid-cols-2">
                 <FormInput label="Name" name={`${parentName}.name]`} styleVariant="basic" />
                 <FormInput label="Source" name={`${parentName}.source]`} styleVariant="basic" />
                 <Textarea

@@ -45,7 +45,7 @@ const ActionsTab = () => {
                 </div>
               }
             >
-              <div className="flex-stack">
+              <div className="flex-stack p-1">
                 <FormInput label="Name" name={`${parentName}.name`} styleVariant="basic" />
                 <FormInput label="Bonus" name={`${parentName}.bonus`} styleVariant="basic" />
                 <div className="flex gap-3">

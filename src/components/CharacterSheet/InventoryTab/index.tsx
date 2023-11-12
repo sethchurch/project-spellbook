@@ -43,7 +43,7 @@ const InventoryTab = () => {
                   </div>
                 }
               >
-                <div className="flex-stack px-0.5">
+                <div className="flex-stack p-1">
                   <div className="grid w-full grid-cols-[5fr_2fr_2fr] gap-2">
                     <FormInput label="Name" name={`${parentName}.name`} styleVariant="basic" />
                     <FormInput label="Quantity" name={`${parentName}.qty`} styleVariant="basic" />

@@ -31,7 +31,7 @@ const Tabs: ComponentTab[] = [
   {
     key: 'notes',
     title: <TabTitle>Notes</TabTitle>,
-    content: <Textarea maxRows={64} minRows={24} name="notes" radius="sm" />,
+    content: <Textarea maxRows={64} minRows={24} name="notes" radius="sm" styleVariant="grow" />,
   },
 ];
 

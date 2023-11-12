@@ -1,15 +1,16 @@
-type Stat = 'str' | 'dex' | 'con' | 'int' | 'wis' | 'cha';
+type ShortStat = 'str' | 'dex' | 'con' | 'int' | 'wis' | 'cha';
+type LongStat = 'Strength' | 'Dexterity' | 'Constitution' | 'Intelligence' | 'Wisdom' | 'Charisma';
 
 type Proficiency = {
   name: string;
-  stat: Stat;
+  stat: ShortStat;
 };
 
 type SkillLookup = {
-  [key in Stat]: string[];
+  [key in ShortStat]: string[];
 };
 
-const statLongNameLookup: { [key in Stat]: string } = {
+const statLongNameLookup: { [key in ShortStat]: string } = {
   str: 'Strength',
   dex: 'Dexterity',
   con: 'Constitution',
@@ -28,7 +29,7 @@ const skillLookup: SkillLookup = {
 };
 
 const characterSkills = Object.entries(skillLookup).reduce<Proficiency[]>((acc, [stat, skills]) => {
-  const statSkills = skills.map((name) => ({ name, stat: stat as Stat }));
+  const statSkills = skills.map((name) => ({ name, stat: stat as ShortStat }));
   return [...acc, ...statSkills];
 }, []);
 
@@ -140,8 +141,8 @@ type Character = {
     featuresTraits?: string;
     treasure?: string;
   };
-  spells?: Spell[];
-  spellStat?: Stat;
+  spells?: Spell[][]; // [0] = cantrips, [1] = 1st level, etc.
+  spellStat?: ShortStat;
   notes?: string;
   inventory: InventoryItem[];
   backstory?: string;
@@ -166,6 +167,7 @@ const characterDefaults: Character = {
   features: [],
   senses: [],
   proficiencies: { languages: '', weapons: '', armor: '', other: '' },
+  spells: [[], [], [], [], [], [], [], [], [], []],
   notes: '',
   backstory: '',
   bio: {},
@@ -177,4 +179,4 @@ const characterDefaults: Character = {
 };
 
 export { characterDefaults, characterSkills, savingThrows, skillLookup, statLongNameLookup };
-export type { Attack, Character, Detail, InventoryItem, Proficiency, SkillLookup, Spell, Stat };
+export type { Attack, Character, Detail, InventoryItem, LongStat, Proficiency, ShortStat, SkillLookup, Spell };

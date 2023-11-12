@@ -1,10 +1,10 @@
 import { useFormContext } from 'react-hook-form';
 
-interface AccordionListProps {
+interface UseFormListProps {
   fieldName: string;
 }
 
-const useFormList = <T,>({ fieldName }: AccordionListProps) => {
+const useFormList = <T,>({ fieldName }: UseFormListProps) => {
   const { getValues, setValue } = useFormContext();
   const dataList: T[] = getValues(fieldName) ?? [];
 

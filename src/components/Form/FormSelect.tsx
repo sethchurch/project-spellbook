@@ -15,7 +15,13 @@ const FormSelect = ({ name, defaultSelectedKeys, ...props }: FormSelectProps) =>
       name={name}
       render={({ field }) => {
         return (
-          <Select {...props} {...field} ref={null} selectedKeys={field.value ? [field.value] : defaultSelectedKeys} />
+          <Select
+            disallowEmptySelection
+            {...props}
+            {...field}
+            ref={null}
+            selectedKeys={field.value ? [field.value] : defaultSelectedKeys}
+          />
         );
       }}
     />

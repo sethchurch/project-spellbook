@@ -21,6 +21,7 @@ const Accordion = ({ styleVariant, children, ...props }: AccordionProps) => {
       className="flex-stack px-0"
       itemClasses={styleVariant ? styleVariants[styleVariant] : {}}
       selectionMode="multiple"
+      textValue="Accordion"
       variant="splitted"
       {...props}
     >

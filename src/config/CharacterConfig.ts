@@ -72,13 +72,13 @@ type SpellSchool =
 type Spell = Attack & {
   level: number;
   range: string;
-  components: string;
+  components: { verbal: boolean; somatic: boolean; material: boolean; materialDescription: string };
   duration: string;
   castingTime: string;
   school: SpellSchool;
   ritual: boolean;
   concentration: boolean;
-  showInActionList: boolean;
+  // showInActionList: boolean; -- TODO: add this to the UI
 };
 
 type Condition = {

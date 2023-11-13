@@ -1,5 +1,4 @@
 import { AccordionItem } from '@nextui-org/accordion';
-import { Checkbox, CheckboxGroup } from '@nextui-org/checkbox';
 import { SelectItem } from '@nextui-org/select';
 
 import { Pod } from '@/components/CharacterSheet/Pod';
@@ -29,8 +28,11 @@ const SpellList = ({ level }: SpellListProps) => {
   return (
     <>
       <Accordion styleVariant="podSplit">
-        {spells?.map(
-          ({ name, damage, damageType, range }, index, _, parentName = `${fieldName}[${level}][${index}]`) => (
+        {spells?.map(({ name, damage, damageType, range, components }, index) => {
+          const parentName = `${fieldName}[${level}][${index}]`;
+          const componentParentName = `${parentName}.components`;
+
+          return (
             <AccordionItem
               {...getAccordionItemProps(index)}
               key={index}
@@ -59,10 +61,19 @@ const SpellList = ({ level }: SpellListProps) => {
                     </SelectItem>
                   ))}
                 </FormSelect>
-                <div className="flex gap-3">
+                <div className="flex justify-around pr-3">
                   <FormCheck name={`${parentName}.ritual`}>Ritual</FormCheck>
-                  <FormCheck name={`${parentName}.showInActionList`}>Show in Action List</FormCheck>
+                  <FormCheck name={`${componentParentName}.verbal`}>Verbal</FormCheck>
+                  <FormCheck name={`${componentParentName}.somatic`}>Somatic</FormCheck>
+                  <FormCheck name={`${componentParentName}.material`}>Material</FormCheck>
                 </div>
+                {components.material && (
+                  <FormInput
+                    label="Material Description"
+                    name={`${componentParentName}.materialDescription`}
+                    styleVariant="basic"
+                  />
+                )}
                 <FormInput label="Range" name={`${parentName}.range`} styleVariant="basic" />
                 <FormInput label="Duration" name={`${parentName}.duration`} styleVariant="basic" />
                 <FormInput label="Casting Time" name={`${parentName}.castingTime`} styleVariant="basic" />
@@ -70,16 +81,11 @@ const SpellList = ({ level }: SpellListProps) => {
                   <FormInput label="Damage" name={`${parentName}.damage`} styleVariant="basic" />
                   <FormInput label="Damage Type" name={`${parentName}.damageType`} styleVariant="basic" />
                 </div>
-                <CheckboxGroup aria-label="Spell Components" orientation="horizontal">
-                  <Checkbox value="V">Verbal</Checkbox>
-                  <Checkbox value="S">Somatic</Checkbox>
-                  <Checkbox value="M">Material</Checkbox>
-                </CheckboxGroup>
                 <Textarea label="Description" name={`${parentName}.description`} styleVariant="basic" />
               </div>
             </AccordionItem>
-          ),
-        )}
+          );
+        })}
       </Accordion>
       <DiscardModal {...getDiscardModalProps()} title="Delete Spell" />
       <div className="flex-stack pt-3">

@@ -39,11 +39,10 @@ export const defaultSpellOptions: Spell = {
   bonus: 0,
   level: 0,
   range: '30ft.',
-  components: '',
+  components: { verbal: false, somatic: false, material: false, materialDescription: '' },
   duration: 'Instantaneous',
   castingTime: '1 action',
   school: 'abjuration',
   ritual: false,
   concentration: false,
-  showInActionList: false,
 };

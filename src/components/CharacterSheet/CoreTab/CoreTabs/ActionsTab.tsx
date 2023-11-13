@@ -13,11 +13,13 @@ import { useEditableAccordion } from '@/hooks/useEditableAccordion';
 import { useFormList } from '@/hooks/useFormList';
 import { bonusify } from '@/utils/bonusify';
 
+import { SpellList } from '../../SpellsTab/SpellList';
+
 const fieldName = 'attacks' as const;
 const ActionsTab = () => {
   const { dataList: attacks, add, remove } = useFormList<Attack>({ fieldName });
   const addBlank = () => add({ name: '', bonus: 0, damage: '', damageType: '', description: '' });
-  const { toggleEditing, getAccordionItemProps, getDiscardModalProps } = useEditableAccordion({ remove });
+  const { isEditing, toggleEditing, getAccordionItemProps, getDiscardModalProps } = useEditableAccordion({ remove });
 
   return (
     <div className="flex-stack">
@@ -58,6 +60,10 @@ const ActionsTab = () => {
           );
         })}
       </Accordion>
+      {!isEditing &&
+        Array.from({ length: 10 }).map((_, index) => {
+          return <SpellList key={index} actionsOnly level={index} />;
+        })}
       <DiscardModal {...getDiscardModalProps()} title="Delete Action" />
     </div>
   );

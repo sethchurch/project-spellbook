@@ -78,7 +78,7 @@ type Spell = Attack & {
   school: SpellSchool;
   ritual: boolean;
   concentration: boolean;
-  // showInActionList: boolean; -- TODO: add this to the UI
+  showInActionList: boolean;
 };
 
 type Condition = {

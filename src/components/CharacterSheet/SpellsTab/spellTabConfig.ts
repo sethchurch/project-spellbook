@@ -45,4 +45,5 @@ export const defaultSpellOptions: Spell = {
   school: 'abjuration',
   ritual: false,
   concentration: false,
+  showInActionList: false,
 };

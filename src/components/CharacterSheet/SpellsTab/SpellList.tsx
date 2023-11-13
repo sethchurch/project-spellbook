@@ -17,18 +17,22 @@ import { defaultSpellOptions, spellSchoolOptions } from './spellTabConfig';
 
 interface SpellListProps {
   level: number;
+  actionsOnly?: boolean;
 }
 
 const fieldName = 'spells' as const;
-const SpellList = ({ level }: SpellListProps) => {
+const SpellList = ({ level, actionsOnly }: SpellListProps) => {
   const { dataList: spells, add, remove } = useFormList<Spell>({ fieldName: `${fieldName}[${level}]` });
   const addBlank = () => add({ ...defaultSpellOptions, level });
   const { toggleEditing, getAccordionItemProps, getDiscardModalProps } = useEditableAccordion({ remove });
 
+  const spellsActionOnly = spells?.filter(({ showInActionList }) => (actionsOnly ? showInActionList : true));
+  if (actionsOnly && spellsActionOnly.length === 0) return null;
+
   return (
     <>
       <Accordion styleVariant="podSplit">
-        {spells?.map(({ name, damage, damageType, range, components }, index) => {
+        {spellsActionOnly?.map(({ name, damage, damageType, range, components }, index) => {
           const parentName = `${fieldName}[${level}][${index}]`;
           const componentParentName = `${parentName}.components`;
 
@@ -61,8 +65,18 @@ const SpellList = ({ level }: SpellListProps) => {
                     </SelectItem>
                   ))}
                 </FormSelect>
-                <div className="flex justify-around pr-3">
+                <div className="flex gap-3">
                   <FormCheck name={`${parentName}.ritual`}>Ritual</FormCheck>
+                  <FormCheck name={`${parentName}.showInActionList`}>Show in Action List</FormCheck>
+                </div>
+                <FormInput label="Range" name={`${parentName}.range`} styleVariant="basic" />
+                <FormInput label="Duration" name={`${parentName}.duration`} styleVariant="basic" />
+                <FormInput label="Casting Time" name={`${parentName}.castingTime`} styleVariant="basic" />
+                <div className="flex gap-3">
+                  <FormInput label="Damage" name={`${parentName}.damage`} styleVariant="basic" />
+                  <FormInput label="Damage Type" name={`${parentName}.damageType`} styleVariant="basic" />
+                </div>
+                <div className="flex gap-3">
                   <FormCheck name={`${componentParentName}.verbal`}>Verbal</FormCheck>
                   <FormCheck name={`${componentParentName}.somatic`}>Somatic</FormCheck>
                   <FormCheck name={`${componentParentName}.material`}>Material</FormCheck>
@@ -74,23 +88,20 @@ const SpellList = ({ level }: SpellListProps) => {
                     styleVariant="basic"
                   />
                 )}
-                <FormInput label="Range" name={`${parentName}.range`} styleVariant="basic" />
-                <FormInput label="Duration" name={`${parentName}.duration`} styleVariant="basic" />
-                <FormInput label="Casting Time" name={`${parentName}.castingTime`} styleVariant="basic" />
-                <div className="flex gap-3">
-                  <FormInput label="Damage" name={`${parentName}.damage`} styleVariant="basic" />
-                  <FormInput label="Damage Type" name={`${parentName}.damageType`} styleVariant="basic" />
-                </div>
                 <Textarea label="Description" name={`${parentName}.description`} styleVariant="basic" />
               </div>
             </AccordionItem>
           );
         })}
       </Accordion>
-      <DiscardModal {...getDiscardModalProps()} title="Delete Spell" />
-      <div className="flex-stack pt-3">
-        <AddEditButtons iconOnly onAdd={addBlank} onEdit={toggleEditing} />
-      </div>
+      {!actionsOnly && (
+        <>
+          <DiscardModal {...getDiscardModalProps()} title="Delete Spell" />
+          <div className="flex-stack pt-3">
+            <AddEditButtons iconOnly onAdd={addBlank} onEdit={toggleEditing} />
+          </div>
+        </>
+      )}
     </>
   );
 };

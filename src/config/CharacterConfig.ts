@@ -100,6 +100,35 @@ type Resource = {
   source: string;
 };
 
+type AlternateProfiencies = {
+  languages: string;
+  weapons: string;
+  armor: string;
+  other: string;
+};
+
+type BioDetails = {
+  personalityTraits?: string;
+  ideals?: string;
+  bonds?: string;
+  flaws?: string;
+  age?: string;
+  height?: string;
+  weight?: string;
+  eyesColor?: string;
+  skinColor?: string;
+  hairColor?: string;
+  orginizations?: string;
+  featuresTraits?: string;
+  treasure?: string;
+};
+
+type CharacterImages = {
+  portrait?: string;
+  token?: string;
+  banner?: string;
+};
+
 type Character = {
   name: string;
   race: string;
@@ -122,27 +151,9 @@ type Character = {
   resources?: Resource[];
   features?: Detail[];
   senses?: Detail[];
-  proficiencies?: {
-    languages: string;
-    weapons: string;
-    armor: string;
-    other: string;
-  };
-  bio?: {
-    personalityTraits?: string;
-    ideals?: string;
-    bonds?: string;
-    flaws?: string;
-    age?: string;
-    height?: string;
-    weight?: string;
-    eyesColor?: string;
-    skinColor?: string;
-    hairColor?: string;
-    orginizations?: string;
-    featuresTraits?: string;
-    treasure?: string;
-  };
+  images?: CharacterImages;
+  proficiencies?: AlternateProfiencies;
+  bio?: BioDetails;
   spells?: Spell[][]; // [0] = cantrips, [1] = 1st level, etc.
   spellStat?: ShortStat;
   notes?: string;

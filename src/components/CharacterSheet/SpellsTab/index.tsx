@@ -32,7 +32,7 @@ const SpellsTab = () => {
 
   return (
     <div className="flex-stack p-3">
-      <Pod classNames={{ content: 'grid grid-cols-3 gap-3' }}>
+      <Pod classNames={{ content: 'grid grid-cols-1 md:grid-cols-3 gap-3' }}>
         <Pod classNames={PodDCClasses} label="Spellcasting Ability" variant="alt">
           <FormSelect aria-label="Spellcasting Ability" name="spellStat">
             {spellStatOptions.map(({ key, value }) => (
@@ -50,9 +50,9 @@ const SpellsTab = () => {
         </Pod>
       </Pod>
 
-      <div className="grid grid-flow-col grid-cols-3 items-start gap-3">
+      <div className="flex w-full grid-flow-col flex-col items-start gap-3 lg:grid lg:grid-cols-3">
         {spellCols.map((col, i) => (
-          <div key={i} className="flex flex-col gap-3">
+          <div key={i} className="flex w-full flex-col gap-3">
             {col.map((level) => (
               <Pod key={level} label={level === 0 ? 'Cantrips' : `Level ${level}`}>
                 <SpellList level={level} />

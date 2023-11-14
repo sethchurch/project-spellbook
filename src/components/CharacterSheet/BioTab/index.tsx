@@ -23,9 +23,9 @@ const BioTab = () => {
           <FormInput key={field} label={field} name={`bio.${camelCase(field)}`} styleVariant="basic" />
         ))}
       </Pod>
-      <div className="grid grow grid-cols-[1fr_2fr] grid-rows-3 gap-3">
+      <div className="grid grow grid-cols-1 grid-rows-[max-content_max-content_max-content] gap-3 lg:grid-cols-[1fr_2fr]">
         <Pod label="Apperance">
-          <div className="relative h-full w-full overflow-hidden rounded-lg bg-gradient-to-r from-violet-700 to-violet-950">
+          <div className="relative aspect-square overflow-hidden rounded-lg bg-gradient-to-r from-violet-700 to-violet-950">
             <Image
               fill
               alt="image of character"

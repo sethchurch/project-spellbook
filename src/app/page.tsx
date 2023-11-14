@@ -31,13 +31,13 @@ const LandingPage = async () => {
             </div>
           </div>
         </div>
-        <div className="mx-auto rounded-md bg-stone-100 p-6 text-center shadow-xl dark:bg-zinc-800 dark:shadow-lg">
+        {/* <div className="mx-auto rounded-md bg-stone-100 p-6 text-center shadow-xl dark:bg-zinc-800 dark:shadow-lg">
           Welcome to Project Spellbook! This project is currently in development and many things are subject to change.
           If you&apos;re interested in contributing, please reach out to me on my personal website at{' '}
           <a className="underline underline-offset-2" href="https://www.sethchurch.dev/contact">
             sethchurch.dev
           </a>
-        </div>
+        </div> */}
         <LandingSection image="/images/CharacterSheetWithTabs.png" title="Welcome to Project Spellbook">
           Create characters like never before with our AI-powered Dungeons & Dragons character builder. Whether
           you&apos;re a seasoned player or just starting out, Project Spellbook simplifies the process of crafting and

@@ -1,6 +1,8 @@
 'use client';
 
-import { Button, Modal, ModalBody, ModalContent, ModalHeader } from '@nextui-org/react';
+import { Button } from '@nextui-org/button';
+import type { ModalProps } from '@nextui-org/modal';
+import { Modal, ModalBody, ModalContent, ModalHeader } from '@nextui-org/modal';
 import { useMutation } from '@tanstack/react-query';
 import { useRef } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -12,12 +14,7 @@ import type { Character } from '@/config/CharacterConfig';
 import { useCharacterStore } from '@/hooks/useCharacterStore';
 import { client } from '@/utils/apiClient';
 
-interface BasicCreatorModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-const BasicCreatorModal = ({ isOpen, onClose }: BasicCreatorModalProps) => {
+const BasicCreatorModal = ({ isOpen, onClose }: Partial<ModalProps>) => {
   const addCharacter = useCharacterStore((state) => state.addCharacter);
   const formMethods = useForm({ defaultValues: { name: '', backstory: '', level: 1 } });
   const { getValues } = formMethods;
@@ -27,7 +24,7 @@ const BasicCreatorModal = ({ isOpen, onClose }: BasicCreatorModalProps) => {
     mutationFn: async () => client('/api/wizard', { data: getValues() }),
     onMutate: () => {
       toastId.current = toast.loading(`Generating... You may safely navigate away from this page just don't refresh`);
-      onClose();
+      if (onClose) onClose();
     },
     onSuccess: (data: Partial<Character>) => {
       addCharacter(data);

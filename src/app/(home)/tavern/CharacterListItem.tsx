@@ -4,7 +4,6 @@ import { Card, CardBody, CardHeader } from '@nextui-org/card';
 import { Chip } from '@nextui-org/chip';
 import { Button, Skeleton, Spacer, useDisclosure } from '@nextui-org/react';
 import { IconX } from '@tabler/icons-react';
-import Image from 'next/image';
 import Link from 'next/link';
 
 import { DiscardModal } from '@/components/Modal/DiscardModal';
@@ -57,7 +56,7 @@ const CharacterListItem = ({ character, characterId }: CharacterListItemProps) =
             </div>
           </CardHeader>
           <div className="relative h-56 w-full bg-gradient-to-r from-violet-700 to-violet-950">
-            <Image fill alt="image of character" sizes="100vw" src="https://picsum.photos/2048/1024" />
+            {/* <Image fill alt="image of character" sizes="100vw" src="https://picsum.photos/2048/1024" /> */}
           </div>
           <CardBody className="overflow-hidden text-ellipsis px-3 py-4">
             <div className="flex flex-wrap gap-2">

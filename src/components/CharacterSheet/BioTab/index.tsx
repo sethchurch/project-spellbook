@@ -1,8 +1,8 @@
 'use client';
 
-import Image from 'next/image';
 import { useFormContext } from 'react-hook-form';
 
+import { CharacterImageEditButton } from '@/components/Elements/CharacterImageEditButton';
 import { FormInput } from '@/components/Form/FormInput';
 import { Textarea } from '@/components/Form/Textarea';
 import { camelCase } from '@/utils/camelCase';
@@ -25,14 +25,15 @@ const BioTab = () => {
       </Pod>
       <div className="grid grow grid-cols-1 grid-rows-[max-content_max-content_max-content] gap-3 lg:grid-cols-[1fr_2fr]">
         <Pod label="Apperance">
-          <div className="relative aspect-square overflow-hidden rounded-lg bg-gradient-to-r from-violet-700 to-violet-950">
-            <Image
+          <div className="group relative flex aspect-square flex-col overflow-hidden rounded-lg bg-gradient-to-r from-violet-700 to-violet-950">
+            {/* <Image
               fill
               alt="image of character"
               className="block"
               sizes="100px"
               src="https://picsum.photos/2048/1024"
-            />
+            /> */}
+            <CharacterImageEditButton />
           </div>
         </Pod>
         <Pod label="Organizations">

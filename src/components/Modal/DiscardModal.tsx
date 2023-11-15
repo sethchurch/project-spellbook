@@ -1,24 +1,24 @@
-import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from '@nextui-org/react';
+import { Button } from '@nextui-org/button';
+import type { ModalProps } from '@nextui-org/modal';
+import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from '@nextui-org/modal';
 import type { MouseEventHandler } from 'react';
 
-interface DiscardModalProps {
+interface DiscardModalProps extends Partial<ModalProps> {
   body?: string | JSX.Element;
   cancelAction?: (...args: any[]) => any;
   confirmAction?: (...args: any[]) => any;
-  isOpen: boolean;
   title: string;
-  onClose: () => void;
 }
 
 const DiscardModal = ({ body, cancelAction, confirmAction, isOpen, title, onClose }: DiscardModalProps) => {
   const handleConfirmAction: MouseEventHandler<HTMLButtonElement> = () => {
     if (confirmAction) confirmAction();
-    onClose();
+    if (onClose) onClose();
   };
 
   const handleCancelAction = () => {
     if (cancelAction) cancelAction();
-    onClose();
+    if (onClose) onClose();
   };
 
   return (

@@ -200,26 +200,6 @@ export const createCharacter = {
         type: 'string',
         description: 'A general summary of the character and why you made the choices you did',
       },
-      inventory: {
-        type: 'array',
-        items: {
-          type: 'object',
-          properties: {
-            name: {
-              type: 'string',
-              description: 'The name of the item',
-            },
-            description: {
-              type: 'string',
-              description: 'The description of the item',
-            },
-            qty: {
-              type: 'number',
-              description: 'The quantity of the item',
-            },
-          },
-        },
-      },
     },
     required: [
       'race',

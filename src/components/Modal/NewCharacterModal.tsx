@@ -1,7 +1,9 @@
 'use client';
 
 import { Button } from '@nextui-org/button';
-import { Modal, ModalBody, ModalContent, ModalHeader, Tooltip, useDisclosure } from '@nextui-org/react';
+import type { ModalProps } from '@nextui-org/modal';
+import { Modal, ModalBody, ModalContent, ModalHeader, useDisclosure } from '@nextui-org/modal';
+import { Tooltip } from '@nextui-org/react';
 import { useRouter } from 'next/navigation';
 import { FormProvider, useForm } from 'react-hook-form';
 
@@ -10,8 +12,7 @@ import { useCharacterStore } from '@/hooks/useCharacterStore';
 
 import { BasicCreatorModal } from './BasicCreatorModal';
 
-interface NewCharacterModalProps {
-  isOpen: boolean;
+interface NewCharacterModalProps extends Partial<ModalProps> {
   close: () => void;
 }
 

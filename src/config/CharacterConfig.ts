@@ -129,6 +129,11 @@ type CharacterImages = {
   banner?: string;
 };
 
+type ProficientOrExpertList = {
+  proficent: string[];
+  expert: string[];
+};
+
 type Character = {
   name: string;
   race: string;
@@ -137,8 +142,8 @@ type Character = {
   background: string;
   alignment: string;
   stats: number[];
-  savingThrows: string[];
-  skills: { proficent: string[]; expert: string[] };
+  savingThrows: Partial<ProficientOrExpertList>;
+  skills: ProficientOrExpertList;
   armorClass: number;
   speed: number;
   initiative: number;
@@ -169,7 +174,7 @@ const characterDefaults: Character = {
   background: 'Acolyte',
   alignment: 'Neutral',
   stats: [10, 10, 10, 10, 10, 10],
-  savingThrows: [],
+  savingThrows: { proficent: [] },
   skills: { proficent: [], expert: [] },
   armorClass: 10,
   speed: 30,
@@ -199,6 +204,7 @@ export type {
   InventoryItem,
   LongStat,
   Proficiency,
+  ProficientOrExpertList,
   ShortStat,
   SkillLookup,
   Spell,

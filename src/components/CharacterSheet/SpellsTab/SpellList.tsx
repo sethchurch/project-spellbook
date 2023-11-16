@@ -43,15 +43,15 @@ const SpellList = ({ level, actionsOnly }: SpellListProps) => {
               classNames={{ base: 'p-0 group-[.is-splitted]:px-2 group-[.is-splitted]:shadow-none' }}
               textValue={name ?? 'Blank Spell'}
               title={
-                <div className="grid w-full grid-cols-[5fr_3fr_2fr] gap-2">
+                <div className="grid w-full grid-cols-[7fr_3fr_5fr] gap-2">
                   <Pod isCompact className="truncate">
                     {name || 'Blank Spell'}
                   </Pod>
-                  <Pod isCompact className="truncate">
-                    {damage} {damageType}
+                  <Pod isCompact className="truncate text-center">
+                    {range}
                   </Pod>
                   <Pod isCompact className="truncate">
-                    {range}
+                    {damage} {damageType}
                   </Pod>
                 </div>
               }

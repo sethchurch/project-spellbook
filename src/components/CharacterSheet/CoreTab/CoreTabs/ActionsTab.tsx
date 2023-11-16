@@ -34,7 +34,7 @@ const ActionsTab = () => {
               classNames={{ base: 'p-0 group-[.is-splitted]:px-2 group-[.is-splitted]:shadow-none' }}
               textValue={name}
               title={
-                <div className="grid w-full grid-cols-[5fr_2fr_5fr] gap-2">
+                <div className="grid w-full grid-cols-[7fr_3fr_5fr] gap-2">
                   <Pod isCompact className="truncate">
                     {name}
                   </Pod>

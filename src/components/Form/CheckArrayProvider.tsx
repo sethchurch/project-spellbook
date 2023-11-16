@@ -11,13 +11,13 @@ interface CheckArrayProviderProps {
 
 const CheckArrayContext = createContext<[any[], Dispatch<any>]>([[], () => {}]);
 
-const useCheckArray = () => {
+const useCheckArray = <T,>() => {
   const context = useContext(CheckArrayContext);
   if (context === undefined) {
     throw new Error('useCheckArray must be used within a CheckArrayProvider');
   }
 
-  const [value, dispatch] = context;
+  const [value, dispatch] = context as [T[], Dispatch<any>];
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = e.target;
     if (checked) {

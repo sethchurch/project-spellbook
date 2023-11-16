@@ -72,7 +72,7 @@ type SpellSchool =
 type Spell = Attack & {
   level: number;
   range: string;
-  components: { verbal: boolean; somatic: boolean; material: boolean; materialDescription: string };
+  components: { verbal: boolean; somatic: boolean; material: boolean; materialDescription?: string };
   duration: string;
   castingTime: string;
   school: SpellSchool;

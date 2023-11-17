@@ -2,6 +2,8 @@
 
 import Link from 'next/link';
 
+import { useFilter } from '@/components/Providers/FilterProvider';
+import type { Character } from '@/config/CharacterConfig';
 import { useCharacterStore } from '@/hooks/useCharacterStore';
 import { useStore } from '@/hooks/useStore';
 
@@ -26,12 +28,15 @@ const CharacterNavSkeleton = ({ count = 15 }: CharacterNavSkeletonProps) => {
 
 const CharacterNav = () => {
   const characters = useStore(useCharacterStore, (state) => state.characters);
+  const filterCharacters = useFilter<Character>(characters || []);
 
   if (!characters) return <CharacterNavSkeleton />;
 
   return (
     <div className="flex-stack">
-      {characters.map((character, index) => {
+      {filterCharacters.map((character, index) => {
+        if (!character.visible) return null;
+
         return (
           <Link
             key={index}

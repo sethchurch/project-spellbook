@@ -54,7 +54,7 @@ const CoreTab = () => {
               <PodResource name="hitPoints" />
             </Pod>
             <Pod className="flex-[1]" label="Temporary HP" variant="alt">
-              <FormInput name="hitPoints.temporary" />
+              <FormInput defaultValue="0" name="hitPoints.temporary" />
             </Pod>
             <Pod className="flex-[2]" label="Hit Dice" variant="alt">
               <PodResource name="hitDice" />

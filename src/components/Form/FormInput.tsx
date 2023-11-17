@@ -12,7 +12,7 @@ interface FormInputProps extends InputProps {
   rules?: Omit<RegisterOptions, 'valueAsNumber' | 'valueAsDate' | 'setValueAs'>;
 }
 
-const FormInput = ({ name, watchFlag, rules, ...props }: FormInputProps) => {
+const FormInput = ({ name, watchFlag, rules, defaultValue, ...props }: FormInputProps) => {
   const { control, watch } = useFormContext();
 
   return (
@@ -20,7 +20,14 @@ const FormInput = ({ name, watchFlag, rules, ...props }: FormInputProps) => {
       control={control}
       name={name || 'name'}
       render={({ field }) => {
-        return <Input {...props} {...field} ref={null} value={(watchFlag ? watch(name) : field.value) || ''} />;
+        return (
+          <Input
+            {...props}
+            {...field}
+            ref={null}
+            value={(watchFlag ? watch(name) : field.value) || defaultValue || ''}
+          />
+        );
       }}
       rules={rules}
     />

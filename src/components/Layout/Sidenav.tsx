@@ -4,17 +4,20 @@ import { Button } from '@nextui-org/button';
 import { useDisclosure } from '@nextui-org/react';
 
 import { CharacterNav } from '@/app/(home)/CharacterNav';
-import { Input } from '@/components/Elements/Input';
 import { useAppShell } from '@/components/Layout/AppShell';
+import { useCharacterFilter } from '@/hooks/useCharacterFilter';
 import { cn } from '@/utils/cn';
 
+import { CharacterFilterInput } from '../Elements/CharacterFilterInput';
 import { Icon } from '../Elements/Icon';
 import { NewCharacterModal } from '../Modal/NewCharacterModal';
+import { FilterProvider } from '../Providers/FilterProvider';
 
 const Sidenav = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { sideNavOpen } = useAppShell();
   const sideNavClass = sideNavOpen ? 'ml-0' : '-ml-72';
+  const filterValue = useCharacterFilter((state) => state.filterValue);
 
   return (
     <aside
@@ -25,13 +28,15 @@ const Sidenav = () => {
     >
       <div className="flex h-full flex-col gap-3">
         <div className="flex flex-col gap-3 px-3">
-          <Input isClearable isDisabled placeholder="Find characters..." styleVariant="inset" variant="faded" />
+          <CharacterFilterInput />
           <Button className="shrink-0" color="primary" onClick={onOpen}>
             <Icon icon="plus" />
           </Button>
         </div>
         <div className="overflow-y-auto px-3">
-          <CharacterNav />
+          <FilterProvider filterKeyList={['name', 'class']} filterValue={filterValue}>
+            <CharacterNav />
+          </FilterProvider>
         </div>
       </div>
       <NewCharacterModal close={onClose} isOpen={isOpen} />

@@ -1,28 +1,41 @@
-import { createContext, type PropsWithChildren, useMemo, useState } from 'react';
+import { createContext, type PropsWithChildren, useContext, useMemo } from 'react';
 
-const FilterContext = createContext({});
-
-interface FilterProviderProps extends PropsWithChildren {
-  data: any[];
+interface FilterContextProps {
+  filterKeyList?: string[];
+  filterValue?: string;
 }
 
-const FilterProvider = ({ children, data }: FilterProviderProps) => {
-  const [filterValue, setFilterValue] = useState('');
+const FilterContext = createContext<FilterContextProps>({});
 
-  const filterData = useMemo(() => {
-    if (data.length === 0) return [];
+type Indexable = { [key: string]: any };
+type Visible<T> = T & { visible: boolean };
 
-    return data.filter((item) => {
-      const name = item.name.toLowerCase();
-      const filter = filterValue.toLowerCase();
+const useFilter = <T extends Indexable>(array: T[]): Visible<T>[] => {
+  const { filterKeyList, filterValue } = useContext(FilterContext);
 
-      return name.includes(filter);
+  if (!filterKeyList || !filterValue) return array.map((item) => ({ ...item, visible: true }));
+
+  return array.map((item) => {
+    const visible = filterKeyList.some((key) => {
+      const keyValue = item[key];
+      if (!keyValue) return false;
+      return keyValue.toLowerCase().includes(filterValue.toLowerCase());
     });
-  }, [data, filterValue]);
+    return { ...item, visible };
+  });
+};
 
-  const value = useMemo(() => ({ filterValue, setFilterValue, data: filterData }), [filterData, filterValue]);
+interface FilterProviderProps extends PropsWithChildren {
+  filterKeyList?: string[];
+  filterValue?: string;
+}
+
+const FilterProvider = ({ children, filterKeyList, filterValue }: FilterProviderProps) => {
+  const value = useMemo(() => {
+    return { filterKeyList, filterValue };
+  }, [filterKeyList, filterValue]);
 
   return <FilterContext.Provider value={value}>{children}</FilterContext.Provider>;
 };
 
-export { FilterProvider };
+export { FilterProvider, useFilter };

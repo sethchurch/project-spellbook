@@ -8,6 +8,7 @@ interface CharacterState {
   addCharacter: (character: Character | Partial<Character>) => number;
   removeCharacter: (characterId: number) => void;
   updateCharacter: (character: Character, characterId: number) => void;
+  importCharacters: (characters: Character[]) => void;
 }
 
 const useCharacterStore = create<CharacterState>()(
@@ -33,6 +34,9 @@ const useCharacterStore = create<CharacterState>()(
         return set((state) => ({
           characters: state.characters.map((x, i) => (i === characterId ? character : x)),
         }));
+      },
+      importCharacters: (characters: Character[]) => {
+        return set((state) => ({ characters: [...state.characters, ...characters] }));
       },
     }),
     { name: 'characterState' },

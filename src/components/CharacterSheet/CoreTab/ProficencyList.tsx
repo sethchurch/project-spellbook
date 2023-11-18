@@ -3,12 +3,14 @@
 import { Checkbox } from '@nextui-org/checkbox';
 import { Chip } from '@nextui-org/chip';
 import { IconLetterE, IconLetterP } from '@tabler/icons-react';
+import React from 'react';
 import { useFormContext } from 'react-hook-form';
 
 import type { Proficiency, ProficientOrExpertList } from '@/config/CharacterConfig';
 import { bonusify } from '@/utils/bonusify';
 import { capitalize } from '@/utils/capitalize';
 import { getProficencyBonus } from '@/utils/getProficencyBonus';
+import { toArray } from '@/utils/toArray';
 
 import { PodChip } from '../Pod/PodChip';
 
@@ -31,19 +33,30 @@ const ProficencyList = ({ allowExpertise, name, proficencyData }: ProficencyList
   const proficencyBonus = getProficencyBonus(getValues('level'));
 
   const getOnChange = (skill: string, sourceList: string[], key: string) => {
-    return (e: React.ChangeEvent<HTMLInputElement>) => {
-      const { checked } = e.target;
-      const skillList = Array.isArray(sourceList) ? sourceList : [sourceList];
+    return ({ target: { checked } }: React.ChangeEvent<HTMLInputElement>) => {
+      const skillList = toArray(sourceList);
       const newSkills = checked ? [...skillList, skill] : skillList.filter((item) => item !== skill);
       setValue(name, { ...skillData, [key]: newSkills });
     };
   };
+
   const getPOnChange = (skill: string) => {
-    return getOnChange(skill, proficent, 'proficent');
+    if (!allowExpertise) return getOnChange(skill, proficent, 'proficent');
+    return ({ target: { checked } }: React.ChangeEvent<HTMLInputElement>) => {
+      const [pList, eList] = [toArray(proficent), toArray(expert)];
+      const newSkills = checked ? [...pList, skill] : pList.filter((item) => item !== skill);
+      const newExpert = checked ? eList.filter((item) => item !== skill) : [...eList, skill];
+      setValue(name, { ...skillData, proficent: newSkills, expert: newExpert });
+    };
   };
 
   const getEOnChange = (skill: string) => {
-    return getOnChange(skill, expert, 'expert');
+    return ({ target: { checked } }: React.ChangeEvent<HTMLInputElement>) => {
+      const [pList, eList] = [toArray(proficent), toArray(expert)];
+      const newSkills = checked ? pList : pList.filter((item) => item !== skill);
+      const newExpert = checked ? eList : eList.filter((item) => item !== skill);
+      setValue(name, { ...skillData, expert: newExpert, proficent: newSkills });
+    };
   };
 
   return (
@@ -65,20 +78,22 @@ const ProficencyList = ({ allowExpertise, name, proficencyData }: ProficencyList
                   <Chip className="-ml-1 mr-1 min-w-unit-12 text-center" radius="md">
                     {bonusify(bonus)}
                   </Chip>
-                  <Checkbox
-                    className="-ml-1 -mr-2"
-                    icon={<IconLetterP stroke={4} />}
-                    isSelected={proficent?.includes(skillName)}
-                    name={skillName}
-                    size="md"
-                    onChange={getPOnChange(skillName)}
-                  />
-                  {allowExpertise && (
+                  {!expertFlag && (
+                    <Checkbox
+                      className="-ml-1 -mr-2"
+                      icon={<IconLetterP stroke={4} />}
+                      isSelected={proficentFlag}
+                      name={skillName}
+                      size="md"
+                      onChange={getPOnChange(skillName)}
+                    />
+                  )}
+                  {allowExpertise && expertFlag && (
                     <Checkbox
                       className="-ml-1 -mr-2"
                       color="secondary"
                       icon={<IconLetterE stroke={4} />}
-                      isSelected={expert?.includes(skillName)}
+                      isSelected={expertFlag}
                       name={skillName}
                       size="md"
                       onChange={getEOnChange(skillName)}

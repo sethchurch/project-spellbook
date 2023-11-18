@@ -6,6 +6,7 @@ import { useDisclosure } from '@nextui-org/react';
 import { CharacterNav } from '@/app/(home)/CharacterNav';
 import { useAppShell } from '@/components/Layout/AppShell';
 import { useCharacterFilter } from '@/hooks/useCharacterFilter';
+import { useCharacterStore } from '@/hooks/useCharacterStore';
 import { cn } from '@/utils/cn';
 
 import { CharacterFilterInput } from '../Elements/CharacterFilterInput';
@@ -18,6 +19,17 @@ const Sidenav = () => {
   const { sideNavOpen } = useAppShell();
   const sideNavClass = sideNavOpen ? 'ml-0' : '-ml-72';
   const filterValue = useCharacterFilter((state) => state.filterValue);
+  const [characters] = useCharacterStore((state) => [state.characters, state.importCharacters]);
+
+  const exportCharacters = () => {
+    const dataStr = `data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(characters))}`;
+    const downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute('href', dataStr);
+    downloadAnchorNode.setAttribute('download', 'characters.json');
+    document.body.appendChild(downloadAnchorNode); // required for firefox
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+  };
 
   return (
     <aside
@@ -37,6 +49,11 @@ const Sidenav = () => {
           <FilterProvider filterKeyList={['name', 'class']} filterValue={filterValue}>
             <CharacterNav />
           </FilterProvider>
+        </div>
+
+        <div className="flex-stack w-full justify-center self-end px-3 pb-3 pt-1">
+          <Button onClick={exportCharacters}>Export Characters</Button>
+          <Button>Import Characters</Button>
         </div>
       </div>
       <NewCharacterModal close={onClose} isOpen={isOpen} />

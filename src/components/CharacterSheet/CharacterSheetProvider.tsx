@@ -32,13 +32,14 @@ const CharacterSheetProvider = ({ children, characterId }: CharacterSheetProvide
     if (character && !isEqual(previousCharacterRef.current, currentCharacterData)) {
       debouncedUpdateCharacter(currentCharacterData, characterId);
       previousCharacterRef.current = cloneDeep(currentCharacterData);
+      formMethods.reset(currentCharacterData);
     }
 
     return () => {
       debouncedUpdateCharacter.cancel();
       document.title = AppConfig.title;
     };
-  }, [character, characterId, currentCharacterData, debouncedUpdateCharacter]);
+  }, [character, characterId, currentCharacterData, debouncedUpdateCharacter, formMethods]);
 
   return <FormProvider {...formMethods}>{children}</FormProvider>;
 };

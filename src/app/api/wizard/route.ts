@@ -1,3 +1,5 @@
+import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
+import { cookies } from 'next/headers';
 import { type NextRequest, NextResponse } from 'next/server';
 
 import type { Character } from '@/config/CharacterConfig';
@@ -6,6 +8,7 @@ import { createChatCompletion } from '@/lib/openai';
 import { createCharacter } from './functions';
 import { parseJSON } from './parseJSON';
 import { basicCharacterPrompt } from './prompts';
+import { allowedUsers } from './wizardWhitelist';
 
 type GenerativeCharacterPayload = {
   name: string;
@@ -14,8 +17,16 @@ type GenerativeCharacterPayload = {
 };
 
 export const POST = async (req: NextRequest) => {
+  const supabase = createRouteHandlerClient({ cookies });
   const { name, backstory, level } = (await req.json()) as GenerativeCharacterPayload;
   if (!name || !backstory) return NextResponse.json({ error: 'Missing name or backstory' }, { status: 400 });
+
+  const { data } = await supabase.auth.getUser();
+  const userEmail = data.user?.email;
+
+  if (!allowedUsers.includes(userEmail?.toLowerCase() ?? '')) {
+    return NextResponse.json({ error: 'User not allowed to use this feature' }, { status: 403 });
+  }
 
   try {
     const response = await createChatCompletion({
@@ -36,9 +47,6 @@ export const POST = async (req: NextRequest) => {
     return NextResponse.json({ ...responseData, name, backstory });
   } catch (error: any) {
     console.error(error);
-    return NextResponse.json(
-      { error: 'Error generating character. AI features are disabled for the non-local version for now.' },
-      { status: 500 },
-    );
+    return NextResponse.json({ error: 'Error getting response from AI please try again later' }, { status: 500 });
   }
 };

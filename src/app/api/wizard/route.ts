@@ -10,6 +10,8 @@ import { parseJSON } from './parseJSON';
 import { basicCharacterPrompt } from './prompts';
 import { allowedUsers } from './wizardWhitelist';
 
+export const runtime = 'edge';
+
 type GenerativeCharacterPayload = {
   name: string;
   backstory: string;

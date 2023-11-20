@@ -8,25 +8,18 @@ import { useRef } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
-import { parseJSON } from '@/app/api/wizard/parseJSON';
 import { FormInput } from '@/components/Form/FormInput';
 import { Textarea } from '@/components/Form/Textarea';
 import type { Character } from '@/config/CharacterConfig';
 import { useCharacterStore } from '@/hooks/useCharacterStore';
 import { client } from '@/utils/apiClient';
+import { parseJSON } from '@/utils/parseJSON';
 
 const BasicCreatorModal = ({ isOpen, onClose }: Partial<ModalProps>) => {
   const addCharacter = useCharacterStore((state) => state.addCharacter);
   const formMethods = useForm({ defaultValues: { name: '', backstory: '', level: 1 } });
   const { getValues } = formMethods;
   const toastId = useRef<string>('');
-
-  // 	{
-  //     "function_call": {
-  //         "name": "create_character",
-  //         "arguments": "{\n  \"race\": \"Elf\",\n  \"class\": \"Bard 1 (College of Lore)\",\n  \"background\": \"Sage\"\n}"
-  //     }
-  // }
 
   const { mutate: generateCharacter } = useMutation({
     mutationFn: async () => client('/api/wizard', { data: getValues() }),
@@ -38,7 +31,7 @@ const BasicCreatorModal = ({ isOpen, onClose }: Partial<ModalProps>) => {
       const characterFields = getValues();
       const characterData = parseJSON<Character>(data.function_call.arguments) as Character;
       addCharacter({ ...characterData, ...characterFields });
-      toast.success(`${data.name} has been added to your character list.`, { id: toastId.current });
+      toast.success(`${characterFields.name} has been added to your character list.`, { id: toastId.current });
     },
     onError: (error: Error) => toast.error(error.message, { id: toastId.current }),
     onSettled: () => formMethods.reset(),

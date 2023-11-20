@@ -44,12 +44,6 @@ export const POST = async (req: NextRequest) => {
 
     const stream = OpenAIStream(response);
     return new StreamingTextResponse(stream);
-
-    // const functionCall = response.choices[0]?.message.function_call?.arguments;
-    // if (!functionCall) throw new Error('No function call returned from OpenAI');
-
-    // const responseData = parseJSON<Character>(functionCall);
-    // return NextResponse.json({ ...responseData, name, backstory });
   } catch (error: any) {
     console.error(error);
     return NextResponse.json({ error: 'Error getting response from AI please try again later' }, { status: 500 });

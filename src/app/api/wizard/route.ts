@@ -1,12 +1,11 @@
 import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
+import { OpenAIStream, StreamingTextResponse } from 'ai';
 import { cookies } from 'next/headers';
 import { type NextRequest, NextResponse } from 'next/server';
 
-import type { Character } from '@/config/CharacterConfig';
-import { createChatCompletion } from '@/lib/openai';
+import { openai } from '@/lib/openai';
 
 import { createCharacter } from './functions';
-import { parseJSON } from './parseJSON';
 import { basicCharacterPrompt } from './prompts';
 import { allowedUsers } from './wizardWhitelist';
 
@@ -31,22 +30,26 @@ export const POST = async (req: NextRequest) => {
   }
 
   try {
-    const response = await createChatCompletion({
+    const response = await openai.chat.completions.create({
       model: 'gpt-3.5-turbo',
       temperature: 0.8,
       function_call: { name: 'create_character' },
       functions: [createCharacter],
+      stream: true,
       messages: [
         { role: 'system', content: basicCharacterPrompt },
         { role: 'user', content: `Name: ${name} Level: ${level ?? 5} Backstory: ${backstory}` },
       ],
     });
 
-    const functionCall = response.choices[0]?.message.function_call?.arguments;
-    if (!functionCall) throw new Error('No function call returned from OpenAI');
+    const stream = OpenAIStream(response);
+    return new StreamingTextResponse(stream);
 
-    const responseData = parseJSON<Character>(functionCall);
-    return NextResponse.json({ ...responseData, name, backstory });
+    // const functionCall = response.choices[0]?.message.function_call?.arguments;
+    // if (!functionCall) throw new Error('No function call returned from OpenAI');
+
+    // const responseData = parseJSON<Character>(functionCall);
+    // return NextResponse.json({ ...responseData, name, backstory });
   } catch (error: any) {
     console.error(error);
     return NextResponse.json({ error: 'Error getting response from AI please try again later' }, { status: 500 });

@@ -8,6 +8,7 @@ import { useRef } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
+import { parseJSON } from '@/app/api/wizard/parseJSON';
 import { FormInput } from '@/components/Form/FormInput';
 import { Textarea } from '@/components/Form/Textarea';
 import type { Character } from '@/config/CharacterConfig';
@@ -20,14 +21,23 @@ const BasicCreatorModal = ({ isOpen, onClose }: Partial<ModalProps>) => {
   const { getValues } = formMethods;
   const toastId = useRef<string>('');
 
+  // 	{
+  //     "function_call": {
+  //         "name": "create_character",
+  //         "arguments": "{\n  \"race\": \"Elf\",\n  \"class\": \"Bard 1 (College of Lore)\",\n  \"background\": \"Sage\"\n}"
+  //     }
+  // }
+
   const { mutate: generateCharacter } = useMutation({
     mutationFn: async () => client('/api/wizard', { data: getValues() }),
     onMutate: () => {
       toastId.current = toast.loading(`Generating... You may safely navigate away from this page just don't refresh`);
       if (onClose) onClose();
     },
-    onSuccess: (data: Partial<Character>) => {
-      addCharacter(data);
+    onSuccess: (data: any) => {
+      const characterFields = getValues();
+      const characterData = parseJSON<Character>(data.function_call.arguments) as Character;
+      addCharacter({ ...characterData, ...characterFields });
       toast.success(`${data.name} has been added to your character list.`, { id: toastId.current });
     },
     onError: (error: Error) => toast.error(error.message, { id: toastId.current }),

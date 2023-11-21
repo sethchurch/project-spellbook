@@ -1,21 +1,21 @@
 'use client';
 
-import { type PropsWithChildren, useEffect } from 'react';
+import type { Session } from '@supabase/supabase-js';
+import { useEffect } from 'react';
 
 import { useAuth } from '@/hooks/useAuth';
-import { supabase } from '@/lib/supabase';
 
-const AuthProvider = ({ children }: PropsWithChildren) => {
+interface AuthProviderProps {
+  children: React.ReactNode;
+  session: Session | null;
+}
+
+const AuthProvider = ({ children, session }: AuthProviderProps) => {
   const setAuthentication = useAuth((state) => state.setAuthentication);
 
   useEffect(() => {
     const setAuth = async () => {
-      const { data, error } = await supabase.auth.getSession();
-      if (error) {
-        //  TODO: Handle error
-        return;
-      }
-      setAuthentication(data.session);
+      setAuthentication(session);
     };
 
     setAuth();
@@ -23,7 +23,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     return () => {
       setAuthentication(null);
     };
-  }, [setAuthentication]);
+  }, [session, setAuthentication]);
 
   return children;
 };

@@ -1,5 +1,7 @@
 import { Button } from '@nextui-org/button';
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { IconWand } from '@tabler/icons-react';
+import { cookies } from 'next/headers';
 import Link from 'next/link';
 
 import { ToggleThemeButton } from '@/components/Elements/ToggleThemeButton';
@@ -9,6 +11,9 @@ import { LandingHeader } from './LandingHeader';
 import { LandingSection } from './LandingSection';
 
 const LandingPage = async () => {
+  const supabase = createServerComponentClient({ cookies });
+  const { data } = await supabase.auth.getSession();
+
   return (
     <div className="flex min-h-screen w-full flex-col items-center bg-zinc-200/80 dark:bg-transparent">
       <MaxWidthWrapper className="flex flex-col gap-8 md:gap-16 lg:gap-24">
@@ -19,12 +24,16 @@ const LandingPage = async () => {
               <p className="text-lg">Project Spellbook</p>
             </div>
             <div className="flex items-center gap-3">
+              {!data?.session && (
+                <Link href="/login">
+                  <Button className="px-6 font-bold shadow-2xl" radius="sm">
+                    Login
+                  </Button>
+                </Link>
+              )}
               <Link className="underline underline-offset-4" href="/tavern">
-                Enter the Tavern
-              </Link>
-              <Link href="/login">
                 <Button className="px-6 font-bold shadow-2xl" color="primary" radius="sm">
-                  Login
+                  Enter the Tavern
                 </Button>
               </Link>
               <ToggleThemeButton />

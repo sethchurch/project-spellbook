@@ -11,11 +11,13 @@ import { cn } from '@/utils/cn';
 
 import { CharacterFilterInput } from '../Elements/CharacterFilterInput';
 import { Icon } from '../Elements/Icon';
+import { ImportCharactersModal } from '../Modal/ImportCharactersModal';
 import { NewCharacterModal } from '../Modal/NewCharacterModal';
 import { FilterProvider } from '../Providers/FilterProvider';
 
 const Sidenav = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen: isOpenNew, onOpen: onOpenNew, onClose: onCloseNew } = useDisclosure();
+  const { isOpen: isOpenImport, onOpen: onOpenImport, onClose: onCloseImport } = useDisclosure();
   const { sideNavOpen } = useAppShell();
   const sideNavClass = sideNavOpen ? 'ml-0' : '-ml-72';
   const filterValue = useCharacterFilter((state) => state.filterValue);
@@ -41,7 +43,7 @@ const Sidenav = () => {
       <div className="flex h-full flex-col gap-3">
         <div className="flex flex-col gap-3 px-3">
           <CharacterFilterInput />
-          <Button className="shrink-0" color="primary" onClick={onOpen}>
+          <Button className="shrink-0" color="primary" onClick={onOpenNew}>
             <Icon icon="plus" />
           </Button>
         </div>
@@ -53,10 +55,11 @@ const Sidenav = () => {
 
         <div className="flex-stack w-full justify-center self-end px-3 pb-3 pt-1">
           <Button onClick={exportCharacters}>Export Characters</Button>
-          <Button>Import Characters</Button>
+          <Button onClick={onOpenImport}>Import Characters</Button>
         </div>
       </div>
-      <NewCharacterModal close={onClose} isOpen={isOpen} />
+      <NewCharacterModal close={onCloseNew} isOpen={isOpenNew} />
+      <ImportCharactersModal isOpen={isOpenImport} onClose={onCloseImport} />
     </aside>
   );
 };

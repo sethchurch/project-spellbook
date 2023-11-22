@@ -1,18 +1,16 @@
 import { Button } from '@nextui-org/button';
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { IconWand } from '@tabler/icons-react';
-import { cookies } from 'next/headers';
 import Link from 'next/link';
 
 import { ToggleThemeButton } from '@/components/Elements/ToggleThemeButton';
 import { MaxWidthWrapper } from '@/components/Layout/MaxWidthWrapper';
+import { supabaseServer } from '@/lib/supabaseServer';
 
 import { LandingHeader } from './LandingHeader';
 import { LandingSection } from './LandingSection';
 
 const LandingPage = async () => {
-  const supabase = createServerComponentClient({ cookies });
-  const { data } = await supabase.auth.getSession();
+  const { data } = await supabaseServer().auth.getSession();
 
   return (
     <div className="flex min-h-screen w-full flex-col items-center bg-zinc-200/80 dark:bg-transparent">

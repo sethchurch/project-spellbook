@@ -17,6 +17,7 @@ const ProfileDropdown = () => {
   return (
     <Dropdown title="Profile Dropdown">
       <DropdownTrigger>
+        {/* <Avatar isBordered radius="md" src="https://i.imgur.com/K2EZlrN.png" /> */}
         <Avatar isBordered radius="md" />
       </DropdownTrigger>
       <DropdownMenu aria-label="options dropdown">

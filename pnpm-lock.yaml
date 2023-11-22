@@ -46,10 +46,10 @@ dependencies:
     version: 2.0.26(@nextui-org/system@2.0.15)(@nextui-org/theme@2.1.17)(framer-motion@10.16.4)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.1.18)
   '@supabase/auth-helpers-nextjs':
     specifier: latest
-    version: 0.8.7(@supabase/supabase-js@2.38.4)
+    version: 0.8.7(@supabase/supabase-js@2.38.5)
   '@supabase/supabase-js':
     specifier: latest
-    version: 2.38.4
+    version: 2.38.5
   '@tabler/icons-react':
     specifier: ^2.40.0
     version: 2.40.0(react@18.2.0)
@@ -128,6 +128,9 @@ dependencies:
   react-dom:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
+  react-dropzone:
+    specifier: ^14.2.3
+    version: 14.2.3(react@18.2.0)
   react-hook-form:
     specifier: ^7.48.2
     version: 7.48.2(react@18.2.0)
@@ -3670,22 +3673,22 @@ packages:
       lodash: 4.17.21
     dev: true
 
-  /@supabase/auth-helpers-nextjs@0.8.7(@supabase/supabase-js@2.38.4):
+  /@supabase/auth-helpers-nextjs@0.8.7(@supabase/supabase-js@2.38.5):
     resolution: {integrity: sha512-iYdOjFo0GkRvha340l8JdCiBiyXQuG9v8jnq7qMJ/2fakrskRgHTCOt7ryWbip1T6BExcWKC8SoJrhCzPOxhhg==}
     peerDependencies:
       '@supabase/supabase-js': ^2.19.0
     dependencies:
-      '@supabase/auth-helpers-shared': 0.6.3(@supabase/supabase-js@2.38.4)
-      '@supabase/supabase-js': 2.38.4
+      '@supabase/auth-helpers-shared': 0.6.3(@supabase/supabase-js@2.38.5)
+      '@supabase/supabase-js': 2.38.5
       set-cookie-parser: 2.6.0
     dev: false
 
-  /@supabase/auth-helpers-shared@0.6.3(@supabase/supabase-js@2.38.4):
+  /@supabase/auth-helpers-shared@0.6.3(@supabase/supabase-js@2.38.5):
     resolution: {integrity: sha512-xYQRLFeFkL4ZfwC7p9VKcarshj3FB2QJMgJPydvOY7J5czJe6xSG5/wM1z63RmAzGbCkKg+dzpq61oeSyWiGBQ==}
     peerDependencies:
       '@supabase/supabase-js': ^2.19.0
     dependencies:
-      '@supabase/supabase-js': 2.38.4
+      '@supabase/supabase-js': 2.38.5
       jose: 4.15.4
     dev: false
 
@@ -3708,8 +3711,8 @@ packages:
       whatwg-url: 5.0.0
     dev: false
 
-  /@supabase/postgrest-js@1.8.5:
-    resolution: {integrity: sha512-XvoqN5e5Z4TsQOYWLQYLW0HIlZtFSzwAcwiuToaSBSTpLOGCg4NaZ7au5GfBzCQJZdZPY5vk5FvwthfDsQK/Jw==}
+  /@supabase/postgrest-js@1.8.6:
+    resolution: {integrity: sha512-iiEgF6o/pBumdFe/A2HSG/xx3L6ap7OO3IpTB2hsamNiH/gWb8ru4Z8bdwZjN4sQQttxgsIgZVMsNLkTOCOQhw==}
     dependencies:
       '@supabase/node-fetch': 2.6.14
     dev: false
@@ -3731,13 +3734,13 @@ packages:
       '@supabase/node-fetch': 2.6.14
     dev: false
 
-  /@supabase/supabase-js@2.38.4:
-    resolution: {integrity: sha512-bYwxm/GosvRqOMIv6YP7qUTZWi/trgHtDWUEZDEmyRHW24d0JYIb1GOt6RaO2hsWlecn88DAJIpjoNbprocgRA==}
+  /@supabase/supabase-js@2.38.5:
+    resolution: {integrity: sha512-QTXld3AfwAJgeOGyOKsCcT7AjC3jJxN02iHy299Fw+qKX0lJ1tVVhMGlga101C1stUCvgzjcypmMSGiZ2oeKsw==}
     dependencies:
       '@supabase/functions-js': 2.1.5
       '@supabase/gotrue-js': 2.57.0
       '@supabase/node-fetch': 2.6.14
-      '@supabase/postgrest-js': 1.8.5
+      '@supabase/postgrest-js': 1.8.6
       '@supabase/realtime-js': 2.8.4
       '@supabase/storage-js': 2.5.4
     transitivePeerDependencies:
@@ -4654,6 +4657,11 @@ packages:
     resolution: {integrity: sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==}
     engines: {node: '>= 4.0.0'}
     dev: true
+
+  /attr-accept@2.2.2:
+    resolution: {integrity: sha512-7prDjvt9HmqiZ0cl5CRjtS84sEyhsHP2coDkaZKRKVfCDo9s7iw7ChVmar78Gu9pC4SoR/28wFu/G5JJhTnqEg==}
+    engines: {node: '>=4'}
+    dev: false
 
   /autoprefixer@10.4.15(postcss@8.4.30):
     resolution: {integrity: sha512-KCuPB8ZCIqFdA4HwKXsvz7j6gvSDNhDP7WnUjBleRkKjPdvCmHFuQ77ocavI8FT6NdvlBnE2UFr2H4Mycn8Vew==}
@@ -6580,6 +6588,13 @@ packages:
     engines: {node: ^10.12.0 || >=12.0.0}
     dependencies:
       flat-cache: 3.1.1
+
+  /file-selector@0.6.0:
+    resolution: {integrity: sha512-QlZ5yJC0VxHxQQsQhXvBaC7VRJ2uaxTf+Tfpu4Z/OcVQJVpZO+DGU0rkoVW5ce2SccxugvpBJoMvUs59iILYdw==}
+    engines: {node: '>= 12'}
+    dependencies:
+      tslib: 2.6.2
+    dev: false
 
   /fill-range@7.0.1:
     resolution: {integrity: sha512-qOo9F+dMUmC2Lcb4BbVvnKJxTPjCm+RRpe4gDuGrzkL7mEVl/djYSu2OdQ2Pa302N4oqkSg9ir6jaLWJ2USVpQ==}
@@ -8982,6 +8997,18 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+
+  /react-dropzone@14.2.3(react@18.2.0):
+    resolution: {integrity: sha512-O3om8I+PkFKbxCukfIR3QAGftYXDZfOE2N1mr/7qebQJHs7U+/RSL/9xomJNpRg9kM5h9soQSdf0Gc7OHF5Fug==}
+    engines: {node: '>= 10.13'}
+    peerDependencies:
+      react: '>= 16.8 || 18.0.0'
+    dependencies:
+      attr-accept: 2.2.2
+      file-selector: 0.6.0
+      prop-types: 15.8.1
+      react: 18.2.0
+    dev: false
 
   /react-hook-form@7.48.2(react@18.2.0):
     resolution: {integrity: sha512-H0T2InFQb1hX7qKtDIZmvpU1Xfn/bdahWBN1fH19gSe4bBEqTfmlr7H3XWTaVtiK4/tpPaI1F3355GPMZYge+A==}

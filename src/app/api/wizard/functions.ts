@@ -174,6 +174,35 @@ export const createCharacter = {
         },
         required: ['personalityTraits', 'ideals', 'bonds', 'flaws'],
       },
+      inventory: {
+        type: 'array',
+        description: 'The inventory of the character',
+        items: {
+          type: 'object',
+          properties: {
+            name: {
+              type: 'string',
+              description: 'The name of the item',
+            },
+            description: {
+              type: 'string',
+              description: 'The description of the item',
+            },
+            source: {
+              type: 'string',
+              description: 'The source of the item',
+            },
+            qty: {
+              type: 'number',
+              description: 'The quantity of the item',
+            },
+            weight: {
+              type: 'number',
+              description: 'The weight of the item',
+            },
+          },
+        },
+      },
       proficiencies: {
         type: 'object',
         description: 'The non-skill proficiencies of the character',

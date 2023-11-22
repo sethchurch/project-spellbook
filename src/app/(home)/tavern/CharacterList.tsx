@@ -19,7 +19,7 @@ interface CharacterListInnerProps {
 const CharacterListInner = ({ characters }: CharacterListInnerProps) => {
   const filterCharacters = useFilter<Character>(characters || []);
 
-  if (!filterCharacters.length) {
+  if (!characters) {
     return Array.from({ length: 4 }).map((_, index) => <CharacterListItemSkeleton key={index} />);
   }
 

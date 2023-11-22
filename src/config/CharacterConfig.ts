@@ -131,7 +131,7 @@ type CharacterImages = {
 
 type ProficientOrExpertList = {
   proficent: string[];
-  expert: string[];
+  expert: string[] | null[];
 };
 
 type Character = {
@@ -146,7 +146,7 @@ type Character = {
   skills: ProficientOrExpertList;
   armorClass: number;
   speed: number;
-  initiative: number;
+  initiative: number | string;
   inspired: boolean;
   conditions?: Condition[];
   hitPoints?: HitPoints;
@@ -160,7 +160,7 @@ type Character = {
   proficiencies?: AlternateProfiencies;
   bio?: BioDetails;
   spells?: Spell[][]; // [0] = cantrips, [1] = 1st level, etc.
-  spellStat?: ShortStat;
+  spellStat?: '0' | '1' | '2' | '3' | '4' | '5'; // 0 = str, 1 = dex, etc.
   notes?: string;
   inventory: InventoryItem[];
   backstory?: string;

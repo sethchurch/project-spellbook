@@ -22,7 +22,7 @@ const CharacterSheetProvider = ({ children, characterId }: CharacterSheetProvide
   }));
 
   const formMethods = useForm({ defaultValues: character });
-  const previousCharacterRef = useRef<Character | null>(character ?? null);
+  const previousCharacterRef = useRef<Character | null>(null);
   const currentCharacterData = formMethods.watch();
   const debouncedUpdateCharacter = useRef(debounce(updateCharacter, 1000)).current;
 
@@ -36,7 +36,6 @@ const CharacterSheetProvider = ({ children, characterId }: CharacterSheetProvide
     }
 
     return () => {
-      debouncedUpdateCharacter.cancel();
       document.title = AppConfig.title;
     };
   }, [character, characterId, currentCharacterData, debouncedUpdateCharacter, formMethods]);

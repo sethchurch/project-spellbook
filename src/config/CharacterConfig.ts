@@ -131,7 +131,7 @@ type CharacterImages = {
 
 type ProficientOrExpertList = {
   proficent: string[];
-  expert: string[] | null[];
+  expert: string[];
 };
 
 type Character = {

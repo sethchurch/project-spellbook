@@ -15,11 +15,11 @@ const character = {
   savingThrows: {
     '0': 'wisdom',
     '1': 'intelligence',
-    proficent: [null, 'wisdom', 'intelligence'],
+    proficent: ['wisdom', 'intelligence'],
   },
   skills: {
     proficent: ['perception', 'survival', 'persuasion', 'animal handling', 'nature'],
-    expert: [null],
+    expert: [],
   },
   armorClass: 16,
   speed: 35,

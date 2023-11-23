@@ -4,12 +4,14 @@ import { Button } from '@nextui-org/button';
 import type { ModalProps } from '@nextui-org/modal';
 import { Modal, ModalBody, ModalContent, ModalHeader, useDisclosure } from '@nextui-org/modal';
 import { Tooltip } from '@nextui-org/react';
+import { IconWand } from '@tabler/icons-react';
 import { useRouter } from 'next/navigation';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import type { Character } from '@/config/CharacterConfig';
 import { useCharacterStore } from '@/hooks/useCharacterStore';
 
+import { Backline } from '../Elements/Backline';
 import { BasicCreatorModal } from './BasicCreatorModal';
 
 interface NewCharacterModalProps extends Partial<ModalProps> {
@@ -40,13 +42,25 @@ const NewCharacterModal = ({ isOpen, close }: NewCharacterModalProps) => {
       <Modal isOpen={isOpen} placement="center" size="sm" onClose={close}>
         <ModalContent>
           <FormProvider {...formMethods}>
-            <ModalHeader className="px-6 pb-3 pt-6">Create a New Character</ModalHeader>
+            <ModalHeader className="px-6 pb-3 pt-6">
+              <p className="w-full text-center">Create a New Character</p>
+            </ModalHeader>
             <ModalBody className="px-6 pb-6">
-              <Tooltip color="primary" content="Coming Soon!" placement="top">
-                <Button variant="flat">Create with Advanced AI Creator</Button>
-              </Tooltip>
-              <Button onClick={onOpen}>Create with Basic AI Creator</Button>
               <Button onClick={handleCreateBlankCharacter}>Create Blank Character</Button>
+              <Backline>Or use AI</Backline>
+              <Button onClick={onOpen}>
+                <IconWand /> Create from Backstory
+              </Button>
+              <Tooltip color="primary" content="Coming Soon!" placement="top">
+                <Button variant="flat">
+                  <IconWand /> Create from Stat Block
+                </Button>
+              </Tooltip>
+              <Tooltip color="primary" content="Coming Soon!" placement="top">
+                <Button variant="flat">
+                  <IconWand /> Create from Picture
+                </Button>
+              </Tooltip>
             </ModalBody>
           </FormProvider>
         </ModalContent>

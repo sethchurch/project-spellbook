@@ -45,10 +45,6 @@ Follow these steps to get started with Project Spellbook:
 
 6. Open your web browser and navigate to `http://localhost:3000` to access Project Spellbook.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Acknowledgments
 
 - I'd would like to express our gratitude to the creators of Next.js and OpenAI for providing the tools and technologies that make this project possible.

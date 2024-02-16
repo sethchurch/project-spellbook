@@ -51,6 +51,6 @@ Follow these steps to get started with Project Spellbook:
 
 ---
 
-Have fun exploring the magical world of D&D with Project Spellbook! If you have any questions or encounter issues, please don't hesitate to open an issue or reach out to us.
+Have fun exploring the magical world of D&D with Project Spellbook! If you have any questions or encounter issues, please don't hesitate to open an issue or reach out.
 
 Happy character creation and adventuring! 🎲📜🧙‍♂️

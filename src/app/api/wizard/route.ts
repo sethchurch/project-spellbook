@@ -7,7 +7,6 @@ import { openai } from '@/lib/openai';
 
 import { createCharacter } from './functions';
 import { basicCharacterPrompt } from './prompts';
-import { allowedUsers } from './wizardWhitelist';
 
 export const runtime = 'edge';
 
@@ -16,6 +15,9 @@ type GenerativeCharacterPayload = {
   backstory: string;
   level: number;
 };
+
+const { AI_ALLOWED_USERS } = process.env;
+const allowedUsers = AI_ALLOWED_USERS ? AI_ALLOWED_USERS.split(',') : [];
 
 export const POST = async (req: NextRequest) => {
   const supabase = createRouteHandlerClient({ cookies });

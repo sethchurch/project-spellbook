@@ -1,6 +1,7 @@
 # Project Spellbook
 
 Welcome to Project Spellbook, a Next.js and OpenAI-powered Dungeons & Dragons 5th Edition (D&D 5e) character creator! Create unique and powerful characters for your D&D adventures with the help of advanced AI.
+![image](https://github.com/sethchurch/project-spellbook/assets/22456150/1783268d-be3f-4b72-9472-962f8b950f33)
 
 ## Features
 

@@ -1,4 +1,7 @@
-import { useTheme } from 'next-themes';
+// TODO fix this remix
+const useTheme = () => {
+  return { theme: 'dark', setTheme: () => {} };
+};
 
 const useThemeSwitch = () => {
   const { theme, setTheme } = useTheme();

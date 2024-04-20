@@ -1,6 +1,6 @@
 import { Button } from '@nextui-org/button';
-import Image from 'next/image';
-import Link from 'next/link';
+import { Image } from '@nextui-org/react';
+import { Link } from '@remix-run/react';
 import type { PropsWithChildren } from 'react';
 
 import { cn } from '@/utils/cn';
@@ -24,7 +24,7 @@ const LandingSection = ({ title, image, alignment, children }: LandingSectionPro
       <div className="flex w-full flex-col gap-4 self-center md:w-8/12 lg:w-5/12 lg:self-start">
         <LandingHeader className="self-center text-center lg:self-start lg:text-left">{title}</LandingHeader>
         <p className="text-center lg:text-justify">{children}</p>
-        <Link href="/tavern">
+        <Link to="/tavern">
           <Button className="px-6 font-semibold lg:self-start" color="primary" radius="sm" size="lg">
             Get Started
           </Button>

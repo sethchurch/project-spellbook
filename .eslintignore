@@ -58,6 +58,7 @@ Thumbs.db
 # TYPESCRIPT
 *.tsbuildinfo
 
-# Next.js
 out
 _next
+
+.eslintrc.*

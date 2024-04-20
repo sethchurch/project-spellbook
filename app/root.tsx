@@ -1,4 +1,12 @@
+import { NextUIProvider } from '@nextui-org/react';
+import type { LinksFunction } from '@remix-run/node';
 import { Links, Meta, Outlet, Scripts } from '@remix-run/react';
+
+import globalStyles from '@/styles/globals.css?url';
+
+export const links: LinksFunction = () => {
+  return [{ rel: 'stylesheet', href: globalStyles }];
+};
 
 export default function App() {
   return (
@@ -8,10 +16,11 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
-        <h1>Hello world!</h1>
-        <Outlet />
-        <Scripts />
+      <body className="grainy min-h-screen w-full bg-stone-300 antialiased dark:bg-neutral-950">
+        <NextUIProvider>
+          <Outlet />
+          <Scripts />
+        </NextUIProvider>
       </body>
     </html>
   );

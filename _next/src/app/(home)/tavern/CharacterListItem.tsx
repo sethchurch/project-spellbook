@@ -4,7 +4,7 @@ import { Card, CardBody, CardHeader } from '@nextui-org/card';
 import { Chip } from '@nextui-org/chip';
 import { Button, Skeleton, Spacer, useDisclosure } from '@nextui-org/react';
 import { IconX } from '@tabler/icons-react';
-import Link from 'next/link';
+import { Link } from '@remix-run/react';
 
 import { DiscardModal } from '@/components/Modal/DiscardModal';
 import type { Character } from '@/config/CharacterConfig';
@@ -42,7 +42,7 @@ const CharacterListItem = ({ character, characterId }: CharacterListItemProps) =
     <>
       <Link
         className="h-full w-full rounded-xl shadow-sm transition-all hover:opacity-80 hover:shadow-xl"
-        href={isEditing ? '#' : `/characters/${characterId}`}
+        to={isEditing ? '#' : `/characters/${characterId}`}
       >
         <Card className="bg-pod-alt h-full w-full shadow-none">
           <CardHeader className="w-full px-3 py-4">

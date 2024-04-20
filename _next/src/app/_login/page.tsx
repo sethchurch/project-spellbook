@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Link } from '@remix-run/react';
 
 import { Icon } from '@/components/Elements/Icon';
 import { MaxWidthWrapper } from '@/components/Layout/MaxWidthWrapper';
@@ -11,7 +11,7 @@ export default function Login() {
       <div className="flex w-full flex-1 flex-col justify-center gap-2 px-8 sm:max-w-md">
         <Link
           className="group absolute left-8 top-8 flex items-center rounded-md px-4 py-2 text-sm text-foreground no-underline"
-          href="/"
+          to="/"
         >
           <Icon icon="chevronLeft" />
           Back

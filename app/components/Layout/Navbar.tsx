@@ -1,5 +1,5 @@
 import { Button } from '@nextui-org/button';
-import Link from 'next/link';
+import { Link } from '@remix-run/react';
 
 import { CharacterFilterInput } from '@/components/Elements/CharacterFilterInput';
 import { Icon } from '@/components/Elements/Icon';
@@ -18,7 +18,7 @@ const Navbar = () => {
           </Button>
         </SideNavTrigger>
         <Button isIconOnly>
-          <Link className="p-3" href="/tavern">
+          <Link className="p-3" to="/tavern">
             <Icon icon="home" />
           </Link>
         </Button>

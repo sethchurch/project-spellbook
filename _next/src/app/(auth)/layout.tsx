@@ -1,6 +1,6 @@
 import { Button } from '@nextui-org/button';
 import { IconChevronLeft } from '@tabler/icons-react';
-import Link from 'next/link';
+import { Link } from '@remix-run/react';
 import type { PropsWithChildren } from 'react';
 
 import { ToggleThemeButton } from '@/components/Elements/ToggleThemeButton';
@@ -10,7 +10,7 @@ const AuthLayout = ({ children }: PropsWithChildren) => {
   return (
     <MaxWidthWrapper>
       <div className="relative grid h-screen w-full grid-cols-[1fr_10fr_1fr] items-center justify-center py-6 lg:grid-cols-[1fr_2fr_1fr] xl:grid-cols-3">
-        <Link className="self-start" href="/">
+        <Link className="self-start" to="/">
           <Button isIconOnly>
             <IconChevronLeft />
           </Button>

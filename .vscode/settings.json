@@ -13,12 +13,6 @@
   "eslint.rules.customizations": [{ "rule": "*", "severity": "warn" }],
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
-  "jest.autoRun": {
-    "watch": false
-    // "onStartup": ["all-tests"] // Run all tests upon project launch
-  },
-  "jest.showCoverageOnLoad": true,
-  "jest.autoRevealOutput": "on-exec-error",
   "[json][jsonc][yaml]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"

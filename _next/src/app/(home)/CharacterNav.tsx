@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from '@remix-run/react';
 
 import { useFilter } from '@/components/Providers/FilterProvider';
 import type { Character } from '@/config/CharacterConfig';
@@ -41,7 +41,7 @@ const CharacterNav = () => {
           <Link
             key={index}
             className="rounded-lg shadow-sm transition-all hover:opacity-50 hover:shadow-none"
-            href={`/characters/${index}`}
+            to={`/characters/${index}`}
           >
             <div className="rounded-md bg-stone-50/90 p-3 dark:bg-zinc-700/60">
               <div className="flex w-full max-w-[300px] items-center gap-3">

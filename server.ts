@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import { createRequestHandler } from '@remix-run/express';
+import type { ServerBuild } from '@remix-run/node';
 import express from 'express';
 
 const viteDevServer =
@@ -14,8 +15,8 @@ const viteDevServer =
 const app = express();
 app.use(viteDevServer ? viteDevServer.middlewares : express.static('build/client'));
 const build = viteDevServer
-  ? () => viteDevServer.ssrLoadModule('virtual:remix/server-build')
-  : await import('./build/server/index.js');
+  ? () => viteDevServer.ssrLoadModule('virtual:remix/server-build') as Promise<ServerBuild>
+  : ((await import('./build/server/index.js')) as ServerBuild);
 
 // and your app is "just a request handler"
 app.all('*', createRequestHandler({ build }));

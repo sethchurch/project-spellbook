@@ -15,7 +15,6 @@
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "jest.autoRun": {
     "watch": false
-    // "onStartup": ["all-tests"] // Run all tests upon project launch
   },
   "jest.showCoverageOnLoad": true,
   "jest.autoRevealOutput": "on-exec-error",

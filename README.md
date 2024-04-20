@@ -3,6 +3,12 @@
 Welcome to Project Spellbook, a Next.js and OpenAI-powered Dungeons & Dragons 5th Edition (D&D 5e) character creator! Create unique and powerful characters for your D&D adventures with the help of advanced AI.
 ![image](https://github.com/sethchurch/project-spellbook/assets/22456150/1783268d-be3f-4b72-9472-962f8b950f33)
 
+## Live Demo:
+
+Currently the live demo is limited to only character sheet features. I plan on making limited AI use available in the future. However, the default character is created soley with the AI features. 
+
+[Demo Here](https://project-spellbook.vercel.app/)
+
 ## Features
 
 - **AI Character Generation:** Utilize OpenAI's powerful language model to assist you in creating rich and engaging D&D 5e characters.

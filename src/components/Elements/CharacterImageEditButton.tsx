@@ -5,10 +5,6 @@ import { IconPhotoCog } from '@tabler/icons-react';
 
 import { CharacterImageModal } from '../Modal/CharacterImageModal';
 
-// interface CharacterImageEditButtonProps {
-// 	aspectRatio?: string;
-// }
-
 const CharacterImageEditButton = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
 

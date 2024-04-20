@@ -14,7 +14,6 @@ const ProficienciesPod = ({ className }: PropsWithClassName) => {
           <ProficencyList name="savingThrows" proficencyData={savingThrows as Proficiency[]} />
         </Pod>
         <Pod className="flex-[6]" label="Skills" variant="alt">
-          {/* TODO: Handle expertise */}
           <ProficencyList allowExpertise name="skills" proficencyData={characterSkills as Proficiency[]} />
         </Pod>
       </div>

@@ -95,14 +95,6 @@
         "project": "./cypress/tsconfig.json"
       }
     },
-    // Configuration for Storybook
-    {
-      "files": ["*.stories.*"],
-      "extends": ["plugin:storybook/recommended"],
-      "rules": {
-        "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
-      }
-    },
     // Configuration for js / mjs files -- disable extraneous dependencies
     {
       "files": ["*.js", "*.mjs"],

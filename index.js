@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { createRequestHandler } from '@remix-run/express';
 import express from 'express';
 
@@ -11,10 +12,12 @@ const viteDevServer =
       );
 
 const app = express();
-app.use(viteDevServer ? viteDevServer.middlewares : express.static('build/client'));
+app.use(
+  viteDevServer ? viteDevServer.middlewares : express.static('build/client'),
+);
 const build = viteDevServer
   ? () => viteDevServer.ssrLoadModule('virtual:remix/server-build')
-  : await import('./build/server/index.js');
+  : await import('./build/server/index');
 
 app.all('*', createRequestHandler({ build }));
 

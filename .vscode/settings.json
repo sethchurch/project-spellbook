@@ -15,11 +15,9 @@
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "[json][jsonc][yaml]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "prettier.ignorePath": ".gitignore",
-  "prettier.singleQuote": true,
-  "prettier.trailingComma": "all",
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
@@ -35,12 +33,12 @@
     "**/node_modules": true
   },
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "[postcss]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   }
 }

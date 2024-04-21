@@ -3,12 +3,8 @@ module.exports = {
   // Configuration for JavaScript files
   extends: ['airbnb-base', 'plugin:prettier/recommended'],
   parserOptions: {
-    parserOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-    },
+    ecmaVersion: 'latest',
   },
-
   rules: {
     'prettier/prettier': [
       'error',
@@ -42,7 +38,10 @@ module.exports = {
         ],
       },
       rules: {
-        'react/jsx-no-leaked-render': ['warn', { validStrategies: ['ternary'] }],
+        'react/jsx-no-leaked-render': [
+          'warn',
+          { validStrategies: ['ternary'] },
+        ],
         'react/jsx-sort-props': [
           'error',
           {
@@ -56,7 +55,12 @@ module.exports = {
     // Configuration for TypeScript files
     {
       files: ['**/*.ts', '**/*.tsx'],
-      plugins: ['@typescript-eslint', 'unused-imports', 'tailwindcss', 'simple-import-sort'],
+      plugins: [
+        '@typescript-eslint',
+        'unused-imports',
+        'tailwindcss',
+        'simple-import-sort',
+      ],
       extends: [
         'plugin:tailwindcss/recommended',
         'airbnb',
@@ -96,7 +100,12 @@ module.exports = {
         ],
         '@typescript-eslint/comma-dangle': 'off', // Avoid conflict rule between Eslint and Prettier
         '@typescript-eslint/consistent-type-imports': 'error', // Ensure `import type` is used when it's necessary
-        'no-restricted-syntax': ['error', 'ForInStatement', 'LabeledStatement', 'WithStatement'], // Overrides Airbnb configuration and enable no-restricted-syntax
+        'no-restricted-syntax': [
+          'error',
+          'ForInStatement',
+          'LabeledStatement',
+          'WithStatement',
+        ], // Overrides Airbnb configuration and enable no-restricted-syntax
         'import/prefer-default-export': 'off',
         'simple-import-sort/imports': 'error', // Import configuration for `eslint-plugin-simple-import-sort`
         'simple-import-sort/exports': 'error', // Export configuration for `eslint-plugin-simple-import-sort`
@@ -108,13 +117,6 @@ module.exports = {
         'jsx-a11y/anchor-is-valid': 'off',
         'no-console': ['error', { allow: ['warn', 'error'] }],
         'no-plusplus': 'off',
-      },
-    },
-    // Configuration for js / mjs files -- disable extraneous dependencies
-    {
-      files: ['*.js', '*.mjs'],
-      rules: {
-        'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
       },
     },
   ],

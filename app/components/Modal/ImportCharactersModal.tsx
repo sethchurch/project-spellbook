@@ -1,8 +1,6 @@
 import { Button } from '@nextui-org/button';
 import { Modal, ModalBody, ModalContent, type ModalProps } from '@nextui-org/modal';
-import { IconFile, IconUpload } from '@tabler/icons-react';
 import { useCallback, useState } from 'react';
-import Dropzone from 'react-dropzone';
 import toast from 'react-hot-toast';
 
 import type { Character } from '@/config/CharacterConfig';
@@ -66,7 +64,8 @@ const ImportCharactersModal = ({ isOpen, onClose }: ImportCharactersModalProps) 
             <p className="mb-2 text-center text-sm">
               <span className="font-semibold">Click to upload</span> or drag and drop
             </p>
-            <Dropzone accept={{ 'application/json': ['.json'] }} onDrop={onDrop} onFileDialogOpen={clearCharacters}>
+            {/* TODO: Fix Remix */}
+            {/* <Dropzone accept={{ 'application/json': ['.json'] }} onDrop={onDrop} onFileDialogOpen={clearCharacters}>
               {({ getRootProps, getInputProps, acceptedFiles }) => (
                 <div {...getRootProps()}>
                   <input {...getInputProps()} />
@@ -84,7 +83,7 @@ const ImportCharactersModal = ({ isOpen, onClose }: ImportCharactersModalProps) 
                   </div>
                 </div>
               )}
-            </Dropzone>
+            </Dropzone> */}
             {characters.length > 0 ? (
               <div className="flex flex-col gap-3">
                 <p className="text-center text-sm">Import List</p>

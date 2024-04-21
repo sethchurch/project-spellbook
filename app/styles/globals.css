@@ -49,6 +49,7 @@ body {
   background-size: auto, 300px;
   background-repeat: no-repeat, repeat;
 }
+
 .dark .grainy {
   background-image: linear-gradient(to top, rgba(9, 9, 11, 1) 0%, rgba(9, 9, 11, 0.95) 65%, rgba(9, 9, 11, 0.8) 100%),
     url('/images/bg-zig-dark.png');

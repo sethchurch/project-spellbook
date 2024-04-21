@@ -1,13 +1,10 @@
+import { useParams } from '@remix-run/react';
+
 import { CharacterSheet } from '@/components/CharacterSheet/CharacterSheet';
 import { CharacterSheetProvider } from '@/components/CharacterSheet/CharacterSheetProvider';
 
-interface CharacterPageProps {
-  params: {
-    characterId: string;
-  };
-}
-
-const CharacterPage = ({ params: { characterId } }: CharacterPageProps) => {
+const CharacterPage = () => {
+  const { characterId } = useParams();
   return (
     <CharacterSheetProvider characterId={Number(characterId)}>
       <CharacterSheet />

@@ -10,7 +10,7 @@ const nextUiThemeConfig: NextUIPluginConfig = {
       },
     },
     'purple-dark': {
-      extend: 'dark', // <- inherit default values from dark theme
+      extend: 'dark',
       colors: {
         primary: {
           50: '#3B096C',

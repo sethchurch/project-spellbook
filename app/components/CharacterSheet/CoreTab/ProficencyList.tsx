@@ -3,7 +3,7 @@
 import { Checkbox } from '@nextui-org/checkbox';
 import { Chip } from '@nextui-org/chip';
 import { IconLetterE, IconLetterP } from '@tabler/icons-react';
-import React from 'react';
+import type React from 'react';
 import { useFormContext } from 'react-hook-form';
 
 import type { Proficiency, ProficientOrExpertList } from '@/config/CharacterConfig';
@@ -61,51 +61,52 @@ const ProficencyList = ({ allowExpertise, name, proficencyData }: ProficencyList
 
   return (
     <div className="flex-stack">
-      {statList.length &&
-        proficencyData.map(({ name: skill, stat }, index) => {
-          const skillName = skill.toLowerCase();
-          const statBonus = calculateStatBonus(statList[statIndexList.indexOf(stat)] ?? 0);
-          const expertFlag = expert?.includes(skillName);
-          const proficentFlag = proficent?.includes(skillName);
-          const proficencyMultiplier = expertFlag ? 2 : 1;
-          const profBonus = proficentFlag || expertFlag ? proficencyBonus * proficencyMultiplier : 0;
-          const bonus = statBonus + profBonus;
-          return (
-            <PodChip
-              key={index}
-              startContent={
-                <>
-                  <Chip className="-ml-1 mr-1 min-w-unit-12 text-center" radius="md">
-                    {bonusify(bonus)}
-                  </Chip>
-                  {!expertFlag && (
-                    <Checkbox
-                      className="-ml-1 -mr-2"
-                      icon={<IconLetterP stroke={4} />}
-                      isSelected={proficentFlag}
-                      name={skillName}
-                      size="md"
-                      onChange={getPOnChange(skillName)}
-                    />
-                  )}
-                  {allowExpertise && expertFlag && (
-                    <Checkbox
-                      className="-ml-1 -mr-2"
-                      color="secondary"
-                      icon={<IconLetterE stroke={4} />}
-                      isSelected={expertFlag}
-                      name={skillName}
-                      size="md"
-                      onChange={getEOnChange(skillName)}
-                    />
-                  )}
-                </>
-              }
-            >
-              {capitalize(skill)}
-            </PodChip>
-          );
-        })}
+      {statList.length
+        ? proficencyData.map(({ name: skill, stat }, index) => {
+            const skillName = skill.toLowerCase();
+            const statBonus = calculateStatBonus(statList[statIndexList.indexOf(stat)] ?? 0);
+            const expertFlag = expert?.includes(skillName);
+            const proficentFlag = proficent?.includes(skillName);
+            const proficencyMultiplier = expertFlag ? 2 : 1;
+            const profBonus = proficentFlag || expertFlag ? proficencyBonus * proficencyMultiplier : 0;
+            const bonus = statBonus + profBonus;
+            return (
+              <PodChip
+                key={index}
+                startContent={
+                  <>
+                    <Chip className="-ml-1 mr-1 text-center" radius="md">
+                      {bonusify(bonus)}
+                    </Chip>
+                    {!expertFlag ? (
+                      <Checkbox
+                        className="-ml-1 -mr-2"
+                        icon={<IconLetterP stroke={4} />}
+                        isSelected={proficentFlag}
+                        name={skillName}
+                        size="md"
+                        onChange={getPOnChange(skillName)}
+                      />
+                    ) : null}
+                    {allowExpertise && expertFlag ? (
+                      <Checkbox
+                        className="-ml-1 -mr-2"
+                        color="secondary"
+                        icon={<IconLetterE stroke={4} />}
+                        isSelected={expertFlag}
+                        name={skillName}
+                        size="md"
+                        onChange={getEOnChange(skillName)}
+                      />
+                    ) : null}
+                  </>
+                }
+              >
+                {capitalize(skill)}
+              </PodChip>
+            );
+          })
+        : null}
     </div>
   );
 };

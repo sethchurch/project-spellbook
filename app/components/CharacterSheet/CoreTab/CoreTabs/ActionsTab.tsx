@@ -60,10 +60,11 @@ const ActionsTab = () => {
           );
         })}
       </Accordion>
-      {!isEditing &&
-        Array.from({ length: 10 }).map((_, index) => {
-          return <SpellList key={index} actionsOnly level={index} />;
-        })}
+      {!isEditing
+        ? Array.from({ length: 10 }).map((_, index) => {
+            return <SpellList key={index} actionsOnly level={index} />;
+          })
+        : null}
       <DiscardModal {...getDiscardModalProps()} title="Delete Action" />
     </div>
   );

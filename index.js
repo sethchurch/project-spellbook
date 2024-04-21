@@ -27,12 +27,14 @@ closeWithGrace(async ({ err }) => {
   }
 });
 
-if (process.env.MOCKS === 'true') {
-  await import('./tests/mocks/index');
-}
+// TODO add mocks with e2e tests
+
+// if (process.env.MOCKS === 'true') {
+//   await import('./tests/mocks/index.js');
+// }
 
 if (process.env.NODE_ENV === 'production') {
-  await import('./server-build/index');
+  await import('./server-build/index.js');
 } else {
-  await import('./server/index');
+  await import('./server/index.js');
 }

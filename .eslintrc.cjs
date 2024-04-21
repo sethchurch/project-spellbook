@@ -38,6 +38,7 @@ module.exports = {
         ],
       },
       rules: {
+        'import/extensions': 'off',
         'react/jsx-no-leaked-render': [
           'warn',
           { validStrategies: ['ternary'] },

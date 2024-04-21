@@ -40,8 +40,9 @@
     "paths": {
       "@/*": ["./app/*"],
       "@/public/*": ["./public/*"]
-    }
+    },
+		"types": ["vitest/globals", "@testing-library/jest-dom"]
   },
-  "exclude": ["./out/**/*", "./node_modules/**/*"],
-  "include": ["**/*.ts", "**/*.tsx", "server/index.js"]
+  "exclude": ["./out/**/*", "./node_modules/**/*", "./build/**/*"],
+  "include": ["**/*.ts", "**/*.tsx"]
 }

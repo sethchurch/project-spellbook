@@ -1,7 +1,7 @@
 'use client';
 
 import { Skeleton } from '@nextui-org/react';
-import React from 'react';
+import type React from 'react';
 
 import { useMounted } from '@/hooks/useMounted';
 import { cn } from '@/utils/cn';
@@ -42,12 +42,12 @@ const Pod = ({ isCompact, children, variant, className, classNames, label, disab
     <div
       className={cn('rounded-lg flex flex-col justify-between shadow-sm', variantClass, className, classNames?.base)}
     >
-      {label && <PodLabel className="rounded-t-lg" label={label} />}
-      {children && (
+      {label ? <PodLabel className="rounded-t-lg" label={label} /> : null}
+      {children ? (
         <div className={cn('h-full w-full', isCompactClass, classNames?.content)}>
-          {mounted || disableLoading ? children : <Skeleton className="h-full w-full p-12" />}
+          {mounted || disableLoading ? children : <Skeleton className="size-full p-12" />}
         </div>
-      )}
+      ) : null}
     </div>
   );
 };

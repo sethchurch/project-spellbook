@@ -81,27 +81,27 @@ const SpellList = ({ level, actionsOnly }: SpellListProps) => {
                   <FormCheck name={`${componentParentName}.somatic`}>Somatic</FormCheck>
                   <FormCheck name={`${componentParentName}.material`}>Material</FormCheck>
                 </div>
-                {components.material && (
+                {components.material ? (
                   <FormInput
                     label="Material Description"
                     name={`${componentParentName}.materialDescription`}
                     styleVariant="basic"
                   />
-                )}
+                ) : null}
                 <Textarea label="Description" name={`${parentName}.description`} styleVariant="basic" />
               </div>
             </AccordionItem>
           );
         })}
       </Accordion>
-      {!actionsOnly && (
+      {!actionsOnly ? (
         <>
           <DiscardModal {...getDiscardModalProps()} title="Delete Spell" />
           <div className="flex-stack pt-3">
             <AddEditButtons iconOnly onAdd={addBlank} onEdit={toggleEditing} />
           </div>
         </>
-      )}
+      ) : null}
     </>
   );
 };

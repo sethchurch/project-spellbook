@@ -25,6 +25,7 @@ public/sitemap-*.xml
 
 # production
 /build
+/server-build
 
 # misc
 .DS_Store
@@ -39,10 +40,12 @@ yarn-error.log*
 
 # local env files
 .env*.local
+*.local.*
 
 # local folder
 local
 
 # vercel
 .vercel
+ 
  

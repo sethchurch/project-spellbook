@@ -1,4 +1,3 @@
-// @ts-nocheck
 /* eslint-disable no-console */
 import { createRequestHandler as _createRequestHandler } from '@remix-run/express';
 import { installGlobals } from '@remix-run/node';
@@ -200,10 +199,7 @@ app.use((req, res, next) => {
 async function getBuild() {
   const build = viteDevServer
     ? viteDevServer.ssrLoadModule('virtual:remix/server-build')
-    : // @ts-ignore this should exist before running the server
-      // but it may not exist just yet.
-      await import('build/server/index.js');
-  // not sure how to make this happy 🤷‍♂️
+    : await import('../build/server/index');
   return build;
 }
 

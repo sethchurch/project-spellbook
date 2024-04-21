@@ -1,13 +1,16 @@
 import { debounce } from './debounce';
 
-const mockFunction = jest.fn();
-
-jest.useFakeTimers();
-
 describe('debounce', () => {
+  const mockFunction = vi.fn();
+
   beforeEach(() => {
+    vi.useFakeTimers();
     mockFunction.mockClear();
-    jest.clearAllTimers();
+    vi.clearAllTimers();
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
   });
 
   it('should debounce the function correctly', () => {
@@ -17,7 +20,7 @@ describe('debounce', () => {
     debouncedFn();
     debouncedFn();
 
-    jest.advanceTimersByTime(100);
+    vi.advanceTimersByTime(100);
 
     expect(mockFunction).toHaveBeenCalledTimes(1);
   });
@@ -27,11 +30,13 @@ describe('debounce', () => {
 
     debouncedFn();
 
+    vi.advanceTimersByTime(100);
+
     setTimeout(() => {
       debouncedFn();
     }, 100);
 
-    jest.advanceTimersByTime(200);
+    vi.advanceTimersByTime(200);
 
     expect(mockFunction).toHaveBeenCalledTimes(1);
   });
@@ -41,7 +46,7 @@ describe('debounce', () => {
 
     debouncedFn(1, 'foo');
 
-    jest.advanceTimersByTime(100);
+    vi.advanceTimersByTime(100);
 
     expect(mockFunction).toHaveBeenCalledWith(1, 'foo');
   });

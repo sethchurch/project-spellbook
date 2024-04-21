@@ -66,7 +66,7 @@ const CharacterSheet = () => {
                   sizes="100vw"
                   src="https://picsum.photos/2048/256"
                 /> */}
-                <div className=" absolute left-0 top-0 h-full w-full bg-gradient-to-r from-violet-700 to-violet-950 opacity-0 transition-opacity hover:opacity-30" />
+                <div className=" absolute left-0 top-0 size-full bg-gradient-to-r from-violet-700 to-violet-950 opacity-0 transition-opacity hover:opacity-30" />
                 <CharacterImageEditButton />
               </div>
               {tab.content}

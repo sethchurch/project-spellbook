@@ -1,5 +1,3 @@
-'use client';
-
 import { Chip } from '@nextui-org/chip';
 
 import { cn } from '@/utils/cn';
@@ -22,11 +20,11 @@ const PodChip = ({ children, className, left, startContent }: PodChipProps) => {
       radius="md"
       startContent={
         <>
-          {left && (
-            <Chip className="-ml-1 mr-1 min-w-unit-12 text-center" radius="md">
+          {left ? (
+            <Chip className="-ml-1 mr-1 text-center" radius="md">
               {left}
             </Chip>
-          )}
+          ) : null}
           {startContent}
         </>
       }

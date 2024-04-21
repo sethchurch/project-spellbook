@@ -22,7 +22,7 @@ const StatDisplay = ({ statIndex, ...props }: StatDisplayProps) => {
 
   return (
     <Pod classNames={{ content: 'flex h-full flex-col items-center justify-between gap-3' }} variant="alt" {...props}>
-      <FormInput className="h-full w-full" max={30} min={0} name={fieldName} />
+      <FormInput className="size-full" max={30} min={0} name={fieldName} />
       <Chip className="px-4" variant="faded">
         <p>{bonusify(statBonus)}</p>
       </Chip>

@@ -9,10 +9,15 @@ const MODE = process.env.NODE_ENV;
 const viteConfig: UserConfig = {
   build: {
     cssMinify: MODE === 'production',
+    sourcemap: true,
     rollupOptions: {
       external: [/node:.*/, 'stream', 'crypto', 'fsevents'],
+      onwarn(warning, defaultHandler) {
+        // Silence pointless warnings on build https://github.com/vitejs/vite/issues/15012#issuecomment-1948550039
+        if (warning.code === 'SOURCEMAP_ERROR') return;
+        defaultHandler(warning);
+      },
     },
-    sourcemap: true,
   },
   plugins: [
     tsconfigPaths(),
@@ -27,11 +32,6 @@ const viteConfig: UserConfig = {
             '**/*.css',
             '**/*.test.{js,jsx,ts,tsx}',
             '**/__*.*',
-            // This is for server-side utilities you want to colocate
-            // next to your routes without making an additional
-            // directory. If you need a route that includes "server" or
-            // "client" in the filename, use the escape brackets like:
-            // my-route.[server].tsx
             '**/*.server.*',
             '**/*.client.*',
           ],

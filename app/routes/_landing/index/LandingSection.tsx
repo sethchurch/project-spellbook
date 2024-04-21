@@ -1,5 +1,4 @@
 import { Button } from '@nextui-org/button';
-import { Image } from '@nextui-org/react';
 import { Link } from '@remix-run/react';
 import type { PropsWithChildren } from 'react';
 
@@ -30,7 +29,7 @@ const LandingSection = ({ title, image, alignment, children }: LandingSectionPro
           </Button>
         </Link>
       </div>
-      <Image
+      <img
         alt="Character Sheet"
         className="self-center rounded-md shadow-lg lg:self-end lg:rounded-2xl"
         height={1000}

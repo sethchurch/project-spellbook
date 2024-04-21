@@ -11,7 +11,7 @@ export const links: LinksFunction = () => {
 
 export default function App() {
   return (
-    <html lang="en">
+    <html className="dark" lang="en">
       <head>
         <link href="data:image/x-icon;base64,AA" rel="icon" />
         <Meta />

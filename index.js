@@ -1,6 +1,9 @@
 /* eslint-disable no-console */
 import { createRequestHandler } from '@remix-run/express';
 import express from 'express';
+import { config } from 'dotenv';
+
+config();
 
 const viteDevServer =
   process.env.NODE_ENV === 'production'

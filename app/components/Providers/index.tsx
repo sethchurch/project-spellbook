@@ -1,6 +1,5 @@
 import type { PropsWithChildren } from 'react';
 
-import { AuthProvider } from './AuthProvider';
 import { QueryProvider } from './QueryProvider';
 import { ThemeProvider } from './ThemeProvider';
 import { ToastProvider } from './ToastProvider';
@@ -11,11 +10,11 @@ const Providers = ({ children }: PropsWithChildren) => {
 
   return (
     <ThemeProvider>
-      <AuthProvider session={null}>
-        <QueryProvider>
-          <ToastProvider>{children}</ToastProvider>
-        </QueryProvider>
-      </AuthProvider>
+      {/* <AuthProvider session={null}> */}
+      <QueryProvider>
+        <ToastProvider>{children}</ToastProvider>
+      </QueryProvider>
+      {/* </AuthProvider> */}
     </ThemeProvider>
   );
 };

@@ -18,7 +18,7 @@ const AuthLayout = () => {
           <Outlet />
         </div>
         <ToggleThemeButton className="self-start" variant="shadow" />
-        <div className="absolute left-1/2 top-1/2 h-24 w-full translate-x-1/2 translate-y-[-40%] rounded-full bg-stone-200 dark:bg-zinc-800 lg:h-32 lg:w-3/5" />
+        <div className="absolute left-1/2 top-1/2 h-24 w-full -translate-x-1/2 translate-y-[-40%] rounded-full bg-stone-200 dark:bg-zinc-800 lg:h-32 lg:w-3/5" />
       </div>
     </MaxWidthWrapper>
   );

@@ -3,15 +3,17 @@
 import { Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@nextui-org/react';
 import { useNavigate } from '@remix-run/react';
 
-import { useAuth } from '@/hooks/useAuth';
+// import { useAuth } from '@/hooks/useAuth';
 import { useThemeSwitch } from '@/hooks/useThemeSwitch';
 
 const ProfileDropdown = () => {
   const navigate = useNavigate();
   const { switchTheme } = useThemeSwitch();
 
-  const isAuthenticated = useAuth((state) => state.authenticated);
-  const signOut = useAuth((state) => state.signOut);
+  // todo fix remix
+  // const isAuthenticated = useAuth((state) => state.authenticated);
+  // const signOut = useAuth((state) => state.signOut);
+  const isAuthenticated = false;
   const routeToLogin = () => navigate('/login');
 
   return (

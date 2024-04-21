@@ -21,9 +21,10 @@ export default defineConfig({
     coverage: {
       include: ['app/**/*.{ts,tsx}'],
       reporter: 'html',
+      reportsDirectory: './out/coverage',
       thresholds: {
         autoUpdate: true,
-        statements: 6.68,
+        statements: 8.78,
       },
       all: true,
     },

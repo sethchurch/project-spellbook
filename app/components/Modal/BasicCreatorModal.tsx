@@ -13,7 +13,7 @@ import { Textarea } from '@/components/Form/Textarea';
 import type { Character } from '@/config/CharacterConfig';
 import { useCharacterStore } from '@/hooks/useCharacterStore';
 import { client } from '@/utils/apiClient';
-import { parseJSON } from '@/utils/parseJSON';
+import { fuzzyParseJSON } from '@/utils/fuzzyParseJSON';
 
 const BasicCreatorModal = ({ isOpen, onClose }: Partial<ModalProps>) => {
   const addCharacter = useCharacterStore((state) => state.addCharacter);
@@ -29,7 +29,7 @@ const BasicCreatorModal = ({ isOpen, onClose }: Partial<ModalProps>) => {
     },
     onSuccess: (data: any) => {
       const characterFields = getValues();
-      const characterData = parseJSON<Character>(data.function_call.arguments) as Character;
+      const characterData = fuzzyParseJSON<Character>(data.function_call.arguments) as Character;
       addCharacter({ ...characterData, ...characterFields });
       toast.success(`${characterFields.name} has been added to your character list.`, { id: toastId.current });
     },

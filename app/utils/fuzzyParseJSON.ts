@@ -1,5 +1,5 @@
 /* eslint-disable no-case-declarations */
-export const parseJSON = <TObject = {}>(text: string): TObject | undefined => {
+export const fuzzyParseJSON = <TObject = {}>(text: string): TObject | undefined => {
   const startBrace = text.indexOf('{');
   if (startBrace >= 0) {
     // Find substring

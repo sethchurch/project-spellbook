@@ -199,7 +199,7 @@ app.use((req, res, next) => {
 async function getBuild() {
   const build = viteDevServer
     ? viteDevServer.ssrLoadModule('virtual:remix/server-build')
-    : await import('../build/server/index');
+    : await import('../build/server/index.js');
   return build;
 }
 
@@ -240,7 +240,7 @@ const server = app.listen(portToUse, () => {
       ),
     );
   }
-  console.log(`🚀  We have liftoff!`);
+  console.log(`🪄  Project Spellbook Online!`);
   const localUrl = `http://localhost:${portToUse}`;
   let lanUrl = null;
   const localIp = ipAddress() ?? 'Unknown';

@@ -1,29 +1,38 @@
 /* eslint-disable no-console */
-import { createRequestHandler } from '@remix-run/express';
-import express from 'express';
-import { config } from 'dotenv';
+import 'dotenv/config';
+import * as fs from 'fs';
+import chalk from 'chalk';
+import closeWithGrace from 'close-with-grace';
+import sourceMapSupport from 'source-map-support';
 
-config();
-
-const viteDevServer =
-  process.env.NODE_ENV === 'production'
-    ? null
-    : await import('vite').then((vite) =>
-        vite.createServer({
-          server: { middlewareMode: true },
-        }),
-      );
-
-const app = express();
-app.use(
-  viteDevServer ? viteDevServer.middlewares : express.static('build/client'),
-);
-const build = viteDevServer
-  ? () => viteDevServer.ssrLoadModule('virtual:remix/server-build')
-  : await import('./build/server/index');
-
-app.all('*', createRequestHandler({ build }));
-
-app.listen(3000, () => {
-  console.log('App listening on http://localhost:3000');
+sourceMapSupport.install({
+  retrieveSourceMap(source) {
+    // get source file without the `file://` prefix or `?t=...` suffix
+    const match = source.match(/^file:\/\/(.*)\?t=[.\d]+$/);
+    if (match) {
+      return {
+        url: source,
+        map: fs.readFileSync(`${match[1]}.map`, 'utf8'),
+      };
+    }
+    return null;
+  },
 });
+
+closeWithGrace(async ({ err }) => {
+  if (err) {
+    console.error(chalk.red(err));
+    console.error(chalk.red(err.stack));
+    process.exit(1);
+  }
+});
+
+if (process.env.MOCKS === 'true') {
+  await import('./tests/mocks/index');
+}
+
+if (process.env.NODE_ENV === 'production') {
+  await import('./server-build/index');
+} else {
+  await import('./server/index');
+}

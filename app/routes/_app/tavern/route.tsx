@@ -1,7 +1,14 @@
-import { CharacterList } from './CharacterList';
+import { Outlet } from '@remix-run/react';
 
-const Tavern = () => {
-  return <CharacterList />;
+import { TavernContextButton } from './TavernContextButton';
+
+const TavernLayout = () => {
+  return (
+    <>
+      <Outlet />
+      <TavernContextButton />
+    </>
+  );
 };
 
-export default Tavern;
+export default TavernLayout;

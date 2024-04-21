@@ -85,7 +85,7 @@ const ImportCharactersModal = ({ isOpen, onClose }: ImportCharactersModalProps) 
                 </div>
               )}
             </Dropzone>
-            {characters.length > 0 && (
+            {characters.length > 0 ? (
               <div className="flex flex-col gap-3">
                 <p className="text-center text-sm">Import List</p>
                 <div className="rounded-lg border-3 border-dotted border-stone-300 px-2 py-3 dark:border-zinc-700">
@@ -102,7 +102,7 @@ const ImportCharactersModal = ({ isOpen, onClose }: ImportCharactersModalProps) 
                   Import
                 </Button>
               </div>
-            )}
+            ) : null}
           </div>
         </ModalBody>
       </ModalContent>

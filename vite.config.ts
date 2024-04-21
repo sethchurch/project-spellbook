@@ -1,4 +1,5 @@
 import { vitePlugin as remix } from '@remix-run/dev';
+import { remixDevTools } from 'remix-development-tools';
 import { flatRoutes } from 'remix-flat-routes';
 import type { UserConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
@@ -15,6 +16,7 @@ const viteConfig: UserConfig = {
   },
   plugins: [
     tsconfigPaths(),
+    remixDevTools(),
     remix({
       ignoredRouteFiles: ['**/*'],
       serverModuleFormat: 'esm',

@@ -3,10 +3,10 @@
 import { Button } from '@nextui-org/button';
 import { useDisclosure } from '@nextui-org/react';
 
-import { CharacterNav } from '@/app/(home)/CharacterNav';
 import { useAppShell } from '@/components/Layout/AppShell';
 import { useCharacterFilter } from '@/hooks/useCharacterFilter';
 import { useCharacterStore } from '@/hooks/useCharacterStore';
+import { CharacterNav } from '@/routes/_app/CharacterNav';
 import { cn } from '@/utils/cn';
 
 import { CharacterFilterInput } from '../Elements/CharacterFilterInput';

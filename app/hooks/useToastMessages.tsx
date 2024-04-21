@@ -1,9 +1,9 @@
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams } from '@remix-run/react';
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
 
 const useToastMessages = (id: string) => {
-  const searchParams = useSearchParams();
+  const [searchParams] = useSearchParams();
   const error = searchParams.get('error');
   const message = searchParams.get('message');
 

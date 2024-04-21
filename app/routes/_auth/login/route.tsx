@@ -1,5 +1,3 @@
-'use client';
-
 import { Button } from '@nextui-org/button';
 import { Divider, Tab, useDisclosure } from '@nextui-org/react';
 import { FormProvider, useForm, useFormContext } from 'react-hook-form';
@@ -34,7 +32,7 @@ const LoginPageContent = ({ confirm, label }: LoginPageContentProps) => {
         <h1 className="mb-6 text-2xl font-bold">{label}</h1>
         <FormInput isRequired label="Email" name="email" styleVariant="basic" type="email" />
         <FormInput isRequired label="Password" name="password" styleVariant="basic" type="password" />
-        {confirm && (
+        {confirm ? (
           <FormInput
             isRequired
             watchFlag
@@ -45,7 +43,7 @@ const LoginPageContent = ({ confirm, label }: LoginPageContentProps) => {
             styleVariant="basic"
             type="password"
           />
-        )}
+        ) : null}
         <Button className="w-full" color="primary" isDisabled={!isFormValid} radius="sm" type="submit">
           {label}
         </Button>

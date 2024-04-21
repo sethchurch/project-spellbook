@@ -1,18 +1,18 @@
 'use client';
 
 import { Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@nextui-org/react';
-import { useRouter } from 'next/navigation';
+import { useNavigate } from '@remix-run/react';
 
 import { useAuth } from '@/hooks/useAuth';
 import { useThemeSwitch } from '@/hooks/useThemeSwitch';
 
 const ProfileDropdown = () => {
-  const router = useRouter();
+  const navigate = useNavigate();
   const { switchTheme } = useThemeSwitch();
 
   const isAuthenticated = useAuth((state) => state.authenticated);
   const signOut = useAuth((state) => state.signOut);
-  const routeToLogin = () => router.push('/login');
+  const routeToLogin = () => navigate('/login');
 
   return (
     <Dropdown title="Profile Dropdown">

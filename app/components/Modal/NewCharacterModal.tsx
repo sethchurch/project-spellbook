@@ -4,8 +4,8 @@ import { Button } from '@nextui-org/button';
 import type { ModalProps } from '@nextui-org/modal';
 import { Modal, ModalBody, ModalContent, ModalHeader, useDisclosure } from '@nextui-org/modal';
 import { Tooltip } from '@nextui-org/react';
+import { useNavigate } from '@remix-run/react';
 import { IconWand } from '@tabler/icons-react';
-import { useRouter } from 'next/navigation';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import type { Character } from '@/config/CharacterConfig';
@@ -20,7 +20,7 @@ interface NewCharacterModalProps extends Partial<ModalProps> {
 
 const NewCharacterModal = ({ isOpen, close }: NewCharacterModalProps) => {
   const formMethods = useForm();
-  const router = useRouter();
+  const navigate = useNavigate();
   const { isOpen: modalAiCreatorIsOpen, onClose, onOpen } = useDisclosure();
   const addCharacter = useCharacterStore((state) => state.addCharacter);
 
@@ -32,7 +32,7 @@ const NewCharacterModal = ({ isOpen, close }: NewCharacterModalProps) => {
     const newCharacter: Partial<Character> = { name: 'New Character' };
     if (addCharacter) {
       const characterId = addCharacter(newCharacter);
-      router.push(`/characters/${characterId}`);
+      navigate(`/characters/${characterId}`);
     }
     close();
   };

@@ -45,7 +45,7 @@ const CharacterNav = () => {
           >
             <div className="rounded-md bg-stone-50/90 p-3 dark:bg-zinc-700/60">
               <div className="flex w-full max-w-[300px] items-center gap-3">
-                <div className="relative aspect-square h-7 w-7 overflow-hidden rounded-full border-3 border-zinc-800 bg-gradient-to-br from-violet-700 to-violet-950">
+                <div className="relative aspect-square size-7 overflow-hidden rounded-full border-3 border-zinc-800 bg-gradient-to-br from-violet-700 to-violet-950">
                   {/* <Image fill alt="image of character" sizes="100vw" src="https://picsum.photos/2048/1024" /> */}
                 </div>
                 <div>{character.name}</div>

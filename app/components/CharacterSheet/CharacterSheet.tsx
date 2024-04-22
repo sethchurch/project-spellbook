@@ -53,7 +53,7 @@ const Tabs: ComponentTab[] = [
 
 const CharacterSheet = () => {
   return (
-    <div className="m-1 md:m-6">
+    <div>
       <TabList defaultTab="actions">
         {Tabs.map((tab: ComponentTab) => (
           <Tab key={tab.key} title={tab.title}>

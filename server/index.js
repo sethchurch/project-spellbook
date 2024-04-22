@@ -215,7 +215,8 @@ app.all(
   createRequestHandler({
     getLoadContext: (_, res) => ({
       cspNonce: res.locals.cspNonce,
-      serverBuild: getBuild(),
+      // This seems to crash the dev server
+      // serverBuild: getBuild(),
     }),
     mode: MODE,
     build: getBuild,

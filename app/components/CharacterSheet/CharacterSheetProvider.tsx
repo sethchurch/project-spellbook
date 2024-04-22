@@ -12,12 +12,23 @@ import { useCharacterStore } from '@/hooks/useCharacterStore';
 
 interface CharacterSheetProviderProps {
   children?: React.ReactNode;
-  characterId: number;
+  characterId?: number;
+  characterData?: Character;
+  isFacade?: boolean;
 }
 
-const CharacterSheetProvider = ({ children, characterId }: CharacterSheetProviderProps) => {
+const CharacterSheetProvider = ({
+  children,
+  characterData,
+  characterId = -1,
+  isFacade,
+}: CharacterSheetProviderProps) => {
+  if (characterId === -1 && !characterData) {
+    throw new Error('CharacterSheetProvider requires a characterId or characterData prop');
+  }
+
   const { character, updateCharacter } = useCharacterStore((state) => ({
-    character: state.characters[characterId],
+    character: characterData ?? state.characters[characterId],
     updateCharacter: state.updateCharacter,
   }));
 
@@ -27,18 +38,19 @@ const CharacterSheetProvider = ({ children, characterId }: CharacterSheetProvide
   const debouncedUpdateCharacter = useRef(debounce(updateCharacter, 1000)).current;
 
   useEffect(() => {
-    document.title = `${character?.name ?? 'Character'} | ${AppConfig.title}`;
+    if (!isFacade) {
+      document.title = `${character?.name ?? 'Character'} | ${AppConfig.title}`;
 
-    if (character && !isEqual(previousCharacterRef.current, currentCharacterData)) {
-      debouncedUpdateCharacter(currentCharacterData, characterId);
-      previousCharacterRef.current = cloneDeep(currentCharacterData);
-      formMethods.reset(currentCharacterData);
+      if (character && !isEqual(previousCharacterRef.current, currentCharacterData)) {
+        debouncedUpdateCharacter(currentCharacterData, characterId);
+        previousCharacterRef.current = cloneDeep(currentCharacterData);
+        formMethods.reset(currentCharacterData);
+      }
     }
-
     return () => {
       document.title = AppConfig.title;
     };
-  }, [character, characterId, currentCharacterData, debouncedUpdateCharacter, formMethods]);
+  }, [character, characterId, currentCharacterData, debouncedUpdateCharacter, formMethods, isFacade]);
 
   return <FormProvider {...formMethods}>{children}</FormProvider>;
 };

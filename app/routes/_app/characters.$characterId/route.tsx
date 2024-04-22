@@ -6,9 +6,11 @@ import { CharacterSheetProvider } from '@/components/CharacterSheet/CharacterShe
 const CharacterPage = () => {
   const { characterId } = useParams();
   return (
-    <CharacterSheetProvider characterId={Number(characterId)}>
-      <CharacterSheet />
-    </CharacterSheetProvider>
+    <div className="m-1 md:m-6">
+      <CharacterSheetProvider characterId={Number(characterId)}>
+        <CharacterSheet />
+      </CharacterSheetProvider>
+    </div>
   );
 };
 

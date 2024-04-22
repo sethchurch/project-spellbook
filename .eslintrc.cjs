@@ -99,6 +99,8 @@ module.exports = {
             reservedFirst: true,
           },
         ],
+        '@typescript-eslint/no-unused-vars': 'off',
+        '@typescript-eslint/prefer-nullish-coalescing': 'error',
         '@typescript-eslint/comma-dangle': 'off', // Avoid conflict rule between Eslint and Prettier
         '@typescript-eslint/consistent-type-imports': 'error', // Ensure `import type` is used when it's necessary
         'no-restricted-syntax': [
@@ -110,7 +112,6 @@ module.exports = {
         'import/prefer-default-export': 'off',
         'simple-import-sort/imports': 'error', // Import configuration for `eslint-plugin-simple-import-sort`
         'simple-import-sort/exports': 'error', // Export configuration for `eslint-plugin-simple-import-sort`
-        '@typescript-eslint/no-unused-vars': 'off',
         'unused-imports/no-unused-imports': 'error',
         'unused-imports/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
         'import/no-extraneous-dependencies': 'off',

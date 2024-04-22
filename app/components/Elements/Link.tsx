@@ -1,15 +1,15 @@
-import type { LinkProps } from 'next/link';
-import NextLink from 'next/link';
+import type { LinkProps } from '@remix-run/react';
+import { Link as RemixLink } from '@remix-run/react';
 
 interface ModifiedLinkProps extends LinkProps {
   children: React.ReactNode;
 }
 
-const Link = ({ children, ...props }: ModifiedLinkProps) => {
+const Link = ({ children, to, ...props }: ModifiedLinkProps) => {
   return (
-    <NextLink className="text-inherit no-underline" {...props}>
+    <RemixLink className="text-inherit no-underline" to={to} {...props}>
       {children}
-    </NextLink>
+    </RemixLink>
   );
 };
 

@@ -1,5 +1,6 @@
 import type { LinksFunction, MetaFunction } from '@remix-run/node';
 import { Links, Meta, Outlet, Scripts } from '@remix-run/react';
+import type { PropsWithChildren } from 'react';
 
 import globalStyles from '@/styles/globals.css?url';
 
@@ -14,7 +15,7 @@ export const links: LinksFunction = () => {
   return [{ rel: 'stylesheet', href: globalStyles }, ...AppConfig.icons];
 };
 
-export default function App() {
+export const Layout = ({ children }: PropsWithChildren) => {
   return (
     <html className="dark" lang={AppConfig.locale}>
       <head>
@@ -23,11 +24,17 @@ export default function App() {
         <Links />
       </head>
       <body className="grainy min-h-screen w-full bg-stone-300 antialiased dark:bg-neutral-950">
-        <Providers>
-          <Outlet />
-          <Scripts />
-        </Providers>
+        {children}
+        <Scripts />
       </body>
     </html>
+  );
+};
+
+export default function App() {
+  return (
+    <Providers>
+      <Outlet />
+    </Providers>
   );
 }

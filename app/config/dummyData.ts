@@ -111,7 +111,7 @@ const character = {
         school: 'transmutation',
         ritual: false,
         concentration: false,
-        showInActionList: true,
+        showInActionList: false,
       },
     ],
     [
@@ -134,7 +134,7 @@ const character = {
         school: 'conjuration',
         ritual: false,
         concentration: false,
-        showInActionList: true,
+        showInActionList: false,
       },
       {
         name: 'Fog Cloud',
@@ -155,7 +155,7 @@ const character = {
         school: 'conjuration',
         ritual: false,
         concentration: true,
-        showInActionList: true,
+        showInActionList: false,
       },
       {
         name: 'Speak with Animals',
@@ -175,7 +175,7 @@ const character = {
         school: 'divination',
         ritual: true,
         concentration: false,
-        showInActionList: true,
+        showInActionList: false,
       },
     ],
     [
@@ -198,7 +198,7 @@ const character = {
         school: 'evocation',
         ritual: false,
         concentration: true,
-        showInActionList: true,
+        showInActionList: false,
       },
     ],
     [
@@ -221,7 +221,7 @@ const character = {
         school: 'transmutation',
         ritual: true,
         concentration: false,
-        showInActionList: true,
+        showInActionList: false,
       },
       {
         name: 'Plant Growth',
@@ -241,7 +241,7 @@ const character = {
         school: 'transmutation',
         ritual: false,
         concentration: false,
-        showInActionList: true,
+        showInActionList: false,
       },
     ],
     [
@@ -263,7 +263,7 @@ const character = {
         school: 'transmutation',
         ritual: false,
         concentration: true,
-        showInActionList: true,
+        showInActionList: false,
       },
     ],
     [
@@ -287,7 +287,7 @@ const character = {
         school: 'divination',
         ritual: true,
         concentration: false,
-        showInActionList: true,
+        showInActionList: false,
       },
     ],
     [
@@ -309,7 +309,7 @@ const character = {
         school: 'conjuration',
         ritual: false,
         concentration: true,
-        showInActionList: true,
+        showInActionList: false,
       },
     ],
     [
@@ -333,7 +333,7 @@ const character = {
         school: 'illusion',
         ritual: false,
         concentration: false,
-        showInActionList: true,
+        showInActionList: false,
       },
     ],
     [
@@ -355,7 +355,7 @@ const character = {
         school: 'conjuration',
         ritual: false,
         concentration: true,
-        showInActionList: true,
+        showInActionList: false,
       },
     ],
     [
@@ -379,7 +379,7 @@ const character = {
         school: 'transmutation',
         ritual: false,
         concentration: true,
-        showInActionList: true,
+        showInActionList: false,
       },
     ],
   ],

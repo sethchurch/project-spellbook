@@ -27,6 +27,8 @@ export const Layout = ({ children }: PropsWithChildren) => {
     <html className="dark" lang={AppConfig.locale}>
       <head>
         <link href="data:image/x-icon;base64,AA" rel="icon" />
+        <meta charSet="utf-8" />
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
         <Meta />
         <Links />
       </head>

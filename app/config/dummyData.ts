@@ -406,8 +406,8 @@ const character = {
     failures: 0,
   },
   hitDice: {
-    current: '1d8',
-    max: '1d8',
+    current: '15d8',
+    max: '15d8',
   },
   hitPoints: {
     current: 96,

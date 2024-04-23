@@ -31,6 +31,9 @@ const useCharacterStore = create<CharacterState>()(
         }));
       },
       updateCharacter: (character: Character, characterId: number) => {
+        // TODO: workaround for now until characters are stored in DB
+        if (!character || character.name === undefined) return null;
+
         return set((state) => ({
           characters: state.characters.map((x, i) => (i === characterId ? character : x)),
         }));

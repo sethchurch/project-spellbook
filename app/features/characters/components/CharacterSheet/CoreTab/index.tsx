@@ -1,12 +1,10 @@
-'use client';
-
 import { Chip } from '@nextui-org/chip';
 import { useFormContext } from 'react-hook-form';
 
+import { Pod, PodChip, PodResource } from '@/components/Elements/Pod';
 import { FormCheck } from '@/components/Form/FormCheck';
 import { FormInput } from '@/components/Form/FormInput';
 import { Textarea } from '@/components/Form/Textarea';
-import { Pod, PodChip, PodResource } from '@/features/characters/components/CharacterSheet/Pod';
 import { camelCase } from '@/utils/camelCase';
 import { getProficencyBonus } from '@/utils/getProficencyBonus';
 

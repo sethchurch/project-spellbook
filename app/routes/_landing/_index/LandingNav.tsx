@@ -13,7 +13,7 @@ const LandingNav = ({ isLoggedIn }: { isLoggedIn?: boolean }) => {
           <IconWand />
           <p className="text-lg">Project Spellbook</p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="hidden items-center gap-3 md:flex">
           {!isLoggedIn ? (
             <Link to="/login">
               <Button className="px-6 font-bold shadow-2xl" radius="sm">

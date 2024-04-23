@@ -10,14 +10,14 @@ import { useCharacterStore } from '@/hooks/useCharacterStore';
 import { useMounted } from '@/hooks/useMounted';
 import { useStore } from '@/hooks/useStore';
 
-import { CharacterListItem, CharacterListItemSkeleton } from '../CharacterListItem';
+import { CharacterListItem, CharacterListItemSkeleton } from './CharacterListItem';
 
 interface CharacterListInnerProps {
   characters?: Character[];
 }
 
 const CharacterListInner = ({ characters }: CharacterListInnerProps) => {
-  const filterCharacters = useFilter<Character>(characters || []);
+  const filterCharacters = useFilter<Character>(characters ?? []);
 
   if (!characters) {
     return Array.from({ length: 4 }).map((_, index) => <CharacterListItemSkeleton key={index} />);

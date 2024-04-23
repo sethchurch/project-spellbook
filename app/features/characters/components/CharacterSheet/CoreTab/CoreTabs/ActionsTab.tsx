@@ -3,12 +3,12 @@
 import { AccordionItem } from '@nextui-org/accordion';
 
 import { Accordion } from '@/components/Elements/Accordion';
+import { Pod } from '@/components/Elements/Pod';
 import { FormInput } from '@/components/Form/FormInput';
 import { Textarea } from '@/components/Form/Textarea';
 import { DiscardModal } from '@/components/Modal/DiscardModal';
 import type { Attack } from '@/config/CharacterConfig';
 import { AddEditButtons } from '@/features/characters/components/AddEditButtons';
-import { Pod } from '@/features/characters/components/CharacterSheet/Pod';
 import { useEditableAccordion } from '@/hooks/useEditableAccordion';
 import { useFormList } from '@/hooks/useFormList';
 import { bonusify } from '@/utils/bonusify';

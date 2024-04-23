@@ -2,7 +2,7 @@ import 'dotenv/config';
 
 import { defineConfig, devices } from '@playwright/test';
 
-const PORT = process.env.PORT || '3000';
+const PORT = process.env.PORT ?? '3000';
 
 export default defineConfig({
   testDir: './tests/e2e',
@@ -35,8 +35,6 @@ export default defineConfig({
     reuseExistingServer: !process.env.CI,
     stdout: 'pipe',
     stderr: 'pipe',
-    env: {
-      PORT,
-    },
+    env: { PORT },
   },
 });

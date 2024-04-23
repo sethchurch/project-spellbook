@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { StatDisplay } from '../StatDisplay';
+import { StatDisplay } from './StatDisplay';
 
 const StatDisplayWithProvider = ({ stat }: { stat: number }) => {
   const methods = useForm({ defaultValues: { stats: [stat] } });

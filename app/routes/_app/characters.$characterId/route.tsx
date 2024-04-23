@@ -1,7 +1,6 @@
 import { useParams } from '@remix-run/react';
 
-import { CharacterSheet } from '@/features/characters';
-import { CharacterSheetProvider } from '@/features/characters/components/CharacterSheet/CharacterSheetProvider';
+import { CharacterSheet, CharacterSheetProvider } from '@/features/characters';
 
 const CharacterPage = () => {
   const { characterId } = useParams();

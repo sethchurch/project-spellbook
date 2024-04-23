@@ -3,14 +3,13 @@
 import { AccordionItem } from '@nextui-org/accordion';
 
 import { Accordion } from '@/components/Elements/Accordion';
+import { PodChip } from '@/components/Elements/Pod';
 import { FormInput } from '@/components/Form/FormInput';
 import { Textarea } from '@/components/Form/Textarea';
 import { DiscardModal } from '@/components/Modal/DiscardModal';
 import { AddEditButtons } from '@/features/characters/components/AddEditButtons';
 import { useEditableAccordion } from '@/hooks/useEditableAccordion';
 import { useFormList } from '@/hooks/useFormList';
-
-import { PodChip } from '../../Pod';
 
 interface Feature {
   name: string;

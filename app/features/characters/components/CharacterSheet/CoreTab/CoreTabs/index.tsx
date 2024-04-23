@@ -2,10 +2,10 @@
 
 import { Tab } from '@nextui-org/tabs';
 
+import { Pod } from '@/components/Elements/Pod';
 import { TabList } from '@/components/Elements/TabList';
 import { TabTitle } from '@/components/Elements/TabTitle';
 import { Textarea } from '@/components/Form/Textarea';
-import { Pod } from '@/features/characters/components/CharacterSheet/Pod';
 import type { ComponentTab } from '@/types/tabs';
 
 import { ActionsTab } from './ActionsTab';

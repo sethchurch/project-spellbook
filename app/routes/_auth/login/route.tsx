@@ -2,10 +2,10 @@ import { Button } from '@nextui-org/button';
 import { Divider, Tab, useDisclosure } from '@nextui-org/react';
 import { FormProvider, useForm, useFormContext } from 'react-hook-form';
 
+import { Pod } from '@/components/Elements/Pod';
 import { TabList } from '@/components/Elements/TabList';
 import { TabTitle } from '@/components/Elements/TabTitle';
 import { FormInput } from '@/components/Form/FormInput';
-import { Pod } from '@/features/characters/components/CharacterSheet/Pod';
 import { useToastMessages } from '@/hooks/useToastMessages';
 
 import { ResetPasswordModal } from './ResetPasswordModal';

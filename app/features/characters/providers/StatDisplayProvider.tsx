@@ -1,10 +1,7 @@
-'use client';
-
 import { useFormContext } from 'react-hook-form';
 
+import { Pod } from '@/components/Elements/Pod';
 import { statNames } from '@/config/dummyData';
-
-import { Pod } from '../CharacterSheet/Pod/Pod';
 
 interface StatDisplayProviderProps {
   name?: string;

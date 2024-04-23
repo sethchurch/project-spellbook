@@ -1,5 +1,3 @@
-'use client';
-
 import { Tab } from '@nextui-org/tabs';
 
 import { TabList } from '@/components/Elements/TabList';
@@ -54,7 +52,7 @@ const Tabs: ComponentTab[] = [
 const CharacterSheet = () => {
   return (
     <div>
-      <TabList defaultTab="core">
+      <TabList defaultTab={Tabs[0]?.key ?? 'core'}>
         {Tabs.map((tab: ComponentTab) => (
           <Tab key={tab.key} title={tab.title}>
             <div className="bg-pod-alt rounded-lg">
@@ -78,4 +76,4 @@ const CharacterSheet = () => {
   );
 };
 
-export { CharacterSheet };
+export { BioTab, CharacterSheet, CoreTab, InventoryTab, SpellsTab };

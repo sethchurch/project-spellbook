@@ -7,26 +7,20 @@ import globalStyles from '@/styles/globals.css?url';
 import { Providers } from './components/Providers';
 import { AppConfig } from './config/AppConfig';
 
-export const meta: MetaFunction = () => {
-  return [{ title: AppConfig.title }, { name: 'description', content: AppConfig.description }];
-};
+export const meta: MetaFunction = () => [
+  { title: AppConfig.title },
+  { name: 'description', content: AppConfig.description },
+];
 
-export const links: LinksFunction = () => {
-  return [
-    { rel: 'stylesheet', href: globalStyles },
-    {
-      rel: 'icon',
-      href: '/favicon.ico',
-      type: 'image/x-icon',
-    },
-  ];
-};
+export const links: LinksFunction = () => [
+  { rel: 'stylesheet', href: globalStyles },
+  { rel: 'icon', href: '/favicon.ico' },
+];
 
 export const Layout = ({ children }: PropsWithChildren) => {
   return (
     <html className="dark" lang={AppConfig.locale}>
       <head>
-        <link href="data:image/x-icon;base64,AA" rel="icon" />
         <meta charSet="utf-8" />
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <Meta />

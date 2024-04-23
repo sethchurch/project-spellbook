@@ -8,6 +8,9 @@ dependencies:
   '@libsql/client':
     specifier: ^0.3.6
     version: 0.3.6(bufferutil@4.0.8)(encoding@0.1.13)
+  '@netlify/remix-adapter':
+    specifier: ^2.3.1
+    version: 2.3.1(@netlify/functions@2.6.0)(typescript@5.2.2)(vite@5.2.10)
   '@nextui-org/accordion':
     specifier: ^2.0.31
     version: 2.0.31(@nextui-org/system@2.1.2)(@nextui-org/theme@2.2.2)(framer-motion@10.18.0)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
@@ -1884,6 +1887,44 @@ packages:
 
   /@neon-rs/load@0.0.4:
     resolution: {integrity: sha512-kTPhdZyTQxB+2wpiRcFWrDcejc4JI6tkPuS7UZCG4l6Zvc5kU/gGQ/ozvHTh1XR5tS+UlfAfGuPajjzQjCiHCw==}
+    dev: false
+
+  /@netlify/functions@2.6.0:
+    resolution: {integrity: sha512-vU20tij0fb4nRGACqb+5SQvKd50JYyTyEhQetCMHdakcJFzjLDivvRR16u1G2Oy4A7xNAtGJF1uz8reeOtTVcQ==}
+    engines: {node: '>=14.0.0'}
+    dependencies:
+      '@netlify/serverless-functions-api': 1.14.0
+    dev: false
+
+  /@netlify/node-cookies@0.1.0:
+    resolution: {integrity: sha512-OAs1xG+FfLX0LoRASpqzVntVV/RpYkgpI0VrUnw2u0Q1qiZUzcPffxRK8HF3gc4GjuhG5ahOEMJ9bswBiZPq0g==}
+    engines: {node: ^14.16.0 || >=16.0.0}
+    dev: false
+
+  /@netlify/remix-adapter@2.3.1(@netlify/functions@2.6.0)(typescript@5.2.2)(vite@5.2.10):
+    resolution: {integrity: sha512-DHzvNQlcjDvKILJO4/ri51h1FQGlZA+cTc94bkPwl7ch7OKxW1re8p6aRBhMrO9SxnWD2hMNXw8bXdVtSHT5IA==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      '@netlify/functions': ^2.6.0
+      vite: ^5.0.0
+    peerDependenciesMeta:
+      vite:
+        optional: true
+    dependencies:
+      '@netlify/functions': 2.6.0
+      '@remix-run/node': 2.8.1(typescript@5.2.2)
+      isbot: 4.4.0
+      vite: 5.2.10(@types/node@20.6.2)
+    transitivePeerDependencies:
+      - typescript
+    dev: false
+
+  /@netlify/serverless-functions-api@1.14.0:
+    resolution: {integrity: sha512-HUNETLNvNiC2J+SB/YuRwJA9+agPrc0azSoWVk8H85GC+YE114hcS5JW+dstpKwVerp2xILE3vNWN7IMXP5Q5Q==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    dependencies:
+      '@netlify/node-cookies': 0.1.0
+      urlpattern-polyfill: 8.0.2
     dev: false
 
   /@nextui-org/accordion@2.0.31(@nextui-org/system@2.1.2)(@nextui-org/theme@2.2.2)(framer-motion@10.18.0)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1):
@@ -12906,6 +12947,10 @@ packages:
     dependencies:
       querystringify: 2.2.0
       requires-port: 1.0.0
+
+  /urlpattern-polyfill@8.0.2:
+    resolution: {integrity: sha512-Qp95D4TPJl1kC9SKigDcqgyM2VDVO4RiJc2d4qe5GrYm+zbIQCWWKAFaJNQ4BhdFeDGwBmAxqJBwWSJDb9T3BQ==}
+    dev: false
 
   /use-callback-ref@1.3.2(@types/react@18.2.22)(react@18.2.0):
     resolution: {integrity: sha512-elOQwe6Q8gqZgDA8mrh44qRTQqpIHDcZ3hXTLjBe1i4ph8XpNJnO+aQf3NaG+lriLopI4HMx9VjQLfPQ6vhnoA==}

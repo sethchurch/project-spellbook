@@ -11,13 +11,14 @@
     "build:server": "tsx ./other/build-server.ts",
     "test:ui": "vitest --ui --api 9527",
     "test:coverage": "vitest --coverage",
-    "start": "cross-env NODE_ENV=production node .",
+    "start": "netlify serve",
     "lint": "eslint .",
     "init-db": "supabase init",
     "start-db": "supabase start"
   },
   "dependencies": {
     "@libsql/client": "^0.3.6",
+    "@netlify/remix-adapter": "^2.3.1",
     "@nextui-org/accordion": "^2.0.31",
     "@nextui-org/button": "^2.0.30",
     "@nextui-org/card": "^2.0.27",

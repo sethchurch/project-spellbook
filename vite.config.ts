@@ -1,3 +1,4 @@
+import { netlifyPlugin } from '@netlify/remix-adapter/plugin';
 import { vitePlugin as remix } from '@remix-run/dev';
 import { remixDevTools } from 'remix-development-tools';
 import { flatRoutes } from 'remix-flat-routes';
@@ -38,6 +39,7 @@ const viteConfig: UserConfig = {
         });
       },
     }),
+    netlifyPlugin(),
   ],
 };
 

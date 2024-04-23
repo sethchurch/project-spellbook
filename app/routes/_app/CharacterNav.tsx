@@ -28,7 +28,7 @@ const CharacterNavSkeleton = ({ count = 15 }: CharacterNavSkeletonProps) => {
 
 const CharacterNav = () => {
   const characters = useStore(useCharacterStore, (state) => state.characters);
-  const filterCharacters = useFilter<Character>(characters || []);
+  const filterCharacters = useFilter<Character>(characters ?? []);
 
   if (!characters) return <CharacterNavSkeleton />;
 

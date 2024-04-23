@@ -4,7 +4,7 @@ import { useFormContext } from 'react-hook-form';
 
 import { statNames } from '@/config/dummyData';
 
-import { Pod } from './Pod/Pod';
+import { Pod } from '../CharacterSheet/Pod/Pod';
 
 interface StatDisplayProviderProps {
   name?: string;

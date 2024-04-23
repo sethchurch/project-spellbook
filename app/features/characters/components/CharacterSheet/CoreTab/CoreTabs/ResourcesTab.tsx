@@ -5,11 +5,11 @@ import { Button } from '@nextui-org/button';
 import { IconMinus, IconPlus } from '@tabler/icons-react';
 import { useFormContext } from 'react-hook-form';
 
-import { PodChip } from '@/components/CharacterSheet/Pod';
 import { Accordion } from '@/components/Elements/Accordion';
-import { AddEditButtons } from '@/components/Elements/AddEditButtons';
 import { FormInput } from '@/components/Form/FormInput';
 import { DiscardModal } from '@/components/Modal/DiscardModal';
+import { AddEditButtons } from '@/features/characters/components/AddEditButtons';
+import { PodChip } from '@/features/characters/components/CharacterSheet/Pod';
 import { useEditableAccordion } from '@/hooks/useEditableAccordion';
 import { useFormList } from '@/hooks/useFormList';
 

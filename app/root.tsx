@@ -12,7 +12,14 @@ export const meta: MetaFunction = () => {
 };
 
 export const links: LinksFunction = () => {
-  return [{ rel: 'stylesheet', href: globalStyles }, ...AppConfig.icons];
+  return [
+    { rel: 'stylesheet', href: globalStyles },
+    {
+      rel: 'icon',
+      href: '/favicon.ico',
+      type: 'image/x-icon',
+    },
+  ];
 };
 
 export const Layout = ({ children }: PropsWithChildren) => {

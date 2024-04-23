@@ -2,10 +2,10 @@
 
 import { Tab } from '@nextui-org/tabs';
 
-import { Pod } from '@/components/CharacterSheet/Pod';
 import { TabList } from '@/components/Elements/TabList';
 import { TabTitle } from '@/components/Elements/TabTitle';
 import { Textarea } from '@/components/Form/Textarea';
+import { Pod } from '@/features/characters/components/CharacterSheet/Pod';
 import type { ComponentTab } from '@/types/tabs';
 
 import { ActionsTab } from './ActionsTab';
@@ -40,9 +40,7 @@ const CoreTabs = () => {
     <TabList defaultTab="actions">
       {Tabs.map((tab: ComponentTab) => (
         <Tab key={tab.key} title={tab.title}>
-          <Pod disableLoading className="h-full">
-            {tab.content}
-          </Pod>
+          <Pod className="h-full">{tab.content}</Pod>
         </Tab>
       ))}
     </TabList>

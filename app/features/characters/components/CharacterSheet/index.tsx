@@ -2,9 +2,9 @@
 
 import { Tab } from '@nextui-org/tabs';
 
-import { CharacterImageEditButton } from '@/components/Elements/CharacterImageEditButton';
 import { TabList } from '@/components/Elements/TabList';
 import { TabTitle } from '@/components/Elements/TabTitle';
+import { CharacterImageEditButton } from '@/features/characters/components/CharacterImageEditButton';
 import type { ComponentTab } from '@/types/tabs';
 
 import { BioTab } from './BioTab';
@@ -54,7 +54,7 @@ const Tabs: ComponentTab[] = [
 const CharacterSheet = () => {
   return (
     <div>
-      <TabList defaultTab="actions">
+      <TabList defaultTab="core">
         {Tabs.map((tab: ComponentTab) => (
           <Tab key={tab.key} title={tab.title}>
             <div className="bg-pod-alt rounded-lg">

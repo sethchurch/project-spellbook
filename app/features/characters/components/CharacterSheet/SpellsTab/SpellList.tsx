@@ -1,15 +1,15 @@
 import { AccordionItem } from '@nextui-org/accordion';
 import { SelectItem } from '@nextui-org/select';
 
-import { Pod } from '@/components/CharacterSheet/Pod';
 import { Accordion } from '@/components/Elements/Accordion';
-import { AddEditButtons } from '@/components/Elements/AddEditButtons';
 import { FormCheck } from '@/components/Form/FormCheck';
 import { FormInput } from '@/components/Form/FormInput';
 import { FormSelect } from '@/components/Form/FormSelect';
 import { Textarea } from '@/components/Form/Textarea';
 import { DiscardModal } from '@/components/Modal/DiscardModal';
 import type { Spell } from '@/config/CharacterConfig';
+import { AddEditButtons } from '@/features/characters/components/AddEditButtons';
+import { Pod } from '@/features/characters/components/CharacterSheet/Pod';
 import { useEditableAccordion } from '@/hooks/useEditableAccordion';
 import { useFormList } from '@/hooks/useFormList';
 

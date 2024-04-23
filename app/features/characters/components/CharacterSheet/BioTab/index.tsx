@@ -2,9 +2,9 @@
 
 import { useFormContext } from 'react-hook-form';
 
-import { CharacterImageEditButton } from '@/components/Elements/CharacterImageEditButton';
 import { FormInput } from '@/components/Form/FormInput';
 import { Textarea } from '@/components/Form/Textarea';
+import { CharacterImageEditButton } from '@/features/characters/components/CharacterImageEditButton';
 import { camelCase } from '@/utils/camelCase';
 
 import { Pod } from '../Pod';
@@ -15,7 +15,6 @@ const BioTab = () => {
   return (
     <div className="flex min-h-full flex-col justify-start gap-3 p-3">
       <Pod
-        disableLoading
         classNames={{ content: 'grid grid-cols-1 gap-x-2 gap-y-3 sm:grid-cols-2 md:grid-cols-3 md:gap-3' }}
         label={`${characterName}'s Details`}
       >

@@ -3,8 +3,8 @@
 import { SelectItem } from '@nextui-org/select';
 import { useFormContext } from 'react-hook-form';
 
-import { Pod } from '@/components/CharacterSheet/Pod';
 import { FormSelect } from '@/components/Form/FormSelect';
+import { Pod } from '@/features/characters/components/CharacterSheet/Pod';
 import { StatIndex, useFormStat } from '@/hooks/useFormStat';
 import { bonusify } from '@/utils/bonusify';
 import { calcStatBonus } from '@/utils/calcStatBonus';

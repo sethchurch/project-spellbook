@@ -3,7 +3,7 @@ import { useDisclosure } from '@nextui-org/modal';
 import { Tooltip } from '@nextui-org/react';
 import { IconPhotoCog } from '@tabler/icons-react';
 
-import { CharacterImageModal } from '../Modal/CharacterImageModal';
+import { CharacterImageModal } from '../../../components/Modal/CharacterImageModal';
 
 // interface CharacterImageEditButtonProps {
 // 	aspectRatio?: string;

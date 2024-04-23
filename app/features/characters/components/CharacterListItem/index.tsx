@@ -10,6 +10,7 @@ import { DiscardModal } from '@/components/Modal/DiscardModal';
 import type { Character } from '@/config/CharacterConfig';
 import { useCharacterStore } from '@/hooks/useCharacterStore';
 import { useTavernState } from '@/hooks/useTavernState';
+import { cn } from '@/utils/cn';
 
 const CharacterListItemSkeleton = () => {
   return (
@@ -27,6 +28,40 @@ const CharacterListItemSkeleton = () => {
   );
 };
 
+interface CharacterListItemDisplayProps {
+  character: Character;
+  titlebarContent?: React.ReactNode;
+  className?: string;
+}
+
+const CharacterListItemDisplay = ({ className, character, titlebarContent }: CharacterListItemDisplayProps) => {
+  const { backstory, name } = character;
+  return (
+    <Card className={cn('bg-pod-alt size-full shadow-none', className)}>
+      <CardHeader className="w-full px-3 py-4">
+        <div className="grid w-full grid-cols-[1fr_max-content_1fr] items-center">
+          <h2 className="col-start-2 text-center text-xl font-bold">{name}</h2>
+          {titlebarContent}
+        </div>
+      </CardHeader>
+      <div className="relative h-56 w-full bg-gradient-to-r from-violet-700 to-violet-950">
+        {/* <Image fill alt="image of character" sizes="100vw" src="https://picsum.photos/2048/1024" /> */}
+      </div>
+      <CardBody className="overflow-hidden text-ellipsis px-3 py-4">
+        <div className="flex flex-wrap gap-2">
+          {character.class?.split('/').map((classDetail) => (
+            <Chip key={classDetail} radius="md">
+              {classDetail.trim()}
+            </Chip>
+          ))}
+        </div>
+        <Spacer y={3} />
+        <p className="line-clamp-3">{backstory}</p>
+      </CardBody>
+    </Card>
+  );
+};
+
 interface CharacterListItemProps {
   character: Character;
   characterId: number;
@@ -36,7 +71,6 @@ const CharacterListItem = ({ character, characterId }: CharacterListItemProps) =
   const { isOpen, onOpen, onClose } = useDisclosure();
   const isEditing = useTavernState((state) => state.isEditing);
   const removeCharacter = useCharacterStore((state) => state.removeCharacter.bind(null, characterId));
-  const { backstory } = character;
 
   return (
     <>
@@ -44,32 +78,16 @@ const CharacterListItem = ({ character, characterId }: CharacterListItemProps) =
         className="size-full rounded-xl shadow-sm transition-all hover:opacity-80 hover:shadow-xl"
         to={isEditing ? '#' : `/characters/${characterId}`}
       >
-        <Card className="bg-pod-alt size-full shadow-none">
-          <CardHeader className="w-full px-3 py-4">
-            <div className="grid w-full grid-cols-[1fr_max-content_1fr] items-center">
-              <h2 className="col-start-2 text-center text-xl font-bold">{character.name}</h2>
-              {isEditing ? (
-                <Button isIconOnly className="justify-self-end" color="danger" size="sm" onClick={onOpen}>
-                  <IconX />
-                </Button>
-              ) : null}
-            </div>
-          </CardHeader>
-          <div className="relative h-56 w-full bg-gradient-to-r from-violet-700 to-violet-950">
-            {/* <Image fill alt="image of character" sizes="100vw" src="https://picsum.photos/2048/1024" /> */}
-          </div>
-          <CardBody className="overflow-hidden text-ellipsis px-3 py-4">
-            <div className="flex flex-wrap gap-2">
-              {character.class?.split('/').map((classDetail) => (
-                <Chip key={classDetail} radius="md">
-                  {classDetail.trim()}
-                </Chip>
-              ))}
-            </div>
-            <Spacer y={3} />
-            <p className="line-clamp-3">{backstory}</p>
-          </CardBody>
-        </Card>
+        <CharacterListItemDisplay
+          character={character}
+          titlebarContent={
+            isEditing ? (
+              <Button isIconOnly className="justify-self-end" color="danger" size="sm" onClick={onOpen}>
+                <IconX />
+              </Button>
+            ) : null
+          }
+        />
       </Link>
       <DiscardModal
         confirmAction={removeCharacter}
@@ -81,4 +99,4 @@ const CharacterListItem = ({ character, characterId }: CharacterListItemProps) =
   );
 };
 
-export { CharacterListItem, CharacterListItemSkeleton };
+export { CharacterListItem, CharacterListItemDisplay, CharacterListItemSkeleton };

@@ -1,5 +1,3 @@
-'use client';
-
 import { Chip } from '@nextui-org/chip';
 import { useFormContext } from 'react-hook-form';
 
@@ -7,8 +5,8 @@ import { FormInput } from '@/components/Form/FormInput';
 import { bonusify } from '@/utils/bonusify';
 import { calcStatBonus } from '@/utils/calcStatBonus';
 
-import type { PodProps } from './Pod/Pod';
-import { Pod } from './Pod/Pod';
+import type { PodProps } from '../CharacterSheet/Pod/Pod';
+import { Pod } from '../CharacterSheet/Pod/Pod';
 
 interface StatDisplayProps extends PodProps {
   statIndex: number;

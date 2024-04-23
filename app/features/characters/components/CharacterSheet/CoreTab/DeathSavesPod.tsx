@@ -1,8 +1,8 @@
 import { Checkbox } from '@nextui-org/checkbox';
 
-import { Pod } from '@/components/CharacterSheet/Pod/Pod';
-import { PodChip } from '@/components/CharacterSheet/Pod/PodChip';
 import { CheckCounter } from '@/components/Form/CheckCounter';
+import { Pod } from '@/features/characters/components/CharacterSheet/Pod/Pod';
+import { PodChip } from '@/features/characters/components/CharacterSheet/Pod/PodChip';
 import type { PropsWithClassName } from '@/types/propTypes';
 
 const DeathSavesPod = ({ className }: PropsWithClassName) => {

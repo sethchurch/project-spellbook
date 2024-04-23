@@ -1,4 +1,4 @@
-import { CharacterList } from './CharacterList';
+import { CharacterList } from '@/features/characters';
 
 const Tavern = () => {
   return <CharacterList />;

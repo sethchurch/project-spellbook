@@ -1,15 +1,16 @@
 'use client';
 
+import { Chip } from '@nextui-org/chip';
 import { useFormContext } from 'react-hook-form';
 
-import { Pod, PodChip, PodResource } from '@/components/CharacterSheet/Pod';
 import { FormCheck } from '@/components/Form/FormCheck';
 import { FormInput } from '@/components/Form/FormInput';
 import { Textarea } from '@/components/Form/Textarea';
+import { Pod, PodChip, PodResource } from '@/features/characters/components/CharacterSheet/Pod';
 import { camelCase } from '@/utils/camelCase';
 import { getProficencyBonus } from '@/utils/getProficencyBonus';
 
-import { StatDisplay } from '../StatDisplay';
+import { StatDisplay } from '../../StatDisplay';
 import { CoreTabs } from './CoreTabs';
 import { DeathSavesPod } from './DeathSavesPod';
 import { ProficienciesPod } from './ProficienciesPod';
@@ -32,7 +33,15 @@ const CoreTab = () => {
       <Pod className="row-start-1 md:row-start-auto" label="Inspiration & Proficiency Bonus">
         <div className="flex h-full flex-col justify-around gap-x-2 gap-y-3 py-3 md:gap-3">
           <PodChip startContent={<FormCheck className="-ml-1 -mr-2" name="inspired" size="md" />}>Inspiration</PodChip>
-          <PodChip left={`+${proficencyBonus}`}>Proficiency Bonus</PodChip>
+          <PodChip
+            startContent={
+              <Chip className="-ml-1 mr-1 text-center" radius="md">
+                {`+${proficencyBonus}`}
+              </Chip>
+            }
+          >
+            Proficiency Bonus
+          </PodChip>
         </div>
       </Pod>
 

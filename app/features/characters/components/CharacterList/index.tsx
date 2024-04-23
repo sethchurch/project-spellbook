@@ -10,7 +10,7 @@ import { useCharacterStore } from '@/hooks/useCharacterStore';
 import { useMounted } from '@/hooks/useMounted';
 import { useStore } from '@/hooks/useStore';
 
-import { CharacterListItem, CharacterListItemSkeleton } from './CharacterListItem';
+import { CharacterListItem, CharacterListItemSkeleton } from '../CharacterListItem';
 
 interface CharacterListInnerProps {
   characters?: Character[];

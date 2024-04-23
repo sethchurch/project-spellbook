@@ -2,10 +2,10 @@ import { Button } from '@nextui-org/button';
 import { Divider, Tab, useDisclosure } from '@nextui-org/react';
 import { FormProvider, useForm, useFormContext } from 'react-hook-form';
 
-import { Pod } from '@/components/CharacterSheet/Pod';
 import { TabList } from '@/components/Elements/TabList';
 import { TabTitle } from '@/components/Elements/TabTitle';
 import { FormInput } from '@/components/Form/FormInput';
+import { Pod } from '@/features/characters/components/CharacterSheet/Pod';
 import { useToastMessages } from '@/hooks/useToastMessages';
 
 import { ResetPasswordModal } from './ResetPasswordModal';
@@ -27,7 +27,7 @@ const LoginPageContent = ({ confirm, label }: LoginPageContentProps) => {
   const isFormValid = formState.isValid;
 
   return (
-    <Pod disableLoading className="rounded-t-none" variant="alt">
+    <Pod className="rounded-t-none" variant="alt">
       <div className="flex-stack p-3 text-center lg:px-12 lg:py-6">
         <h1 className="mb-6 text-2xl font-bold">{label}</h1>
         <FormInput isRequired label="Email" name="email" styleVariant="basic" type="email" />

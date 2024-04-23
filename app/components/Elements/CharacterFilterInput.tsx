@@ -3,7 +3,7 @@
 import { useCharacterFilter } from '@/hooks/useCharacterFilter';
 
 import { Input, type InputProps } from './Input';
-
+// TODO make this more generic and resuable
 const CharacterFilterInput = ({ ...props }: InputProps) => {
   const [filterValue, setFilterValue] = useCharacterFilter((state) => [state.filterValue, state.setFilterValue]);
 

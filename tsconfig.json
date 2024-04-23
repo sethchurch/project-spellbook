@@ -39,7 +39,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./app/*"],
-      "@/public/*": ["./public/*"]
+      "@/public/*": ["./public/*"],
+			"@*/": ["./app/features/*"]
     },
 		"types": ["vitest/globals", "@testing-library/jest-dom"]
   },

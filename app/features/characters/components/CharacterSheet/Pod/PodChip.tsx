@@ -5,11 +5,10 @@ import { cn } from '@/utils/cn';
 interface PodChipProps {
   className?: string;
   children: React.ReactNode;
-  left?: string;
   startContent?: React.ReactNode;
 }
 
-const PodChip = ({ children, className, left, startContent }: PodChipProps) => {
+const PodChip = ({ children, className, startContent }: PodChipProps) => {
   return (
     <Chip
       className={cn('relative w-full max-w-full', className)}
@@ -18,16 +17,7 @@ const PodChip = ({ children, className, left, startContent }: PodChipProps) => {
         content: 'flex-1 px-3',
       }}
       radius="md"
-      startContent={
-        <>
-          {left ? (
-            <Chip className="-ml-1 mr-1 text-center" radius="md">
-              {left}
-            </Chip>
-          ) : null}
-          {startContent}
-        </>
-      }
+      startContent={startContent}
       variant="faded"
     >
       {children}

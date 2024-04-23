@@ -1,6 +1,6 @@
-import { Pod } from '@/components/CharacterSheet/Pod';
 import type { Proficiency } from '@/config/CharacterConfig';
 import { characterSkills, savingThrows } from '@/config/CharacterConfig';
+import { Pod } from '@/features/characters/components/CharacterSheet/Pod';
 import type { PropsWithClassName } from '@/types/propTypes';
 import { cn } from '@/utils/cn';
 

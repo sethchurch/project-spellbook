@@ -1,5 +1,6 @@
+import { Button } from '@/components/Elements/Button';
 import { Link } from '@/components/Elements/Link';
-import { Button } from '@/components/ui/Button';
+import { cn } from '@/utils/cn';
 
 interface LandingSectionAsideProps {
   buttonText?: string;
@@ -7,6 +8,7 @@ interface LandingSectionAsideProps {
   headerText: string;
   superHeaderText: string;
   direction?: 'reverse' | 'normal';
+  className?: string;
 }
 
 const LandingSectionAside = ({
@@ -15,12 +17,15 @@ const LandingSectionAside = ({
   headerText,
   superHeaderText,
   direction,
+  className,
 }: LandingSectionAsideProps) => {
   return (
-    <div className="flex flex-col items-start gap-3">
+    <div className={cn('flex flex-col items-start gap-3', className)}>
       <p className="text-sm font-medium uppercase tracking-wider text-primary">{superHeaderText}</p>
-      <h2 className="whitespace-pre-wrap text-6xl font-extrabold uppercase tracking-tight">
-        {headerText.split(' ').join('\n\r')}
+      <h2 className="text-6xl font-extrabold uppercase tracking-tight">
+        {headerText.split(' ').map((word, index) => (
+          <p key={`${word}-${index}`}>{word}</p>
+        ))}
       </h2>
       <p className="mb-3 font-normal tracking-wide">{descriptionText}</p>
       <Link className={direction === 'reverse' ? 'self-end' : ''} to="/tavern">

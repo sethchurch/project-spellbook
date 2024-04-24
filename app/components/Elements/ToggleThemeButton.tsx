@@ -1,26 +1,28 @@
-'use client';
+import { useFetcher } from '@remix-run/react';
 
-import type { ButtonProps } from '@nextui-org/button';
-import { Button } from '@nextui-org/button';
-
-import { useMounted } from '@/hooks/useMounted';
-import { useThemeSwitch } from '@/hooks/useThemeSwitch';
+import type { ButtonProps } from '@/components/Elements/Button';
+import { Button } from '@/components/Elements/Button';
+import { Icon } from '@/components/Elements/Icon';
+import { useTheme } from '@/hooks/useTheme';
 import { cn } from '@/utils/cn';
-
-import { Icon } from './Icon';
 
 interface ToggleThemeButtonProps extends ButtonProps {
   className?: string;
 }
 
 const ToggleThemeButton = ({ ...props }: ToggleThemeButtonProps) => {
-  const mounted = useMounted();
-  const { theme, switchTheme } = useThemeSwitch();
+  const theme = useTheme();
+  const fetcher = useFetcher();
+
+  const nextTheme = theme === 'light' ? 'dark' : 'light';
 
   return (
-    <Button isIconOnly className={cn('justify-self-end', props.className)} onClick={switchTheme}>
-      {mounted ? <Icon icon={theme === 'light' ? 'moon' : 'sun'} /> : <Icon icon="sun" />}
-    </Button>
+    <fetcher.Form action="/resources/theme" method="post">
+      <input name="theme" type="hidden" value={nextTheme} />
+      <Button isIconOnly className={cn('justify-self-end', props.className)} type="submit">
+        <Icon icon={theme === 'light' ? 'moon' : 'sun'} />
+      </Button>
+    </fetcher.Form>
   );
 };
 

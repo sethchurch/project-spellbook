@@ -4,11 +4,9 @@ import { Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@
 import { useNavigate } from '@remix-run/react';
 
 // import { useAuth } from '@/hooks/useAuth';
-import { useThemeSwitch } from '@/hooks/useThemeSwitch';
 
 const ProfileDropdown = () => {
   const navigate = useNavigate();
-  const { switchTheme } = useThemeSwitch();
 
   // todo fix remix
   // const isAuthenticated = useAuth((state) => state.authenticated);
@@ -23,9 +21,6 @@ const ProfileDropdown = () => {
         <Avatar isBordered radius="md" />
       </DropdownTrigger>
       <DropdownMenu aria-label="options dropdown">
-        <DropdownItem key="theme" onClick={switchTheme}>
-          Toggle Theme
-        </DropdownItem>
         {isAuthenticated ? (
           <DropdownItem key="logout" color="danger" onClick={signOut}>
             Log Out

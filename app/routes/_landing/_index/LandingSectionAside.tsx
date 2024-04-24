@@ -20,7 +20,7 @@ const LandingSectionAside = ({
   className,
 }: LandingSectionAsideProps) => {
   return (
-    <div className={cn('flex flex-col items-start gap-3', className)}>
+    <div className={cn('flex flex-col items-start gap-3 max-w-full lg:max-w-min', className)}>
       <p className="text-xs font-medium uppercase tracking-wider text-primary md:text-sm">{superHeaderText}</p>
       <h2 className="text-4xl font-extrabold uppercase tracking-tight md:text-6xl">
         {headerText.split(' ').map((word, index) => (
@@ -29,7 +29,7 @@ const LandingSectionAside = ({
       </h2>
       <p className="mb-3 text-sm font-normal tracking-wide md:text-base">{descriptionText}</p>
       <Link className={direction === 'reverse' ? 'self-end' : ''} to="/tavern">
-        <Button className="font-normal" color="primary">
+        <Button className="font-bold" color="primary">
           {buttonText ?? 'Get Started'}
         </Button>
       </Link>

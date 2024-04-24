@@ -1,7 +1,7 @@
 import { cn } from '@nextui-org/react';
-import { useWindowSize } from '@uidotdev/usehooks';
 import { motion } from 'framer-motion';
 import type { PropsWithChildren } from 'react';
+import { useWindowSize } from 'usehooks-ts';
 
 import { Pod } from '@/components/Elements/Pod';
 import { MaxWidthWrapper } from '@/components/Layout/MaxWidthWrapper';
@@ -47,17 +47,17 @@ const SlideOut = ({ children }: PropsWithChildren) => {
 };
 
 const LandingPage = () => {
-  const { width } = useWindowSize();
+  const { width } = useWindowSize({ initializeWithValue: false });
 
   const shouldDisplayComponent = width ? width > breakpoints.xl : false;
 
   return (
     <div className="flex min-h-screen w-full flex-col items-center bg-zinc-200/80 dark:bg-transparent">
       <MaxWidthWrapper>
-        <div className="flex flex-col gap-8 overflow-hidden md:gap-16 lg:gap-24">
-          <LandingNav isLoggedIn={false} />
+        <div className="flex flex-col gap-4 overflow-hidden p-0 md:gap-16 md:p-3 lg:gap-20">
+          <LandingNav className="py-3" isLoggedIn={false} />
 
-          <section className="flex w-full flex-col justify-between gap-3 lg:flex-row">
+          <section className="flex w-full flex-col justify-between gap-12 lg:flex-row">
             <LandingSectionAside {...sectionLookup['character-storage']} className="mb-3" />
             <SlideOut>
               {shouldDisplayComponent ? (
@@ -76,28 +76,22 @@ const LandingPage = () => {
             </SlideOut>
           </section>
 
-          <section className="flex w-full flex-col-reverse justify-between gap-3 py-0 md:py-24 lg:flex-row">
+          <section className="flex w-full flex-col-reverse justify-between gap-3 py-0 md:gap-12 md:py-24 lg:flex-row">
             <div className="relative m-auto lg:m-0">
               {Array.from({ length: 3 }).map((_, index) => (
                 <div
                   key={index}
-                  className={cn('md:ml-10', index === 0 ? '' : 'absolute')}
-                  style={{
-                    rotate: `${index * 5}deg`,
-                    top: 0,
-                    left: 0,
-                    zIndex: 3 - index,
-                    scale: `${1 - index * 0.03}`,
-                  }}
+                  className={cn('md:ml-10 top-0 left-0', index === 0 ? '' : 'absolute')}
+                  style={{ rotate: `${index * 5}deg`, zIndex: 3 - index, scale: `${1 - index * 0.03}` }}
                 >
-                  <CharacterListItemDisplay character={character} className="z-10 w-96 shadow-2xl" />
+                  <CharacterListItemDisplay character={character} className="z-10 w-96 shadow-md dark:shadow-2xl" />
                 </div>
               ))}
             </div>
             <LandingSectionAside {...sectionLookup['unique-characters']} className="py-8" direction="reverse" />
           </section>
 
-          <section className="flex w-full flex-col justify-between gap-3 lg:flex-row">
+          <section className="flex w-full flex-col justify-between gap-12 lg:flex-row">
             <LandingSectionAside {...sectionLookup['character-journey']} className="mb-3" />
             <SlideOut>
               {shouldDisplayComponent ? (
@@ -116,7 +110,10 @@ const LandingPage = () => {
             </SlideOut>
           </section>
 
-          <footer className="mb-4 rounded-xl bg-stone-100 p-24 text-center text-2xl font-semibold shadow-lg dark:bg-zinc-900 lg:mb-8" />
+          <footer className="rounded-md bg-stone-100 p-8 text-center font-semibold shadow-sm dark:bg-zinc-900">
+            <p>&copy; 2024 Project Spellbook</p>
+            <p>All rights reserved.</p>
+          </footer>
         </div>
       </MaxWidthWrapper>
     </div>

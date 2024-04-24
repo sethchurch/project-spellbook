@@ -1,11 +1,12 @@
-import type { LinksFunction, MetaFunction } from '@remix-run/node';
-import { Links, Meta, Outlet, Scripts } from '@remix-run/react';
+import type { LinksFunction, LoaderFunctionArgs, MetaFunction } from '@remix-run/node';
+import { json, Links, Meta, Outlet, Scripts, useLoaderData } from '@remix-run/react';
 import type { PropsWithChildren } from 'react';
 
 import globalStyles from '@/styles/globals.css?url';
 
 import { Providers } from './components/Providers';
 import { AppConfig } from './config/AppConfig';
+import { getTheme } from './utils/theme.server';
 
 export const meta: MetaFunction = () => [
   { title: AppConfig.title },
@@ -17,9 +18,18 @@ export const links: LinksFunction = () => [
   { rel: 'icon', href: '/favicon.ico' },
 ];
 
+export const loader = async ({ request }: LoaderFunctionArgs) => {
+  return json({ userPrefs: { theme: getTheme(request) } });
+};
+
 export const Layout = ({ children }: PropsWithChildren) => {
+  const { userPrefs } = useLoaderData<typeof loader>();
+  const { theme } = userPrefs;
+
+  const themeClass = theme === 'dark' ? 'dark' : 'light';
+
   return (
-    <html className="dark" lang={AppConfig.locale}>
+    <html className={themeClass} lang={AppConfig.locale}>
       <head>
         <meta charSet="utf-8" />
         <meta content="width=device-width, initial-scale=1" name="viewport" />
@@ -41,3 +51,11 @@ export default function App() {
     </Providers>
   );
 }
+
+export const ErrorBoundary = () => {
+  return (
+    <div>
+      <h1>Oh no! An error occurred!</h1>
+    </div>
+  );
+};

@@ -9,7 +9,7 @@
     "build": "run-s build:*",
     "build:remix": "remix vite:build --sourcemapClient --sourcemapServer",
     "build:server": "tsx ./other/build-server.ts",
-    "test": "vitest",
+    "test:precommit": "vitest related --run",
     "test:ui": "vitest --ui --api 9527",
     "test:coverage": "vitest --coverage",
     "start": "netlify serve",

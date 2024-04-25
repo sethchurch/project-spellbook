@@ -5,18 +5,18 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node ./index.js",
     "build": "run-s build:*",
     "build:remix": "remix vite:build --sourcemapClient --sourcemapServer",
     "build:server": "tsx ./other/build-server.ts",
-    "test:precommit": "vitest related --run",
-    "test:ui": "vitest --ui --api 9527",
-    "test:coverage": "vitest --coverage",
-    "start": "netlify serve",
+    "db:init": "supabase init",
+    "db:start": "supabase start",
+    "dev": "node ./index.js",
     "lint": "eslint .",
-    "init-db": "supabase init",
-    "start-db": "supabase start",
-    "prepare": "husky"
+    "prepare": "husky",
+    "start": "netlify serve",
+    "test:coverage": "vitest --coverage",
+    "test:precommit": "vitest --run --changed HEAD~1",
+    "test:ui": "vitest --ui --api 9527"
   },
   "dependencies": {
     "@conform-to/react": "^1.1.2",

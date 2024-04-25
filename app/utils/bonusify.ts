@@ -1,9 +1,5 @@
 const bonusify = (value: number) => {
-  if (value < 0) {
-    return `${value}`;
-  }
-
-  return `+${value}`;
+  return value < 0 ? `${value}` : `+${value}`;
 };
 
 export { bonusify };

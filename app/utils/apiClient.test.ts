@@ -4,20 +4,16 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 import { client } from './apiClient';
 
-// const server = setupServer(
-//   http.get('/test', () => {
-//     return HttpResponse.json({ message: 'GET request successful' });
-//   }),
-//   http.post('/test', ({ request }) => {
-//     return HttpResponse.json({ message: 'POST request successful', data: request.body });
-//   }),
-//   http.get('/error', () => {
-//     return HttpResponse.error();
-//   }),
-// );
 const server = setupServer(
   http.get('http://localhost/test', () => {
     return HttpResponse.json({ message: 'GET request successful' });
+  }),
+  http.post('http://localhost/test', async ({ request }) => {
+    const body = await request.json();
+    return HttpResponse.json({ message: 'POST request successful', data: body });
+  }),
+  http.get('http://localhost/error', () => {
+    return HttpResponse.error();
   }),
 );
 
@@ -30,20 +26,19 @@ describe('client function', () => {
     expect(response).toEqual({ message: 'GET request successful' });
   });
 
-  it.todo('performs a POST request when data is provided', async () => {
+  it('performs a POST request when data is provided', async () => {
     const testData = { key: 'value' };
-    const response = await client('/test', { data: testData });
-    expect(response).toEqual({ message: 'POST request successful', data: JSON.stringify(testData) });
+    const response = await client('http://localhost/test', { data: testData });
+    expect(response).toEqual({ message: 'POST request successful', data: testData });
   });
 
-  it.todo('sends custom headers if provided', async () => {
+  it('sends custom headers if provided', async () => {
     const customHeaders = { 'X-Custom-Header': 'TestValue' };
-    const response = await client('/test', { headers: customHeaders });
-    // Assumption here is that MSW or your assertions can validate headers sent. This is a conceptual example.
+    const response = await client('http://localhost/test', { headers: customHeaders });
     expect(response).toEqual({ message: 'GET request successful' });
   });
 
-  it.todo.fails('handles errors correctly', async () => {
+  it.fails('handles errors correctly', async () => {
     await client('/error');
   });
 });

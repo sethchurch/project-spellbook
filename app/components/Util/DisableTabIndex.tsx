@@ -12,17 +12,13 @@ const DisableTabIndex = ({ children }: PropsWithChildren) => {
   const effectRanRef = useRef(false);
 
   useEffect(() => {
-    if (effectRanRef.current) return;
-    // Workaround for late load components
-    setTimeout(() => {
-      if (!componentRef.current) return;
-      const parent = componentRef.current as HTMLElement;
-      const focusableElements = parent.querySelectorAll(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
-      );
-      focusableElements.forEach(disableTabIndex);
-      effectRanRef.current = true;
-    }, 10);
+    if (effectRanRef.current || !componentRef.current) return;
+    const parent = componentRef.current as HTMLElement;
+    const focusableElements = parent.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+    );
+    focusableElements.forEach(disableTabIndex);
+    effectRanRef.current = true;
   }, []);
 
   return <div ref={componentRef}>{children}</div>;

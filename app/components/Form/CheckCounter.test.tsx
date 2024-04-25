@@ -1,6 +1,6 @@
 import { Input } from '@nextui-org/input';
 import { FormProvider, useForm } from 'react-hook-form';
-import { act, render } from 'test/utils';
+import { act, render } from 'tests/utils';
 
 import { CheckCounter } from './CheckCounter';
 

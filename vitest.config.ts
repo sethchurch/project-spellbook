@@ -13,7 +13,7 @@ export default defineConfig({
   test: {
     globals: true,
     include: ['./app/**/*.test.{ts,tsx}'],
-    setupFiles: ['./test/setup.ts'],
+    setupFiles: ['./tests/setup/setup-test-env.ts'],
     environmentMatchGlobs: [
       ['**/*.test.tsx', 'jsdom'],
       ['**/*.component.test.ts', 'happy-dom'],

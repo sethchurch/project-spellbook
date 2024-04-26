@@ -1,11 +1,19 @@
 import { Button } from '@nextui-org/button';
-import { Link, Outlet } from '@remix-run/react';
+import { Tab } from '@nextui-org/tabs';
+import { Link, Outlet, useMatch, useNavigate } from '@remix-run/react';
 import { IconChevronLeft } from '@tabler/icons-react';
+import type { Key } from 'react';
 
+import { TabList } from '@/components/Elements/TabList';
+import { TabTitle } from '@/components/Elements/TabTitle';
 import { ToggleThemeButton } from '@/components/Elements/ToggleThemeButton';
 import { MaxWidthWrapper } from '@/components/Layout/MaxWidthWrapper';
 
 const AuthLayout = () => {
+  const navigate = useNavigate();
+  const navigateOnTabClick = (key: Key) => navigate(`/${key}`);
+  const currentTab = useMatch('/login') ? 'login' : 'register';
+
   return (
     <MaxWidthWrapper>
       <div className="relative grid h-screen w-full grid-cols-[1fr_10fr_1fr] items-center justify-center py-6 lg:grid-cols-[1fr_2fr_1fr] xl:grid-cols-3">
@@ -15,6 +23,10 @@ const AuthLayout = () => {
           </Button>
         </Link>
         <div className="z-10 col-start-2">
+          <TabList defaultTab={currentTab} onSelectionChange={navigateOnTabClick}>
+            <Tab key="login" title={<TabTitle label="Login" size="lg" styleVariant="alt" />} />
+            <Tab key="register" title={<TabTitle label="Sign Up" size="lg" styleVariant="alt" />} />
+          </TabList>
           <Outlet />
         </div>
         <ToggleThemeButton className="self-start" variant="shadow" />

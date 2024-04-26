@@ -1,4 +1,4 @@
-import { toArray } from './toArray';
+import { camelCase, capitalize, toArray } from './misc';
 
 describe('toArray', () => {
   it('returns the array unchanged if the input is an array', () => {
@@ -41,5 +41,37 @@ describe('toArray', () => {
     const inputObject = { key: 'value' };
     const result = toArray(inputObject);
     expect(result).toEqual([inputObject]);
+  });
+});
+
+describe('capitalize', () => {
+  it('should capitalize a single word', () => {
+    expect(capitalize('hello')).toBe('Hello');
+  });
+
+  it('should capitalize multiple words', () => {
+    expect(capitalize('hello world')).toBe('Hello World');
+  });
+
+  it('should capitalize a single letter', () => {
+    expect(capitalize('h')).toBe('H');
+  });
+
+  it('should handle empty strings', () => {
+    expect(capitalize('')).toBe('');
+  });
+});
+
+describe('camelCase', () => {
+  it('Should return an empty string if given an empty string', () => {
+    expect(camelCase('')).toBe('');
+  });
+
+  it('Should return a string with no spaces', () => {
+    expect(camelCase('this is a test')).toBe('thisIsATest');
+  });
+
+  it('Should return a string with no spaces and all lowercase', () => {
+    expect(camelCase('This Is A Test')).toBe('thisIsATest');
   });
 });

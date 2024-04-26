@@ -9,9 +9,9 @@ import { Textarea } from '@/components/Form/Textarea';
 import { DiscardModal } from '@/components/Modal/DiscardModal';
 import type { Attack } from '@/config/CharacterConfig';
 import { AddEditButtons } from '@/features/characters/components/AddEditButtons';
+import { bonusify } from '@/features/characters/utils/characterUtils';
 import { useEditableAccordion } from '@/hooks/useEditableAccordion';
 import { useFormList } from '@/hooks/useFormList';
-import { bonusify } from '@/utils/bonusify';
 
 import { SpellList } from '../../SpellsTab/SpellList';
 

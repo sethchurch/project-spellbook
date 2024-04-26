@@ -60,7 +60,15 @@ const Input = ({ styleVariant, ...props }: InputProps) => {
     };
   }, [handleKeyDown]);
 
-  return <NextFormInput classNames={styleVariants[styleVariant ?? 'default']} radius="sm" {...props} ref={inputRef} />;
+  return (
+    <NextFormInput
+      classNames={styleVariants[styleVariant ?? 'default']}
+      isInvalid={!!props.errorMessage}
+      radius="sm"
+      {...props}
+      ref={inputRef}
+    />
+  );
 };
 
 export { Input };

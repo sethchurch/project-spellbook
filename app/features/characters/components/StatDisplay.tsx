@@ -4,8 +4,7 @@ import { useFormContext } from 'react-hook-form';
 import type { PodProps } from '@/components/Elements/Pod';
 import { Pod } from '@/components/Elements/Pod';
 import { FormInput } from '@/components/Form/FormInput';
-import { bonusify } from '@/utils/bonusify';
-import { calcStatBonus } from '@/utils/calcStatBonus';
+import { bonusify, calcStatBonus } from '@/features/characters/utils/characterUtils';
 
 interface StatDisplayProps extends PodProps {
   statIndex: number;

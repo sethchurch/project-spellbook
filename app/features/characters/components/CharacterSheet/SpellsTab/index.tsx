@@ -5,10 +5,8 @@ import { useFormContext } from 'react-hook-form';
 
 import { Pod } from '@/components/Elements/Pod';
 import { FormSelect } from '@/components/Form/FormSelect';
+import { bonusify, calcStatBonus, getProficencyBonus } from '@/features/characters/utils/characterUtils';
 import { StatIndex, useFormStat } from '@/hooks/useFormStat';
-import { bonusify } from '@/utils/bonusify';
-import { calcStatBonus } from '@/utils/calcStatBonus';
-import { getProficencyBonus } from '@/utils/getProficencyBonus';
 
 import { SpellList } from './SpellList';
 import { spellStatOptions } from './spellTabConfig';

@@ -8,6 +8,7 @@ interface ResetPasswordModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
+
 const ResetPasswordModal = ({ isOpen, onClose }: ResetPasswordModalProps) => {
   const methods = useForm<{ email: string }>({ mode: 'onChange' });
 

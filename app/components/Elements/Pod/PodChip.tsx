@@ -8,6 +8,7 @@ interface PodChipProps {
   startContent?: React.ReactNode;
 }
 
+// TODO - make this just a chip variant
 const PodChip = ({ children, className, startContent }: PodChipProps) => {
   return (
     <Chip

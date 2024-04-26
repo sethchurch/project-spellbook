@@ -1,5 +1,3 @@
-'use client';
-
 import { Controller, useFormContext } from 'react-hook-form';
 
 import { FormInput } from '@/components/Form/FormInput';

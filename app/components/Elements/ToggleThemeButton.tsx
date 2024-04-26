@@ -4,13 +4,8 @@ import type { ButtonProps } from '@/components/Elements/Button';
 import { Button } from '@/components/Elements/Button';
 import { Icon } from '@/components/Elements/Icon';
 import { useTheme } from '@/hooks/useTheme';
-import { cn } from '@/utils/cn';
 
-interface ToggleThemeButtonProps extends ButtonProps {
-  className?: string;
-}
-
-const ToggleThemeButton = ({ ...props }: ToggleThemeButtonProps) => {
+const ToggleThemeButton = ({ ...props }: ButtonProps) => {
   const theme = useTheme();
   const fetcher = useFetcher();
 
@@ -19,7 +14,7 @@ const ToggleThemeButton = ({ ...props }: ToggleThemeButtonProps) => {
   return (
     <fetcher.Form action="/resources/theme" method="post">
       <input name="theme" type="hidden" value={nextTheme} />
-      <Button isIconOnly className={cn('justify-self-end', props.className)} type="submit">
+      <Button isIconOnly {...props} type="submit">
         <Icon icon={theme === 'light' ? 'moon' : 'sun'} />
       </Button>
     </fetcher.Form>

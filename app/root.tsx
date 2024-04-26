@@ -4,9 +4,9 @@ import type { PropsWithChildren } from 'react';
 
 import globalStyles from '@/styles/globals.css?url';
 
+import { getTheme } from './.server/theme';
 import { Providers } from './components/Providers';
 import { AppConfig } from './config/AppConfig';
-import { getTheme } from './utils/theme.server';
 
 export const meta: MetaFunction = () => [
   { title: AppConfig.title },
@@ -14,7 +14,7 @@ export const meta: MetaFunction = () => [
 ];
 
 export const links: LinksFunction = () => [
-  { rel: 'stylesheet', href: globalStyles },
+  { rel: 'stylesheet', href: globalStyles, as: 'style' },
   { rel: 'icon', href: '/favicon.ico' },
 ];
 

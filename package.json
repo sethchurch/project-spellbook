@@ -10,6 +10,7 @@
     "build:server": "tsx ./other/build-server.ts",
     "db:init": "supabase init",
     "db:start": "supabase start",
+    "db:generate": "prisma generate",
     "db:stop": "supabase stop",
     "dev": "node --inspect ./index.js",
     "lint": "eslint .",

@@ -1,8 +1,15 @@
+import type { AuthError } from '@supabase/supabase-js';
+
 import { getSupabaseAdmin } from '@/integrations/supabase.server';
 import { SERVER_URL } from '@/utils/env';
 
 import type { AuthSession } from '../types';
 import { mapAuthSession } from './map.server';
+
+const supabaseErrorHandler = (error: AuthError | null) => {
+  if (error) console.error(error); // TODO: add sentry capturing
+  return null;
+};
 
 export async function createEmailAuthAccount(email: string, password: string) {
   const { data, error } = await getSupabaseAdmin().auth.admin.createUser({
@@ -11,7 +18,7 @@ export async function createEmailAuthAccount(email: string, password: string) {
     email_confirm: true, // TODO: demo purpose, assert that email is confirmed. For production, check email confirmation
   });
 
-  if (!data.user || error) return null;
+  if (!data.user || error) return supabaseErrorHandler(error);
 
   return data.user;
 }
@@ -22,7 +29,7 @@ export async function signInWithEmail(email: string, password: string) {
     password,
   });
 
-  if (!data.session || error) return null;
+  if (!data.session || error) return supabaseErrorHandler(error);
 
   return mapAuthSession(data.session);
 }
@@ -45,7 +52,7 @@ export async function sendResetPasswordLink(email: string) {
 export async function updateAccountPassword(id: string, password: string) {
   const { data, error } = await getSupabaseAdmin().auth.admin.updateUserById(id, { password });
 
-  if (!data.user || error) return null;
+  if (!data.user || error) return supabaseErrorHandler(error);
 
   return data.user;
 }
@@ -61,7 +68,7 @@ export async function deleteAuthAccount(userId: string) {
 export async function getAuthAccountByAccessToken(accessToken: string) {
   const { data, error } = await getSupabaseAdmin().auth.getUser(accessToken);
 
-  if (!data.user || error) return null;
+  if (!data.user || error) return supabaseErrorHandler(error);
 
   return data.user;
 }
@@ -73,7 +80,7 @@ export async function refreshAccessToken(refreshToken?: string): Promise<AuthSes
     refresh_token: refreshToken,
   });
 
-  if (!data.session || error) return null;
+  if (!data.session || error) return supabaseErrorHandler(error);
 
   return mapAuthSession(data.session);
 }

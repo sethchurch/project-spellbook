@@ -10,6 +10,8 @@ import { Button } from '@/components/Elements/Button';
 import { Input } from '@/components/Elements/Input';
 import { BasicErrorBoundary } from '@/components/Layout/ErrorBoundary';
 import { ResetPasswordModal } from '@/features/auth';
+import { createAuthSession } from '@/features/auth/utils/session.server';
+import { createUserAccount, getUserByEmail } from '@/features/users';
 
 const RegisterFormSchema = z
   .object({
@@ -32,16 +34,24 @@ export const action: ActionFunction = async ({ request }: ActionFunctionArgs) =>
 
   const { email, password } = submission.value;
 
-  // const existingUser = await getUserByEmail(email);
+  const existingUser = await getUserByEmail(email);
 
-  // if (existingUser) {
-  //   return redirect(`/register?error=${encodeURIComponent('User already exists')}`);
-  // }
+  if (existingUser) {
+    return redirect(`/register?error=${encodeURIComponent('User already exists')}`);
+  }
 
-  const authSession = await createUser(email, password);
+  const authSession = await createUserAccount(email, password);
 
-  const successMessage = 'You have successfully registered. Please check your email to verify your account.';
-  return redirect(`/register?message=${encodeURIComponent(successMessage)}`);
+  if (!authSession) {
+    return redirect(`/register?error=${encodeURIComponent('Failed to create user')}`);
+  }
+
+  return createAuthSession({
+    request,
+    authSession,
+    // TODO: add additional redirect options
+    redirectTo: '/tavern',
+  });
 };
 
 const RegisterForm = () => {

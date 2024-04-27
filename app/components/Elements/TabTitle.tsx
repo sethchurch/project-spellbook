@@ -28,7 +28,7 @@ const TabTitle = ({ children, styleVariant, size, label }: TabTitleProps) => {
         styleVariants[styleVariant ?? 'default'],
       )}
     >
-      {label || children}
+      {label ?? children}
     </div>
   );
 };

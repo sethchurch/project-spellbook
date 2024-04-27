@@ -35,7 +35,7 @@ const Textarea = ({ name, placeholder, styleVariant, className, ...props }: Text
   return (
     <Controller
       control={control}
-      name={name || 'name'}
+      name={name ?? 'name'}
       render={({ field }) => (
         <NextTextarea
           className={cn(className)}

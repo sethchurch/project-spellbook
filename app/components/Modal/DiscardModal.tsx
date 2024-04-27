@@ -25,7 +25,7 @@ const DiscardModal = ({ body, cancelAction, confirmAction, isOpen, title, onClos
     <Modal isDismissable isOpen={isOpen} placement="center" size="md" onClose={handleCancelAction}>
       <ModalContent>
         <ModalHeader className="px-6">{title}</ModalHeader>
-        <ModalBody className="px-6 py-3">{body || 'Are you sure you want to delete this?'}</ModalBody>
+        <ModalBody className="px-6 py-3">{body ?? 'Are you sure you want to delete this?'}</ModalBody>
         <ModalFooter>
           <Button onClick={handleCancelAction}>Cancel</Button>
           <Button color="danger" onClick={handleConfirmAction}>

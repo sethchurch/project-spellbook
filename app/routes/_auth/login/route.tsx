@@ -1,43 +1,44 @@
 import { useForm } from '@conform-to/react';
 import { parseWithZod } from '@conform-to/zod';
 import { Divider, useDisclosure } from '@nextui-org/react';
-import { Form, useActionData } from '@remix-run/react';
+import type { ActionFunction, ActionFunctionArgs } from '@remix-run/node';
+import { Form, json, useActionData } from '@remix-run/react';
 import { z } from 'zod';
 
 import { Button } from '@/components/Elements/Button';
 import { Input } from '@/components/Elements/Input';
 import { ResetPasswordModal } from '@/features/auth';
+import { signInWithEmail } from '@/features/auth/utils/service.server';
+import { createAuthSession } from '@/features/auth/utils/session.server';
 
 const LoginFormSchema = z.object({
   email: z.string().email(),
   password: z.string().min(6),
 });
 
-// export const action: ActionFunction = async ({ request }: ActionFunctionArgs) => {
-//   const requestUrl = new URL(request.url);
-//   const { supabase } = createClient({ request });
-//   const formData = await request.formData();
-//   const submission = parseWithZod(formData, { schema: LoginFormSchema });
+export const action: ActionFunction = async ({ request }: ActionFunctionArgs) => {
+  const formData = await request.formData();
+  const submission = parseWithZod(formData, { schema: LoginFormSchema });
 
-//   if (submission.status !== 'success') {
-//     return json(submission.reply());
-//   }
+  if (submission.status !== 'success') {
+    return json(submission.reply());
+  }
 
-//   const { email, password } = submission.value;
+  const { email, password } = submission.value;
 
-//   const { error } = await supabase.auth.signUp({
-//     email,
-//     password,
-//     options: { emailRedirectTo: `${requestUrl.origin}/api/auth/callback` },
-//   });
+  const authSession = await signInWithEmail(email, password);
 
-//   if (error) {
-//     return redirect(`/register?error=${error.message}`);
-//   }
+  if (!authSession) {
+    return json({ status: 'error', message: 'Failed to login' });
+  }
 
-//   const successMessage = 'You have successfully registered. Please check your email to verify your account.';
-//   return redirect(`/register?message=${encodeURIComponent(successMessage)}`);
-// };
+  return createAuthSession({
+    request,
+    authSession,
+    // TODO: add additional redirect options
+    redirectTo: '/tavern',
+  });
+};
 
 const LoginForm = () => {
   const lastResult = useActionData<typeof action>();

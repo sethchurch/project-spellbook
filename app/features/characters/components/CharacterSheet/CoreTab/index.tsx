@@ -1,5 +1,4 @@
 import { Chip } from '@nextui-org/chip';
-import { camelCase } from 'lodash';
 import { useFormContext } from 'react-hook-form';
 
 import { Pod, PodChip, PodResource } from '@/components/Elements/Pod';
@@ -7,6 +6,7 @@ import { FormCheck } from '@/components/Form/FormCheck';
 import { FormInput } from '@/components/Form/FormInput';
 import { Textarea } from '@/components/Form/Textarea';
 import { getProficencyBonus } from '@/features/characters/utils/characterUtils';
+import { camelCase } from '@/utils/misc';
 
 import { StatDisplay } from '../../StatDisplay';
 import { CoreTabs } from './CoreTabs';

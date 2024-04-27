@@ -4,12 +4,15 @@ import { Link, Outlet, useMatch, useNavigate } from '@remix-run/react';
 import { IconChevronLeft } from '@tabler/icons-react';
 import type { Key } from 'react';
 
+import { Pod } from '@/components/Elements/Pod';
 import { TabList } from '@/components/Elements/TabList';
 import { TabTitle } from '@/components/Elements/TabTitle';
 import { ToggleThemeButton } from '@/components/Elements/ToggleThemeButton';
 import { MaxWidthWrapper } from '@/components/Layout/MaxWidthWrapper';
+import { useToastMessages } from '@/hooks/useToastMessages';
 
 const AuthLayout = () => {
+  useToastMessages('auth');
   const navigate = useNavigate();
   const navigateOnTabClick = (key: Key) => navigate(`/${key}`);
   const currentTab = useMatch('/login') ? 'login' : 'register';
@@ -27,7 +30,11 @@ const AuthLayout = () => {
             <Tab key="login" title={<TabTitle label="Login" size="lg" styleVariant="alt" />} />
             <Tab key="register" title={<TabTitle label="Sign Up" size="lg" styleVariant="alt" />} />
           </TabList>
-          <Outlet />
+          <Pod className="rounded-t-none" variant="alt">
+            <div className="p-3 text-center lg:px-12 lg:py-6">
+              <Outlet />
+            </div>
+          </Pod>
         </div>
         <ToggleThemeButton className="self-start" variant="shadow" />
         <div className="absolute left-1/2 top-1/2 h-24 w-full -translate-x-1/2 translate-y-[-40%] rounded-full bg-stone-200 dark:bg-zinc-800 lg:h-32 lg:w-3/5" />

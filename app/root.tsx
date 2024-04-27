@@ -4,9 +4,9 @@ import type { PropsWithChildren } from 'react';
 
 import globalStyles from '@/styles/globals.css?url';
 
-import { getTheme } from './.server/theme';
 import { Providers } from './components/Providers';
 import { AppConfig } from './config/AppConfig';
+import { getTheme } from './utils/theme.server';
 
 export const meta: MetaFunction = () => [
   { title: AppConfig.title },

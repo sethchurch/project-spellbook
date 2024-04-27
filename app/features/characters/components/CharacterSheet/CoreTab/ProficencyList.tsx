@@ -3,13 +3,13 @@
 import { Checkbox } from '@nextui-org/checkbox';
 import { Chip } from '@nextui-org/chip';
 import { IconLetterE, IconLetterP } from '@tabler/icons-react';
-import { capitalize, toArray } from 'lodash';
 import type React from 'react';
 import { useFormContext } from 'react-hook-form';
 
 import { PodChip } from '@/components/Elements/Pod';
 import type { Proficiency, ProficientOrExpertList } from '@/config/CharacterConfig';
 import { bonusify, getProficencyBonus } from '@/features/characters/utils/characterUtils';
+import { capitalize, toArray } from '@/utils/misc';
 
 interface ProficencyListProps {
   proficencyData: Proficiency[];

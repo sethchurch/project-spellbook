@@ -15,7 +15,7 @@ export const client = async (endpoint: string, { data, headers: customHeaders }:
   };
 
   return fetch(endpoint, config).then(async (response) => {
-    const json = await response.json();
+    const json = (await response.json()) as { error: string; ok: boolean; data: any };
     if (response.ok) {
       return json;
     }

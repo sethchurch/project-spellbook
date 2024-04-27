@@ -31,3 +31,5 @@ export const camelCase = (str: string) => {
 
   return strMap.join('');
 };
+
+export const isBrowser = typeof document !== 'undefined' && typeof process === 'undefined';

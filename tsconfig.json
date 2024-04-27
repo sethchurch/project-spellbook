@@ -45,5 +45,5 @@
 		"types": ["vitest/globals", "@testing-library/jest-dom"]
   },
   "exclude": ["./out/**/*", "./node_modules/**/*", "./build/**/*"],
-  "include": ["**/*.ts", "**/*.tsx"]
+  "include": ["**/*.ts", "**/*.tsx", "app/.server/supabase.ts"]
 }

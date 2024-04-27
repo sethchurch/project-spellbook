@@ -1,6 +1,6 @@
 import { camelCase, capitalize, toArray } from './misc';
 
-describe('toArray', () => {
+describe(toArray.name, () => {
   it('returns the array unchanged if the input is an array', () => {
     const inputArray = [1, 2, 3];
     const result = toArray(inputArray);
@@ -44,7 +44,7 @@ describe('toArray', () => {
   });
 });
 
-describe('capitalize', () => {
+describe(capitalize.name, () => {
   it('should capitalize a single word', () => {
     expect(capitalize('hello')).toBe('Hello');
   });
@@ -62,7 +62,7 @@ describe('capitalize', () => {
   });
 });
 
-describe('camelCase', () => {
+describe(camelCase.name, () => {
   it('Should return an empty string if given an empty string', () => {
     expect(camelCase('')).toBe('');
   });

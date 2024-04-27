@@ -1,6 +1,6 @@
 import { debounce } from './debounce';
 
-describe('debounce', () => {
+describe(debounce.name, () => {
   const mockFunction = vi.fn();
 
   beforeEach(() => {

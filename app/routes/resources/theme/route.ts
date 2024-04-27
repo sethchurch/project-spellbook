@@ -3,7 +3,7 @@ import type { ActionFunction, ActionFunctionArgs } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { z } from 'zod';
 
-import { setTheme } from '@/.server/theme';
+import { setTheme } from '@/utils/theme.server';
 
 const ThemeFormSchema = z.object({
   theme: z.enum(['light', 'dark']),

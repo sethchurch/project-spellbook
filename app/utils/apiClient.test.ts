@@ -17,7 +17,7 @@ const server = setupServer(
   }),
 );
 
-describe('client function', () => {
+describe(client.name, () => {
   beforeAll(() => server.listen());
   afterAll(() => server.close());
 

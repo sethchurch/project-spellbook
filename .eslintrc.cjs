@@ -61,6 +61,7 @@ module.exports = {
         'unused-imports',
         'tailwindcss',
         'simple-import-sort',
+        'prettier',
       ],
       extends: [
         'plugin:tailwindcss/recommended',
@@ -99,6 +100,7 @@ module.exports = {
             reservedFirst: true,
           },
         ],
+        '@typescript-eslint/no-throw-literal': 'off',
         '@typescript-eslint/no-unused-vars': 'off',
         '@typescript-eslint/prefer-nullish-coalescing': 'error',
         '@typescript-eslint/comma-dangle': 'off', // Avoid conflict rule between Eslint and Prettier

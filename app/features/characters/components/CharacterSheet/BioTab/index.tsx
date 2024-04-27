@@ -1,12 +1,10 @@
-'use client';
-
 import { useFormContext } from 'react-hook-form';
 
 import { Pod } from '@/components/Elements/Pod';
 import { FormInput } from '@/components/Form/FormInput';
 import { Textarea } from '@/components/Form/Textarea';
 import { CharacterImageEditButton } from '@/features/characters/components/CharacterImageEditButton';
-import { camelCase } from '@/utils/camelCase';
+import { camelCase } from '@/utils/misc';
 
 const BioTab = () => {
   const { getValues } = useFormContext();

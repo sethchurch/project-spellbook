@@ -1,6 +1,6 @@
 import { fuzzyParseJSON } from './fuzzyParseJSON';
 
-describe('fuzzyParseJSON', () => {
+describe(fuzzyParseJSON.name, () => {
   it('parses valid JSON correctly', () => {
     const jsonString = '{"key": "value", "number": 123}';
     const result = fuzzyParseJSON(jsonString);

@@ -40,5 +40,11 @@
   },
   "[postcss]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  }
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+	"[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
 }

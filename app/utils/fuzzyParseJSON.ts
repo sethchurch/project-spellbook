@@ -1,5 +1,5 @@
 /* eslint-disable no-case-declarations */
-export const fuzzyParseJSON = <TObject = {}>(text: string): TObject | undefined => {
+export const fuzzyParseJSON = <TObject extends object = {}>(text: string): TObject | undefined => {
   const startBrace = text.indexOf('{');
   if (startBrace >= 0) {
     // Find substring
@@ -73,7 +73,7 @@ export const fuzzyParseJSON = <TObject = {}>(text: string): TObject | undefined 
 
     // Parse cleaned up object
     try {
-      const obj = JSON.parse(cleaned);
+      const obj = JSON.parse(cleaned) as TObject;
       return Object.keys(obj).length > 0 ? obj : undefined;
     } catch (err) {
       return undefined;

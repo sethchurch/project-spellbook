@@ -1,5 +1,5 @@
 import OpenAI from 'openai';
-import type { ChatCompletion } from 'openai/resources';
+import type { ChatCompletion } from 'openai/resources/index.mjs';
 
 export const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 

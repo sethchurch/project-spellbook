@@ -55,7 +55,7 @@ const LandingPage = () => {
     <div className="flex min-h-screen w-full flex-col items-center bg-zinc-200/80 dark:bg-transparent">
       <MaxWidthWrapper>
         <div className="flex flex-col gap-4 overflow-hidden p-0 md:gap-16 md:p-3 lg:gap-20">
-          <LandingNav className="py-3" isLoggedIn={false} />
+          <LandingNav className="py-3" />
 
           <section className="flex w-full flex-col justify-between gap-12 lg:flex-row">
             <LandingSectionAside {...sectionLookup['character-storage']} className="mb-3" />

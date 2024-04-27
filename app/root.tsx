@@ -2,11 +2,12 @@ import type { LinksFunction, LoaderFunctionArgs, MetaFunction } from '@remix-run
 import { json, Links, Meta, Outlet, Scripts, useLoaderData } from '@remix-run/react';
 import type { PropsWithChildren } from 'react';
 
+import { BasicErrorBoundary } from '@/components/Layout/ErrorBoundary';
+import { Providers } from '@/components/Providers';
+import { AppConfig } from '@/config/AppConfig';
+import { getAuthSession } from '@/features/auth/utils/session.server';
 import globalStyles from '@/styles/globals.css?url';
-
-import { Providers } from './components/Providers';
-import { AppConfig } from './config/AppConfig';
-import { getTheme } from './utils/theme.server';
+import { getTheme } from '@/utils/theme.server';
 
 export const meta: MetaFunction = () => [
   { title: AppConfig.title },
@@ -19,7 +20,8 @@ export const links: LinksFunction = () => [
 ];
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  return json({ userPrefs: { theme: getTheme(request) } });
+  const session = await getAuthSession(request);
+  return json({ userPrefs: { theme: getTheme(request) }, session });
 };
 
 export const Layout = ({ children }: PropsWithChildren) => {
@@ -53,9 +55,5 @@ export default function App() {
 }
 
 export const ErrorBoundary = () => {
-  return (
-    <div>
-      <h1>Oh no! An error occurred!</h1>
-    </div>
-  );
+  return <BasicErrorBoundary />;
 };

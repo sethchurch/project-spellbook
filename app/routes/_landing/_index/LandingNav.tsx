@@ -3,14 +3,13 @@ import { Link } from '@remix-run/react';
 import { IconWand } from '@tabler/icons-react';
 
 import { ToggleThemeButton } from '@/components/Elements/ToggleThemeButton';
+import { useOptionalSession } from '@/features/auth';
 import type { PropsWithClassName } from '@/types/propTypes';
 
-interface LandingNavProps extends PropsWithClassName {
-  isLoggedIn?: boolean;
-}
-
 // TODO add login auth
-const LandingNav = ({ isLoggedIn, className }: LandingNavProps) => {
+const LandingNav = ({ className }: PropsWithClassName) => {
+  const session = useOptionalSession();
+
   return (
     <div className={className}>
       <div className="flex w-full items-center justify-between">
@@ -19,7 +18,7 @@ const LandingNav = ({ isLoggedIn, className }: LandingNavProps) => {
           <p className="text-lg">Project Spellbook</p>
         </div>
         <div className="flex items-center gap-3">
-          {!isLoggedIn ? (
+          {!session ? (
             <Link to="/login">
               <Button className="px-6 font-bold shadow-2xl" radius="sm">
                 Login

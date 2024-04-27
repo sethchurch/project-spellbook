@@ -55,15 +55,13 @@ export async function commitAuthSession(
   return sessionStorage.commitSession(session, { maxAge: SESSION_MAX_AGE });
 }
 
-export async function createAuthSession({
-  request,
-  authSession,
-  redirectTo,
-}: {
+type CreateAuthSessonArgs = {
   request: Request;
   authSession: AuthSession;
   redirectTo: string;
-}) {
+};
+
+export async function createAuthSession({ request, authSession, redirectTo }: CreateAuthSessonArgs) {
   return redirect(safeRedirect(redirectTo), {
     headers: {
       'Set-Cookie': await commitAuthSession(request, {
@@ -144,7 +142,6 @@ async function refreshAuthSession(request: Request): Promise<AuthSession> {
     });
   }
 
-  // we can't redirect because we are in an action, so, deal with it and don't forget to handle session commit 👮‍♀️
   return refreshedAuthSession;
 }
 
@@ -170,16 +167,12 @@ export async function requireAuthSession(
     onFailRedirectTo,
   });
 
-  // ok, let's challenge its access token.
   // by default, we don't verify the access token from supabase auth api to save some time
   const isValidSession = verify ? await verifyAuthSession(authSession) : true;
 
-  // damn, access token is not valid or expires soon
-  // let's try to refresh, in case of 🧐
   if (!isValidSession || isExpiringSoon(authSession.expiresAt)) {
     return refreshAuthSession(request);
   }
 
-  // finally, we have a valid session, let's return it
   return authSession;
 }

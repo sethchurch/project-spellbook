@@ -82,9 +82,17 @@ const LandingPage = () => {
                 <div
                   key={index}
                   className={cn('md:ml-10 top-0 left-0', index === 0 ? '' : 'absolute')}
-                  style={{ rotate: `${index * 5}deg`, zIndex: 3 - index, scale: `${1 - index * 0.03}` }}
+                  style={{
+                    rotate: `${index * 5}deg`,
+                    zIndex: index - 1,
+                    scale: `${1 - index * 0.03}`,
+                    left: shouldDisplayComponent ? `${index * 5}vw` : 0,
+                  }}
                 >
-                  <CharacterListItemDisplay character={character} className="z-10 w-96 shadow-md dark:shadow-2xl" />
+                  <CharacterListItemDisplay
+                    character={character}
+                    className="z-10 h-96 w-64 shadow-md dark:shadow-2xl sm:h-fit sm:w-80 md:w-96"
+                  />
                 </div>
               ))}
             </div>

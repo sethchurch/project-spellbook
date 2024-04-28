@@ -77,10 +77,10 @@ export async function getAuthSession(request: Request): Promise<AuthSession | nu
   return session.get(SESSION_KEY);
 }
 
-export async function destroyAuthSession(request: Request) {
+export async function destroyAuthSession(request: Request, { redirectTo }: { redirectTo?: string } = {}) {
   const session = await getSession(request);
 
-  return redirect('/', {
+  return redirect(redirectTo ?? '/', {
     headers: {
       'Set-Cookie': await sessionStorage.destroySession(session),
     },

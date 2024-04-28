@@ -6,7 +6,6 @@ import { ToggleThemeButton } from '@/components/Elements/ToggleThemeButton';
 import { useOptionalSession } from '@/features/auth';
 import type { PropsWithClassName } from '@/types/propTypes';
 
-// TODO add login auth
 const LandingNav = ({ className }: PropsWithClassName) => {
   const session = useOptionalSession();
 

@@ -1,18 +1,14 @@
-'use client';
-
 import { Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@nextui-org/react';
 import { useNavigate } from '@remix-run/react';
 
-// import { useAuth } from '@/hooks/useAuth';
+import { useOptionalSession } from '@/features/auth';
 
 const ProfileDropdown = () => {
   const navigate = useNavigate();
 
-  // todo fix remix
-  // const isAuthenticated = useAuth((state) => state.authenticated);
-  // const signOut = useAuth((state) => state.signOut);
-  const isAuthenticated = false;
+  const session = useOptionalSession();
   const routeToLogin = () => navigate('/login');
+  const routeToLogout = () => navigate('/logout');
 
   return (
     <Dropdown title="Profile Dropdown">
@@ -21,8 +17,8 @@ const ProfileDropdown = () => {
         <Avatar isBordered radius="md" />
       </DropdownTrigger>
       <DropdownMenu aria-label="options dropdown">
-        {isAuthenticated ? (
-          <DropdownItem key="logout" color="danger" onClick={signOut}>
+        {session ? (
+          <DropdownItem key="logout" color="danger" onClick={routeToLogout}>
             Log Out
           </DropdownItem>
         ) : (

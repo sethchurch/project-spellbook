@@ -14,3 +14,4 @@ export const render = (ui: ReactElement, options?: RenderOptions): RenderResult 
     user: userEvent.setup(),
   };
 };
+

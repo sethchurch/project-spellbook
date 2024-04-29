@@ -1,14 +1,15 @@
+import { BASE_URL } from 'tests/constants';
+
 import {
   getCurrentPath,
   getRedirectTo,
+  isDelete,
   isGet,
   isPost,
   makeRedirectToFromHere,
   notFound,
   safeRedirect,
 } from './http.server';
-
-const BASE_URL = 'https://my-app.com';
 
 describe(getCurrentPath.name, () => {
   it('should return current request url path', () => {
@@ -61,6 +62,19 @@ describe(isPost.name, () => {
 
   it('should return true for POST method', async () => {
     expect(isPost(new Request(BASE_URL, { method: 'POST' }))).toBeTruthy();
+  });
+});
+
+describe(isDelete.name, () => {
+  it('should return false for GET / PUT / PATCH / POST methods', () => {
+    expect(isDelete(new Request(BASE_URL, { method: 'GET' }))).toBeFalsy();
+    expect(isDelete(new Request(BASE_URL, { method: 'PUT' }))).toBeFalsy();
+    expect(isDelete(new Request(BASE_URL, { method: 'PATCH' }))).toBeFalsy();
+    expect(isDelete(new Request(BASE_URL, { method: 'POST' }))).toBeFalsy();
+  });
+
+  it('should return true for DELETE method', async () => {
+    expect(isDelete(new Request(BASE_URL, { method: 'DELETE' }))).toBeTruthy();
   });
 });
 

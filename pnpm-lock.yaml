@@ -223,6 +223,9 @@ devDependencies:
   '@remix-run/dev':
     specifier: ^2.8.1
     version: 2.9.0(@remix-run/react@2.9.0)(@remix-run/serve@2.9.0)(@types/node@20.6.2)(bufferutil@4.0.8)(typescript@5.2.2)(vite@5.2.10)
+  '@remix-run/testing':
+    specifier: ^2.9.1
+    version: 2.9.1(react-dom@18.3.0)(react@18.3.0)(typescript@5.2.2)
   '@testing-library/jest-dom':
     specifier: ^6.4.2
     version: 6.4.2(vitest@1.5.0)
@@ -4975,6 +4978,25 @@ packages:
       typescript: 5.2.2
       undici: 6.14.1
 
+  /@remix-run/node@2.9.1(typescript@5.2.2):
+    resolution: {integrity: sha512-shicVsSmXepj4zotWHR2kLmyYCxQ25mHmfBL11ODIcIs7iSmQO+W7CNbmX1jcRvhHki/v+S/n4fMm0iKNeJ92w==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      typescript: ^5.1.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@remix-run/server-runtime': 2.9.1(typescript@5.2.2)
+      '@remix-run/web-fetch': 4.4.2
+      '@web3-storage/multipart-parser': 1.0.0
+      cookie-signature: 1.2.1
+      source-map-support: 0.5.21
+      stream-slice: 0.1.2
+      typescript: 5.2.2
+      undici: 6.14.1
+    dev: true
+
   /@remix-run/react@2.9.0(react-dom@18.3.0)(react@18.3.0)(typescript@5.2.2):
     resolution: {integrity: sha512-SW9MJqpPvXr9DLUX/H2ZBz+nxrph54tVhT4rLE2fF3hcI16S6m4RYJcT80wbtUhicEceqEXuIr9KUNllBkbYsA==}
     engines: {node: '>=18.0.0'}
@@ -4994,6 +5016,27 @@ packages:
       react-router-dom: 6.23.0(react-dom@18.3.0)(react@18.3.0)
       turbo-stream: 2.0.0
       typescript: 5.2.2
+
+  /@remix-run/react@2.9.1(react-dom@18.3.0)(react@18.3.0)(typescript@5.2.2):
+    resolution: {integrity: sha512-QQVZPS56okvDF3FBuGBjyKuYa6bXZvXFFlYeWfngI8ZnDbCzQLKV1oD0FWMhKuQxMaKs25uWg2YwGqwWTdin3w==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+      typescript: ^5.1.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@remix-run/router': 1.16.0
+      '@remix-run/server-runtime': 2.9.1(typescript@5.2.2)
+      react: 18.3.0
+      react-dom: 18.3.0(react@18.3.0)
+      react-router: 6.23.0(react@18.3.0)
+      react-router-dom: 6.23.0(react-dom@18.3.0)(react@18.3.0)
+      turbo-stream: 2.0.0
+      typescript: 5.2.2
+    dev: true
 
   /@remix-run/router@1.16.0:
     resolution: {integrity: sha512-Quz1KOffeEf/zwkCBM3kBtH4ZoZ+pT3xIXBG4PPW/XFtDP7EGhtTiC2+gpL9GnR7+Qdet5Oa6cYSvwKYg6kN9Q==}
@@ -5033,6 +5076,45 @@ packages:
       source-map: 0.7.4
       turbo-stream: 2.0.0
       typescript: 5.2.2
+
+  /@remix-run/server-runtime@2.9.1(typescript@5.2.2):
+    resolution: {integrity: sha512-6rRPiR+eMdTPkDojlYiZohVzXkD3+3X55ZvD78axMVocwGcDFFllpmgH9NSR2RKHW9eZDZUfKvNCwd/i9W6Xog==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      typescript: ^5.1.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@remix-run/router': 1.16.0
+      '@types/cookie': 0.6.0
+      '@web3-storage/multipart-parser': 1.0.0
+      cookie: 0.6.0
+      set-cookie-parser: 2.6.0
+      source-map: 0.7.4
+      turbo-stream: 2.0.0
+      typescript: 5.2.2
+    dev: true
+
+  /@remix-run/testing@2.9.1(react-dom@18.3.0)(react@18.3.0)(typescript@5.2.2):
+    resolution: {integrity: sha512-BrZYicOtaBm4JBz5DJSUFQ9ym/q4Ii40dgw5GHKAemSoWWzr6QCtPBvaEWUMRqaXiLL1oiXux++aKG7/6nbppQ==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      react: ^18.0.0
+      typescript: ^5.1.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@remix-run/node': 2.9.1(typescript@5.2.2)
+      '@remix-run/react': 2.9.1(react-dom@18.3.0)(react@18.3.0)(typescript@5.2.2)
+      '@remix-run/router': 1.16.0
+      react: 18.3.0
+      react-router-dom: 6.23.0(react-dom@18.3.0)(react@18.3.0)
+      typescript: 5.2.2
+    transitivePeerDependencies:
+      - react-dom
+    dev: true
 
   /@remix-run/v1-route-convention@0.1.4(@remix-run/dev@2.9.0):
     resolution: {integrity: sha512-fVTr9YlNLWfaiM/6Y56sOtcY8x1bBJQHY0sDWO5+Z/vjJ2Ni7fe2fwrzs1jUFciMPXqBQdFGePnkuiYLz3cuUA==}

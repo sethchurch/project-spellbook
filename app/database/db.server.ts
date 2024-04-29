@@ -2,7 +2,7 @@
 /* eslint-disable no-underscore-dangle */
 import { PrismaClient } from '@prisma/client';
 
-import { NODE_ENV } from '../utils/env';
+import { NODE_ENV } from '@/utils/env';
 
 export type { Character, User } from '@prisma/client';
 
@@ -20,9 +20,9 @@ declare global {
 if (NODE_ENV === 'production') {
   db = new PrismaClient();
 } else {
-  if (!global.__db__) {
-    global.__db__ = new PrismaClient();
-  }
+  // if (!global.__db__) {
+  global.__db__ = new PrismaClient();
+  // }
   db = global.__db__;
   db.$connect();
 }

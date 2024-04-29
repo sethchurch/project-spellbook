@@ -28,10 +28,8 @@ export const Layout = ({ children }: PropsWithChildren) => {
   const { userPrefs } = useLoaderData<typeof loader>();
   const { theme } = userPrefs;
 
-  const themeClass = theme === 'dark' ? 'dark' : 'light';
-
   return (
-    <html className={themeClass} lang={AppConfig.locale}>
+    <html className={theme} lang={AppConfig.locale}>
       <head>
         <meta charSet="utf-8" />
         <meta content="width=device-width, initial-scale=1" name="viewport" />

@@ -7,19 +7,10 @@ const SUPABSASE_ANON_KEY = process.env.SUPABASE_ANON_KEY!;
 const SUPABASE_SERVICE_ROLE = process.env.SUPABASE_SERVICE_ROLE!;
 
 function getSupabaseClient(supabaseKey: string, accessToken?: string) {
-  const global = accessToken
-    ? {
-        global: {
-          headers: { Authorization: `Bearer ${accessToken}` },
-        },
-      }
-    : {};
+  const global = accessToken ? { global: { headers: { Authorization: `Bearer ${accessToken}` } } } : {};
 
   return createClient(SUPABASE_URL, supabaseKey, {
-    auth: {
-      autoRefreshToken: false,
-      persistSession: false,
-    },
+    auth: { autoRefreshToken: false, persistSession: false },
     ...global,
   });
 }

@@ -20,13 +20,9 @@ async function createUser({ email, userId }: Pick<AuthSession, 'userId' | 'email
 }
 
 export async function tryCreateUser({ email, userId }: Pick<AuthSession, 'userId' | 'email'>) {
-  const user = await createUser({
-    userId,
-    email,
-  });
+  const user = await createUser({ userId, email });
 
-  // user account created and have a session but unable to store in User table
-  // we should delete the user account to allow retry create account again
+  // failed to create user, cleanup auth account
   if (!user) {
     await deleteAuthAccount(userId);
     return null;
@@ -38,13 +34,11 @@ export async function tryCreateUser({ email, userId }: Pick<AuthSession, 'userId
 export async function createUserAccount(email: string, password: string): Promise<AuthSession | null> {
   const authAccount = await createEmailAuthAccount(email, password);
 
-  // ok, no user account created
   if (!authAccount) return null;
 
   const authSession = await signInWithEmail(email, password);
 
-  // user account created but no session 😱
-  // we should delete the user account to allow retry create account again
+  // failed to sign in
   if (!authSession) {
     await deleteAuthAccount(authAccount.id);
     return null;

@@ -19,12 +19,13 @@ export default defineConfig({
       ['**/*.component.test.ts', 'happy-dom'],
     ],
     coverage: {
+      enabled: true,
       include: ['app/**/*.{ts,tsx}'],
-      reporter: 'html',
+      reporter: ['html'],
       reportsDirectory: './out/coverage',
       thresholds: {
         autoUpdate: true,
-        statements: 8.78,
+        statements: 12.39,
       },
       all: true,
     },

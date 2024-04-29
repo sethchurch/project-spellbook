@@ -1,4 +1,16 @@
-import { camelCase, capitalize, toArray } from './misc';
+import { camelCase, capitalize, getErrorMessage, toArray } from './misc';
+
+describe(getErrorMessage.name, () => {
+  it('handles a string error', () => {
+    expect(getErrorMessage('test')).toBe('test');
+  });
+  it('handles an object error', () => {
+    expect(getErrorMessage(new Error('test'))).toBe('test');
+  });
+  it('handles an unknown error', () => {
+    expect(getErrorMessage(NaN)).toBe('Unknown Error');
+  });
+});
 
 describe(toArray.name, () => {
   it('returns the array unchanged if the input is an array', () => {

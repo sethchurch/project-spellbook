@@ -289,10 +289,17 @@ const characterInventory: Prisma.InventoryItemCreateManyCharacterInput[] = [
   },
 ];
 
+const characterProficiencies: Prisma.CharacterProficienciesCreateWithoutCharacterInput = {
+  languages: 'Common, Elvish, Druidic',
+  weapons: 'Simple weapons, longswords, shortswords, longbows, shortbows',
+  armor: 'Light armor, medium armor, shields',
+  other: 'Herbalism kit',
+};
+
 const characterData: Prisma.CharacterCreateWithoutUserInput = {
   castingStat: 'Wisdom',
   name: 'Kai Kealynn',
-  race: 'Wood Elf',
+  race: 'Sea Elf',
   level: 15,
   class: 'Druid 10 (Circle of the Land) / Cleric 5 (Nature Domain)',
   background: 'Sage',
@@ -306,7 +313,7 @@ const characterData: Prisma.CharacterCreateWithoutUserInput = {
   isInspired: false,
   initiative: 3,
   notes:
-    "I chose the Wood Elf race for Kai to reflect their connection to nature and their prowess in both druidic and clerical magic. The Druid 10 / Cleric 5 combination allows Kai to tap into the power of the land and the divine, making them a versatile spellcaster and healer. The Circle of the Land (Arctic) enhances their connection to the icy regions they hail from, while the Nature Domain strengthens their bond with the natural world. Kai's background as a Sage reflects their love for knowledge and archaeology. The chosen skills, spells, and equipment are based on Kai's background, abilities, and adventures, including the medallion and keys discovered in the Chultian jungles.",
+    "I chose the Sea Elf race for Kai to reflect their connection to nature and their prowess in both druidic and clerical magic. The Druid 10 / Cleric 5 combination allows Kai to tap into the power of the land and the divine, making them a versatile spellcaster and healer. The Circle of the Land (Arctic) enhances their connection to the icy regions they hail from, while the Nature Domain strengthens their bond with the natural world. Kai's background as a Sage reflects their love for knowledge and archaeology. The chosen skills, spells, and equipment are based on Kai's background, abilities, and adventures, including the medallion and keys discovered in the Chultian jungles.",
   bio: { create: characterBio },
   deathSaves: {
     create: { sucesses: 0, failures: 0 },
@@ -317,14 +324,7 @@ const characterData: Prisma.CharacterCreateWithoutUserInput = {
   hitPoints: {
     create: { current: 96, max: 96, temporary: 0 },
   },
-  proficiencies: {
-    create: {
-      languages: 'Common, Elvish, Druidic',
-      weapons: 'Simple weapons, longswords, shortswords, longbows, shortbows',
-      armor: 'Light armor, medium armor, shields',
-      other: 'Herbalism kit',
-    },
-  },
+  proficiencies: { create: characterProficiencies },
   attacks: {
     createMany: { data: characterAttacks },
   },

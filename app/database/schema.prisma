@@ -7,6 +7,7 @@ generator client {
   provider = "prisma-client-js"
 }
 
+// TODO add avatar images support
 model User {
   id         String      @id @default(cuid())
   email      String      @unique
@@ -15,12 +16,247 @@ model User {
   characters Character[]
 }
 
+// TODO: Add Character images support
 model Character {
-  id        String   @id @default(cuid())
-  title     String
-  body      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  userId    String
+  id            String                  @id @default(cuid())
+  name          String
+  race          String
+  level         Int
+  class         String
+  background    String
+  alignment     Alignment               @default(LawfulGood)
+  stats         CharacterStat?
+  savingThrows  StatType[]
+  skills        CharacterSkill[]
+  armorClass    Int
+  speed         String
+  initiative    Int
+  isInspired    Boolean
+  hitPoints     HitPoint?
+  hitDice       HitDie?
+  deathSaves    DeathSave?
+  attacks       Attack[]
+  resources     Resource[]
+  features      Feature[]
+  proficiencies CharacterProficiencies?
+  spells        Spell[]
+  castingStat   StatType                @default(Intelligence)
+  bio           BioDetail?
+  inventory     InventoryItem[]
+  notes         String
+  createdAt     DateTime                @default(now())
+  user          User                    @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId        String
+}
+
+model CharacterStat {
+  id          String    @id @default(cuid())
+  character   Character @relation(fields: [characterId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  characterId String    @unique
+  str         Int
+  dex         Int
+  con         Int
+  int         Int
+  wis         Int
+  cha         Int
+}
+
+model BioDetail {
+  id                String    @id @default(cuid())
+  backstory         String    @default("")
+  personalityTraits String    @default("")
+  ideals            String    @default("")
+  bonds             String    @default("")
+  flaws             String    @default("")
+  age               String    @default("")
+  height            String    @default("")
+  weight            String    @default("")
+  eyeColor          String    @default("")
+  skinColor         String    @default("")
+  hairColor         String    @default("")
+  organizations     String    @default("")
+  featuresTraits    String    @default("")
+  treasure          String    @default("")
+  character         Character @relation(fields: [characterId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  characterId       String    @unique
+}
+
+model CharacterProficiencies {
+  id          String    @id @default(cuid())
+  languages   String    @default("")
+  weapons     String    @default("")
+  armor       String    @default("")
+  other       String    @default("")
+  character   Character @relation(fields: [characterId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  characterId String    @unique
+}
+
+model DeathSave {
+  id          String    @id @default(cuid())
+  sucesses    Int       @default(0)
+  failures    Int       @default(0)
+  character   Character @relation(fields: [characterId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  characterId String    @unique
+}
+
+model Feature {
+  id          String    @id @default(cuid())
+  name        String
+  description String    @default("")
+  source      String?
+  character   Character @relation(fields: [characterId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  characterId String
+}
+
+model Attack {
+  id          String      @id @default(cuid())
+  name        String
+  description String
+  bonus       Int
+  damage      String
+  damageType  DamageType?
+  character   Character   @relation(fields: [characterId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  characterId String
+}
+
+model Spell {
+  id                  String      @id @default(cuid())
+  name                String
+  description         String
+  damage              String?
+  damageType          DamageType?
+  level               Int
+  range               String
+  duration            String
+  castingTime         String
+  school              SpellSchool
+  verbal              Boolean     @default(false)
+  somatic             Boolean     @default(false)
+  material            Boolean     @default(false)
+  materialDescription String?
+  isRitual            Boolean     @default(false)
+  isConcentration     Boolean     @default(false)
+  isAction            Boolean     @default(false)
+  character           Character   @relation(fields: [characterId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  characterId         String
+}
+
+model Resource {
+  id          String     @id @default(cuid())
+  name        String?
+  source      String?
+  current     Int
+  max         Int
+  character   Character? @relation(fields: [characterId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  characterId String
+}
+
+model HitDie {
+  id          String    @id @default(cuid())
+  current     String
+  max         String
+  character   Character @relation(fields: [characterId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  characterId String    @unique
+}
+
+model HitPoint {
+  id          String    @id @default(cuid())
+  current     Int
+  max         Int
+  temporary   Int?
+  character   Character @relation(fields: [characterId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  characterId String    @unique
+}
+
+model CharacterSkill {
+  id          String    @id @default(cuid())
+  character   Character @relation(fields: [characterId], references: [id], onDelete: Cascade)
+  characterId String
+  skill       Skill
+  type        SkillType
+}
+
+model InventoryItem {
+  id          String    @id @default(cuid())
+  character   Character @relation(fields: [characterId], references: [id], onDelete: Cascade)
+  characterId String
+  name        String
+  description String?
+  quantity    Int
+  weight      Float
+}
+
+// Enums
+
+enum Alignment {
+  LawfulGood
+  NeutralGood
+  ChaoticGood
+  LawfulNeutral
+  TrueNeutral
+  ChaoticNeutral
+  LawfulEvil
+  NeutralEvil
+  ChaoticEvil
+}
+
+enum Skill {
+  Acrobatics
+  AnimalHandling
+  Arcana
+  Athletics
+  Deception
+  History
+  Insight
+  Intimidation
+  Investigation
+  Medicine
+  Nature
+  Perception
+  Performance
+  Persuasion
+  Religion
+  SleightOfHand
+  Stealth
+  Survival
+}
+
+enum SkillType {
+  Proficient
+  Expertise
+}
+
+enum SpellSchool {
+  Abjuration
+  Conjuration
+  Divination
+  Enchantment
+  Evocation
+  Illusion
+  Necromancy
+  Transmutation
+}
+
+enum StatType {
+  Strength
+  Dexterity
+  Constitution
+  Intelligence
+  Wisdom
+  Charisma
+}
+
+enum DamageType {
+  Piercing
+  Bludgeoning
+  Slashing
+  Cold
+  Fire
+  Lightning
+  Thunder
+  Poison
+  Acid
+  Necrotic
+  Force
+  Phychic
 }

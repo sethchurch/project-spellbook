@@ -4,7 +4,7 @@ import { PrismaClient } from '@prisma/client';
 
 import { NODE_ENV } from '@/utils/env';
 
-export type { Character, User } from '@prisma/client';
+export type { Alignment, Character, CharacterSkill, User } from '@prisma/client';
 
 let db: PrismaClient;
 

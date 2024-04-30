@@ -18,6 +18,8 @@ declare global {
       SUPABASE_ANON_KEY: string;
       SESSION_SECRET: string;
       DATABASE_URL: string;
+      SEED_EMAIL: string;
+      SEED_PASS: string;
     }
   }
 }
@@ -48,6 +50,8 @@ function getEnv(name: string, { isRequired, isSecret }: EnvOptions = { isSecret:
 export const SERVER_URL = getEnv('SERVER_URL');
 export const SUPABASE_SERVICE_ROLE = getEnv('SUPABASE_SERVICE_ROLE');
 export const SESSION_SECRET = getEnv('SESSION_SECRET');
+export const SEED_EMAIL = getEnv('SEED_EMAIL');
+export const SEED_PASS = getEnv('SEED_PASS');
 
 /**
  * Shared envs

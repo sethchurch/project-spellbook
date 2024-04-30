@@ -19,6 +19,7 @@ export default defineConfig({
       ['**/*.component.test.ts', 'happy-dom'],
     ],
     coverage: {
+      all: true,
       enabled: true,
       include: ['app/**/*.{ts,tsx}'],
       reporter: ['html'],
@@ -27,7 +28,6 @@ export default defineConfig({
         autoUpdate: true,
         statements: 12.39,
       },
-      all: true,
     },
   },
 });

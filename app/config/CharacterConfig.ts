@@ -100,7 +100,7 @@ type Resource = {
   source: string;
 };
 
-type AlternateProfiencies = {
+type AlternateProficiencies = {
   languages: string;
   weapons: string;
   armor: string;
@@ -155,9 +155,8 @@ type Character = {
   attacks?: Attack[];
   resources?: Resource[];
   features?: Detail[];
-  senses?: Detail[];
   images?: CharacterImages;
-  proficiencies?: AlternateProfiencies;
+  proficiencies?: AlternateProficiencies;
   bio?: BioDetails;
   spells?: Spell[][]; // [0] = cantrips, [1] = 1st level, etc.
   spellStat?: '0' | '1' | '2' | '3' | '4' | '5'; // 0 = str, 1 = dex, etc.
@@ -183,7 +182,6 @@ const characterDefaults: Character = {
   attacks: [],
   resources: [],
   features: [],
-  senses: [],
   proficiencies: { languages: '', weapons: '', armor: '', other: '' },
   spells: [[], [], [], [], [], [], [], [], [], []],
   notes: '',
@@ -200,7 +198,6 @@ export { characterDefaults, characterSkills, savingThrows, skillLookup, statLong
 export type {
   Attack,
   Character,
-  Detail,
   InventoryItem,
   LongStat,
   Proficiency,

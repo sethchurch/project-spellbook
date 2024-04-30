@@ -10,7 +10,9 @@
     "build:server": "tsx ./other/build-server.ts",
     "db:init": "supabase init",
     "db:start": "supabase start",
+		"db:setup": "prisma db push --force-reset && prisma db seed",
     "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
     "db:stop": "supabase stop",
     "dev": "node --inspect ./index.js",
     "lint": "eslint .",
@@ -77,8 +79,8 @@
     "msw": "^2.2.14",
     "npm-run-all": "^4.1.5",
     "openai": "^4.38.2",
-    "react": "18.3.0",
-    "react-dom": "18.3.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-dropzone": "^14.2.3",
     "react-hook-form": "^7.51.3",
     "react-hot-toast": "^2.4.1",
@@ -140,7 +142,8 @@
     "vitest": "^1.5.0"
   },
   "prisma": {
-    "schema": "./app/database/schema.prisma"
+    "schema": "./app/database/schema.prisma",
+    "seed": "tsx ./app/database/seed.server"
   },
   "engines": {
     "node": "20"

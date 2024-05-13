@@ -6,7 +6,6 @@ import isEqual from 'lodash/isEqual';
 import { useEffect, useRef } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { AppConfig } from '@/config/AppConfig';
 import type { Character } from '@/config/CharacterConfig';
 import { useCharacterStore } from '@/hooks/useCharacterStore';
 
@@ -39,17 +38,12 @@ const CharacterSheetProvider = ({
 
   useEffect(() => {
     if (!isFacade) {
-      document.title = `${character?.name ?? 'Character'} | ${AppConfig.title}`;
-
       if (character && !isEqual(previousCharacterRef.current, currentCharacterData)) {
         debouncedUpdateCharacter(currentCharacterData, characterId);
         previousCharacterRef.current = cloneDeep(currentCharacterData);
         formMethods.reset(currentCharacterData);
       }
     }
-    return () => {
-      document.title = AppConfig.title;
-    };
   }, [character, characterId, currentCharacterData, debouncedUpdateCharacter, formMethods, isFacade]);
 
   return <FormProvider {...formMethods}>{children}</FormProvider>;

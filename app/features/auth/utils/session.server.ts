@@ -90,7 +90,7 @@ export async function destroyAuthSession(request: Request, { redirectTo }: { red
 async function assertAuthSession(request: Request, { onFailRedirectTo }: { onFailRedirectTo?: string } = {}) {
   const authSession = await getAuthSession(request);
 
-  // If there is no user session, Fly, You Fools! 🧙‍♂️
+  // If there is no user session, Fly, You Fools!
   if (!authSession?.accessToken || !authSession?.refreshToken) {
     throw redirect(`${onFailRedirectTo ?? LOGIN_URL}?${makeRedirectToFromHere(request)}`, {
       headers: {

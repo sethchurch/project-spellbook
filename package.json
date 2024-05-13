@@ -10,7 +10,7 @@
     "build:server": "tsx ./other/build-server.ts",
     "db:init": "supabase init",
     "db:start": "supabase start",
-		"db:setup": "prisma db push --force-reset && prisma db seed",
+    "db:setup": "prisma db push --force-reset && prisma db seed",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:stop": "supabase stop",
@@ -146,6 +146,6 @@
     "seed": "tsx ./app/database/seed.server"
   },
   "engines": {
-    "node": "20"
+    "node": "22"
   }
 }

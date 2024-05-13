@@ -57,7 +57,6 @@ const LoginForm = () => {
         <h1 className="mb-6 text-2xl font-bold">Login</h1>
         <Input
           isRequired
-          defaultValue="admin@test.com"
           errorMessage={fields.email.errors}
           label="Email"
           name="email"
@@ -66,7 +65,6 @@ const LoginForm = () => {
         />
         <Input
           isRequired
-          defaultValue="abc123"
           errorMessage={fields.password.errors}
           label="Password"
           name="password"

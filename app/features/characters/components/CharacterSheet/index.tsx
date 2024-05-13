@@ -57,13 +57,7 @@ const CharacterSheet = () => {
           <Tab key={tab.key} title={tab.title}>
             <div className="bg-pod-alt rounded-lg">
               <div className="group relative flex h-32 w-full flex-col rounded-t-lg bg-gradient-to-r from-violet-700 to-violet-950 md:h-56">
-                {/* <Image
-                  fill
-                  alt="image of character"
-                  className="block"
-                  sizes="100vw"
-                  src="https://picsum.photos/2048/256"
-                /> */}
+                {/* TODO: Add Character Banner Image */}
                 <div className=" absolute left-0 top-0 size-full bg-gradient-to-r from-violet-700 to-violet-950 opacity-0 transition-opacity hover:opacity-30" />
                 <CharacterImageEditButton />
               </div>

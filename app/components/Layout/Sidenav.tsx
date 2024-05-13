@@ -1,11 +1,9 @@
-'use client';
-
 import { Button } from '@nextui-org/button';
 import { useDisclosure } from '@nextui-org/react';
 
 import { useAppShell } from '@/components/Layout/AppShell';
+import type { CharacterWithBackstory } from '@/features/characters';
 import { useCharacterFilter } from '@/hooks/useCharacterFilter';
-import { useCharacterStore } from '@/hooks/useCharacterStore';
 import { CharacterNav } from '@/routes/_app/CharacterNav';
 import { cn } from '@/utils/cn';
 
@@ -15,13 +13,16 @@ import { ImportCharactersModal } from '../Modal/ImportCharactersModal';
 import { NewCharacterModal } from '../Modal/NewCharacterModal';
 import { FilterProvider } from '../Providers/FilterProvider';
 
-const Sidenav = () => {
+interface SidenavProps {
+  characters: CharacterWithBackstory[];
+}
+
+const Sidenav = ({ characters }: SidenavProps) => {
   const { isOpen: isOpenNew, onOpen: onOpenNew, onClose: onCloseNew } = useDisclosure();
   const { isOpen: isOpenImport, onOpen: onOpenImport, onClose: onCloseImport } = useDisclosure();
   const { sideNavOpen } = useAppShell();
   const sideNavClass = sideNavOpen ? 'ml-0' : '-ml-72';
   const filterValue = useCharacterFilter((state) => state.filterValue);
-  const [characters] = useCharacterStore((state) => [state.characters, state.importCharacters]);
 
   const exportCharacters = () => {
     const dataStr = `data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(characters))}`;
@@ -49,7 +50,7 @@ const Sidenav = () => {
         </div>
         <div className="overflow-y-auto px-3">
           <FilterProvider filterKeyList={['name', 'class']} filterValue={filterValue}>
-            <CharacterNav />
+            <CharacterNav characters={characters} />
           </FilterProvider>
         </div>
 

@@ -1,5 +1,3 @@
-'use client';
-
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
 import { Chip } from '@nextui-org/chip';
 import { Button, Skeleton, Spacer, useDisclosure } from '@nextui-org/react';
@@ -7,10 +5,10 @@ import { Link } from '@remix-run/react';
 import { IconX } from '@tabler/icons-react';
 
 import { DiscardModal } from '@/components/Modal/DiscardModal';
-import type { Character } from '@/config/CharacterConfig';
-import { useCharacterStore } from '@/hooks/useCharacterStore';
 import { useTavernState } from '@/hooks/useTavernState';
 import { cn } from '@/utils/cn';
+
+import type { CharacterWithBackstory } from '..';
 
 const CharacterListItemSkeleton = () => {
   return (
@@ -29,13 +27,14 @@ const CharacterListItemSkeleton = () => {
 };
 
 interface CharacterListItemDisplayProps {
-  character: Character;
+  character: CharacterWithBackstory;
   titlebarContent?: React.ReactNode;
   className?: string;
 }
 
 const CharacterListItemDisplay = ({ className, character, titlebarContent }: CharacterListItemDisplayProps) => {
-  const { backstory, name } = character;
+  const { bio, name } = character;
+  const { backstory } = bio;
   return (
     <Card className={cn('bg-pod-alt size-full shadow-none', className)}>
       <CardHeader className="w-full px-3 py-4">
@@ -63,20 +62,18 @@ const CharacterListItemDisplay = ({ className, character, titlebarContent }: Cha
 };
 
 interface CharacterListItemProps {
-  character: Character;
-  characterId: number;
+  character: CharacterWithBackstory;
 }
 
-const CharacterListItem = ({ character, characterId }: CharacterListItemProps) => {
+const CharacterListItem = ({ character }: CharacterListItemProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const isEditing = useTavernState((state) => state.isEditing);
-  const removeCharacter = useCharacterStore((state) => state.removeCharacter.bind(null, characterId));
-
+  const removeCharacter = () => { };
   return (
     <>
       <Link
         className="size-full rounded-xl shadow-sm transition-all hover:opacity-80 hover:shadow-xl"
-        to={isEditing ? '#' : `/characters/${characterId}`}
+        to={isEditing ? '#' : `/characters/${character.id}`}
       >
         <CharacterListItemDisplay
           character={character}

@@ -34,39 +34,40 @@ const tabList = [
   { key: 'bio', title: 'Bio' },
   { key: 'spells', title: 'Spells' },
 ];
+const CharacterPageTab = ({ title }: { title: string }) => {
+  return (
+    <TabTitle size="lg" styleVariant="alt">
+      {title}
+    </TabTitle>
+  );
+};
 
 const CharacterPage = () => {
   const navigate = useNavigate();
   const { characterId } = useParams();
   const { character } = useLoaderData<typeof loader>();
+
   const onTabChange = (key: Key) => {
     navigate(`/characters/${characterId}/${key}`);
   };
+
   return (
     <div className="m-1 md:m-6">
       <TabList defaultTab={tabList[0]?.key ?? 'core'} onSelectionChange={onTabChange}>
         {tabList.map((tab: (typeof tabList)[0]) => (
-          <Tab
-            key={tab.key}
-            title={
-              <TabTitle size="lg" styleVariant="alt">
-                {tab.title}
-              </TabTitle>
-            }
-          >
-            <div className="bg-pod-alt rounded-lg">
-              <div className="group relative flex h-32 w-full flex-col rounded-t-lg bg-gradient-to-r from-violet-700 to-violet-950 md:h-56">
-                {/* TODO: Add Character Banner Image */}
-                <div className="absolute left-0 top-0 size-full bg-gradient-to-r from-violet-700 to-violet-950 opacity-0 transition-opacity hover:opacity-30" />
-                <CharacterImageEditButton />
-              </div>
-              <CharacterSheetProvider character={character}>
-                <Outlet />
-              </CharacterSheetProvider>
-            </div>
-          </Tab>
+          <Tab key={tab.key} title={<CharacterPageTab title={tab.title} />} />
         ))}
       </TabList>
+      <div className="bg-pod-alt rounded-lg">
+        <div className="group relative flex h-32 w-full flex-col rounded-t-lg bg-gradient-to-r from-violet-700 to-violet-950 md:h-56">
+          {/* TODO: Add Character Banner Image */}
+          <div className="absolute left-0 top-0 size-full bg-gradient-to-r from-violet-700 to-violet-950 opacity-0 transition-opacity hover:opacity-30" />
+          <CharacterImageEditButton />
+        </div>
+        <CharacterSheetProvider character={character}>
+          <Outlet />
+        </CharacterSheetProvider>
+      </div>
     </div>
   );
 };

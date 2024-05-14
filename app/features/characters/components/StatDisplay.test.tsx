@@ -4,11 +4,17 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { StatDisplay } from './StatDisplay';
 
 const StatDisplayWithProvider = ({ stat }: { stat: number }) => {
-  const methods = useForm({ defaultValues: { stats: [stat] } });
+  const methods = useForm({
+    defaultValues: {
+      stats: {
+        str: stat,
+      },
+    },
+  });
   return (
     <FormProvider {...methods}>
       <form>
-        <StatDisplay statIndex={0} />
+        <StatDisplay statName="Str" />
       </form>
     </FormProvider>
   );

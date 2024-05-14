@@ -12,6 +12,7 @@ enum StatIndex {
 const useFormStat = (stat: StatIndex) => {
   const { getValues } = useFormContext();
   const stats = getValues('stats');
+  if (!stats) return null;
   return stats[stat];
 };
 

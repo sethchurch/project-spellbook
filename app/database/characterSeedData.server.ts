@@ -296,6 +296,14 @@ const characterProficiencies: Prisma.CharacterProficienciesCreateWithoutCharacte
   other: 'Herbalism kit',
 };
 
+const characterSkills: Prisma.CharacterSkillCreateManyCharacterInput[] = [
+  { skill: 'Nature', type: 'Proficient' },
+  { skill: 'AnimalHandling', type: 'Proficient' },
+  { skill: 'Persuasion', type: 'Proficient' },
+  { skill: 'Survival', type: 'Proficient' },
+  { skill: 'Perception', type: 'Proficient' },
+];
+
 const characterData: Prisma.CharacterCreateWithoutUserInput = {
   castingStat: 'Wisdom',
   name: 'Kai Kealynn',
@@ -308,6 +316,9 @@ const characterData: Prisma.CharacterCreateWithoutUserInput = {
     create: { str: 10, dex: 16, con: 14, int: 14, wis: 16, cha: 8 },
   },
   savingThrows: ['Charisma', 'Wisdom'],
+  skills: {
+    createMany: { data: characterSkills },
+  },
   armorClass: 16,
   speed: '35 ft.',
   isInspired: false,
@@ -316,7 +327,7 @@ const characterData: Prisma.CharacterCreateWithoutUserInput = {
     "I chose the Sea Elf race for Kai to reflect their connection to nature and their prowess in both druidic and clerical magic. The Druid 10 / Cleric 5 combination allows Kai to tap into the power of the land and the divine, making them a versatile spellcaster and healer. The Circle of the Land (Arctic) enhances their connection to the icy regions they hail from, while the Nature Domain strengthens their bond with the natural world. Kai's background as a Sage reflects their love for knowledge and archaeology. The chosen skills, spells, and equipment are based on Kai's background, abilities, and adventures, including the medallion and keys discovered in the Chultian jungles.",
   bio: { create: characterBio },
   deathSaves: {
-    create: { sucesses: 0, failures: 0 },
+    create: { successes: 2, failures: 0 },
   },
   hitDice: {
     create: { current: '15d8', max: '15d8' },

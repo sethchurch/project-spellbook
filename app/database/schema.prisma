@@ -93,7 +93,7 @@ model CharacterProficiencies {
 
 model DeathSave {
   id          String    @id @default(cuid())
-  sucesses    Int       @default(0)
+  successes   Int       @default(0)
   failures    Int       @default(0)
   character   Character @relation(fields: [characterId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   characterId String    @unique

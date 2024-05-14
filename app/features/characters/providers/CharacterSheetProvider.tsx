@@ -1,50 +1,14 @@
-'use client';
-
-import cloneDeep from 'lodash/cloneDeep';
-import debounce from 'lodash/debounce';
-import isEqual from 'lodash/isEqual';
-import { useEffect, useRef } from 'react';
+import type { Character } from '@prisma/client';
 import { FormProvider, useForm } from 'react-hook-form';
-
-import type { Character } from '@/config/CharacterConfig';
-import { useCharacterStore } from '@/hooks/useCharacterStore';
 
 interface CharacterSheetProviderProps {
   children?: React.ReactNode;
-  characterId?: number;
-  characterData?: Character;
+  character: Character;
   isFacade?: boolean;
 }
 
-const CharacterSheetProvider = ({
-  children,
-  characterData,
-  characterId = -1,
-  isFacade,
-}: CharacterSheetProviderProps) => {
-  if (characterId === -1 && !characterData) {
-    throw new Error('CharacterSheetProvider requires a characterId or characterData prop');
-  }
-
-  const { character, updateCharacter } = useCharacterStore((state) => ({
-    character: characterData ?? state.characters[characterId],
-    updateCharacter: state.updateCharacter,
-  }));
-
+const CharacterSheetProvider = ({ children, character }: CharacterSheetProviderProps) => {
   const formMethods = useForm({ defaultValues: character });
-  const previousCharacterRef = useRef<Character | null>(null);
-  const currentCharacterData = formMethods.watch();
-  const debouncedUpdateCharacter = useRef(debounce(updateCharacter, 1000)).current;
-
-  useEffect(() => {
-    if (!isFacade) {
-      if (character && !isEqual(previousCharacterRef.current, currentCharacterData)) {
-        debouncedUpdateCharacter(currentCharacterData, characterId);
-        previousCharacterRef.current = cloneDeep(currentCharacterData);
-        formMethods.reset(currentCharacterData);
-      }
-    }
-  }, [character, characterId, currentCharacterData, debouncedUpdateCharacter, formMethods, isFacade]);
 
   return <FormProvider {...formMethods}>{children}</FormProvider>;
 };

@@ -63,7 +63,7 @@ const LandingPage = () => {
               {shouldDisplayComponent ? (
                 <DisableTabIndex>
                   <Pod className="ml-52 h-min w-screen max-w-screen-2xl shrink-0 overflow-hidden" variant="alt">
-                    <CharacterSheetProvider isFacade characterData={character}>
+                    <CharacterSheetProvider character={character}>
                       <CoreTab />
                     </CharacterSheetProvider>
                   </Pod>
@@ -105,7 +105,7 @@ const LandingPage = () => {
               {shouldDisplayComponent ? (
                 <DisableTabIndex>
                   <Pod className="ml-52 h-min w-screen max-w-screen-2xl shrink-0" variant="alt">
-                    <CharacterSheetProvider isFacade characterData={character}>
+                    <CharacterSheetProvider character={character}>
                       <BioTab />
                     </CharacterSheetProvider>
                   </Pod>

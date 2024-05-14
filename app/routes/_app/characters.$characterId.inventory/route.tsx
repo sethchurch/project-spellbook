@@ -7,12 +7,12 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
   return { characterId };
 };
 
-const CoreTab = () => {
-  return <h1>CoreTab</h1>;
+const InventoryTab = () => {
+  return <h1>InventoryTab</h1>;
 };
 
 export const ErrorBoundary = () => {
   return <BasicErrorBoundary />;
 };
 
-export default CoreTab;
+export default InventoryTab;

@@ -9058,6 +9058,7 @@ snapshots:
 
   '@polka/url@1.0.0-next.25': {}
 
+<<<<<<< HEAD
   '@prisma/client@5.15.0(prisma@5.15.0)':
     optionalDependencies:
       prisma: 5.15.0
@@ -9072,6 +9073,11 @@ snapshots:
       '@prisma/engines-version': 5.15.0-29.12e25d8d06f6ea5a0252864dd9a03b1bb51f3022
       '@prisma/fetch-engine': 5.15.0
       '@prisma/get-platform': 5.15.0
+=======
+  '@prisma/client@5.13.0(prisma@5.13.0)':
+    optionalDependencies:
+      prisma: 5.13.0
+>>>>>>> d11c4950f2cacf6c5d4a795971c3a36bbe8cdb2e
 
   '@prisma/fetch-engine@5.15.0':
     dependencies:

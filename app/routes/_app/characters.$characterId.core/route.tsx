@@ -18,6 +18,7 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
   const session = await requireAuthSession(request);
   const { userId } = session;
   const { characterId } = params;
+  console.log({ request: request.body });
   if (!characterId) throw redirect('/tavern');
   const coreSheetData = await getCharacter(userId, characterId, {
     include: {

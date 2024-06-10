@@ -42,7 +42,7 @@
     "@nextui-org/react": "^2.3.5",
     "@nextui-org/select": "^2.1.26",
     "@nextui-org/tabs": "^2.0.29",
-    "@prisma/client": "^5.13.0",
+    "@prisma/client": "^5.15.0",
     "@remix-run/express": "^2.8.1",
     "@remix-run/node": "^2.8.1",
     "@remix-run/react": "^2.8.1",
@@ -137,7 +137,7 @@
     "glob": "^10.3.12",
     "husky": "^9.0.11",
     "postcss": "8.4.30",
-    "prisma": "^5.13.0",
+    "prisma": "^5.15.0",
     "supabase": "^1.162.4",
     "tsx": "^4.7.2",
     "typescript": "5.2.2",
@@ -148,6 +148,6 @@
     "seed": "tsx ./app/database/seed.server"
   },
   "engines": {
-    "node": "22"
+    "node": ">=20"
   }
 }

@@ -1,50 +1,50 @@
 /** @type {import('@types/eslint').Linter.Config} */
 module.exports = {
   // Configuration for JavaScript files
-  extends: ['airbnb-base', 'plugin:prettier/recommended'],
+  extends: ["airbnb-base", "plugin:prettier/recommended"],
   parserOptions: {
-    ecmaVersion: 'latest',
+    ecmaVersion: "latest",
   },
   rules: {
-    'prettier/prettier': [
-      'error',
+    "prettier/prettier": [
+      "error",
       {
         singleQuote: true,
-        endOfLine: 'auto',
-        trailingComma: 'all',
+        endOfLine: "auto",
+        trailingComma: "all",
       },
     ],
   },
   overrides: [
     // React
     {
-      files: ['**/*.{js,jsx,ts,tsx}'],
-      plugins: ['react', 'jsx-a11y'],
+      files: ["**/*.{js,jsx,ts,tsx}"],
+      plugins: ["react", "jsx-a11y"],
       extends: [
-        'plugin:react/recommended',
-        'plugin:react/jsx-runtime',
-        'plugin:react-hooks/recommended',
-        'plugin:jsx-a11y/recommended',
-        'prettier',
+        "plugin:react/recommended",
+        "plugin:react/jsx-runtime",
+        "plugin:react-hooks/recommended",
+        "plugin:jsx-a11y/recommended",
+        "prettier",
       ],
       settings: {
         react: {
-          version: 'detect',
+          version: "detect",
         },
-        formComponents: ['Form'],
+        formComponents: ["Form"],
         linkComponents: [
-          { name: 'Link', linkAttribute: 'to' },
-          { name: 'NavLink', linkAttribute: 'to' },
+          { name: "Link", linkAttribute: "to" },
+          { name: "NavLink", linkAttribute: "to" },
         ],
       },
       rules: {
-        'import/extensions': 'off',
-        'react/jsx-no-leaked-render': [
-          'warn',
-          { validStrategies: ['ternary'] },
+        "import/extensions": "off",
+        "react/jsx-no-leaked-render": [
+          "warn",
+          { validStrategies: ["ternary"] },
         ],
-        'react/jsx-sort-props': [
-          'error',
+        "react/jsx-sort-props": [
+          "error",
           {
             callbacksLast: true,
             shorthandFirst: true,
@@ -55,42 +55,42 @@ module.exports = {
     },
     // Configuration for TypeScript files
     {
-      files: ['**/*.ts', '**/*.tsx'],
+      files: ["**/*.ts", "**/*.tsx"],
       plugins: [
-        '@typescript-eslint',
-        'unused-imports',
-        'tailwindcss',
-        'simple-import-sort',
-        'prettier',
+        "@typescript-eslint",
+        "unused-imports",
+        "tailwindcss",
+        "simple-import-sort",
+        "prettier",
       ],
       extends: [
-        'plugin:tailwindcss/recommended',
-        'airbnb',
-        'airbnb-typescript',
-        'plugin:prettier/recommended',
-        'plugin:react/recommended',
+        "plugin:tailwindcss/recommended",
+        "airbnb",
+        "airbnb-typescript",
+        "plugin:prettier/recommended",
+        "plugin:react/recommended",
       ],
       parserOptions: {
-        project: './tsconfig.json',
+        project: "./tsconfig.json",
       },
       rules: {
-        'prettier/prettier': [
-          'error',
+        "prettier/prettier": [
+          "error",
           {
             singleQuote: true,
-            endOfLine: 'auto',
+            endOfLine: "auto",
             printWidth: 120,
           },
         ],
-        'import/extensions': 'off', // Avoid missing file extension errors, TypeScript already provides a similar feature
-        'react/function-component-definition': 'off', // Disable Airbnb's specific function type
-        'react/destructuring-assignment': 'off', // Vscode doesn't support automatically destructuring, it's a pain to add a new variable
-        'react/no-array-index-key': 'off',
-        'react/require-default-props': 'off', // Allow non-defined react props as undefined
-        'react/jsx-props-no-spreading': 'off', // _app.tsx uses spread operator and also, react-hook-form
-        'react/react-in-jsx-scope': 'off',
-        'react/jsx-sort-props': [
-          'error',
+        "import/extensions": "off", // Avoid missing file extension errors, TypeScript already provides a similar feature
+        "react/function-component-definition": "off", // Disable Airbnb's specific function type
+        "react/destructuring-assignment": "off", // Vscode doesn't support automatically destructuring, it's a pain to add a new variable
+        "react/no-array-index-key": "off",
+        "react/require-default-props": "off", // Allow non-defined react props as undefined
+        "react/jsx-props-no-spreading": "off", // _app.tsx uses spread operator and also, react-hook-form
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-sort-props": [
+          "error",
           {
             callbacksLast: true,
             shorthandFirst: true,
@@ -100,27 +100,27 @@ module.exports = {
             reservedFirst: true,
           },
         ],
-        '@typescript-eslint/no-throw-literal': 'off',
-        '@typescript-eslint/no-unused-vars': 'off',
-        '@typescript-eslint/prefer-nullish-coalescing': 'error',
-        '@typescript-eslint/comma-dangle': 'off', // Avoid conflict rule between Eslint and Prettier
-        '@typescript-eslint/consistent-type-imports': 'error', // Ensure `import type` is used when it's necessary
-        'no-restricted-syntax': [
-          'error',
-          'ForInStatement',
-          'LabeledStatement',
-          'WithStatement',
+        "@typescript-eslint/no-throw-literal": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/prefer-nullish-coalescing": "error",
+        "@typescript-eslint/comma-dangle": "off", // Avoid conflict rule between Eslint and Prettier
+        "@typescript-eslint/consistent-type-imports": "error", // Ensure `import type` is used when it's necessary
+        "no-restricted-syntax": [
+          "error",
+          "ForInStatement",
+          "LabeledStatement",
+          "WithStatement",
         ], // Overrides Airbnb configuration and enable no-restricted-syntax
-        'import/prefer-default-export': 'off',
-        'simple-import-sort/imports': 'error', // Import configuration for `eslint-plugin-simple-import-sort`
-        'simple-import-sort/exports': 'error', // Export configuration for `eslint-plugin-simple-import-sort`
-        'unused-imports/no-unused-imports': 'error',
-        'unused-imports/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
-        'import/no-extraneous-dependencies': 'off',
-        'comma-dangle': 0,
-        'jsx-a11y/anchor-is-valid': 'off',
-        'no-console': ['error', { allow: ['warn', 'error'] }],
-        'no-plusplus': 'off',
+        "import/prefer-default-export": "off",
+        "simple-import-sort/imports": "error", // Import configuration for `eslint-plugin-simple-import-sort`
+        "simple-import-sort/exports": "error", // Export configuration for `eslint-plugin-simple-import-sort`
+        "unused-imports/no-unused-imports": "error",
+        "unused-imports/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+        "import/no-extraneous-dependencies": "off",
+        "comma-dangle": 0,
+        "jsx-a11y/anchor-is-valid": "off",
+        "no-console": ["error", { allow: ["warn", "error"] }],
+        "no-plusplus": "off",
       },
     },
   ],

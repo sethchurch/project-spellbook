@@ -1,39 +1,27 @@
-/* eslint-disable no-console */
-import { PrismaClient } from '@prisma/client';
+/* eslint-disable no-console */ import { PrismaClient } from '@prisma/client';
 import { createClient } from '@supabase/supabase-js';
 
 import { SEED_EMAIL, SEED_PASS, SUPABASE_SERVICE_ROLE, SUPABASE_URL } from '../utils/env';
 import { seedDefaultCharacter } from './characterSeedData.server';
 
 const supabaseAdmin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE, {
-  auth: {
-    autoRefreshToken: false,
-    persistSession: false,
-  },
+  auth: { autoRefreshToken: false, persistSession: false },
 });
 
 const prisma = new PrismaClient();
-
 const email = SEED_EMAIL;
 
 const getUserId = async (): Promise<string> => {
   const userList = await supabaseAdmin.auth.admin.listUsers();
-
   if (userList.error) {
     throw userList.error;
   }
-
   const existingUserId = userList.data.users.find((user) => user.email === email)?.id;
-
   if (existingUserId) {
     return existingUserId;
   }
 
-  const newUser = await supabaseAdmin.auth.admin.createUser({
-    email,
-    password: SEED_PASS,
-    email_confirm: true,
-  });
+  const newUser = await supabaseAdmin.auth.admin.createUser({ email, password: SEED_PASS, email_confirm: true });
 
   if (newUser.error) {
     throw newUser.error;
@@ -53,7 +41,8 @@ async function seed() {
 
     const user = await prisma.user.create({ data: { email, id } });
 
-    const character = await seedDefaultCharacter(prisma, user.id);
+    const character = await seedDefaultCharacter('Kai Kealynn', prisma, user.id);
+    await seedDefaultCharacter('Dri Drean', prisma, user.id);
 
     console.log(`Database has been seeded. 🌱\n`);
     console.log(`User added to your database 👇 \n🆔: ${user.id}\n📧: ${user.email}\n🔑: supabase`);

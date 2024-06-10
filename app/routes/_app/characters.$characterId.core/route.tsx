@@ -18,7 +18,6 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
   const session = await requireAuthSession(request);
   const { userId } = session;
   const { characterId } = params;
-  console.log({ request: request.body });
   if (!characterId) throw redirect('/tavern');
   const coreSheetData = await getCharacter(userId, characterId, {
     include: {
@@ -60,8 +59,6 @@ export const action: ActionFunction = async ({ request }: ActionFunctionArgs) =>
     receivedValues: defaultValues,
     ...rest
   } = await getValidatedFormData<FormData>(request, resolver);
-  console.log({ errors, data, defaultValues, rest });
-
   return null;
 };
 
@@ -75,7 +72,6 @@ export default function CoreTabTest() {
     resolver,
     submitHandlers: {
       onValid(data) {
-        console.log({ this: this });
         validSubmit(data);
       },
     },
@@ -124,10 +120,12 @@ export default function CoreTabTest() {
     </RemixFormProvider>
   );
 }
+
 const CoreTab = () => {
   const { character } = useLoaderData<typeof loader>();
   return <CharacterSheetCoreTab character={character} />;
 };
+
 export { CoreTab };
 
 export const ErrorBoundary = () => {

@@ -304,9 +304,8 @@ const characterSkills: Prisma.CharacterSkillCreateManyCharacterInput[] = [
   { skill: 'Perception', type: 'Proficient' },
 ];
 
-const characterData: Prisma.CharacterCreateWithoutUserInput = {
+const characterData: Omit<Prisma.CharacterCreateWithoutUserInput, 'name'> = {
   castingStat: 'Wisdom',
-  name: 'Kai Kealynn',
   race: 'Sea Elf',
   level: 15,
   class: 'Druid 10 (Circle of the Land) / Cleric 5 (Nature Domain)',
@@ -353,7 +352,7 @@ const characterData: Prisma.CharacterCreateWithoutUserInput = {
   },
 };
 
-export const seedDefaultCharacter = async (prisma: PrismaClient, userId: string) => {
-  const character = await prisma.character.create({ data: { ...characterData, userId } });
+export const seedDefaultCharacter = async (characterName: string, prisma: PrismaClient, userId: string) => {
+  const character = await prisma.character.create({ data: { name: characterName, ...characterData, userId } });
   return character;
 };

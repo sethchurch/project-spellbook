@@ -33,7 +33,7 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install eslint
 
       - uses: reviewdog/action-eslint@v1
         with:
@@ -73,7 +73,7 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install tsc
 
       - uses: EPMatt/reviewdog-action-tsc@v1
         with:
@@ -126,6 +126,7 @@ jobs:
   report:
     runs-on: ubuntu-latest
     needs: [vitest]
+    if: always()
     steps:
       - uses: dorny/test-reporter@v1
         with:

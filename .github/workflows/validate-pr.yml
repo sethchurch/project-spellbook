@@ -4,8 +4,7 @@ jobs:
   eslint:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - uses: pnpm/action-setup@v4
         name: Install pnpm
@@ -32,8 +31,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-      - name: Install dependencies
-        run: pnpm install eslint
+      - run: pnpm i eslint
 
       - uses: reviewdog/action-eslint@v1
         with:
@@ -44,8 +42,7 @@ jobs:
   typescript:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - uses: pnpm/action-setup@v4
         name: Install pnpm
@@ -72,8 +69,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-      - name: Install dependencies
-        run: pnpm install tsc
+      - run: pnpm install tsc
 
       - uses: EPMatt/reviewdog-action-tsc@v1
         with:
@@ -84,8 +80,7 @@ jobs:
   vitest:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - uses: pnpm/action-setup@v4
         name: Install pnpm
@@ -117,11 +112,11 @@ jobs:
 
       - name: Run tests
         run: pnpm test:ci
-      - uses: actions/upload-artifact@v4 # upload test results
-        if: success() || failure() # run this step even if previous step failed
+      - uses: actions/upload-artifact@v4
+        if: success() || failure()
         with:
           name: test-results
-          path: jest-junit.xml
+          path: junit-report.xml
 
   report:
     runs-on: ubuntu-latest

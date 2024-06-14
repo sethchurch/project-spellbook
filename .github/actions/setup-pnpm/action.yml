@@ -1,5 +1,6 @@
 name: 'Setup pnpm'
 description: 'Installs pnpm with cache'
+shell: bash
 runs:
   using: 'composite'
   steps:

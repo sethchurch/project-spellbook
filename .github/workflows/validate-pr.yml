@@ -69,7 +69,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-      - run: pnpm install tsc typescript
+      - run: pnpm install
 
       - uses: EPMatt/reviewdog-action-tsc@v1
         with:
@@ -124,7 +124,7 @@ jobs:
         uses: actions/github-script@v6
         if: failure()
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GIT_TOKEN }}
           script: |
             console.log(process.env.FAILED_TESTS)
             const failedTests = JSON.parse(process.env.FAILED_TESTS || "[]");

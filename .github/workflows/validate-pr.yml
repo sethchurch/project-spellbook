@@ -69,7 +69,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-      - run: pnpm install tsc
+      - run: pnpm install tsc typescript
 
       - uses: EPMatt/reviewdog-action-tsc@v1
         with:
@@ -117,7 +117,7 @@ jobs:
         id: extract-results
         if: failure()
         run: |
-          failed_tests=$(jq '[.testResults[] | select(.status == "failed") | .assertionResults[] | select(.status == "failed") | {fullTitle: .fullName, message: .failureMessages[0]}]' test-results.json)
+          failed_tests=$(jq -c '[.testResults[] | select(.status == "failed") | .assertionResults[] | select(.status == "failed") | {fullTitle: .fullName, message: .failureMessages[0]}]' test-results.json)
           echo "failed_tests=$failed_tests" >> $GITHUB_OUTPUT
 
       - name: Comment on PR

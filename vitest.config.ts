@@ -18,6 +18,9 @@ export default defineConfig({
       ['**/*.test.tsx', 'jsdom'],
       ['**/*.component.test.ts', 'happy-dom'],
     ],
+    outputFile: {
+      junit: './junit-report.xml',
+    },
     coverage: {
       all: true,
       enabled: true,

@@ -27,7 +27,7 @@ describe(makeRedirectToFromHere.name, () => {
 
 describe(getRedirectTo.name, () => {
   it('should return default redirectTo value', () => {
-    expect(getRedirectTo(new Request(BASE_URL))).toBe('/');
+    expect(getRedirectTo(new Request(BASE_URL))).toBe('/a');
   });
 
   it('should return url redirectTo param value', () => {

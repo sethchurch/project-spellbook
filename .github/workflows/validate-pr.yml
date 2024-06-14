@@ -112,20 +112,29 @@ jobs:
 
       - name: Run tests
         run: pnpm test:ci
-      - uses: actions/upload-artifact@v4
-        if: success() || failure()
-        with:
-          name: test-results
-          path: junit-report.xml
+      - name: Extract test results
+        id: extract-results
+        run: |
+          failed_tests=$(jq '.failures' test-results.json)
+          echo "::set-output name=failed_tests::$failed_tests"
 
-  report:
-    runs-on: ubuntu-latest
-    needs: [vitest]
-    if: always()
-    steps:
-      - uses: dorny/test-reporter@v1
+      - name: Comment on PR
+        uses: actions/github-script@v6
+        if: steps.test.outcome == 'failure'
         with:
-          artifact: test-results # artifact name
-          name: JEST Tests # Name of the check run which will be created
-          path: '*.xml' # Path to test results (inside artifact .zip)
-          reporter: jest-junit # Format of test results
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const failedTests = JSON.parse(process.env.FAILED_TESTS || "[]");
+            const failedCount = failedTests.length;
+            const commentBody = failedCount > 0
+              ? `Failed Tests Summary\n\n**${failedCount} test(s) failed:**\n\n${failedTests.map(test => `- **${test.fullTitle}**: ${test.err.message}`).join('\n')}`
+              : 'All tests passed successfully!';
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: commentBody,
+            });
+        env:
+          FAILED_TESTS: ${{ steps.extract-results.outputs.failed_tests }}

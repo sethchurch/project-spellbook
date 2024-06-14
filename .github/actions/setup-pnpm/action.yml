@@ -1,6 +1,5 @@
 name: 'Setup pnpm'
 description: 'Installs pnpm with cache'
-shell: bash
 runs:
   using: 'composite'
   steps:
@@ -20,6 +19,7 @@ runs:
       shell: bash
       run: |
         echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
     - uses: actions/cache@v4
       name: Setup pnpm cache
       with:
@@ -27,5 +27,7 @@ runs:
         key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: |
           ${{ runner.os }}-pnpm-store-
+
     - name: Install dependencies
+      shell: bash
       run: pnpm install

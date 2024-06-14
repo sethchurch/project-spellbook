@@ -5,33 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - uses: pnpm/action-setup@v4
-        name: Install pnpm
-        with:
-          version: 8
-          run_install: false
-
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'pnpm'
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - run: pnpm i eslint
+      - uses: ./.github/actions/setup-pnpm
 
       - uses: reviewdog/action-eslint@v1
         with:
@@ -43,33 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - uses: pnpm/action-setup@v4
-        name: Install pnpm
-        with:
-          version: 8
-          run_install: false
-
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'pnpm'
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - run: pnpm install
+      - uses: ./.github/actions/setup-pnpm
 
       - uses: EPMatt/reviewdog-action-tsc@v1
         with:
@@ -81,34 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - uses: pnpm/action-setup@v4
-        name: Install pnpm
-        with:
-          version: 8
-          run_install: false
-
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'pnpm'
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Install dependencies
-        run: pnpm install
+      - uses: ./.github/actions/setup-pnpm
 
       - name: Run tests
         run: pnpm test:ci
@@ -126,18 +47,12 @@ jobs:
         with:
           github-token: ${{ secrets.GIT_TOKEN }}
           script: |
-            console.log(process.env.FAILED_TESTS)
             const failedTests = JSON.parse(process.env.FAILED_TESTS || "[]");
             const failedCount = failedTests.length;
             const commentBody = failedCount > 0
-              ? `\### Failed Tests Summary\n\n**${failedCount} test(s) failed:**\n\n${failedTests.map(test => `- **${test.fullTitle}**: ${test.message}`).join('\n')}`
+              ? `\### Failed Tests Summary\n\n**${failedCount} test(s) failed:**\n\n${failedTests.map(test => `- **${test.fullTitle.trim()}**: ${test.message}`).join('\n')}`
               : 'All tests passed successfully!';
 
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: commentBody,
-            });
+            github.rest.issues.createComment({ issue_number: context.issue.number, owner: context.repo.owner, repo: context.repo.repo, body: commentBody });
         env:
           FAILED_TESTS: ${{ steps.extract-results.outputs.failed_tests }}

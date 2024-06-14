@@ -64,7 +64,7 @@ const LandingPage = () => {
                 <DisableTabIndex>
                   <Pod className="ml-52 h-min w-screen max-w-screen-2xl shrink-0 overflow-hidden" variant="alt">
                     <CharacterSheetProvider character={character}>
-                      <CoreTab />
+                      <CoreTab character="test" />
                     </CharacterSheetProvider>
                   </Pod>
                 </DisableTabIndex>

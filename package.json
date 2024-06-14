@@ -21,7 +21,8 @@
     "test:coverage": "vitest --coverage",
     "test:precommit": "vitest --run --changed HEAD~1",
     "test:e2e": "playwright test",
-    "test:ui": "vitest --ui --api 9527"
+    "test:ui": "vitest --ui --api 9527",
+    "test:ci": "vitest --run --reporter=junit"
   },
   "dependencies": {
     "@conform-to/dom": "^1.1.2",

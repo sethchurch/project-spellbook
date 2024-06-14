@@ -1,5 +1,5 @@
+name: 'CI'
 on: pull_request
-
 jobs:
   eslint:
     runs-on: ubuntu-latest
@@ -9,7 +9,7 @@ jobs:
       - uses: reviewdog/action-eslint@v1
         with:
           github_token: ${{ secrets.GIT_TOKEN }}
-          reporter: github-check
+          reporter: github-pr-review
           eslint_flags: 'app/'
 
   typescript:
@@ -20,7 +20,7 @@ jobs:
       - uses: EPMatt/reviewdog-action-tsc@v1
         with:
           github_token: ${{ secrets.GIT_TOKEN }}
-          reporter: github-check
+          reporter: github-pr-review
           level: warning
 
   vitest:
@@ -59,3 +59,8 @@ jobs:
 
       - name: Run tests
         run: pnpm test:ci
+      - uses: actions/upload-artifact@v4 # upload test results
+        if: success() || failure() # run this step even if previous step failed
+        with:
+          name: test-results
+          path: jest-junit.xml

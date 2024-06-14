@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import type { ActionFunction, ActionFunctionArgs, LoaderFunctionArgs } from '@remix-run/node';
 import { redirect } from '@remix-run/node';
 import { useFetcher, useLoaderData } from '@remix-run/react';
-import { getValidatedFormData, RemixFormProvider, useRemixForm } from 'remix-hook-form';
+import { RemixFormProvider, useRemixForm } from 'remix-hook-form';
 import * as zod from 'zod';
 
 import { Pod } from '@/components/Elements/Pod';
@@ -18,7 +18,7 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
   const session = await requireAuthSession(request);
   const { userId } = session;
   const { characterId } = params;
-  console.log({ request: request.body });
+
   if (!characterId) throw redirect('/tavern');
   const coreSheetData = await getCharacter(userId, characterId, {
     include: {
@@ -54,18 +54,17 @@ type CoreFormData = zod.infer<typeof schema>;
 const resolver = zodResolver(schema);
 
 export const action: ActionFunction = async ({ request }: ActionFunctionArgs) => {
-  const {
-    errors,
-    data,
-    receivedValues: defaultValues,
-    ...rest
-  } = await getValidatedFormData<FormData>(request, resolver);
+  // const { errors, data, receivedValues: defaultValues } = await getValidatedFormData<FormData>(request, resolver);
   return null;
 };
 
 export default function CoreTabTest() {
   const fetcher = useFetcher();
   const { character } = useLoaderData<typeof loader>();
+
+  function validSubmit(data: object) {
+    console.log({ data });
+  }
 
   const remixForm = useRemixForm<CoreFormData>({
     mode: 'onChange',
@@ -78,13 +77,7 @@ export default function CoreTabTest() {
     },
   });
 
-  const { handleSubmit, formState } = remixForm;
-  const { dirtyFields } = formState;
-  console.log({ dirtyFields });
-
-  function validSubmit(data) {
-    console.log({ data, dirtyFields });
-  }
+  const { handleSubmit } = remixForm;
 
   const onChange = () => {
     handleSubmit();

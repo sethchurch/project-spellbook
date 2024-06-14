@@ -112,15 +112,17 @@ jobs:
 
       - name: Run tests
         run: pnpm test:ci
+
       - name: Extract test results
         id: extract-results
+        if: failure()
         run: |
           failed_tests=$(jq '.failures' test-results.json)
           echo "::set-output name=failed_tests::$failed_tests"
 
       - name: Comment on PR
         uses: actions/github-script@v6
-        if: steps.test.outcome == 'failure'
+        if: failure()
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
